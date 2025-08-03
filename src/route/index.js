@@ -1,0 +1,121 @@
+import { createRouter, createWebHistory } from 'vue-router';
+const Login = () => import('../page/index.vue')
+const VerificationPage = () => import('../page/verification.vue')
+const TemrsPage = () => import('../page/terms.vue')
+const SignUpPage = () => import('../page/register.vue')
+const HomePage = () => import('../page/homepage.vue')
+const AboutUsPage = () => import('../page/aboutus.vue')
+const StampsPage = () => import('../page/stamps.vue')
+const VoucherPage = () => import('../page/vouchers.vue')
+const AccountPage = () => import('../page/account.vue')
+const WalletPage = () => import('../page/wallet.vue')
+const AddressPage = () => import('../page/addresses.vue')
+const ProfilePage = () => import('../page/profile.vue')
+const QRPage = () => import('../page/qr.vue')
+const CardInfoPage = () => import('../page/cardinfo.vue')
+const AddBankPage = () => import('../page/addbank.vue')
+const AddCardPage = () => import('../page/addcard.vue')
+const MethodPage = () => import('../page/refillmethod.vue')
+
+const routes = [
+  {
+    path: '/',
+    name: 'Login',
+    component: Login,
+  },
+  {
+    path: '/verification',
+    name: 'Verification',
+    component: VerificationPage
+  },
+  {
+    path: '/terms',
+    name: 'Terms',
+    component: TemrsPage
+  },
+  {
+    path: '/signup',
+    name: 'SignUp',
+    component: SignUpPage
+  },
+  ,
+  {
+    path: '/home',
+    name: 'Home',
+    component: HomePage
+  },
+  {
+    path: '/aboutus',
+    name: 'AboutUs',
+    component: AboutUsPage
+  },
+  {
+    path: '/stamps',
+    name: 'Stamps',
+    component: StampsPage
+  },
+  {
+    path: '/vouchers',
+    name: 'Vouchers',
+    component: VoucherPage
+  },
+  {
+    path: '/accounts',
+    name: 'Accounts',
+    component: AccountPage
+  },
+  {
+    path: '/wallet',
+    name: 'Wallet',
+    component: WalletPage
+  },
+  {
+    path: '/address',
+    name: 'Addresses',
+    component: AddressPage
+  },
+  {
+    path: '/profile',
+    name: 'Profiles',
+    component: ProfilePage
+  },
+  {
+    path: '/qrcode',
+    name: 'QRCodes',
+    component: QRPage
+  },
+  {
+    path: '/cardinfo',
+    name: 'CardInfos',
+    component: CardInfoPage
+  },
+  {
+    path: '/addbank',
+    name: 'AddBanks',
+    component: AddBankPage
+  },
+  {
+    path: '/addcard',
+    name: 'AddCards',
+    component: AddCardPage
+  },
+  {
+    path: '/refillmethod',
+    name: 'Methods',
+    component: MethodPage
+  },
+  // {
+  //   path: '/product/:id',
+  //   name: 'Product',
+  //   component: Product,
+  //   props: true,
+  // },
+  // Add more routes as needed
+];
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes,
+});
+
+export default router;
