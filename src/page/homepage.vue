@@ -85,7 +85,7 @@
               ></div>
             </div>
           </div>
-          <div @click="return" class="w-[166px] h-[114.551px] shrink-0 relative z-[56] cursor-pointer">
+          <div @click="returnMethod" class="w-[166px] h-[114.551px] shrink-0 relative z-[56] cursor-pointer">
             <div class="w-[166px] h-[114.551px] absolute top-0 left-0 z-[57]">
               <div
                 class="w-[78.758px] h-[67.113px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/G5v1pSJC16.png)] bg-cover bg-no-repeat absolute top-0 left-[43.621px] z-[62]"
@@ -217,5 +217,9 @@ const goToQRPage = () => {
 
 const refill = () => {
   router.push({ name: 'Methods' });
+};
+
+const returnMethod = () => {
+  router.push({ name: 'ReturnMethods' });
 };
 </script>

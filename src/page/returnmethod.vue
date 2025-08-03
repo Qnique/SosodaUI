@@ -10,7 +10,7 @@
       ></div>
       <span
         class="h-[14px] shrink-0 font-['Poppins'] text-[20px] font-semibold leading-[14px] text-[#000] relative text-left uppercase whitespace-nowrap z-[2]"
-        >REFILL & SWAP</span
+        >RETURN ONLY</span
       >
       <div
         class="w-[12.5px] h-[25px] shrink-0 bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/GfXMtdMzsf.png)] bg-cover bg-no-repeat relative overflow-hidden z-[3]"
@@ -44,15 +44,15 @@
         >We deliver, you stay refreshed.</span
       >
     </div>
-    <div @click="exchange"
+    <div @click="returnspot"
       class="cursor-pointer w-[187.286px] h-[150px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/c78rtDy2zu.png)] bg-cover bg-no-repeat absolute top-[469.426px] left-[222.715px] z-[15]"
     ></div>
-    <div @click="exchange"
+    <div @click="returnspot"
       class="cursor-pointer card flex w-[342px] h-[120px] flex-col gap-[5px] items-start flex-nowrap absolute top-[495.164px] left-[50px] z-[12]"
     >
       <span
         class="h-[27px] card-text self-stretch shrink-0 basis-auto font-['Poppins'] text-[18px] font-bold leading-[27px] text-[#fff] tracking-[0.1px] relative text-left whitespace-nowrap z-[7]"
-        >Refill On The Spot</span
+        >Return On The Spot</span
       ><span
         class="card-subtext flex h-[30px] justify-start items-start shrink-0 font-['Poppins'] text-[10px] font-normal leading-[15px] text-[#fff] relative text-left overflow-hidden z-[8]"
         >Walk in with empty, <br />walk out with fresh.</span

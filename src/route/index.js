@@ -16,6 +16,7 @@ const CardInfoPage = () => import('../page/cardinfo.vue')
 const AddBankPage = () => import('../page/addbank.vue')
 const AddCardPage = () => import('../page/addcard.vue')
 const MethodPage = () => import('../page/refillmethod.vue')
+const ReturnMetodPage = () => import('../page/returnmethod.vue')
 
 const routes = [
   {
@@ -103,6 +104,11 @@ const routes = [
     path: '/refillmethod',
     name: 'Methods',
     component: MethodPage
+  },
+  {
+    path: '/returnMethod',
+    name: 'ReturnMethods',
+    component: ReturnMetodPage
   },
   // {
   //   path: '/product/:id',
