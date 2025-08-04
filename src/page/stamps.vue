@@ -6,28 +6,28 @@
       class="flex w-[342px] justify-between items-center flex-nowrap relative z-[60] mt-[49.574px] mr-0 mb-0 ml-[30px]"
     >
       <div @click="backToHome"
-        class="cursor-pointer w-[12.5px] h-[25px] shrink-0 bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/FcffDKNmVx.png)] bg-cover bg-no-repeat relative overflow-hidden z-[61]"
+        class="cursor-pointer w-[12.5px] h-[25px] shrink-0 bg-[url('../public/back_arrow.png')] bg-cover bg-no-repeat relative overflow-hidden z-[61]"
       ></div>
       <span
         class="h-[14px] shrink-0 font-['Poppins'] text-[20px] font-semibold leading-[14px] text-[#000] relative text-left uppercase whitespace-nowrap z-[62]"
         >my stamps</span
       >
       <div
-        class="w-[12.5px] h-[25px] shrink-0 bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/9moqMa14P7.png)] bg-cover bg-no-repeat relative overflow-hidden z-[63]"
+        class="w-[12.5px] h-[25px] shrink-0 bg-[url('../public/white.png')] bg-cover bg-no-repeat relative overflow-hidden z-[63]"
       ></div>
     </div>
     <span
       class="block h-[34px] font-['Poppins'] text-[48px] font-bold leading-[34px] text-[#000] relative text-left uppercase whitespace-nowrap z-[3] mt-[35.426px] mr-0 mb-0 ml-[171.5px]"
       >20</span
     >
-    <div
+    <button
       class="flex w-[163px] h-[40px] pt-[10px] pr-[48px] pb-[10px] pl-[48px] gap-[5px] justify-center items-center flex-nowrap bg-[rgba(255,255,255,0.2)] rounded-[10px] border-solid border-[1.25px] border-[#a5a5a5] relative z-[1] mt-[29.574px] mr-0 mb-0 ml-[119.5px]"
     >
       <span
         class="h-[24px] shrink-0 basis-auto font-['Poppins'] text-[16px] font-semibold leading-[24px] text-[#a5a5a5] relative text-left whitespace-nowrap z-[2]"
         >Collect History</span
       >
-    </div>
+    </button>
     <div
       class="flex w-[342px] flex-col gap-[18px] items-start flex-nowrap relative z-[4] mt-[30.426px] mr-0 mb-0 ml-[30px]"
     >

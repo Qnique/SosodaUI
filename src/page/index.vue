@@ -3,14 +3,14 @@
     class="main-container w-[420px] h-[874px] bg-[#fff] relative overflow-hidden mx-auto my-0"
   >
     <div
-      class="w-[125px] h-[117px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-02/4T0Zm0zN2R.png)] bg-cover bg-no-repeat relative z-20 mt-[69.502px] mr-0 mb-0 ml-[138px]"
+      class="w-[125px] h-[117px] bg-[url('../public/sosoda-logo.png')] bg-cover bg-no-repeat relative z-20 mt-[79.502px] mr-0 mb-0 ml-[150px]"
     ></div>
     <span
-      class="block h-[42px] font-['Poppins'] text-[28px] font-semibold leading-[42px] text-[#000] relative text-left whitespace-nowrap z-[19] mt-[184.498px] mr-0 mb-0 ml-[159px]"
+      class="block h-[42px] font-['Poppins'] text-[28px] font-semibold leading-[42px] text-[#000] relative text-left whitespace-nowrap z-[19] mt-[184.498px] mr-0 mb-0 ml-[165px]"
       >LOGIN</span
     >
     <div
-      class="flex w-[342px] flex-col gap-[60px] items-center flex-nowrap relative z-[3] mt-[47px] mr-0 mb-0 ml-[30px]"
+      class="flex w-[342px] flex-col gap-[60px] items-center flex-nowrap relative z-[3] mt-[47px] mr-0 mb-0 ml-[40px]"
     >
       <div
         class="flex flex-col gap-[16px] items-start self-stretch shrink-0 flex-nowrap relative z-[4]"
@@ -29,12 +29,12 @@
               class="flex w-[91px] h-[42px] pt-[12px] pr-0 pb-[12px] pl-[15px] gap-[22px] items-center shrink-0 flex-nowrap bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[8]"
             >
               <span
-                class="h-[18px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-medium leading-[18px] text-[#000] relative text-left whitespace-nowrap z-[9]"
+                class="h-[18px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-medium leading-[18px] text-[#000] relative whitespace-nowrap z-[9]"
                 >+60</span
               >
-              <div
+              <!-- <div
                 class="w-[10px] h-[10px] shrink-0 bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-02/0yEaRoVtf2.png)] bg-cover bg-no-repeat relative z-10"
-              ></div>
+              ></div> -->
             </div>
             <div
               class="flex w-[236px] h-[42px] pt-[12px] pr-[15px] pb-[12px] pl-[15px] gap-[10px] items-center shrink-0 flex-nowrap bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[11]"
@@ -52,8 +52,8 @@
             <span
               class="font-['Poppins'] text-[11px] font-normal leading-[16.5px] text-[#292929] relative text-left"
               >I confirm I have read and accept the </span
-            ><span
-              class="font-['Poppins'] text-[11px] font-normal leading-[16.5px] text-[#292929] relative text-left underline"
+            ><span @click="goToTermsPage"
+              class="cursor-pointer font-['Poppins'] text-[11px] font-normal leading-[16.5px] text-[#292929] relative text-left underline"
               >Terms & Conditions</span
             >
           </div>
@@ -85,15 +85,15 @@
           class="flex h-[50px] pt-[10px] pr-[48px] pb-[10px] pl-[48px] gap-[10px] justify-center items-center self-stretch shrink-0 flex-nowrap bg-[#292929] rounded-[12px] relative z-[17]">
           <span
             class="h-[24px] shrink-0 basis-auto font-['Poppins'] text-[16px] font-semibold leading-[24px] text-[#fff] relative text-left whitespace-nowrap z-[18]"
-            >Send OTP</span>
+            >SEND OTP</span>
         </button>
       </div>
     </div>
     <div
-      class="w-[402px] h-[395px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-02/EqFRvbZx1X.png)] bg-cover bg-no-repeat absolute top-0 left-0 z-[1]"
+      class="w-[420px] h-[395px] bg-[url('../public/background-gradient.png')] bg-cover bg-no-repeat absolute top-0 left-0 z-[1]"
     ></div>
     <div
-      class="w-[854.894px] h-[854.894px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-02/uiQe0nfMHg.png)] bg-cover bg-no-repeat rounded-[50%] absolute top-[246px] left-1/2 translate-x-[-49.95%] translate-y-0 z-[2]"
+      class="w-[854.894px] h-[854.894px] bg-[url('../public/Ellipse.png')] bg-cover bg-no-repeat rounded-[50%] absolute top-[246px] left-1/2 translate-x-[-49.95%] translate-y-0 z-[2]"
     ></div>
   </div>
 </template>
@@ -108,6 +108,10 @@ const checked = ref(false);
 
 const goToVerification = () => {
   router.push({ name: 'Verification' });
+};
+
+const goToTermsPage = () => {
+  router.push({ name: 'Terms' });
 };
 </script>
 

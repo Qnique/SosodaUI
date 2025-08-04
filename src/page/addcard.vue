@@ -11,7 +11,7 @@
           >Back</span
         >
         <div
-          class="w-[10px] h-[20px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/5LxT9kJOhE.png)] bg-cover bg-no-repeat absolute top-[0.5px] left-0 overflow-hidden z-[59]"
+          class="w-[10px] h-[20px] bg-[url('../public/back_arrow.png')] bg-cover bg-no-repeat absolute top-[0.5px] left-0 overflow-hidden z-[59]"
         ></div>
       </div>
       <span

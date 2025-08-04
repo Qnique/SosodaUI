@@ -3,16 +3,16 @@
     class="main-container w-[420px] h-[931px] bg-[#fff] relative overflow-hidden mx-auto my-0"
   >
     <div
-      class="w-[125px] h-[117px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/c5hz1U9dGK.png)] bg-cover bg-no-repeat relative z-[1] mt-[7px] mr-0 mb-0 ml-[142px]"
+      class="w-[125px] h-[117px] bg-[url('../public/sosoda-logo.png')] bg-cover bg-no-repeat relative z-[1] mt-[7px] mr-0 mb-0 ml-[155px]"
     ></div>
 
-    <div class="relative w-[320px] h-[100px] bg-white rounded-[10px] shadow-[0_2px_8px_rgba(0,0,0,0.1)] mt-[32px] ml-[40px] z-[18]">
+    <div class="relative w-[320px] h-[100px] bg-white rounded-[10px] shadow-[0_2px_8px_rgba(0,0,0,0.1)] mt-[32px] ml-[48px] z-[18]">
     <!-- Welcome Text -->
     <span class="absolute top-[12px] left-[22px] text-[14px] font-semibold text-[#080808] font-['Poppins'] leading-[21px] z-[32]">
         Welcome back, Chloe!
     </span>   
     <!-- Decorative Line -->
-    <div class="absolute top-[42.5px] left-[22px] w-[276px] h-px bg-[url('https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/Wnv21gjrYy.png')] bg-cover bg-no-repeat z-[35]"></div>
+    <div class="absolute top-[42.5px] left-[22px] w-[276px] h-px bg-[url('../public/line.png')] bg-cover bg-no-repeat z-[35]"></div>
 
     <!-- Stats + Avatar -->
     <div class="absolute top-[50px] left-[22px] flex justify-between items-center w-[276px] z-[19]">
@@ -33,7 +33,7 @@
         </div>
 
         <!-- Avatar -->
-        <div @click="goToQRPage" class="cursor-pointer w-[40px] h-[40px] bg-[url('https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/Z34EznVhaO.png')] bg-cover bg-no-repeat overflow-hidden z-30"></div>
+        <div @click="goToQRPage" class="cursor-pointer w-[40px] h-[40px] bg-[url('../public/qr.png')] bg-cover bg-no-repeat overflow-hidden z-30"></div>
     </div>
     </div>
 
@@ -66,7 +66,7 @@
                 class="w-[116.9px] h-[109px] absolute top-0 left-[23.551px] z-[51]"
               >
                 <div
-                  class="w-[116.9px] h-[82.641px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/eHGpm19LHB.png)] bg-cover bg-no-repeat relative z-[55] mt-0 mr-0 mb-0 ml-0"
+                  class="w-[116.9px] h-[82.641px] bg-[url('../public/refill.png')] bg-cover bg-no-repeat relative z-[55] mt-0 mr-0 mb-0 ml-0"
                 ></div>
                 <div
                   class="flex w-[103px] flex-col items-center flex-nowrap relative z-[52] mt-[-3.641px] mr-0 mb-0 ml-[7.949px]"
@@ -81,27 +81,27 @@
                 </div>
               </div>
               <div
-                class="w-[166px] h-[83px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/HqCUJoMcqp.png)] bg-cover bg-no-repeat rounded-[12px] absolute top-[37.501px] left-0 z-50"
+                class="w-[166px] h-[83px] bg-[url('../public/Rectangle80.png')] bg-cover bg-no-repeat rounded-[12px] absolute top-[37.501px] left-0 z-50"
               ></div>
             </div>
           </div>
           <div @click="returnMethod" class="w-[166px] h-[114.551px] shrink-0 relative z-[56] cursor-pointer">
             <div class="w-[166px] h-[114.551px] absolute top-0 left-0 z-[57]">
               <div
-                class="w-[78.758px] h-[67.113px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/G5v1pSJC16.png)] bg-cover bg-no-repeat absolute top-0 left-[43.621px] z-[62]"
+                class="w-[78.758px] h-[77.113px] bg-[url('../public/return.png')] bg-cover bg-no-repeat absolute top-0 left-[43.621px] z-[62]"
               ></div>
               <div
                 class="w-[166px] h-[83px] text-[0px] rounded-[10px] absolute top-[31.551px] left-0 z-[58]"
               >
                 <span
-                  class="block h-[24px] font-['Poppins'] text-[16px] font-bold leading-[24px] text-[#fff] relative text-left whitespace-nowrap z-[60] mt-[38px] mr-0 mb-0 ml-[33.91px]"
+                  class="block h-[21px] font-['Poppins'] text-[14px] font-bold leading-[24px] text-[#fff] relative text-center whitespace-nowrap z-[60] mt-[38px] mr-0 mb-0"
                   >Return Only</span
                 ><span
                   class="block h-[11px] font-['Poppins'] text-[7px] font-normal leading-[10.5px] text-[#fff] relative text-left whitespace-nowrap z-[61] mt-0 mr-0 mb-0 ml-[34.922px]"
                   >We pick up, you get refund.</span
                 >
                 <div
-                  class="w-[166px] h-[83px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/EyVhPbeiEG.png)] bg-cover bg-no-repeat rounded-[10px] absolute top-0 left-1/2 translate-x-[-50%] translate-y-0 z-[59]"
+                  class="w-[166px] h-[83px] bg-[url('../public/Rectangle80.png')] bg-cover bg-no-repeat rounded-[10px] absolute top-0 left-1/2 translate-x-[-50%] translate-y-0 z-[59]"
                 ></div>
               </div>
             </div>
@@ -112,7 +112,7 @@
             class="flex w-[342px] h-[100px] pt-[20px] pr-[20px] pb-[20px] pl-0 flex-col justify-center items-start flex-nowrap rounded-[10px] relative z-[65] mt-0 mr-0 mb-0 ml-0"
           >
             <div
-              class="w-[342px] h-[100px] shrink-0 bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-02/R9eG7dJURc.png)] bg-cover bg-no-repeat rounded-[10px] relative z-[66]"
+              class="w-[342px] h-[100px] shrink-0 bg-[url('../public/background-gradient.png')] bg-cover bg-no-repeat rounded-[10px] relative z-[66]"
             ></div>
           </div>
 
@@ -123,16 +123,16 @@
       class="flex w-[342px] gap-[10px] items-start flex-wrap relative z-[37] mt-[30.449px] mr-0 mb-0 ml-[30px]"
     >
       <div @click="goToAboutUsPage"
-        class="cursor-pointer flex w-[166px] h-[100px] pt-[17px] pr-[41px] pb-[17px] pl-[41px] flex-col gap-[10px] justify-end items-center flex-nowrap bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/OB1w7GSiFC.png)] bg-cover bg-no-repeat rounded-[13px] relative z-[38]"
+        class="cursor-pointer flex w-[166px] h-[100px] pt-[17px] pr-[41px] pb-[17px] pl-[41px] flex-col gap-[10px] justify-end items-center flex-nowrap bg-[url('../public/story.png')] bg-cover bg-no-repeat rounded-[13px] relative z-[38]"
       ></div>
       <div
-        class="cursor-pointer flex w-[166px] h-[100px] pt-[17px] pr-[41px] pb-[17px] pl-[41px] flex-col gap-[10px] justify-end items-center flex-nowrap bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/NLtT2bY2FT.png)] bg-cover bg-no-repeat rounded-[13px] relative z-40"
+        class="cursor-pointer flex w-[166px] h-[100px] pt-[17px] pr-[41px] pb-[17px] pl-[41px] flex-col gap-[10px] justify-end items-center flex-nowrap bg-[url('../public/tnc.png')] bg-cover bg-no-repeat rounded-[13px] relative z-40"
       ></div>
       <div
-        class="cursor-pointer flex w-[166px] h-[100px] pt-[17px] pr-[41px] pb-[17px] pl-[41px] flex-col gap-[10px] justify-end items-center flex-nowrap bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/vPeWop1RdT.png)] bg-cover bg-no-repeat rounded-[13px] relative z-[39]"
+        class="cursor-pointer flex w-[166px] h-[100px] pt-[17px] pr-[41px] pb-[17px] pl-[41px] flex-col gap-[10px] justify-end items-center flex-nowrap bg-[url('../public/location.png')] bg-cover bg-no-repeat rounded-[13px] relative z-[39]"
       ></div>
       <div
-        class="cursor-pointer flex w-[166px] h-[100px] pt-[17px] pr-[41px] pb-[17px] pl-[41px] flex-col gap-[10px] justify-end items-center flex-nowrap bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/nkR3TXJqbd.png)] bg-cover bg-no-repeat rounded-[13px] relative z-[41]"
+        class="cursor-pointer flex w-[166px] h-[100px] pt-[17px] pr-[41px] pb-[17px] pl-[41px] flex-col gap-[10px] justify-end items-center flex-nowrap bg-[url('../public/referral-bottle.png')] bg-cover bg-no-repeat rounded-[13px] relative z-[41]"
       ></div>
     </div>
     <div
@@ -143,7 +143,7 @@
       >
         <div class="cursor-pointer w-[31px] h-[37px] shrink-0 relative z-[5]" style="padding: 5px;">
           <div
-            class="w-[30px] h-[30px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/ekdR6dBc6H.png)] bg-cover bg-no-repeat relative z-[6] mt-0 mr-0 mb-0 "
+            class="w-[30px] h-[30px] bg-[url('../public/home.png')] bg-cover bg-no-repeat relative z-[6] mt-0 mr-0 mb-0 "
           ></div>
           <span
             class="flex w-[31px] h-[8px] justify-center items-start font-['Poppins'] text-[12px] font-normal leading-[8px] text-[#fff] relative text-center whitespace-nowrap z-[7] mt-[5px] mr-0 mb-0 ml-0"
@@ -152,7 +152,7 @@
         </div>
         <div class="cursor-pointer w-[31px] h-[37px] shrink-0 relative z-[8]" style="padding: 5px;">
           <div
-            class="w-[30px] h-[30px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/jG7OPL3wFW.png)] bg-cover bg-no-repeat relative z-[9] "
+            class="w-[30px] h-[30px] bg-[url('../public/menu.png')] bg-cover bg-no-repeat relative z-[9] "
           ></div>
           <span
             class="flex w-[31px] h-[8px] justify-center items-start font-['Poppins'] text-[11px] font-normal leading-[8px] text-[#fff] relative text-center whitespace-nowrap z-10 mt-[4px] mr-0 mb-0 ml-0"
@@ -161,7 +161,7 @@
         </div>
         <div class="cursor-pointer w-[31px] h-[37px] shrink-0 relative z-[8]" style="padding: 5px;">
           <div
-              class="w-[30px] h-[25px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/i4a4gyqkvn.png)] bg-[length:100%_100%] bg-no-repeat relative z-[13] mt-[1.667px] mr-0 mb-0"
+              class="w-[30px] h-[25px] bg-[url('../public/order.png')] bg-[length:100%_100%] bg-no-repeat relative z-[13] mt-[1.667px] mr-0 mb-0"
         ></div>
           <span
             class="flex w-[31px] h-[8px] justify-center items-start font-['Poppins'] text-[11px] font-normal leading-[8px] text-[#fff] relative text-center whitespace-nowrap z-[13] mt-[7px] mr-0 mb-0 ml-0"
@@ -170,7 +170,7 @@
         </div>
         <div class="cursor-pointer w-[31px] h-[37px] shrink-0 relative z-[15]" style="padding: 5px;" @click="goToAccountPage">
           <div
-            class="w-[30px] h-[25px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/G6fkQj2k6a.png)] bg-cover bg-no-repeat relative z-[16] mt-0 mr-0 mb-0"
+            class="w-[30px] h-[25px] bg-[url('../public/me.png')] bg-cover bg-no-repeat relative z-[16] mt-0 mr-0 mb-0"
           ></div>
           <span
             class="flex w-[31px] h-[8px] justify-center items-start font-['Poppins'] text-[11px] font-normal leading-[8px] text-[#fff] relative text-center whitespace-nowrap z-[17] mt-[7px] mr-0 mb-0"
@@ -180,7 +180,10 @@
       </div>
     </div>
     <div
-      class="h-[1463.998px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/J2efEmTjok.png)] bg-cover bg-no-repeat absolute top-[-2px] left-[-442px] right-[-441px]"
+      class="h-[295px] bg-[url('../public/Rectangle76.png')] bg-cover bg-no-repeat absolute top-[-2px] left-[-442px] right-[-441px]"
+    ></div>
+    <div
+      class="w-[1285px] h-[1285px] bg-[url('../public/Ellipse6.png')] bg-cover bg-no-repeat rounded-[50%] absolute top-[190px] left-1/2 translate-x-[-49.95%] translate-y-0 z-[2]"
     ></div>
   </div>
 </template>

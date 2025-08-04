@@ -6,14 +6,14 @@
       class="flex w-[342px] justify-between items-center flex-nowrap relative z-[15] mt-[49.574px] mr-0 mb-0 ml-[30px]"
     >
       <div @click="backToHome"
-        class="cursor-pointer w-[12.5px] h-[25px] shrink-0 bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/b0vfcSNT2t.png)] bg-cover bg-no-repeat relative overflow-hidden z-[16]"
+        class="cursor-pointer w-[12.5px] h-[25px] shrink-0 bg-[url('../public/back_arrow.png')] bg-cover bg-no-repeat relative overflow-hidden z-[16]"
       ></div>
       <span
         class="h-[14px] shrink-0 font-['Poppins'] text-[20px] font-semibold leading-[14px] text-[#000] relative text-left uppercase whitespace-nowrap z-[17]"
         >Voucher details</span
       >
       <div
-        class="w-[12.5px] h-[25px] shrink-0 bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/v2MZH6sAbS.png)] bg-cover bg-no-repeat relative overflow-hidden z-[18]"
+        class="w-[12.5px] h-[25px] shrink-0 bg-[url('../public/white.png')] bg-cover bg-no-repeat relative overflow-hidden z-[18]"
       ></div>
     </div>
     <div

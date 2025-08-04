@@ -11,7 +11,7 @@
           >Back</span
         >
         <div
-          class="w-[10px] h-[20px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/Z89mjpEFBB.png)] bg-cover bg-no-repeat absolute top-[0.5px] left-0 overflow-hidden z-[33]"
+          class="w-[10px] h-[20px] bg-[url('../public/back_arrow.png')] filter invert bg-cover bg-no-repeat absolute top-[0.5px] left-0 overflow-hidden z-[33]"
         ></div>
       </div>
       <span
@@ -20,7 +20,7 @@
       >
     </div>
     <div
-      class="w-[402px] h-[233px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/Yh30bN0vWk.png)] bg-cover bg-no-repeat absolute top-0 left-0"
+      class="w-[402px] h-[233px] bg-[url('../public/background-gradient.png')] bg-cover bg-no-repeat absolute top-0 left-0"
     ></div>
     <div
       class="w-[100px] h-[100px] rounded-[50px] absolute top-[163px] left-1/2 translate-x-[-50%] translate-y-0 z-[3]"

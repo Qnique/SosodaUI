@@ -75,7 +75,7 @@
                     </div>
                   </div>
                   <div @click="goToQRPage"
-                    class="cursor-pointer w-[40px] h-[40px] shrink-0 bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/BNJ5BSmA8a.png)] bg-cover bg-no-repeat relative overflow-hidden z-[26]"
+                    class="cursor-pointer w-[40px] h-[40px] shrink-0 bg-[url('../public/qr.png')] bg-cover bg-no-repeat relative overflow-hidden z-[26]"
                   ></div>
                 </div>
                 <div
@@ -135,7 +135,7 @@
                     class="flex gap-[12px] justify-center items-center self-stretch shrink-0 flex-nowrap relative z-[43]"
                   >
                     <div
-                      class="w-[16px] h-[16px] shrink-0 bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/PBrhWzpSjb.png)] bg-cover bg-no-repeat relative overflow-hidden z-[44]"
+                      class="w-[16px] h-[16px] shrink-0 bg-[url('../public/address-icon.png')] bg-cover bg-no-repeat relative overflow-hidden z-[44]"
                     ></div>
                     <div
                       class="flex justify-between items-center grow shrink-0 basis-0 flex-nowrap relative z-[45]"
@@ -151,17 +151,11 @@
                           >Set and manage your delivery locations</span
                         >
                       </div>
-                      <div
-                        class="flex w-[4.756px] pt-[4px] pr-0 pb-0 pl-0 gap-[10px] items-center shrink-0 flex-nowrap relative overflow-hidden z-[49]"
-                      >
-                        <div
-                          class="w-[4.756px] h-[8.647px] shrink-0 bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/NF7bFk6tsH.png)] bg-cover bg-no-repeat relative z-50"
-                        ></div>
-                      </div>
+
                     </div>
                   </div>
                   <div
-                    class="w-[331.5px] h-px shrink-0 bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/q1CpAdUz8W.png)] bg-cover bg-no-repeat relative z-[51]"
+                    class="w-[331.5px] h-px shrink-0 bg-[url('../public/account-line.png')] bg-cover bg-no-repeat relative z-[51]"
                   ></div>
                 </div>
                 <div @click="goToCardPage"
@@ -171,7 +165,7 @@
                     class="flex gap-[12px] justify-center items-center self-stretch shrink-0 flex-nowrap relative z-[53]"
                   >
                     <div
-                      class="w-[16px] h-[16px] shrink-0 bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/SheaOCyxTi.png)] bg-cover bg-no-repeat relative z-[54]"
+                      class="w-[16px] h-[14px] shrink-0 bg-[url('../public/card-icon.png')] bg-cover bg-no-repeat relative z-[54]"
                     ></div>
                     <div
                       class="flex justify-between items-center grow shrink-0 basis-0 flex-nowrap relative z-[55]"
@@ -187,17 +181,10 @@
                           >Manage your cards and payment options</span
                         >
                       </div>
-                      <div
-                        class="flex w-[4.756px] pt-[4px] pr-0 pb-0 pl-0 gap-[10px] items-center shrink-0 flex-nowrap relative overflow-hidden z-[59]"
-                      >
-                        <div
-                          class="w-[4.756px] h-[8.647px] shrink-0 bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/fkR9PPrsoq.png)] bg-cover bg-no-repeat relative z-[60]"
-                        ></div>
-                      </div>
                     </div>
                   </div>
                   <div
-                    class="w-[331.5px] h-px shrink-0 bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/8K5hmsf9Hi.png)] bg-cover bg-no-repeat relative z-[61]"
+                    class="w-[331.5px] h-px shrink-0 bg-[url('../public/account-line.png')] bg-cover bg-no-repeat relative z-[61]"
                   ></div>
                 </div>
               </div>
@@ -230,7 +217,7 @@
                 class="flex gap-[12px] justify-center items-center self-stretch shrink-0 flex-nowrap relative z-[69]"
               >
                 <div
-                  class="w-[16px] h-[16px] shrink-0 bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/5ToeWedAgB.png)] bg-cover bg-no-repeat relative overflow-hidden z-[70]"
+                  class="w-[16px] h-[16px] shrink-0 bg-[url('../public/info-icon.png')] bg-cover bg-no-repeat relative overflow-hidden z-[70]"
                 ></div>
                 <div
                   class="flex justify-between items-center grow shrink-0 basis-0 flex-nowrap relative z-[71]"
@@ -246,17 +233,10 @@
                       >Browse FAQs and service guides</span
                     >
                   </div>
-                  <div
-                    class="flex w-[4.756px] pt-[4px] pr-0 pb-0 pl-0 gap-[10px] items-center shrink-0 flex-nowrap relative overflow-hidden z-[75]"
-                  >
-                    <div
-                      class="w-[4.756px] h-[8.647px] shrink-0 bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/or8ybhGAZo.png)] bg-cover bg-no-repeat relative z-[76]"
-                    ></div>
-                  </div>
                 </div>
               </div>
               <div
-                class="w-[331.5px] h-px shrink-0 bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/5bzTmQwu10.png)] bg-cover bg-no-repeat relative z-[77]"
+                class="w-[331.5px] h-px shrink-0 bg-[url('../public/account-line.png')] bg-cover bg-no-repeat relative z-[77]"
               ></div>
             </div>
             <div
@@ -266,7 +246,7 @@
                 class="flex gap-[12px] justify-center items-center self-stretch shrink-0 flex-nowrap relative z-[79]"
               >
                 <div
-                  class="w-[16px] h-[16px] shrink-0 bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/jm8UVFA1kN.png)] bg-cover bg-no-repeat relative overflow-hidden z-[80]"
+                  class="w-[16px] h-[16px] shrink-0 bg-[url('../public/tnc-icon.png')] bg-cover bg-no-repeat relative overflow-hidden z-[80]"
                 ></div>
                 <div
                   class="flex justify-between items-center grow shrink-0 basis-0 flex-nowrap relative z-[81]"
@@ -282,17 +262,11 @@
                       >Read our service terms and policies</span
                     >
                   </div>
-                  <div
-                    class="flex w-[4.756px] pt-[4px] pr-0 pb-0 pl-0 gap-[10px] items-center shrink-0 flex-nowrap relative overflow-hidden z-[85]"
-                  >
-                    <div
-                      class="w-[4.756px] h-[8.647px] shrink-0 bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/s3urEfROZV.png)] bg-cover bg-no-repeat relative z-[86]"
-                    ></div>
-                  </div>
+
                 </div>
               </div>
               <div
-                class="w-[331.5px] h-px shrink-0 bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/K4M5rjNEq6.png)] bg-cover bg-no-repeat relative z-[87]"
+                class="w-[331.5px] h-px shrink-0 bg-[url('../public/account-line.png')] bg-cover bg-no-repeat relative z-[87]"
               ></div>
             </div>
             <div
@@ -302,7 +276,7 @@
                 class="flex gap-[12px] justify-center items-center self-stretch shrink-0 flex-nowrap relative z-[89]"
               >
                 <div
-                  class="w-[16px] h-[16px] shrink-0 bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/OoSbEd0LWi.png)] bg-cover bg-no-repeat relative z-[90]"
+                  class="w-[16px] h-[16px] shrink-0 bg-[url('../public/whatsapp-icon.png')] bg-cover bg-no-repeat relative z-[90]"
                 ></div>
                 <div
                   class="flex justify-between items-center grow shrink-0 basis-0 flex-nowrap relative z-[91]"
@@ -318,17 +292,10 @@
                       >Connect with our support team in real-time</span
                     >
                   </div>
-                  <div
-                    class="flex w-[4.756px] pt-[4px] pr-0 pb-0 pl-0 gap-[10px] items-center shrink-0 flex-nowrap relative overflow-hidden z-[95]"
-                  >
-                    <div
-                      class="w-[4.756px] h-[8.647px] shrink-0 bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/9baxHNnDoW.png)] bg-cover bg-no-repeat relative z-[96]"
-                    ></div>
-                  </div>
                 </div>
               </div>
               <div
-                class="w-[331.5px] h-px shrink-0 bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/mbOy0s1jJd.png)] bg-cover bg-no-repeat relative z-[97]"
+                class="w-[331.5px] h-px shrink-0 bg-[url('../public/account-line.png')] bg-cover bg-no-repeat relative z-[97]"
               ></div>
             </div>
           </div>
@@ -351,7 +318,7 @@
       >
         <div class="cursor-pointer w-[31px] h-[37px] shrink-0 relative z-[5]" style="padding: 5px;" @click="backToHome">
           <div
-            class="w-[30px] h-[30px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/ekdR6dBc6H.png)] bg-cover bg-no-repeat relative z-[6] mt-0 mr-0 mb-0 "
+            class="w-[30px] h-[30px] bg-[url('../public/home.png')] bg-cover bg-no-repeat relative z-[6] mt-0 mr-0 mb-0 "
           ></div>
           <span
             class="flex w-[31px] h-[8px] justify-center items-start font-['Poppins'] text-[12px] font-normal leading-[8px] text-[#fff] relative text-center whitespace-nowrap z-[7] mt-[5px] mr-0 mb-0 ml-0"
@@ -360,7 +327,7 @@
         </div>
         <div class="cursor-pointer w-[31px] h-[37px] shrink-0 relative z-[8]" style="padding: 5px;">
           <div
-            class="w-[30px] h-[30px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/jG7OPL3wFW.png)] bg-cover bg-no-repeat relative z-[9] "
+            class="w-[30px] h-[30px] bg-[url('../public/menu.png')] bg-cover bg-no-repeat relative z-[9] "
           ></div>
           <span
             class="flex w-[31px] h-[8px] justify-center items-start font-['Poppins'] text-[11px] font-normal leading-[8px] text-[#fff] relative text-center whitespace-nowrap z-10 mt-[4px] mr-0 mb-0 ml-0"
@@ -369,7 +336,7 @@
         </div>
         <div class="cursor-pointer w-[31px] h-[37px] shrink-0 relative z-[8]" style="padding: 5px;">
           <div
-              class="w-[30px] h-[25px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/i4a4gyqkvn.png)] bg-[length:100%_100%] bg-no-repeat relative z-[13] mt-[1.667px] mr-0 mb-0"
+              class="w-[30px] h-[25px] bg-[url('../public/order.png')] bg-[length:100%_100%] bg-no-repeat relative z-[13] mt-[1.667px] mr-0 mb-0"
         ></div>
           <span
             class="flex w-[31px] h-[8px] justify-center items-start font-['Poppins'] text-[11px] font-normal leading-[8px] text-[#fff] relative text-center whitespace-nowrap z-[13] mt-[7px] mr-0 mb-0 ml-0"
@@ -378,7 +345,7 @@
         </div>
         <div class="cursor-pointer w-[31px] h-[37px] shrink-0 relative z-[15]" style="padding: 5px;">
           <div
-            class="w-[30px] h-[25px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/G6fkQj2k6a.png)] bg-cover bg-no-repeat relative z-[16] mt-0 mr-0 mb-0"
+            class="w-[30px] h-[25px] bg-[url('../public/me.png')] bg-cover bg-no-repeat relative z-[16] mt-0 mr-0 mb-0"
           ></div>
           <span
             class="flex w-[31px] h-[8px] justify-center items-start font-['Poppins'] text-[11px] font-normal leading-[8px] text-[#fff] relative text-center whitespace-nowrap z-[17] mt-[7px] mr-0 mb-0"
@@ -392,10 +359,10 @@
       >Profile</span
     >
     <div @click="backToHome"
-      class="w-[12.5px] h-[25px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/aMRugnEwui.png)] bg-cover bg-no-repeat absolute top-[50px] left-[30px] overflow-hidden z-[4]"
+      class="w-[12.5px] h-[25px] bg-[url('../public/back_arrow.png')] bg-cover bg-no-repeat absolute top-[50px] left-[30px] overflow-hidden z-[4]"
     ></div>
     <div @click="goToProfile"
-      class="cursor-pointer w-[5.47%] h-[22px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/3RogQ4FUrR.png)] bg-cover bg-no-repeat absolute top-1/2 left-[87.31%] translate-x-0 translate-y-[-2245.45%]"
+      class="cursor-pointer w-[5.47%] h-[22.25px] bg-[url('../public/edit.png')] bg-cover bg-no-repeat absolute top-1/2 left-[87.31%] translate-x-0 translate-y-[-2245.45%]"
     ></div>
   </div>
 </template>

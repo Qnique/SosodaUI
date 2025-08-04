@@ -6,7 +6,7 @@
       class="flex w-[55px] h-[21px] justify-between items-center relative z-[4] mt-[50px] mr-0 mb-0 ml-[30px]"
     >
       <div
-        class="w-[10px] h-[20px] shrink-0 bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-02/K1scSMfusc.png)] bg-cover bg-no-repeat relative overflow-hidden z-[4]"
+        class="w-[10px] h-[20px] shrink-0 bg-[url('../public/back_arrow.png')] bg-cover bg-no-repeat relative overflow-hidden z-[4]"
       ></div>
       <span
         class="h-[21px] shrink-0 font-['Poppins'] text-[14px] font-medium leading-[21px] text-[#000] relative text-left whitespace-nowrap z-[3]"
@@ -31,7 +31,7 @@
         
             <div class="flex items-center gap-[10px]">
                 <div
-                class="w-[22px] h-[22px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-02/QqEkkn2cGo.png)] bg-cover bg-no-repeat"
+                class="w-[22px] h-[22px] bg-[url('../public/person.png')] bg-cover bg-no-repeat"
                 :class="selectedType === 'individual' ? 'filter brightness-0 invert' : ''"></div>
                 <span
                 class="font-['Poppins'] text-[14px] text-left whitespace-nowrap"
@@ -49,7 +49,7 @@
         >    
             <div class="flex items-center gap-[10px]">
                 <div
-                class="w-[22px] h-[22px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-02/TK1RtRNVCW.png)] bg-cover bg-no-repeat"
+                class="w-[22px] h-[22px] bg-[url('../public/business.png')] bg-cover bg-no-repeat"
                 :class="selectedType === 'business' ? 'filter brightness-0 invert' : ''"></div>
                 <span
                 class="font-['Poppins'] text-[14px] text-left whitespace-nowrap"
@@ -296,8 +296,8 @@
             <span
               class="font-['Poppins'] text-[10px] font-normal leading-[15px] text-[#292929] relative text-left"
               >By submitting your registration, you must agree to our </span
-            ><span
-              class="font-['Poppins'] text-[10px] font-normal leading-[15px] text-[#1b17f5] relative text-left"
+            ><span @click="goToTermsPage"
+              class="cursor-pointer font-['Poppins'] text-[10px] font-normal leading-[15px] text-[#1b17f5] relative text-left"
               >Terms & Conditions</span
             >
           </div>
@@ -327,7 +327,7 @@
       >
         <span
           class="h-[24px] shrink-0 basis-auto font-['Poppins'] text-[16px] font-semibold leading-[24px] text-[#fff] relative text-left whitespace-nowrap z-[70]"
-          >Register</span
+          >REGISTER</span
         >
       </button>
     </div>
@@ -354,5 +354,9 @@ const goToLogin = () => {
 
 const goToHomePage = () => {
   router.push({ name: 'Home' });
+};
+
+const goToTermsPage = () => {
+  router.push({ name: 'Terms' });
 };
 </script>

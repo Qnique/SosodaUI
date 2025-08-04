@@ -11,7 +11,7 @@
           >Back</span
         >
         <div
-          class="w-[10px] h-[20px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/uCMtb3auTb.png)] bg-cover bg-no-repeat absolute top-[0.5px] left-0 overflow-hidden z-[31]"
+          class="w-[10px] h-[20px] bg-[url('../public/back_arrow.png')] bg-cover bg-no-repeat absolute top-[0.5px] left-0 overflow-hidden z-[31]"
         ></div>
       </div>
       <span
@@ -93,13 +93,16 @@
               <div
                 class="flex pt-0 pr-[15px] pb-0 pl-0 justify-between items-center grow shrink-0 basis-0 flex-nowrap relative z-[21]"
               >
-                <span
-                  class="h-[18px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-[rgba(0,0,0,0.25)] relative text-left whitespace-nowrap z-[22]"
-                  >Select Your Bank</span
+                <select
+                  class="h-[30px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-[rgba(0,0,0,0.75)] bg-[#fafafa] rounded px-2 relative text-left z-[22]"
                 >
-                <div
-                  class="w-[14px] h-[14px] shrink-0 bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/YdAhEFo8g7.png)] bg-cover bg-no-repeat relative z-[23]"
-                ></div>
+                  <option disabled selected>Select Your Bank</option>
+                  <option value="maybank">Maybank</option>
+                  <option value="cimb">CIMB</option>
+                  <option value="rhb">RHB</option>
+                  <option value="public">Public Bank</option>
+                  <option value="hongleong">Hong Leong Bank</option>
+                </select>
               </div>
             </div>
           </div>

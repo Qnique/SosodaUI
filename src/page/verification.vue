@@ -3,14 +3,14 @@
     class="main-container w-[420px] h-[874px] bg-[#fff] relative overflow-hidden mx-auto my-0"
   >
     <div
-      class="w-[125px] h-[117px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-02/ORsQuL1G1X.png)] bg-cover bg-no-repeat relative z-[19] mt-[70px] mr-0 mb-0 ml-[138px]"
+      class="w-[125px] h-[117px] bg-[url('../public/sosoda-logo.png')] bg-cover bg-no-repeat relative z-[19] mt-[70px] mr-0 mb-0 ml-[150px]"
     ></div>
     <span
-      class="block h-[42px] font-['Poppins'] text-[28px] font-semibold leading-[42px] text-[#000] relative text-left whitespace-nowrap z-[2] mt-[183.601px] mr-0 mb-0 ml-[105px]"
+      class="block h-[42px] font-['Poppins'] text-[28px] font-semibold leading-[42px] text-[#000] relative text-left whitespace-nowrap z-[2] mt-[183.601px] mr-0 mb-0 ml-[115px]"
       >VERIFICATION</span
     >
     <div
-      class="flex w-[342px] flex-col gap-[60px] items-center flex-nowrap relative z-[3] mt-[70px] mr-0 mb-0 ml-[30px]"
+      class="flex w-[342px] flex-col gap-[60px] items-center flex-nowrap relative z-[3] mt-[70px] mr-0 mb-0 ml-[42px]"
     >
       <div
         class="flex w-[258px] flex-col gap-[30px] items-start shrink-0 flex-nowrap relative z-[4]"
@@ -50,7 +50,7 @@
             class="h-[18px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-[#a5a5a5] relative text-left whitespace-nowrap z-[15]"
             >Didn’t receive the verification OTP?</span
           ><span
-            class="h-[18px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-[#1b17f5] relative text-left whitespace-nowrap z-[16]"
+            class="cursor-pointer h-[18px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-[#1b17f5] relative text-left whitespace-nowrap z-[16]"
             >Resend</span
           >
         </div>
@@ -60,15 +60,15 @@
       >
         <span
           class="h-[24px] shrink-0 basis-auto font-['Poppins'] text-[16px] font-semibold leading-[24px] text-[#fff] relative text-left whitespace-nowrap z-[18]"
-          >Login</span
+          >SUBMIT</span
         >
     </button>
     </div>
     <div
-      class="h-[334.615px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-02/R9eG7dJURc.png)] bg-cover bg-no-repeat absolute top-0 left-0 right-0"
+      class="h-[334.615px] bg-[url('../public/background-gradient.png')] bg-cover bg-no-repeat absolute top-0 left-0 right-0"
     ></div>
     <div
-      class="w-[402px] h-[642.001px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-02/im4CtnXLfQ.png)] bg-cover bg-no-repeat absolute bottom-[-10.001px] left-1/2 translate-x-[-50%] translate-y-0 z-[1]"
+      class="w-[420px] h-[642.001px] bg-[url('../public/Rectangle.png')] bg-cover bg-no-repeat absolute bottom-[-10.001px] left-1/2 translate-x-[-50%] translate-y-0 z-[1]"
     ></div>
   </div>
 </template>
@@ -80,6 +80,6 @@ import { useRouter } from 'vue-router';
 const router = useRouter();
 
 const goToTerms = () => {
-  router.push({ name: 'Terms' });
+  router.push({ name: 'SignUp' });
 };
 </script>

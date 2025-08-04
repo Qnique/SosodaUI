@@ -6,14 +6,14 @@
       class="flex w-[342px] justify-between items-center flex-nowrap relative z-[44] mt-[50.148px] mr-0 mb-0 ml-[30px]"
     >
       <div @click="backToAccount"
-        class="cursor-pointer w-[12.5px] h-[25px] shrink-0 bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/CHVwMA9WDF.png)] bg-cover bg-no-repeat relative overflow-hidden z-[45]"
+        class="cursor-pointer w-[12.5px] h-[25px] shrink-0 bg-[url('../public/back_arrow.png')] bg-cover bg-no-repeat relative overflow-hidden z-[45]"
       ></div>
       <span
         class="h-[14px] shrink-0 font-['Poppins'] text-[20px] font-semibold leading-[14px] text-[#000] relative text-left uppercase whitespace-nowrap z-[46]"
         >Address</span
       >
       <div
-        class="w-[12.5px] h-[25px] shrink-0 bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/z3oCiB5RMe.png)] bg-cover bg-no-repeat relative overflow-hidden z-[47]"
+        class="w-[12.5px] h-[25px] shrink-0 bg-[url('../public/white.png')] bg-cover bg-no-repeat relative overflow-hidden z-[47]"
       ></div>
     </div>
     <div
@@ -65,11 +65,11 @@
           <div
             class="flex w-[50px] gap-[10px] items-center shrink-0 flex-nowrap relative z-[13]"
           >
-            <div class="w-[20px] h-[20px] shrink-0 relative z-[14]">
+            <!-- <div class="w-[20px] h-[20px] shrink-0 relative z-[14]">
               <div
                 class="w-[0.7px] h-[0.56px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/a1qPykgYVS.png)] bg-[length:100%_100%] bg-no-repeat relative z-[15] mt-[19.287px] mr-0 mb-0 ml-[10.063px]"
               ></div>
-            </div>
+            </div> -->
             <div class="w-[20px] h-[20px] shrink-0 relative z-[16]"></div>
           </div>
         </div>
@@ -110,11 +110,11 @@
         <div
           class="flex w-[50px] gap-[10px] items-center shrink-0 flex-nowrap relative z-[26]"
         >
-          <div class="w-[20px] h-[20px] shrink-0 relative z-[27]">
+          <!-- <div class="w-[20px] h-[20px] shrink-0 relative z-[27]">
             <div
               class="w-[0.7px] h-[0.56px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/rTLpJzSHXf.png)] bg-[length:100%_100%] bg-no-repeat relative z-[28] mt-[19.287px] mr-0 mb-0 ml-[10.063px]"
             ></div>
-          </div>
+          </div> -->
           <div class="w-[20px] h-[20px] shrink-0 relative z-[29]"></div>
         </div>
       </div>
@@ -158,11 +158,11 @@
         <div
           class="flex w-[50px] gap-[10px] items-center shrink-0 flex-nowrap relative z-40"
         >
-          <div class="w-[20px] h-[20px] shrink-0 relative z-[41]">
+          <!-- <div class="w-[20px] h-[20px] shrink-0 relative z-[41]">
             <div
               class="w-[0.7px] h-[0.56px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/7FPj700iK8.png)] bg-[length:100%_100%] bg-no-repeat relative z-[42] mt-[19.287px] mr-0 mb-0 ml-[10.063px]"
             ></div>
-          </div>
+          </div> -->
           <div class="w-[20px] h-[20px] shrink-0 relative z-[43]"></div>
         </div>
       </div>

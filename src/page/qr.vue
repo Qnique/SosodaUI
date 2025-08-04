@@ -11,7 +11,7 @@
       >
     </button>
     <div @click="backToHome"
-      class="cursor-pointer w-[12.5px] h-[25px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/xe5vya3GEH.png)] bg-cover bg-no-repeat absolute top-[50.313px] left-[30px] overflow-hidden z-10"
+      class="cursor-pointer w-[12.5px] h-[25px] bg-[url('../public/back_arrow.png')] bg-cover bg-no-repeat absolute top-[50.313px] left-[30px] overflow-hidden z-10"
     ></div>
     <span
       class="flex h-[14px] justify-start items-center font-['Poppins'] text-[20px] font-semibold leading-[14px] text-[#000] absolute top-[55.813px] left-[calc(50%-76.5px)] text-left uppercase whitespace-nowrap z-[11]"

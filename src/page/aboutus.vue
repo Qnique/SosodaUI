@@ -6,18 +6,11 @@
       class="flex w-[342px] justify-between items-center flex-nowrap relative z-[1] mt-[50.148px] mr-0 mb-0 ml-[30px]"
     >
       <div @click="backToHome"
-        class="cursor-pointer w-[12.5px] h-[25px] shrink-0 bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/KBbYw4VrzD.png)] bg-cover bg-no-repeat relative overflow-hidden z-[2]"
-      ></div>
-      <span
-        class="flex w-[113px] h-[14px] justify-center items-center shrink-0 font-['Poppins'] text-[20px] font-semibold leading-[14px] text-[#000] relative text-center uppercase whitespace-nowrap z-[3]"
-        >OUR Story</span
-      >
-      <div
-        class="w-[12.5px] h-[25px] shrink-0 bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/4B45Whwnyu.png)] bg-cover bg-no-repeat relative overflow-hidden z-[4]"
+        class="cursor-pointer w-[12.5px] h-[25px] shrink-0 bg-[url('../public/back_arrow.png')] bg-cover bg-no-repeat relative overflow-hidden z-[2]"
       ></div>
     </div>
     <div
-      class="w-[104px] h-[97px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/VADf63s7Bb.png)] bg-cover bg-no-repeat relative z-[6] mt-[40px] mr-0 mb-0 ml-[149px]"
+      class="w-[104px] h-[97px] bg-[url('../public/sosoda-logo.png')] filter invert  bg-cover bg-no-repeat relative z-[6] mt-[40px] mr-0 mb-0 ml-[149px]"
     ></div>
     <span
       class="flex w-[317px] h-[306px] justify-center items-center font-['Poppins'] text-[12px] font-normal leading-[17.992px] text-[#000] relative text-center z-[47] mt-[41.852px] mr-0 mb-0 ml-[42px]"
@@ -101,7 +94,7 @@
         class="flex flex-col gap-[30px] items-center self-stretch shrink-0 flex-nowrap relative z-[22]"
       >
         <div
-          class="w-[106.602px] h-[100px] shrink-0 bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/R31bQWkC3A.png)] bg-cover bg-no-repeat relative z-[23]"
+          class="w-[106.602px] h-[100px] shrink-0 bg-[url('../public/lorry.png')] bg-cover bg-no-repeat relative z-[23]"
         ></div>
         <div
           class="flex flex-col gap-[10px] items-start self-stretch shrink-0 flex-nowrap relative z-[24]"
@@ -121,7 +114,7 @@
         class="flex flex-col gap-[30px] items-center self-stretch shrink-0 flex-nowrap relative z-[27]"
       >
         <div
-          class="w-[114.885px] h-[100px] shrink-0 bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/dS2KM1i9fk.png)] bg-cover bg-no-repeat relative z-[28]"
+          class="w-[114.885px] h-[100px] shrink-0 bg-[url('../public/bottle-return.png')] bg-cover bg-no-repeat relative z-[28]"
         ></div>
         <div
           class="flex flex-col gap-[10px] items-center self-stretch shrink-0 flex-nowrap relative z-[29]"
@@ -141,7 +134,7 @@
         class="flex flex-col gap-[30px] items-center self-stretch shrink-0 flex-nowrap relative z-[32]"
       >
         <div
-          class="w-[74.525px] h-[100px] shrink-0 bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/badkqcCGMF.png)] bg-cover bg-no-repeat relative z-[33]"
+          class="w-[74.525px] h-[100px] shrink-0 bg-[url('../public/bottle-money.png')] bg-cover bg-no-repeat relative z-[33]"
         ></div>
         <div
           class="flex flex-col gap-[10px] items-start self-stretch shrink-0 flex-nowrap relative z-[34]"
@@ -161,7 +154,7 @@
         class="flex flex-col gap-[30px] items-center self-stretch shrink-0 flex-nowrap relative z-[37]"
       >
         <div
-          class="w-[118.72px] h-[100px] shrink-0 bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/SbgwLRf5tC.png)] bg-cover bg-no-repeat relative z-[38]"
+          class="w-[118.72px] h-[100px] shrink-0 bg-[url('../public/bottle-right.png')] bg-cover bg-no-repeat relative z-[38]"
         ></div>
         <div
           class="flex flex-col gap-[15px] items-start self-stretch shrink-0 flex-nowrap relative z-[39]"
@@ -181,7 +174,7 @@
         class="flex flex-col gap-[30px] items-center self-stretch shrink-0 flex-nowrap relative z-[42]"
       >
         <div
-          class="w-[120.218px] h-[100px] shrink-0 bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/1M8e1enEb7.png)] bg-cover bg-no-repeat relative z-[43]"
+          class="w-[120.218px] h-[100px] shrink-0 bg-[url('../public/bottle-wrong.png')] bg-cover bg-no-repeat relative z-[43]"
         ></div>
         <div
           class="flex flex-col gap-[15px] items-start self-stretch shrink-0 flex-nowrap relative z-[44]"
@@ -198,10 +191,10 @@
       </div>
     </div>
     <div
-      class="w-[402px] h-[642.001px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/1Smm9GS9tn.png)] bg-cover bg-no-repeat absolute bottom-[1714.999px] left-1/2 translate-x-[-50%] translate-y-0"
+      class="w-[402px] h-[642.001px] bg-[url('../public/Rectangle75.png')] bg-cover bg-no-repeat absolute bottom-[1714.999px] left-1/2 translate-x-[-50%] translate-y-0"
     ></div>
     <div
-      class="w-[1285px] h-[1285px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/RCLCXaOji5.png)] bg-cover bg-no-repeat rounded-[50%] absolute top-[1205px] left-1/2 translate-x-[-50.04%] translate-y-0 z-[5]"
+      class="w-[1285px] h-[1285px] bg-[url('../public/Ellipse5.png')] bg-cover bg-no-repeat rounded-[50%] absolute top-[1205px] left-1/2 translate-x-[-50.04%] translate-y-0 z-[5]"
     ></div>
   </div>
 </template>

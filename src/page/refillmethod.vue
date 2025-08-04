@@ -6,18 +6,18 @@
       class="flex w-[342px] justify-between items-center flex-nowrap relative mt-[49.574px] mr-0 mb-0 ml-[30px]"
     >
       <div @click="backToHome"
-        class="cursor-pointer w-[12.5px] h-[25px] shrink-0 bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/1HnRwtMhOz.png)] bg-cover bg-no-repeat relative overflow-hidden z-[1]"
+        class="cursor-pointer w-[12.5px] h-[25px] shrink-0 bg-[url('../public/back_arrow.png')] bg-cover bg-no-repeat relative overflow-hidden z-[1]"
       ></div>
       <span
         class="h-[14px] shrink-0 font-['Poppins'] text-[20px] font-semibold leading-[14px] text-[#000] relative text-left uppercase whitespace-nowrap z-[2]"
         >REFILL & SWAP</span
       >
       <div
-        class="w-[12.5px] h-[25px] shrink-0 bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/GfXMtdMzsf.png)] bg-cover bg-no-repeat relative overflow-hidden z-[3]"
+        class="w-[12.5px] h-[25px] shrink-0 bg-[url('../public/white.png')] bg-cover bg-no-repeat relative overflow-hidden z-[3]"
       ></div>
     </div>
     <div  @click="pickup"
-      class="cursor-pointer w-[88.375px] h-[149.001px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/OeTwoUghi1.png)] bg-cover bg-no-repeat absolute top-[125px] left-[269.129px] z-[21]"
+      class="cursor-pointer w-[88.375px] h-[149.001px] bg-[url('../public/pickup.png')] bg-cover bg-no-repeat absolute top-[125px] left-[269.129px] z-[21]"
     ></div>
     <div @click="pickup"
       class="cursor-pointer card flex w-[342px] h-[120px] flex-col gap-[5px] items-start flex-nowrap absolute top-[154.426px] left-[50px] z-[18]"
@@ -31,7 +31,7 @@
       >
     </div>
     <div  @click="dropoff"
-      class="cursor-pointer w-[179.521px] h-[146.49px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/Xvy4wr43fc.png)] bg-cover bg-no-repeat absolute top-[307.42px] left-[221.887px] z-[15]"
+      class="cursor-pointer w-[179.521px] h-[146.49px] bg-[url('../public/dropoff.png')] bg-cover bg-no-repeat absolute top-[307.42px] left-[221.887px] z-[15]"
     ></div>
     <div @click="dropoff"
       class="cursor-pointer card flex w-[342px] h-[120px] flex-col gap-[5px] items-start flex-nowrap absolute top-[324.426px] left-[50px] z-[12]"
@@ -45,7 +45,7 @@
       >
     </div>
     <div @click="exchange"
-      class="cursor-pointer w-[187.286px] h-[150px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/c78rtDy2zu.png)] bg-cover bg-no-repeat absolute top-[469.426px] left-[222.715px] z-[15]"
+      class="cursor-pointer w-[187.286px] h-[150px] bg-[url('../public/spot.png')] bg-cover bg-no-repeat absolute top-[469.426px] left-[222.715px] z-[15]"
     ></div>
     <div @click="exchange"
       class="cursor-pointer card flex w-[342px] h-[120px] flex-col gap-[5px] items-start flex-nowrap absolute top-[495.164px] left-[50px] z-[12]"
