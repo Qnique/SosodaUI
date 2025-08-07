@@ -1,16 +1,16 @@
 <template>
   <div
-    class="main-container w-[420px] h-[874px] bg-[#fff] relative overflow-hidden mx-auto my-0"
+    class="main-container w-[402px] h-[874px] bg-[#fff] relative overflow-hidden mx-auto my-0"
   >
     <div
-      class="w-[125px] h-[117px] bg-[url('../public/sosoda-logo.png')] bg-cover bg-no-repeat relative z-[19] mt-[70px] mr-0 mb-0 ml-[150px]"
+      class="w-[125px] h-[117px] bg-[url('../public/sosoda-logo.png')] bg-cover bg-no-repeat relative z-[19] mt-[70px] mr-0 mb-0 ml-[135px]"
     ></div>
     <span
-      class="block h-[42px] font-['Poppins'] text-[28px] font-semibold leading-[42px] text-[#000] relative text-left whitespace-nowrap z-[2] mt-[183.601px] mr-0 mb-0 ml-[115px]"
+      class="block h-[42px] font-['Poppins'] text-[28px] font-semibold leading-[42px] text-[#000] relative text-left whitespace-nowrap z-[2] mt-[183.601px] mr-0 mb-0 ml-[95px]"
       >VERIFICATION</span
     >
     <div
-      class="flex w-[342px] flex-col gap-[60px] items-center flex-nowrap relative z-[3] mt-[70px] mr-0 mb-0 ml-[42px]"
+      class="flex w-[342px] flex-col gap-[60px] items-center flex-nowrap relative z-[3] mt-[70px] mr-0 mb-0 ml-[23px]"
     >
       <div
         class="flex w-[258px] flex-col gap-[30px] items-start shrink-0 flex-nowrap relative z-[4]"

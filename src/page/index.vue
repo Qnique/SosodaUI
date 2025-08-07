@@ -1,16 +1,16 @@
 <template>
   <div
-    class="main-container w-[420px] h-[874px] bg-[#fff] relative overflow-hidden mx-auto my-0"
+    class="main-container w-[402px] h-full bg-[#fff] relative overflow-hidden mx-auto my-0"
   >
     <div
-      class="w-[125px] h-[117px] bg-[url('../public/sosoda-logo.png')] bg-cover bg-no-repeat relative z-20 mt-[79.502px] mr-0 mb-0 ml-[150px]"
+      class="w-[125px] h-[117px] bg-[url('../public/sosoda-logo.png')] bg-cover bg-no-repeat relative z-20 mt-[79.502px] mr-0 mb-0 ml-[140px]"
     ></div>
     <span
-      class="block h-[42px] font-['Poppins'] text-[28px] font-semibold leading-[42px] text-[#000] relative text-left whitespace-nowrap z-[19] mt-[184.498px] mr-0 mb-0 ml-[165px]"
+      class="block h-[42px] font-['Poppins'] text-[28px] font-semibold leading-[42px] text-[#000] relative text-left whitespace-nowrap z-[19] mt-[184.498px] mr-0 mb-0 ml-[152px]"
       >LOGIN</span
     >
     <div
-      class="flex w-[342px] flex-col gap-[60px] items-center flex-nowrap relative z-[3] mt-[47px] mr-0 mb-0 ml-[40px]"
+      class="flex w-[342px] flex-col gap-[60px] items-center flex-nowrap relative z-[3] mt-[47px] mr-0 mb-0 ml-[30px]"
     >
       <div
         class="flex flex-col gap-[16px] items-start self-stretch shrink-0 flex-nowrap relative z-[4]"
@@ -36,12 +36,15 @@
                 class="w-[10px] h-[10px] shrink-0 bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-02/0yEaRoVtf2.png)] bg-cover bg-no-repeat relative z-10"
               ></div> -->
             </div>
-            <div
+            <div :class="[
+                  showError ? 'border-red-500' : '',
+                  'border'
+                ]" 
               class="flex w-[236px] h-[42px] pt-[12px] pr-[15px] pb-[12px] pl-[15px] gap-[10px] items-center shrink-0 flex-nowrap bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[11]"
             >
               <input v-model="phoneNo"
                 class="phoneNo w-[210px] h-[18px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-black relative text-left whitespace-nowrap z-[12] bg-[#fafafa]"
-                />
+              />
             </div>
           </div>
         </div>
@@ -57,12 +60,15 @@
               >Terms & Conditions</span
             >
           </div>
-          <div @click="checked = !checked" class="relative w-4 h-4">
+          <div @click="checked = !checked" class="relative w-4 h-4 cursor-pointer">
             <!-- Outer Circle -->
             <div
-              class="w-4 h-4 rounded-full border border-[#292929] cursor-pointer flex items-center justify-center transition-colors duration-200"
-              :class="{ 'bg-[#292929]': checked }"
-            >
+              class="w-4 h-4 rounded-full border border-[#292929] flex items-center justify-center transition-colors duration-200"
+              :class="[
+                  checked ? 'bg-[#292929]' : '',
+                  showError ? 'border-red-500' : 'border-[#292929]',
+                  'border'
+                ]">
               <!-- Checkmark -->
               <svg
                 v-if="checked"
@@ -105,7 +111,9 @@ import api from '../services/callingapi'
 export default{
   data(){
     return{
-      phoneNo: ''
+      phoneNo: '',
+      checked: false,
+      showError: false
     }
   },
   // async mounted(){
@@ -118,19 +126,28 @@ export default{
   // },
   methods:{
     async goToVerification() {
-      try{
-        const payload = {
-          phoneNo: this.phoneNo
+       if (this.checked) {
+        try{
+          if(this.phoneNo !== ''){
+            // const payload = {
+            //   phoneNo: this.phoneNo
+            // }
+            const response = await api.post('System/MemberLogin', JSON.stringify(this.phoneNo));
+            if(response.data){
+                this.$router.push({ name: 'Verification' });
+            }
+          }
+          else{
+            this.showError = true;
+          }                 
         }
-        const response = await api.post('System/MemberLogin', JSON.stringify(this.phoneNo));
-        console.log(response)
-        if(response){
-            this.$router.push({ name: 'Verification' });
-        }        
+        catch (error) {
+          console.error('API Error:', error);
+        }  
       }
-      catch (error) {
-        console.error('API Error:', error);
-      }      
+      else {
+        this.showError = !this.checked;
+      }    
     },
     goToTermsPage() {
       this.$router.push({ name: 'Terms' });

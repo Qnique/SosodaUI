@@ -1,21 +1,21 @@
 <template>
   <div
-    class="main-container w-[420px] h-[2952px] bg-[#fff] relative overflow-hidden mx-auto my-0"
+    class="main-container w-[402px] h-full bg-[#fff] relative overflow-hidden mx-auto my-0"
   >
     <div
-      class="flex w-[342px] justify-between items-center flex-nowrap relative z-[1] mt-[50.148px] mr-0 mb-0 ml-[30px]"
+      class="flex w-[342px] justify-between items-center flex-nowrap relative z-[1] mt-[50.148px] mr-0 mb-0 ml-[10px]"
     >
       <div @click="backToHome"
         class="cursor-pointer w-[12.5px] h-[25px] shrink-0 bg-[url('../public/back_arrow.png')] bg-cover bg-no-repeat relative overflow-hidden z-[2]"
       ></div>
     </div>
     <div
-      class="w-[104px] h-[97px] bg-[url('../public/sosoda-logo.png')] filter invert  bg-cover bg-no-repeat relative z-[6] mt-[40px] mr-0 mb-0 ml-[149px]"
+      class="w-[104px] h-[97px] bg-[url('../public/sosoda-logo.png')] filter invert  bg-cover bg-no-repeat relative z-[6] mt-[5px] mr-0 mb-0 ml-[132px]"
     ></div>
     <br></br>
     <br></br>
     <div
-        class="flex flex-col items-start self-stretch shrink-0 flex-nowrap relative z-[27]"
+        class="flex flex-col items-start self-stretch shrink-0 flex-nowrap relative z-[27] ml-[10px]"
         >
         <span
             class="h-[25.762px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[13px] font-medium leading-[18.762px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-[28]"
@@ -30,7 +30,7 @@
     <br></br>
     <br></br>
     <div
-        class="flex flex-col items-start self-stretch shrink-0 flex-nowrap relative z-[27]"
+        class="flex flex-col items-start self-stretch shrink-0 flex-nowrap relative z-[27] ml-[10px]"
         >
         <span
             class="h-[25.762px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[13px] font-medium leading-[18.762px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-[28]"
@@ -43,7 +43,7 @@
     <br></br>
     <br></br>
     <div
-        class="flex flex-col items-start self-stretch shrink-0 flex-nowrap relative z-[27]"
+        class="flex flex-col items-start self-stretch shrink-0 flex-nowrap relative z-[27] ml-[10px]"
         >
         <span
             class="h-[25.762px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[13px] font-medium leading-[18.762px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-[28]"
@@ -57,7 +57,7 @@
     <br></br>
     <br></br>
     <div
-        class="flex flex-col items-start self-stretch shrink-0 flex-nowrap relative z-[27]"
+        class="flex flex-col items-start self-stretch shrink-0 flex-nowrap relative z-[27] ml-[10px]"
         >
         <span
             class="h-[20.762px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[13px] font-medium leading-[18.762px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-[28]"
@@ -70,7 +70,7 @@
     <br></br>
     <br></br>
     <div
-        class="flex flex-col items-start self-stretch shrink-0 flex-nowrap relative z-[27]"
+        class="flex flex-col items-start self-stretch shrink-0 flex-nowrap relative z-[27] ml-[10px]"
         >
         <span
             class="h-[25.762px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[13px] font-medium leading-[18.762px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-[28]"
@@ -84,7 +84,7 @@
     <br></br>
     <br></br>
     <div
-        class="flex flex-col items-start self-stretch shrink-0 flex-nowrap relative z-[27]"
+        class="flex flex-col items-start self-stretch shrink-0 flex-nowrap relative z-[27] ml-[10px]"
         >
         <span
             class="h-[25.762px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[13px] font-medium leading-[18.762px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-[28]"
@@ -97,7 +97,7 @@
     <br></br>
     <br></br>
     <div
-        class="flex flex-col items-start self-stretch shrink-0 flex-nowrap relative z-[27]"
+        class="flex flex-col items-start self-stretch shrink-0 flex-nowrap relative z-[27] ml-[10px]"
         >
         <span
             class="h-[25.762px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[13px] font-medium leading-[18.762px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-[28]"
@@ -111,7 +111,7 @@
     <br></br>
     <br></br>
     <div
-        class="flex flex-col items-start self-stretch shrink-0 flex-nowrap relative z-[27]"
+        class="flex flex-col items-start self-stretch shrink-0 flex-nowrap relative z-[27] ml-[10px]"
         >
         <span
             class="h-[13.762px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[13px] font-medium leading-[18.762px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-[28]"
@@ -123,7 +123,7 @@
     <br></br>
     <br></br>
     <div
-        class="flex flex-col items-start self-stretch shrink-0 flex-nowrap relative z-[27]"
+        class="flex flex-col items-start self-stretch shrink-0 flex-nowrap relative z-[27] ml-[10px]"
         >
         <span
             class="h-[18.762px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[13px] font-medium leading-[18.762px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-[28]"
@@ -136,7 +136,7 @@
     <br></br>
     <br></br>
     <div
-        class="flex flex-col items-start self-stretch shrink-0 flex-nowrap relative z-[27]"
+        class="flex flex-col items-start self-stretch shrink-0 flex-nowrap relative z-[27] ml-[10px]"
         >
         <span
             class="h-[13.762px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[13px] font-medium leading-[18.762px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-[28]"
@@ -170,14 +170,19 @@
   </div>
 </template>
 
-<script setup>
+<script>
 import "./index.css";
-import { useRouter } from 'vue-router';
 
-const router = useRouter();
-
-const backToHome = () => {
-  router.push({ name: 'Login' });
-};
+export default{
+  data(){
+    return{
+    }
+  },
+  methods:{
+    async backToHome() {
+       this.$router.go(-1);    
+    },
+  }
+}
 
 </script>
