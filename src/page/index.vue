@@ -39,8 +39,8 @@
             <div
               class="flex w-[236px] h-[42px] pt-[12px] pr-[15px] pb-[12px] pl-[15px] gap-[10px] items-center shrink-0 flex-nowrap bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[11]"
             >
-              <input
-                class="w-[210px] h-[18px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-black relative text-left whitespace-nowrap z-[12] bg-[#fafafa]"
+              <input v-model="phoneNo"
+                class="phoneNo w-[210px] h-[18px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-black relative text-left whitespace-nowrap z-[12] bg-[#fafafa]"
                 />
             </div>
           </div>
@@ -98,20 +98,44 @@
   </div>
 </template>
 
-<script setup>
+<script>
 import "./index.css";
-import { useRouter } from 'vue-router';
-import { ref } from 'vue';
+import api from '../services/callingapi'
 
-const router = useRouter();
-const checked = ref(false);
-
-const goToVerification = () => {
-  router.push({ name: 'Verification' });
-};
-
-const goToTermsPage = () => {
-  router.push({ name: 'Terms' });
-};
+export default{
+  data(){
+    return{
+      phoneNo: ''
+    }
+  },
+  // async mounted(){
+  //   try {
+  //     const result = await api('System/MemberLogin'); // 👈 Just pass the path
+  //     this.data = result;
+  //   } catch (error) {
+  //     console.error('Fetch error:', error.message);
+  //   }
+  // },
+  methods:{
+    async goToVerification() {
+      try{
+        const payload = {
+          phoneNo: this.phoneNo
+        }
+        const response = await api.post('System/MemberLogin', JSON.stringify(this.phoneNo));
+        console.log(response)
+        if(response){
+            this.$router.push({ name: 'Verification' });
+        }        
+      }
+      catch (error) {
+        console.error('API Error:', error);
+      }      
+    },
+    goToTermsPage() {
+      this.$router.push({ name: 'Terms' });
+    }
+  }
+}
 </script>
 
