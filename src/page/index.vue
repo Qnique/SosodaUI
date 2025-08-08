@@ -1,12 +1,12 @@
 <template>
   <div
-    class="main-container w-[402px] h-full bg-[#fff] relative overflow-hidden mx-auto my-0"
+    class="main-container w-[402px] h-[931px] bg-[#fff] relative overflow-hidden mx-auto my-0"
   >
     <div
-      class="w-[125px] h-[117px] bg-[url('../public/sosoda-logo.png')] bg-cover bg-no-repeat relative z-20 mt-[79.502px] mr-0 mb-0 ml-[140px]"
+      class="w-[125px] h-[117px] bg-[url('../public/sosoda-logo.png')] bg-cover bg-no-repeat relative z-20 mt-[79.502px] mr-0 mb-0 ml-[145px]"
     ></div>
     <span
-      class="block h-[42px] font-['Poppins'] text-[28px] font-semibold leading-[42px] text-[#000] relative text-left whitespace-nowrap z-[19] mt-[184.498px] mr-0 mb-0 ml-[152px]"
+      class="block h-[42px] font-['Poppins'] text-[28px] font-semibold leading-[42px] text-[#000] relative text-left whitespace-nowrap z-[19] mt-[184.498px] mr-0 mb-0 ml-[155px]"
       >LOGIN</span
     >
     <div
@@ -37,7 +37,7 @@
               ></div> -->
             </div>
             <div :class="[
-                  showError ? 'border-red-500' : '',
+                  inputError ? 'border-red-500' : '',
                   'border'
                 ]" 
               class="flex w-[236px] h-[42px] pt-[12px] pr-[15px] pb-[12px] pl-[15px] gap-[10px] items-center shrink-0 flex-nowrap bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[11]"
@@ -113,32 +113,27 @@ export default{
     return{
       phoneNo: '',
       checked: false,
-      showError: false
+      showError: false,
+      inputError: false
     }
   },
-  // async mounted(){
-  //   try {
-  //     const result = await api('System/MemberLogin'); // 👈 Just pass the path
-  //     this.data = result;
-  //   } catch (error) {
-  //     console.error('Fetch error:', error.message);
-  //   }
-  // },
   methods:{
     async goToVerification() {
-       if (this.checked) {
+       if (this.phoneNo !== '') {
         try{
-          if(this.phoneNo !== ''){
+          if(this.checked){
             // const payload = {
             //   phoneNo: this.phoneNo
             // }
+            sessionStorage.setItem('phoneNoUser', this.phoneNo);
+
             const response = await api.post('System/MemberLogin', JSON.stringify(this.phoneNo));
             if(response.data){
                 this.$router.push({ name: 'Verification' });
             }
           }
           else{
-            this.showError = true;
+            this.showError = !this.checked;            
           }                 
         }
         catch (error) {
@@ -146,7 +141,7 @@ export default{
         }  
       }
       else {
-        this.showError = !this.checked;
+        this.inputError = true;
       }    
     },
     goToTermsPage() {

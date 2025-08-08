@@ -1,12 +1,11 @@
 <template>
   <div
-    class="main-container w-[420px] h-[931px] bg-[#fff] relative overflow-hidden mx-auto my-0"
-  >
+    class="main-container w-[402px] h-full bg-[#fff] relative overflow-hidden mx-auto my-0">
     <div
-      class="w-[125px] h-[117px] bg-[url('../public/sosoda-logo.png')] bg-cover bg-no-repeat relative z-[1] mt-[7px] mr-0 mb-0 ml-[155px]"
+      class="w-[125px] h-[117px] bg-[url('../public/sosoda-logo.png')] bg-cover bg-no-repeat relative z-[1] mt-[7px] mr-0 mb-0 ml-[145px]"
     ></div>
 
-    <div class="relative w-[320px] h-[100px] bg-white rounded-[10px] shadow-[0_2px_8px_rgba(0,0,0,0.1)] mt-[32px] ml-[48px] z-[18]">
+    <div class="relative w-[320px] h-[100px] bg-white rounded-[10px] shadow-[0_2px_8px_rgba(0,0,0,0.1)] mt-[32px] ml-[40px] z-[18]">
     <!-- Welcome Text -->
     <span class="absolute top-[12px] left-[22px] text-[14px] font-semibold text-[#080808] font-['Poppins'] leading-[21px] z-[32]">
         Welcome back, Chloe!
@@ -125,7 +124,7 @@
       <div @click="goToAboutUsPage"
         class="cursor-pointer flex w-[166px] h-[100px] pt-[17px] pr-[41px] pb-[17px] pl-[41px] flex-col gap-[10px] justify-end items-center flex-nowrap bg-[url('../public/story.png')] bg-cover bg-no-repeat rounded-[13px] relative z-[38]"
       ></div>
-      <div
+      <div @click="goToTNCPage"
         class="cursor-pointer flex w-[166px] h-[100px] pt-[17px] pr-[41px] pb-[17px] pl-[41px] flex-col gap-[10px] justify-end items-center flex-nowrap bg-[url('../public/tnc.png')] bg-cover bg-no-repeat rounded-[13px] relative z-40"
       ></div>
       <div
@@ -188,41 +187,46 @@
   </div>
 </template>
 
-<script setup>
+<script>
 import "./index.css";
-import { useRouter } from 'vue-router';
+import api from '../services/callingapi'
 
-const router = useRouter();
+export default{
+  data(){
+    return{
 
-const goToAboutUsPage = () => {
-  router.push({ name: 'AboutUs' });
-};
-
-const goToStampsPage = () => {
-  router.push({ name: 'Stamps' });
-};
-
-const goToVouchersPage = () => {
-  router.push({ name: 'Vouchers' });
-};
-
-const goToAccountPage = () => {
-  router.push({ name: 'Accounts' });
-};
-
-const goToWalletPage = () => {
-  router.push({ name: 'Wallet' });
-};
-
-const goToQRPage = () => {
-  router.push({ name: 'QRCodes' });
-};
-
-const refill = () => {
-  router.push({ name: 'Methods' });
-};
-
-const returnMethod = () => {
-  router.push({ name: 'ReturnMethods' });
-};
+    }
+  },
+  methods:{    
+    goToAboutUsPage() {
+      this.$router.push({ name: 'AboutUs' });
+    },
+    goToTNCPage() {
+      this.$router.push({ name: 'Terms' });
+    },
+    goToStampsPage() {
+      this.$router.push({ name: 'Stamps' });
+    },
+    goToVouchersPage() {
+      this.$router.push({ name: 'Vouchers' });
+    },
+    goToAccountPage() {
+      this.$router.push({ name: 'Accounts' });
+    },
+    goToWalletPage() {
+      this.$router.push({ name: 'Wallet' });
+    },
+    goToQRPage() {
+      this.$router.push({ name: 'QRCodes' });
+    },
+    refill() {
+      this.$router.push({ name: 'Methods' });
+    },
+    returnMethod() {
+      this.$router.push({ name: 'ReturnMethods' });
+    }
+  }
+}
 </script>
+
+

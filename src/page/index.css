@@ -13,9 +13,11 @@
   overflow: hidden;
 }
 
+
 .main-container,
 .main-container * {
   box-sizing: border-box;
+  
 }
 
 input,
@@ -24,7 +26,3 @@ textarea,
 button {
   outline: 0;
 }
-
-/* .main-background{
-  background: var(--Color-5, #FBFBFB);
-} */
