@@ -49,8 +49,8 @@
           <div
             class="flex h-[42px] pt-[12px] pr-[15px] pb-[12px] pl-[15px] gap-[10px] items-center self-stretch shrink-0 flex-nowrap bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.12)] z-[9]"
           >
-            <input placeholder="Chloe" readonly
-              class="h-[18px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-[#000] relative text-left whitespace-nowrap z-10"
+            <input readonly :value="this.member?.name"
+              class="h-[18px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-[#000] relative text-left whitespace-nowrap z-10 bg-[#fafafa]"
               />
           </div>
         </div>
@@ -64,8 +64,8 @@
           <div
             class="flex h-[42px] pt-[12px] pr-[15px] pb-[12px] pl-[15px] gap-[10px] items-center self-stretch shrink-0 flex-nowrap bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.12)] z-[13]"
           >
-            <input placeholder="000000-00-0000" readonly
-              class="h-[18px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-[#000] relative text-left whitespace-nowrap z-[14]"
+            <input placeholder="000000-00-0000" readonly :value="this.member?.icNumber"
+              class="h-[42px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-[#000] relative text-left whitespace-nowrap z-[14] bg-[#fafafa]"
               />
           </div>
         </div>
@@ -79,8 +79,8 @@
           <div
             class="flex h-[42px] pt-[12px] pr-[15px] pb-[12px] pl-[15px] gap-[10px] items-center self-stretch shrink-0 flex-nowrap bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.12)] z-[17]"
           >
-            <input placeholder="Enter Your Phone Number"
-              class="h-[18px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-black relative text-left whitespace-nowrap z-[18]"
+            <input v-model="member.mobileNumber" placeholder="Your Phone Number"
+              class="h-[42px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-black relative text-left whitespace-nowrap z-[18] bg-[#fafafa]"
               />            
           </div>
         </div>
@@ -94,9 +94,9 @@
           <div
             class="flex h-[42px] pt-[12px] pr-[15px] pb-[12px] pl-[15px] gap-[10px] items-center self-stretch shrink-0 flex-nowrap bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.12)] z-[21]"
           >
-            <input placeholder="example@gmail.com"
-              class="h-[18px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-black relative text-left whitespace-nowrap z-[22]"
-              />
+            <input v-model="member.email" placeholder="example@gmail.com" 
+              class="h-[18px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-black relative text-left whitespace-nowrap z-[22] bg-[#fafafa]"
+            />
             
           </div>
         </div>
@@ -113,17 +113,59 @@
   </div>
 </template>
 
-<script setup>
+<script>
 import "./index.css";
-import { useRouter } from 'vue-router';
+import api from '../services/callingapi'
+import { toast } from 'vue3-toastify'; 
 
-const router = useRouter();
+export default{
+  data(){
+    return{
+      member: {
+        email: '',
+        mobileNumber: '',
+      },
+    }
+  },
+  mounted(){
+    this.getDetail();
+  },
+  methods:{    
+    async getDetail(){
+      try{
+        const userId = sessionStorage.getItem('IdUser');
+        //const userId = '48d8ebe7-0d83-49db-8e09-e6aee39e2094';
+        const response = await api.post('Home/MemberHome', JSON.stringify(userId));
+        if(response.status === 200){
+          this.member = response.data;
+          this.stampCount = (response.data.stamp === null) ? 0 : response.data.stamp.point;
+          this.voucherCount = (response.data.vouchers === null) ? 0 : response.data.vouchers.length;
+          this.walletBalance = response.data.wallet.balance.toFixed(2);
+        }
+      }
+      catch (error) {
+          console.error('API Error:', error);
+      }
+    },
+    async saveToAccount() {
+      try{
+        const payload = {
+          MobileNumber: this.member.mobileNumber,
+          Email: this.member.email
+        }
+        const response = await api.post('Member/EditMemberDetail', JSON.stringify(payload));
+        if(response.status === 200){
+          toast.success('Saved successfully!');
+        }
+      }
+      catch (error) {
+          console.error('API Error:', error);
+      }      
+    },
+    backToAccount() {
+      this.$router.push({ name: 'Accounts' });
+    }
+  }
+}
 
-const backToAccount = () => {
-  router.push({ name: 'Accounts' });
-};
-
-const saveToAccount = () => {
-  router.push({ name: 'Accounts' });
-};
 </script>

@@ -490,7 +490,7 @@ export default{
                 }
                 const response = await api.post('Member/Register', JSON.stringify(payload));
 
-                if(response.data.status == 1){
+                if(response.data.status == 1 || response.status === 200){
                   sessionStorage.setItem('IdUser', response.data.data.id);
                   this.$router.push({ name: 'Home' });
                 }

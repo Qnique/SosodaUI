@@ -8,7 +8,7 @@
     <div class="relative w-[320px] h-[100px] bg-white rounded-[10px] shadow-[0_2px_8px_rgba(0,0,0,0.1)] mt-[32px] ml-[40px] z-[18]">
     <!-- Welcome Text -->
     <span class="absolute top-[12px] left-[22px] text-[14px] font-semibold text-[#080808] font-['Poppins'] leading-[21px] z-[32]">
-        Welcome back, Chloe!
+        Welcome back, {{this.member?.name}}!
     </span>   
     <!-- Decorative Line -->
     <div class="absolute top-[42.5px] left-[22px] w-[276px] h-px bg-[url('../public/line.png')] bg-cover bg-no-repeat z-[35]"></div>
@@ -18,15 +18,15 @@
         <!-- Stats -->
         <div class="flex gap-[28px]">
         <div class="flex flex-col items-center cursor-pointer" @click="goToWalletPage">
-            <span class="text-[20px] font-semibold leading-[24px] text-[#000] font-['Poppins']">20</span>
+            <span class="text-[20px] font-semibold leading-[24px] text-[#000] font-['Poppins']">{{ this.walletBalance }}</span>
             <span class="text-[10px] font-medium leading-[15px] text-[#000] font-['Poppins']">Wallet</span>
         </div>
         <div class="flex flex-col items-center cursor-pointer" @click="goToVouchersPage">
-            <span class="text-[20px] font-semibold leading-[24px] text-[#000] font-['Poppins']">2</span>
+            <span class="text-[20px] font-semibold leading-[24px] text-[#000] font-['Poppins']">{{ this.voucherCount }}</span>
             <span class="text-[10px] font-medium leading-[15px] text-[#000] font-['Poppins']">Vouchers</span>
         </div>
         <div class="flex flex-col items-center cursor-pointer" @click="goToStampsPage">
-            <span class="text-[20px] font-semibold leading-[24px] text-[#000] font-['Poppins']">4</span>
+            <span class="text-[20px] font-semibold leading-[24px] text-[#000] font-['Poppins']">{{ this.stampCount }}</span>
             <span class="text-[10px] font-medium leading-[15px] text-[#000] font-['Poppins']">Stamp</span>
         </div>
         </div>
@@ -194,10 +194,34 @@ import api from '../services/callingapi'
 export default{
   data(){
     return{
-
+      member: null,
+      stampCount: 0,
+      voucherCount: 0,
+      walletBalance: 0
     }
   },
+  mounted(){
+    this.getDetail();
+  },
   methods:{    
+    async getDetail(){
+      try{
+        const userId = sessionStorage.getItem('IdUser');
+        //const userId = '48d8ebe7-0d83-49db-8e09-e6aee39e2094';
+        const response = await api.post('Home/MemberHome', JSON.stringify(userId));
+        if(response.status === 200){
+          this.member = response.data;
+          sessionStorage.setItem('NameUser', this.member.name);
+          sessionStorage.setItem('CodeUser', this.member.code);
+          this.stampCount = (response.data.stamp === null) ? 0 : response.data.stamp.point;
+          this.voucherCount = (response.data.vouchers === null) ? 0 : response.data.vouchers.length;
+          this.walletBalance = response.data.wallet.balance.toFixed(2);
+        }
+      }
+      catch (error) {
+          console.error('API Error:', error);
+      }
+    },
     goToAboutUsPage() {
       this.$router.push({ name: 'AboutUs' });
     },

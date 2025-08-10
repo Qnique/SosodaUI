@@ -27,10 +27,10 @@
               >
                 <span
                   class="h-[20px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[16px] font-semibold leading-[20px] text-[#fff] tracking-[0.1px] relative text-center whitespace-nowrap z-[11]"
-                  >Chloe</span
+                  >{{ this.member?.name }}</span
                 ><span
                   class="h-[20px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[14px] font-normal leading-[20px] text-[#fff] tracking-[0.1px] relative text-center whitespace-nowrap z-[12]"
-                  >+6012-3456789</span
+                  >{{ this.member?.mobileNumber }}</span
                 >
               </div>
               <div class="h-[80px] self-stretch shrink-0 relative z-[13]">
@@ -45,7 +45,7 @@
                     >
                       <span
                         class="h-[24px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[20px] font-semibold leading-[24px] text-[#000] relative text-center whitespace-nowrap z-[18]"
-                        >20</span
+                        >{{ this.walletBalance }}</span
                       ><span
                         class="h-[15px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[10px] font-medium leading-[15px] text-[#000] relative text-center whitespace-nowrap z-[19]"
                         >Wallet</span
@@ -56,7 +56,7 @@
                     >
                       <span
                         class="h-[24px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[20px] font-semibold leading-[24px] text-[#000] relative text-center whitespace-nowrap z-[21]"
-                        >2</span
+                        >{{ this.voucherCount }}</span
                       ><span
                         class="h-[15px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[10px] font-medium leading-[15px] text-[#000] relative text-center whitespace-nowrap z-[22]"
                         >Vouchers</span
@@ -67,7 +67,7 @@
                     >
                       <span
                         class="h-[24px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[20px] font-semibold leading-[24px] text-[#000] relative text-center whitespace-nowrap z-[24]"
-                        >4</span
+                        >{{ this.stampCount }}</span
                       ><span
                         class="h-[15px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[10px] font-medium leading-[15px] text-[#000] relative text-center whitespace-nowrap z-[25]"
                         >Stamp</span
@@ -239,7 +239,7 @@
                 class="w-[331.5px] h-px shrink-0 bg-[url('../public/account-line.png')] bg-cover bg-no-repeat relative z-[77]"
               ></div>
             </div>
-            <div
+            <div @click="goToTerms"
               class="cursor-pointer flex pt-0 pr-[20px] pb-0 pl-[20px] flex-col gap-[11px] items-center self-stretch shrink-0 flex-nowrap relative z-[78]"
             >
               <div
@@ -373,45 +373,79 @@
 }
 </style>
 
-<script setup>
+<script>
 import "./index.css";
-import { useRouter } from 'vue-router';
+import api from '../services/callingapi'
 
-const router = useRouter();
+export default{
+  data(){
+    return{
+      member: null,
+      stampCount: 0,
+      voucherCount: 0,
+      walletBalance: 0.00
+    }
+  },
+  mounted(){
+    this.getDetail();
+  },
+  methods:{    
+    async getDetail(){
+      try{
+        const userId = sessionStorage.getItem('IdUser');
+        //const userId = '48d8ebe7-0d83-49db-8e09-e6aee39e2094';
+        const response = await api.post('Home/MemberHome', JSON.stringify(userId));
+        if(response.status === 200){
+          this.member = response.data;
+          this.stampCount = (response.data.stamp === null) ? 0 : response.data.stamp.point;
+          this.voucherCount = (response.data.vouchers === null) ? 0 : response.data.vouchers.length;
+          this.walletBalance = response.data.wallet.balance.toFixed(2);
+        }
+      }
+      catch (error) {
+          console.error('API Error:', error);
+      }
+    },
+    goToCardPage() {
+      this.$router.push({ name: 'CardInfos' });
+    },
+    goToProfile() {
+      this.$router.push({ name: 'Profiles' });
+    },
+    goToStampsPage() {
+      this.$router.push({ name: 'Stamps' });
+    },
+    goToVouchersPage() {
+      this.$router.push({ name: 'Vouchers' });
+    },
+    goToAddress() {
+      this.$router.push({ name: 'Addresses' });
+    },
+    goToWalletPage() {
+      this.$router.push({ name: 'Wallet' });
+    },
+    goToQRPage() {
+      this.$router.push({ name: 'QRCodes' });
+    },
+    goToTerms() {
+      this.$router.push({ name: 'Terms' });
+    },
+    async goToLogout() {
+      try{
+        const response = await api.post('System/Logout');
+        if(response.status === 200){
+          sessionStorage.clear();
 
-const backToHome = () => {
-  router.push({ name: 'Home' });
-};
-
-const goToStampsPage = () => {
-  router.push({ name: 'Stamps' });
-};
-
-const goToVouchersPage = () => {
-  router.push({ name: 'Vouchers' });
-};
-
-const goToLogout = () => {
-  router.push({ name: 'Login' });
-};
-
-const goToAddress = () => {
-  router.push({ name: 'Addresses' });
-};
-
-const goToProfile = () => {
-  router.push({ name: 'Profiles' });
-};
-
-const goToWalletPage = () => {
-  router.push({ name: 'Wallet' });
-};
-
-const goToQRPage = () => {
-  router.push({ name: 'QRCodes' });
-};
-
-const goToCardPage = () => {
-  router.push({ name: 'CardInfos' });
-};
+          this.$router.push({ name: 'Login' });
+        }
+      }
+      catch (error) {
+          console.error('API Error:', error);
+      }      
+    },
+    backToHome() {
+      this.$router.push({ name: 'Home' });
+    }
+  }
+}
 </script>
