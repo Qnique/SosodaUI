@@ -8,47 +8,37 @@
       <div @click="backToAccount"
         class="cursor-pointer w-[12.5px] h-[25px] shrink-0 bg-[url('../public/back_arrow.png')] bg-cover bg-no-repeat relative overflow-hidden z-[28]"
       ></div>
-      <span
+      <!-- <span
         class="h-[14px] shrink-0 font-['Poppins'] text-[20px] font-semibold leading-[14px] text-[#000] relative text-left uppercase whitespace-nowrap z-[29]"
-        >Bank Accounts & Cards</span
-      >
+        >Bank & Cards</span
+      > -->
     </div>
-    <div
-      class="flex w-[372px] flex-col gap-[12px] items-start flex-nowrap relative z-[1] mt-[35px] mr-0 mb-0 ml-[30px]"
+        <span
+      class="block h-[20px] font-['Poppins'] text-[16px] font-medium leading-[20px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap mt-[40px] mr-0 mb-0 ml-[30px]"
+      >Credit Card</span
     >
-      <span
-        class="h-[20px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[16px] font-medium leading-[20px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-[2]"
-        >Credit / Debit Card</span
-      >
+    <div v-for="(item, index) in cards"
+      :key="index"
+      class="w-[345px] h-[50px] bg-[#fff] rounded-[10px] relative shadow-[0_2px_8px_0_rgba(0,0,0,0.1)] z-[32] mt-[13.223px] mr-0 mb-0 ml-[29px]"
+    >
       <div
-        class="flex gap-[10px] items-center self-stretch shrink-0 flex-nowrap relative z-[3]"
+        class="w-[31.59%] h-[68%] text-[0px] absolute top-[16%] left-[15.94%] z-[38]"
       >
-        <div class="w-[342px] h-[170px] shrink-0 text-[0px] relative z-[4]">
-          <span
-            class="block h-[21px] font-['Poppins'] text-[14px] font-medium leading-[20.991px] text-[#fff] relative text-left whitespace-nowrap z-[8] mt-[53px] mr-0 mb-0 ml-[15px]"
-            >Hong Leong Bank Berhad</span
-          ><span
-            class="block h-[21px] font-['Poppins'] text-[14px] font-normal leading-[20.991px] text-[#fff] tracking-[3px] relative text-left whitespace-nowrap z-[11] mt-[5px] mr-0 mb-0 ml-[15px]"
-            >1111 1111 1111 1111</span
-          >
-          <div
-            class="w-[342px] h-[170px] bg-[url('../public/background-gradient.png')] bg-cover bg-no-repeat rounded-[10px] absolute top-0 left-1/2 translate-x-[-50%] translate-y-0 z-[5]"
-          ></div>
-          <div
-            class="flex w-[60px] h-[18px] pt-[2px] pr-[12px] pb-[2px] pl-[12px] gap-[10px] justify-center items-center flex-nowrap bg-[#fff] rounded-[20px] opacity-50 absolute top-[15px] left-[15px] z-[6]"
-          >
-            <span
-              class="h-[15px] shrink-0 basis-auto font-['Poppins'] text-[10px] font-medium leading-[15px] text-[#292929] relative text-left whitespace-nowrap z-[7]"
-              >Default</span
-            >
-          </div>
-          <div
-            class="w-[37.113px] h-[12px] absolute top-[18px] left-[289.887px] z-[12]"
-          ></div>
-          <span
-            class="flex h-[42px] justify-start items-center font-['Poppins'] text-[28px] font-semibold leading-[41.981px] text-[#fff] absolute top-[121.5px] left-[15px] text-left whitespace-nowrap z-[9]"
-            >RM 18.88</span>
-        </div>
+        <span
+          class="block h-[21px] font-['Poppins'] text-[14px] font-medium leading-[20.991px] text-[#000] relative text-left whitespace-nowrap z-[38] mt-0 mr-0 mb-0 ml-0"
+          >{{ item.bankName }}</span
+        ><span
+          class="block h-[15px] font-['Poppins'] text-[10px] font-normal leading-[14.993px] text-[#a5a5a5] relative text-left whitespace-nowrap z-[37] mt-[-2px] mr-0 mb-0 ml-0"
+          >{{ item.cardNumber }}</span
+        >
+      </div>
+      <div v-if="item.isDefault"
+        class="flex w-[14.62%] h-[15.132px] pt-[2px] pr-[12px] pb-[2px] pl-[12px] gap-[10px] justify-center items-center flex-nowrap rounded-[20px] border-solid border border-[#a5a5a5] absolute top-[11px] left-[82.46%] z-[34]"
+      >
+        <span
+          class="h-[13px] shrink-0 basis-auto font-['Poppins'] text-[9px] font-medium leading-[13px] text-[#a5a5a5] relative text-left whitespace-nowrap z-[35]"
+          >Default</span
+        >
       </div>
     </div>
     <!-- <div
@@ -69,7 +59,8 @@
       class="block h-[20px] font-['Poppins'] text-[16px] font-medium leading-[20px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap mt-[40px] mr-0 mb-0 ml-[30px]"
       >Bank Account</span
     >
-    <div
+    <div v-for="(item, index) in banks"
+      :key="index"
       class="w-[345px] h-[50px] bg-[#fff] rounded-[10px] relative shadow-[0_2px_8px_0_rgba(0,0,0,0.1)] z-[32] mt-[13.223px] mr-0 mb-0 ml-[29px]"
     >
       <div
@@ -77,13 +68,13 @@
       >
         <span
           class="block h-[21px] font-['Poppins'] text-[14px] font-medium leading-[20.991px] text-[#000] relative text-left whitespace-nowrap z-[38] mt-0 mr-0 mb-0 ml-0"
-          >CIMB Bank BHD</span
+          >{{ item.bankName }}</span
         ><span
           class="block h-[15px] font-['Poppins'] text-[10px] font-normal leading-[14.993px] text-[#a5a5a5] relative text-left whitespace-nowrap z-[37] mt-[-2px] mr-0 mb-0 ml-0"
-          >8888 8888 8888 8888</span
+          >{{ item.accountNumber }}</span
         >
       </div>
-      <div
+      <div v-if="item.isDefault"
         class="flex w-[14.62%] h-[15.132px] pt-[2px] pr-[12px] pb-[2px] pl-[12px] gap-[10px] justify-center items-center flex-nowrap rounded-[20px] border-solid border border-[#a5a5a5] absolute top-[11px] left-[82.46%] z-[34]"
       >
         <span
@@ -92,38 +83,7 @@
         >
       </div>
     </div>
-    <div
-      class="w-[345px] h-[50px] bg-[#fff] rounded-[10px] relative shadow-[0_2px_8px_0_rgba(0,0,0,0.1)] z-[41] mt-[11px] mr-0 mb-0 ml-[29px]"
-    >
-      <div
-        class="w-[31.59%] h-[68%] text-[0px] absolute top-[16%] left-[15.94%] z-[45]"
-      >
-        <span
-          class="block h-[21px] font-['Poppins'] text-[14px] font-medium leading-[20.991px] text-[#000] relative text-left whitespace-nowrap z-[45] mt-0 mr-0 mb-0 ml-0"
-          >CIMB Bank BHD</span
-        ><span
-          class="block h-[15px] font-['Poppins'] text-[10px] font-normal leading-[14.993px] text-[#a5a5a5] relative text-left whitespace-nowrap z-[44] mt-[-2px] mr-0 mb-0 ml-0"
-          >8888 8888 8888 8888</span
-        >
-      </div>
 
-    </div>
-    <div
-      class="w-[345px] h-[50px] bg-[#fff] rounded-[10px] relative shadow-[0_2px_8px_0_rgba(0,0,0,0.1)] z-[48] mt-[11px] mr-0 mb-0 ml-[29px]"
-    >
-      <div
-        class="w-[31.59%] h-[68%] text-[0px] absolute top-[16%] left-[15.94%] z-[52]"
-      >
-        <span
-          class="block h-[21px] font-['Poppins'] text-[14px] font-medium leading-[20.991px] text-[#000] relative text-left whitespace-nowrap z-[52] mt-0 mr-0 mb-0 ml-0"
-          >CIMB Bank BHD</span
-        ><span
-          class="block h-[15px] font-['Poppins'] text-[10px] font-normal leading-[14.993px] text-[#a5a5a5] relative text-left whitespace-nowrap z-[51] mt-[-2px] mr-0 mb-0 ml-0"
-          >8888 8888 8888 8888</span
-        >
-      </div>
-
-    </div>
     <button @click="addBankPage"
       class="flex w-[342px] h-[40px] pt-[10px] pr-[48px] pb-[10px] pl-[48px] gap-[5px] justify-center items-center flex-nowrap bg-[rgba(255,255,255,0.2)] rounded-[10px] border-solid border-[1.25px] border-[#a5a5a5] relative z-[24] mt-[20px] mr-0 mb-0 ml-[30px]"
     >
@@ -138,21 +98,54 @@
   </div>
 </template>
 
-<script setup>
+<script>
 import "./index.css";
-import { useRouter } from 'vue-router';
+import api from '../services/callingapi'
 
-const router = useRouter();
+export default{
+  data(){
+    return{
+      banks:[],
+      cards:[]
+    }
+  },
+  mounted(){
+    this.getBank();
+    this.getCard()
+  },
+  methods:{    
+    async getBank(){
+      try{
+        const response = await api.get('BankAccount/GetBankAccountListByMemberId');
+        if(response.status === 200){
+          this.banks = response.data;
+        }
+      }
+      catch (error) {
+          console.error('API Error:', error);
+      }
+    },
+    async getCard(){
+      try{
+        const response = await api.get('CreditCard/GetCreditCardListByMemberId');
+        if(response.status === 200){
+          this.cards = response.data;
+        }
+      }
+      catch (error) {
+          console.error('API Error:', error);
+      }
+    },
+    addCardPage() {
+      this.$router.push({ name: 'AddCards' });
+    },
+    addBankPage() {
+      this.$router.push({ name: 'AddBanks' });
+    },
+    backToAccount() {
+      this.$router.push({ name: 'Accounts' });
+    }
+  }
+}
 
-const backToAccount = () => {
-  router.push({ name: 'Accounts' });
-};
-
-const addBankPage = () => {
-  router.push({ name: 'AddBanks' });
-};
-
-const addCardPage = () => {
-  router.push({ name: 'AddCards' });
-};
 </script>

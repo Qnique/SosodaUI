@@ -229,10 +229,10 @@ export default{
       this.$router.push({ name: 'Terms' });
     },
     goToStampsPage() {
-      this.$router.push({ name: 'Stamps' });
+      //this.$router.push({ name: 'Stamps' });
     },
     goToVouchersPage() {
-      this.$router.push({ name: 'Vouchers' });
+      //this.$router.push({ name: 'Vouchers' });
     },
     goToAccountPage() {
       this.$router.push({ name: 'Accounts' });

@@ -93,10 +93,10 @@
           >
             <span
               class="h-[21px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[14px] font-medium leading-[21px] text-[#fff] relative text-left whitespace-nowrap z-[31]"
-              >Exclusive Deals Just for You</span
+              >Top up RM888</span
             ><span
               class="h-[15px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[10px] font-normal leading-[15px] text-[#fff] relative text-left whitespace-nowrap z-[32]"
-              >Check out the latest promotions and save more.</span
+              >Get a free Volt/Apex machine</span
             >
           </div>
           <!-- <div
@@ -362,7 +362,7 @@
       class="w-[12.5px] h-[25px] bg-[url('../public/back_arrow.png')] bg-cover bg-no-repeat absolute top-[50px] left-[30px] overflow-hidden z-[4]"
     ></div>
     <div @click="goToProfile"
-      class="cursor-pointer w-[5.47%] h-[22.25px] bg-[url('../public/edit.png')] bg-cover bg-no-repeat absolute top-1/2 left-[87.31%] translate-x-0 translate-y-[-2245.45%]"
+      class="cursor-pointer w-[5.47%] h-[22.25px] bg-[url('../public/edit.png')] bg-cover bg-no-repeat absolute top-1/2 left-[83.31%] translate-x-0 translate-y-[-2245.45%]"
     ></div>
   </div>
 </template>
@@ -413,10 +413,10 @@ export default{
       this.$router.push({ name: 'Profiles' });
     },
     goToStampsPage() {
-      this.$router.push({ name: 'Stamps' });
+      //this.$router.push({ name: 'Stamps' });
     },
     goToVouchersPage() {
-      this.$router.push({ name: 'Vouchers' });
+      //this.$router.push({ name: 'Vouchers' });
     },
     goToAddress() {
       this.$router.push({ name: 'Addresses' });
