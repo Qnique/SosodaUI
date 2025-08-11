@@ -169,7 +169,6 @@
 <script>
 import "./index.css";
 import api from '../services/callingapi' 
-import QRCode from 'qrcode';
 import { toast } from 'vue3-toastify'; 
 import { useRoute } from 'vue-router'
 

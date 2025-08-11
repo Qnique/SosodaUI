@@ -20,10 +20,22 @@ const ReturnMetodPage = () => import('../page/returnmethod.vue')
 const AddAddress = () => import('../page/addaddress.vue')
 const EditAddress = () => import('../page/editaddress.vue')
 const MenuPage = () => import('../page/menu.vue')
+const RefillSetup = () => import('../page/setup-refill.vue')
+const RefundSetup = () => import('../page/setup-refund.vue')
 
 const routes = [
   {
-    path: '/Menu',
+    path: '/setup-refund/:refundmethod',
+    name: 'SetupRefund',
+    component: RefundSetup,
+  },
+  {
+    path: '/setup-refill/:refillmethod',
+    name: 'SetupRefill',
+    component: RefillSetup,
+  },
+  {
+    path: '/menu',
     name: 'Menu',
     component: MenuPage,
   },

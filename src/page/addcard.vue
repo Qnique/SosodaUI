@@ -19,6 +19,36 @@
         >Add Card</span
       >
     </div>
+    <div class="main-container w-[342px] h-[170px] relative mx-auto my-0 ml-[10px]">
+			<div
+				class="flex w-[186px] flex-col gap-[29px] items-start flex-nowrap relative z-[1] mt-[51.5px] mr-0 mb-0 ml-[15px]">
+				<div
+					class="flex w-[177px] flex-col gap-[5px] items-start shrink-0 flex-nowrap relative z-[2]">
+					<span
+						class="h-[21px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[14px] font-medium leading-[20.991px] text-[#fff] relative text-left whitespace-nowrap z-[3]">{{ bankName }}</span><span
+						class="h-[21px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[14px] font-normal leading-[20.991px] text-[#fff] tracking-[3px] relative text-left whitespace-nowrap z-[4]">{{ accountNumber }}</span>
+				</div>
+				<div
+					class="flex gap-[30px] items-center self-stretch shrink-0 flex-nowrap relative z-[5]">
+					<div
+						class="flex w-[99px] gap-[10px] items-center shrink-0 flex-nowrap relative z-[6]">
+						<span
+							class="h-[15px] shrink-0 basis-auto font-['Poppins'] text-[10px] font-normal opacity-50 leading-[15px] text-[#fff] relative text-left uppercase whitespace-nowrap z-[7]">Valid Thru</span>
+              <span
+							class="h-[21px] shrink-0 basis-auto font-['Poppins'] text-[14px] font-normal leading-[21px] text-[#fff] relative text-left whitespace-nowrap z-[8]">{{ expiryDate }}</span>
+					</div>
+					<div
+						class="flex w-[57px] gap-[10px] items-center shrink-0 flex-nowrap relative z-[9]">
+						<span
+							class="h-[15px] shrink-0 basis-auto font-['Poppins'] text-[10px] font-normal opacity-50 leading-[15px] text-[#fff] relative text-left whitespace-nowrap z-10">CVV</span><span
+							class="h-[21px] shrink-0 basis-auto font-['Poppins'] text-[14px] font-normal leading-[21px] text-[#fff] relative text-left whitespace-nowrap z-[11]">{{ cvv }}</span>
+					</div>
+				</div>
+			</div>
+			<div
+				class="h-[170px] bg-[url('../public/background-gradient.png')] rounded-[20px] bg-cover bg-no-repeat absolute top-0 left-0 right-0">
+			</div>
+		</div>
     <div
       class="flex w-[342px] flex-col gap-[10px] items-start flex-nowrap relative z-[15] mt-[30px] mr-0 mb-0 ml-[30px]"
     >
