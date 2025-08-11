@@ -17,8 +17,26 @@ const AddBankPage = () => import('../page/addbank.vue')
 const AddCardPage = () => import('../page/addcard.vue')
 const MethodPage = () => import('../page/refillmethod.vue')
 const ReturnMetodPage = () => import('../page/returnmethod.vue')
+const AddAddress = () => import('../page/addaddress.vue')
+const EditAddress = () => import('../page/editaddress.vue')
+const MenuPage = () => import('../page/menu.vue')
 
 const routes = [
+  {
+    path: '/Menu',
+    name: 'Menu',
+    component: MenuPage,
+  },
+  {
+    path: '/updateAddress/:id',
+    name: 'UpdateAddress',
+    component: EditAddress,
+  },
+  {
+    path: '/setupAddress',
+    name: 'SetupAddress',
+    component: AddAddress,
+  },
   {
     path: '/',
     name: 'Login',

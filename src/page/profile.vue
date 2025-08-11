@@ -76,7 +76,10 @@
             class="h-[18px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[12px] font-semibold leading-[18px] text-[#000] relative text-left whitespace-nowrap z-[16]"
             >Phone Number *</span
           >
-          <div
+          <div :class="[
+                  phoneError ? 'border-red-500' : 'border border-[#fdfdfd]',
+                  'border'
+                ]"
             class="flex h-[42px] pt-[12px] pr-[15px] pb-[12px] pl-[15px] gap-[10px] items-center self-stretch shrink-0 flex-nowrap bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.12)] z-[17]"
           >
             <input v-model="member.mobileNumber" placeholder="Your Phone Number"
@@ -91,7 +94,10 @@
             class="h-[18px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[12px] font-semibold leading-[18px] text-[#000] relative text-left whitespace-nowrap z-20"
             >Email Address *</span
           >
-          <div
+          <div :class="[
+                  emailError ? 'border-red-500' : 'border border-[#fdfdfd]',
+                  'border'
+                ]"
             class="flex h-[42px] pt-[12px] pr-[15px] pb-[12px] pl-[15px] gap-[10px] items-center self-stretch shrink-0 flex-nowrap bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.12)] z-[21]"
           >
             <input v-model="member.email" placeholder="example@gmail.com" 
@@ -124,6 +130,8 @@ export default{
       member: {
         email: '',
         mobileNumber: '',
+        emailError: false,
+        phoneError: false
       },
     }
   },
@@ -149,14 +157,23 @@ export default{
     },
     async saveToAccount() {
       try{
-        const payload = {
-          MobileNumber: this.member.mobileNumber,
-          Email: this.member.email
+        if(this.email === ''){
+          this.emailError = true;
         }
-        const response = await api.post('Member/EditMemberDetail', JSON.stringify(payload));
-        if(response.status === 200){
-          toast.success('Saved successfully!');
+        if(this.mobileNumber === ''){
+          this.phoneError = true;
         }
+
+        if(this.email !== '' && this.mobileNumber !== ''){
+          const payload = {
+            MobileNumber: this.member.mobileNumber,
+            Email: this.member.email
+          }
+          const response = await api.post('Member/EditMemberDetail', JSON.stringify(payload));
+          if(response.status === 200){
+            toast.success('Saved successfully!');
+          }
+        }        
       }
       catch (error) {
           console.error('API Error:', error);

@@ -16,9 +16,9 @@
         class="w-[12.5px] h-[25px] shrink-0 bg-[url('../public/white.png')] bg-cover bg-no-repeat relative overflow-hidden z-[47]"
       ></div>
     </div>
-    <div v-for="(item, index) in address"
+    <div v-for="(item, index) in address" @click="goToAddressDetail(item.id)"
       :key="index"
-      class="flex w-[342px] h-[100px] pt-[10px] pr-[10px] pb-[10px] pl-[10px] flex-col gap-[10px] items-start flex-nowrap bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] mt-[42.852px] mr-0 mb-0 ml-[30px]"
+      class="cursor-pointer flex w-[342px] h-[100px] pt-[10px] pr-[10px] pb-[10px] pl-[10px] flex-col gap-[10px] items-start flex-nowrap bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] mt-[42.852px] mr-0 mb-0 ml-[30px]"
     >
       <div
         class="flex w-[322.035px] flex-col gap-[9px] justify-end items-start shrink-0 flex-nowrap relative z-[1]"
@@ -73,9 +73,20 @@
             <div class="w-[20px] h-[20px] shrink-0 relative z-[16]"></div>
           </div>
         </div>
+        
       </div>
     </div>
-
+    <button @click="addAddressPage"
+          class="flex w-[342px] h-[40px] pt-[10px] pr-[48px] pb-[10px] pl-[48px] gap-[5px] justify-center items-center flex-nowrap bg-[rgba(255,255,255,0.2)] rounded-[10px] border-solid border-[1.25px] border-[#a5a5a5] relative z-[24] mt-[20px] mr-0 mb-0 ml-[30px]"
+        >
+      <div
+        class="w-[24px] h-[24px] shrink-0 bg-[url('../public/plus.png')] bg-cover bg-no-repeat relative overflow-hidden z-[25]"
+      ></div>
+      <span
+        class="h-[24px] shrink-0 basis-auto font-['Poppins'] text-[16px] font-normal leading-[24px] text-[#a5a5a5] relative text-left whitespace-nowrap z-[26]"
+        >Add Address</span
+      >
+    </button>
   </div>
 </template>
 
@@ -110,7 +121,13 @@ export default{
     },
     backToAccount() {
        this.$router.push({ name: 'Accounts' }); 
-    },    
+    },  
+    addAddressPage(){
+      this.$router.push({ name: 'SetupAddress' }); 
+    },
+    goToAddressDetail(id){
+      this.$router.push({ name: 'UpdateAddress', params: { id } })
+    }  
   }
 }
 

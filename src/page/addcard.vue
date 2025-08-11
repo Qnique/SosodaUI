@@ -30,15 +30,35 @@
         >
           <span
             class="h-[18px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[12px] font-semibold leading-[18px] text-[#000] relative text-left whitespace-nowrap z-[18]"
-            >Card Number *</span
+            >Bank Name *</span
           >
-          <div
+          <div :class="[
+                  BankError ? 'border-red-500' : 'border border-[#fdfdfd]',
+                  'border'
+                ]"
             class="flex h-[42px] pt-[12px] pr-[15px] pb-[12px] pl-[15px] gap-[10px] items-center self-stretch shrink-0 flex-nowrap bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[19]"
           >
-            <span
-              class="h-[18px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-[rgba(0,0,0,0.25)] relative text-left whitespace-nowrap z-20"
-              >Enter Card Number</span
-            >
+            <input  v-model="bankName"
+              class=" bg-[#fafafa] h-[18px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-[rgba(0,0,0,0.25)] relative text-left whitespace-nowrap z-20"
+              />
+          </div>
+        </div>
+        <div
+          class="flex h-[82px] flex-col gap-[5px] items-start self-stretch shrink-0 flex-nowrap relative z-[17]"
+        >
+          <span
+            class="h-[18px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[12px] font-semibold leading-[18px] text-[#000] relative text-left whitespace-nowrap z-[18]"
+            >Card Number *</span
+          >
+          <div :class="[
+                  AccountError ? 'border-red-500' : 'border border-[#fdfdfd]',
+                  'border'
+                ]"
+            class="flex h-[42px] pt-[12px] pr-[15px] pb-[12px] pl-[15px] gap-[10px] items-center self-stretch shrink-0 flex-nowrap bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[19]"
+          >
+            <input  v-model="accountNumber"
+              class=" bg-[#fafafa] h-[18px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-[rgba(0,0,0,0.25)] relative text-left whitespace-nowrap z-20"
+              />
           </div>
         </div>
         <div
@@ -51,13 +71,15 @@
               class="h-[18px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[12px] font-semibold leading-[18px] text-[#000] relative text-left whitespace-nowrap z-[23]"
               >Expiry Date *</span
             >
-            <div
+            <div :class="[
+                  expiryError ? 'border-red-500' : 'border border-[#fdfdfd]',
+                  'border'
+                ]"
               class="flex h-[42px] pt-[12px] pr-[15px] pb-[12px] pl-[15px] gap-[10px] items-center self-stretch shrink-0 flex-nowrap bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[24]"
             >
-              <span
-                class="h-[18px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-[rgba(0,0,0,0.25)] relative text-left whitespace-nowrap z-[25]"
-                >(MM/YY)</span
-              >
+              <input  v-model="expiryDate" maxlength="5" @input="formatExpiry" placeholder="MM-YY"
+                class=" bg-[#fafafa] h-[18px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-[rgba(0,0,0,0.25)] relative text-left whitespace-nowrap z-[25]"
+                />
             </div>
           </div>
           <div
@@ -67,13 +89,15 @@
               class="h-[18px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[12px] font-semibold leading-[18px] text-[#000] relative text-left whitespace-nowrap z-[27]"
               >CVV *</span
             >
-            <div
+            <div :class="[
+                  cvvError ? 'border-red-500' : 'border border-[#fdfdfd]',
+                  'border'
+                ]"
               class="flex h-[42px] pt-[12px] pr-[15px] pb-[12px] pl-[15px] gap-[10px] items-center self-stretch shrink-0 flex-nowrap bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[28]"
             >
-              <span
-                class="h-[18px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-[rgba(0,0,0,0.25)] relative text-left whitespace-nowrap z-[29]"
-                >3-Digital Number</span
-              >
+              <input  v-model="cvv" @input="formatCVV" maxlength="3"
+                class=" bg-[#fafafa] h-[18px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-[rgba(0,0,0,0.25)] relative text-left whitespace-nowrap z-[29]"
+                />
             </div>
           </div>
         </div>
@@ -84,17 +108,38 @@
             class="h-[18px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[12px] font-semibold leading-[18px] text-[#000] relative text-left whitespace-nowrap z-[31]"
             >Name On Card *</span
           >
-          <div
+          <div :class="[
+                  NameError ? 'border-red-500' : 'border border-[#fdfdfd]',
+                  'border'
+                ]"
             class="flex h-[42px] pt-[12px] pr-[15px] pb-[12px] pl-[15px] gap-[10px] items-center self-stretch shrink-0 flex-nowrap bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[32]"
           >
-            <span
-              class="h-[18px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-[rgba(0,0,0,0.25)] relative text-left whitespace-nowrap z-[33]"
-              >Enter Name On Card</span
-            >
+            <input  v-model="holderName"
+              class="bg-[#fafafa] h-[18px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-[rgba(0,0,0,0.25)] relative text-left whitespace-nowrap z-[33]"
+              
+            />
           </div>
         </div>
       </div>
       <div
+        class="flex justify-between items-center self-stretch shrink-0 flex-nowrap relative z-[52]"
+      >
+        <span
+          class="h-[18px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-medium leading-[18px] text-[#000] relative text-left whitespace-nowrap z-[53]"
+          >Set as Default Card</span
+        >
+        <div
+            @click="toggleSwitch"
+            class="flex w-[40px] h-[20px] p-[3px] items-center justify-start bg-[#5ba6e0] rounded-full border border-[rgba(191,191,191,0.25)] shadow-[inset_1px_2px_3px_rgba(0,0,0,0.15)] cursor-pointer transition-all duration-300"
+            :class="isOn ? 'justify-end bg-[#5ba6e0]' : 'justify-start bg-[#ccc]'"
+            >
+            <div
+                class="w-[15px] h-[15px] bg-white rounded-full transition-all duration-300"
+            ></div>
+        </div>
+
+      </div>
+       <!-- <div
         class="flex flex-col gap-[10px] items-start self-stretch shrink-0 flex-nowrap relative z-[34]"
       >
         <span
@@ -170,27 +215,9 @@
                 </div>
               </div>
             </div>
-          </div>
-          <div
-            class="flex justify-between items-center self-stretch shrink-0 flex-nowrap relative z-[52]"
-          >
-            <span
-              class="h-[18px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-medium leading-[18px] text-[#000] relative text-left whitespace-nowrap z-[53]"
-              >Set as Default Bank Account</span
-            >
-            <div
-                @click="toggleSwitch"
-                class="flex w-[40px] h-[20px] p-[3px] items-center justify-start bg-[#5ba6e0] rounded-full border border-[rgba(191,191,191,0.25)] shadow-[inset_1px_2px_3px_rgba(0,0,0,0.15)] cursor-pointer transition-all duration-300"
-                :class="isOn ? 'justify-end bg-[#5ba6e0]' : 'justify-start bg-[#ccc]'"
-                >
-                <div
-                    class="w-[15px] h-[15px] bg-white rounded-full transition-all duration-300"
-                ></div>
-            </div>
-
-          </div>
+          </div>          
         </div>
-      </div>
+      </div>  -->
     </div>
     <button @click="saveCard"
       class="flex w-[342px] h-[50px] pt-[10px] pr-[48px] pb-[10px] pl-[48px] gap-[10px] justify-center items-center flex-nowrap bg-[#292929] rounded-[12px] relative z-[13] mt-[40px] mr-0 mb-0 ml-[30px]"
@@ -203,24 +230,120 @@
   </div>
 </template>
 
-<script setup>
+<script>
 import "./index.css";
-import { useRouter } from 'vue-router';
-import { ref } from 'vue';
+import api from '../services/callingapi'
+import { toast } from 'vue3-toastify'; 
 
-const isOn = ref(false);
+export default{
+  data(){
+    return{
+      isOn: false,
+      cvv:'',
+      accountNumber: '',
+      holderName:'',
+      expiryDate: '',
+      cvvError: false,
+      AccountError: false,
+      NameError: false,
+      expiryError: false,
+      bankName: ''
+    }
+  },
+  mounted(){
+  },
+  computed: {
+    isValidExpiry() {
+      const match = this.expiryDate.match(/^(\d{2})-(\d{2})$/);
+      if (!match) return false;
 
-const toggleSwitch = () => {
-  isOn.value = !isOn.value;
-};
+      const month = parseInt(match[1], 10);
+      return month >= 1 && month <= 12;
+    },
+    isFutureExpiry() {
+      if (!this.isValidExpiry) return false;
+
+      const [monthStr, yearStr] = this.expiryDate.split('-');
+      const month = parseInt(monthStr, 10);
+      const year = parseInt(yearStr, 10);
+
+      const now = new Date();
+      const currentYear = now.getFullYear() % 100; // get last two digits
+      const currentMonth = now.getMonth() + 1;
+
+      return year > currentYear || (year === currentYear && month >= currentMonth);
+    }
+  },
+  methods:{    
+    formatCVV() {
+      // Remove non-digit characters and limit to 3 digits
+      this.cvv = this.cvv.replace(/\D/g, '').slice(0, 3);
+    },
+    formatExpiry() {
+      let val = this.expiryDate.replace(/\D/g, ''); // remove non-digits
+      if (val.length >= 3) {
+        val = val.slice(0, 2) + '-' + val.slice(2, 4);
+      }
+      this.expiryDate = val.slice(0, 5); // ensure max length
+    },
+    toggleSwitch() {
+      this.isOn = !this.isOn;
+    },
+    async saveCard() {
+      try{
+          if(this.cvv === ''){
+                  this.cvvError = true;
+          }
+        
+          if(this.accountNumber === ''){
+                this.AccountError = true;
+          }
+
+          if(this.expiryDate === ''){
+                this.expiryError = true;
+          }
+          else{
+            if(!this.isValidExpiry)
+            {
+              this.expiryError = true;
+            }
+          }
+
+          if(this.holderName === ''){
+                this.NameError = true;
+          }
+
+          if(this.bankName === ''){
+                  this.BankError = true;
+          }
+
+          if(this.cvv !== '' && this.holderName !== '' && this.accountNumber !== '' && this.expiryDate !== '' && this.bankName  !== '' && this.isValidExpiry)
+          {
+            const payload = {
+              BankName: this.bankName.toUpperCase(),
+              CVV : this.cvv.toUpperCase(),
+              CardNumber : this.accountNumber,
+              CardHolderName : this.holderName.toUpperCase(),
+              ExpiryDT: this.expiryDate,
+              isDefault : (this.isOn) ? true: false
+            };
 
 
-const router = useRouter();
-const saveCard = () => {
-  router.push({ name: 'CardInfos' });
-};
-
-const backToCard = () => {
-  router.push({ name: 'CardInfos' });
-};
+            const response = await api.post('CreditCard/SetupNewCreditCard', JSON.stringify(payload));
+            if(response.status === 200){
+                toast.success('Setup successfully!');
+                
+                this.$router.push({ name: 'CardInfos' });
+              }
+          }          
+      }
+      catch (error) {
+          console.error('API Error:', error);
+      }            
+    },
+    backToCard() {
+      this.$router.push({ name: 'CardInfos' });
+    }
+  }
+}
 </script>

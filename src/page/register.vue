@@ -475,7 +475,7 @@ export default{
               if(this.checked){ 
                 const payload = {
                   Category: this.Category,
-                  Name: this.FullName,
+                  Name: this.FullName.toUpperCase(),
                   ICNumber: this.IC,
                   DOB: this.DOB,
                   MobileNumber: this.MobileNumber,

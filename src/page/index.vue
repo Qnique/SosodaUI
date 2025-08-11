@@ -128,9 +128,7 @@ export default{
             sessionStorage.setItem('phoneNoUser', this.phoneNo);
 
             const response = await api.post('System/MemberLogin', JSON.stringify(this.phoneNo));
-            if(response.data){
-                this.$router.push({ name: 'Verification' });
-            }
+            this.$router.push({ name: 'Verification' });
           }
           else{
             this.showError = !this.checked;            

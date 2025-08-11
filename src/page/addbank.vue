@@ -37,7 +37,7 @@
           >
             <span
               class="h-[18px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-[#000] relative text-left whitespace-nowrap z-[7]"
-              >example@gmail.com</span
+              >{{ this.name }}</span
             >
           </div>
         </div>
@@ -48,17 +48,19 @@
             class="h-[18px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[12px] font-semibold leading-[18px] text-[#000] relative text-left whitespace-nowrap z-[9]"
             >Account Number *</span
           >
-          <div
+          <div :class="[
+                  AccountError ? 'border-red-500' : 'border border-[#fdfdfd]',
+                  'border'
+                ]"
             class="flex h-[42px] pt-[12px] pr-[15px] pb-[12px] pl-[15px] gap-[10px] items-center self-stretch shrink-0 flex-nowrap bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-10"
           >
-            <span
-              class="h-[18px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-[rgba(0,0,0,0.25)] relative text-left whitespace-nowrap z-[11]"
-              >Enter Account No.</span
-            >
+            <input v-model="accountNumber"
+              class="h-[38px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-[rgba(0,0,0,0.25)] relative text-left whitespace-nowrap z-[11] bg-[#fafafa]"
+              />
           </div>
           <span
             class="h-[12px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[8px] font-normal leading-[12px] text-[#ff0000] relative text-left whitespace-nowrap z-[12]"
-            >Account number is required</span
+            ></span
           >
         </div>
         <div
@@ -68,13 +70,15 @@
             class="h-[18px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[12px] font-semibold leading-[18px] text-[#000] relative text-left whitespace-nowrap z-[14]"
             >Name On Card *</span
           >
-          <div
+          <div :class="[
+                  NameError ? 'border-red-500' : 'border border-[#fdfdfd]',
+                  'border'
+                ]"
             class="flex h-[42px] pt-[12px] pr-[15px] pb-[12px] pl-[15px] gap-[10px] items-center self-stretch shrink-0 flex-nowrap bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[15]"
           >
-            <span
-              class="h-[18px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-[rgba(0,0,0,0.25)] relative text-left whitespace-nowrap z-[16]"
-              >Enter Name On Card</span
-            >
+            <input v-model="holderName"
+              class="h-[38px] shrink-0 bg-[#fafafa] basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-[rgba(0,0,0,0.25)] relative text-left whitespace-nowrap z-[16]"
+              />
           </div>
         </div>
         <div
@@ -84,27 +88,15 @@
             class="h-[18px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[12px] font-semibold leading-[18px] text-[#000] relative text-left whitespace-nowrap z-[18]"
             >Bank Name *</span
           >
-          <div
-            class="flex flex-col gap-[10px] items-start self-stretch shrink-0 flex-nowrap relative z-[19]"
+          <div :class="[
+                  BankError ? 'border-red-500' : 'border border-[#fdfdfd]',
+                  'border'
+                ]"
+            class="flex h-[42px] pt-[12px] pr-[15px] pb-[12px] pl-[15px] gap-[10px] items-center self-stretch shrink-0 flex-nowrap bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[15]"
           >
-            <div
-              class="flex h-[42px] pt-[12px] pr-0 pb-[12px] pl-[15px] gap-[226px] items-center self-stretch shrink-0 flex-nowrap bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-20"
-            >
-              <div
-                class="flex pt-0 pr-[15px] pb-0 pl-0 justify-between items-center grow shrink-0 basis-0 flex-nowrap relative z-[21]"
-              >
-                <select
-                  class="h-[30px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-[rgba(0,0,0,0.75)] bg-[#fafafa] rounded px-2 relative text-left z-[22]"
-                >
-                  <option disabled selected>Select Your Bank</option>
-                  <option value="maybank">Maybank</option>
-                  <option value="cimb">CIMB</option>
-                  <option value="rhb">RHB</option>
-                  <option value="public">Public Bank</option>
-                  <option value="hongleong">Hong Leong Bank</option>
-                </select>
-              </div>
-            </div>
+            <input v-model="bankName"
+              class="h-[38px] shrink-0 bg-[#fafafa] basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-[rgba(0,0,0,0.25)] relative text-left whitespace-nowrap z-[16]"
+              />
           </div>
         </div>
       </div>
@@ -116,7 +108,7 @@
           >Set as Default Bank Account</span
         >
         <div
-            @click="toggleSwitch"
+            @click="toggleSwitch" 
             class="flex w-[40px] h-[20px] p-[3px] items-center justify-start bg-[#5ba6e0] rounded-full border border-[rgba(191,191,191,0.25)] shadow-[inset_1px_2px_3px_rgba(0,0,0,0.15)] cursor-pointer transition-all duration-300"
             :class="isOn ? 'justify-end bg-[#5ba6e0]' : 'justify-start bg-[#ccc]'"
             >
@@ -137,23 +129,70 @@
   </div>
 </template>
 
-<script setup>
+<script>
 import "./index.css";
-import { useRouter } from 'vue-router';
-import { ref } from 'vue';
+import api from '../services/callingapi'
+import { toast } from 'vue3-toastify'; 
 
-const isOn = ref(false);
+export default{
+  data(){
+    return{
+      isOn: false,
+      name: sessionStorage.getItem('NameUser'),
+      bankName:'',
+      accountNumber: '',
+      holderName:'',
+      BankError: false,
+      AccountError: false,
+      NameError: false,
+    }
+  },
+  mounted(){
+  },
+  methods:{    
+    toggleSwitch() {
+      this.isOn = !this.isOn;
+    },
+    async saveBank() {
+      try{
+          if(this.bankName === ''){
+                  this.BankError = true;
+          }
+        
+          if(this.accountNumber === ''){
+                this.AccountError = true;
+          }
 
-const toggleSwitch = () => {
-  isOn.value = !isOn.value;
-};
-const router = useRouter();
+          if(this.holderName === ''){
+                this.NameError = true;
+          }
 
-const saveBank = () => {
-  router.push({ name: 'CardInfos' });
-};
+          if(this.bankName !== '' && this.holderName !== '' && this.accountNumber !== '' )
+          {
+            const payload = {
+              BankName : this.bankName.toUpperCase(),
+              AccountNumber : this.accountNumber,
+              AccountHolderName : this.holderName.toUpperCase(),
+              isDefault : (this.isOn) ? true: false
+            };
 
-const backToCard = () => {
-  router.push({ name: 'CardInfos' });
-};
+
+            const response = await api.post('BankAccount/SetupNewBankAccount', JSON.stringify(payload));
+            if(response.status === 200){
+                toast.success('Setup successfully!');
+                
+                this.$router.push({ name: 'CardInfos' });
+              }
+          }          
+      }
+      catch (error) {
+          console.error('API Error:', error);
+      }            
+    },
+    backToCard() {
+      this.$router.push({ name: 'CardInfos' });
+    }
+  }
+}
+
 </script>
