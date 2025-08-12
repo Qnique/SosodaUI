@@ -101,7 +101,7 @@
 <script>
 import "./index.css";
 import api from '../services/callingapi'
-
+import { toast } from 'vue3-toastify';
 export default{
   data(){
     return{
@@ -122,7 +122,7 @@ export default{
         }
       }
       catch (error) {
-          console.error('API Error:', error);
+        toast.error(error.response.data.message)
       }
     },
     async getCard(){
@@ -133,7 +133,7 @@ export default{
         }
       }
       catch (error) {
-          console.error('API Error:', error);
+        toast.error(error.response.data.message)
       }
     },
     addCardPage() {

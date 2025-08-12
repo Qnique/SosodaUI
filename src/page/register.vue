@@ -372,13 +372,7 @@
 <script>
 import "./index.css";
 import api from '../services/callingapi'
-
-// const selectedType = ref('individual');
-// const checked = ref(false);
-
-// const selectType = (type) => {
-//   selectedType.value = type;
-// };
+import { toast } from 'vue3-toastify';
 
 export default{
   data(){
@@ -423,86 +417,78 @@ export default{
       this.MobileNumber = storedPhone;
     }
   },
-  // async mounted(){
-  //   try {
-  //     const result = await api('System/MemberLogin'); // 👈 Just pass the path
-  //     this.data = result;
-  //   } catch (error) {
-  //     console.error('Fetch error:', error.message);
-  //   }
-  // },
   methods:{
     selectType(type) {
       this.selectedType = type;
       this.Category = type;
     },
     async goToHomePage() {
-       try{
-          if(this.FullName === ''){
-                this.NameError = true;
+      if(this.FullName === ''){
+        this.NameError = true;
+      }
+
+      if(this.IC === ''){
+        this.ICError = true;
+      }
+
+      if(this.DOB === ''){
+        this.DOBError = true;
+      }
+
+      if(this.MobileNumber === ''){
+        this.MobileError = true;
+      }
+
+      if(this.Email === ''){
+        this.EmailError = true;
+      }
+
+      if(this.Address === ''){
+        this.AddressError = true;
+      }
+
+      if(this.PostCode === ''){
+        this.PostCodeError = true;
+      }
+
+      if(this.Area === ''){
+        this.AreaError = true;
+      }
+
+      if(this.FullName !=='' && this.IC !=='' && this.DOB !=='' && this.Email !=='' && this.MobileNumber !==''
+        && this.Address !=='' && this.PostCode !=='' && this.Area !==''){
+        if(this.checked){ 
+          const payload = {
+            Category: this.Category,
+            Name: this.FullName.toUpperCase(),
+            ICNumber: this.IC,
+            DOB: this.DOB,
+            MobileNumber: this.MobileNumber,
+            Email: this.Email,
+            Address: this.Address,
+            PostCode: this.PostCode,
+            Area: this.Area,
+            ReferralEmail: this.ReferralCode,
+            SSMName: this.SSM,
+            BrandName: this.BrandName,
+            TinNumber: this.Tin
           }
+          try{
+            const response = await api.post('Member/Register', JSON.stringify(payload));
 
-          if(this.IC === ''){
-                this.ICError = true;
-          }
-
-          if(this.DOB === ''){
-                this.DOBError = true;
-          }
-
-          if(this.MobileNumber === ''){
-                this.MobileError = true;
-          }
-
-          if(this.Email === ''){
-                this.EmailError = true;
-          }
-
-          if(this.Address === ''){
-                this.AddressError = true;
-          }
-
-          if(this.PostCode === ''){
-                this.PostCodeError = true;
-          }
-
-          if(this.Area === ''){
-                this.AreaError = true;
-          }
-
-          if(this.FullName !=='' && this.IC !=='' && this.DOB !=='' && this.Email !=='' && this.MobileNumber !==''
-           && this.Address !=='' && this.PostCode !=='' && this.Area !==''){
-              if(this.checked){ 
-                const payload = {
-                  Category: this.Category,
-                  Name: this.FullName.toUpperCase(),
-                  ICNumber: this.IC,
-                  DOB: this.DOB,
-                  MobileNumber: this.MobileNumber,
-                  Email: this.Email,
-                  Address: this.Address,
-                  PostCode: this.PostCode,
-                  Area: this.Area,
-                  ReferralEmail: this.ReferralCode,
-                  SSMName: this.SSM,
-                  BrandName: this.BrandName,
-                  TinNumber: this.Tin
-                }
-                const response = await api.post('Member/Register', JSON.stringify(payload));
-
-                if(response.data.status == 1 || response.status === 200){
-                  sessionStorage.setItem('IdUser', response.data.data.id);
-                  this.$router.push({ name: 'Home' });
-                }
+            if(response.data.status == 1 || response.status === 200){
+              sessionStorage.setItem('IdUser', response.data.data.id);
+              this.$router.push({ name: 'Home' });
             }
-            else{
-              this.showError = !this.checked;            
-            }
-          }                         
+          }
+          catch (error) {
+            toast.error(error.response.data.message)
+          }             
         }
-        catch (error) {
-          console.error('API Error:', error);
-        }      
+        else{
+          this.showError = !this.checked;            
+        }
+      }                
     },
     goToTermsPage() {
       this.$router.push({ name: 'Terms' });

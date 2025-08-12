@@ -155,40 +155,40 @@ export default{
       this.isOn = !this.isOn;
     },
     async saveBank() {
-      try{
-          if(this.bankName === ''){
-                  this.BankError = true;
-          }
-        
-          if(this.accountNumber === ''){
-                this.AccountError = true;
-          }
+		if(this.bankName === ''){
+			this.BankError = true;
+		}
+	
+		if(this.accountNumber === ''){
+			this.AccountError = true;
+		}
 
-          if(this.holderName === ''){
-                this.NameError = true;
-          }
+		if(this.holderName === ''){
+			this.NameError = true;
+		}
 
-          if(this.bankName !== '' && this.holderName !== '' && this.accountNumber !== '' )
-          {
-            const payload = {
-              BankName : this.bankName.toUpperCase(),
-              AccountNumber : this.accountNumber,
-              AccountHolderName : this.holderName.toUpperCase(),
-              isDefault : (this.isOn) ? true: false
-            };
+		if(this.bankName !== '' && this.holderName !== '' && this.accountNumber !== '' )
+		{
+			const payload = {
+				BankName : this.bankName.toUpperCase(),
+				AccountNumber : this.accountNumber,
+				AccountHolderName : this.holderName.toUpperCase(),
+				isDefault : (this.isOn) ? true: false
+			};
 
 
-            const response = await api.post('BankAccount/SetupNewBankAccount', JSON.stringify(payload));
-            if(response.status === 200){
-                toast.success('Setup successfully!');
-                
-                this.$router.push({ name: 'CardInfos' });
-              }
-          }          
-      }
-      catch (error) {
-          console.error('API Error:', error);
-      }            
+			try{
+				const response = await api.post('BankAccount/SetupNewBankAccount', JSON.stringify(payload));
+				if(response.status === 200){
+					toast.success('Setup successfully!');
+					
+					this.$router.push({ name: 'CardInfos' });
+				}
+			}
+			catch (error) {
+				toast.error(error.response.data.message)
+			}		
+		}                  
     },
     backToCard() {
       this.$router.push({ name: 'CardInfos' });

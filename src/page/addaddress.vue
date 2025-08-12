@@ -165,7 +165,6 @@
 <script>
 import "./index.css";
 import api from '../services/callingapi' 
-import QRCode from 'qrcode';
 import { toast } from 'vue3-toastify'; 
 
 export default{
@@ -187,40 +186,40 @@ export default{
   },
   methods:{    
     async saveAddress(){
-      try{
-        if(this.city == ''){
-            this.cityError = true;
-        }
-        if(this.state == ''){
-            this.stateError = true;
-        }
-        if(this.line1 == ''){
-            this.lineError = true;
-        }
-        if(this.postCode == ''){
-            this.postCodeError = true;
-        }
+      if(this.city == ''){
+        this.cityError = true;
+      }
+      if(this.state == ''){
+        this.stateError = true;
+      }
+      if(this.line1 == ''){
+        this.lineError = true;
+      }
+      if(this.postCode == ''){
+        this.postCodeError = true;
+      }
 
-        if(this.city !== '' && this.postCode !== '' && this.state !== '' && this.line1 !== '' )
-        {
-            const payload = {
-                Line1 : this.line1,
-                Line2 : this.line2,
-                City : this.city.toUpperCase(),
-                State : this.state.toUpperCase(),
-                PostalCode : this.postCode,
-                Country : 'MALAYSIA'
-            };
-            const response = await api.post('Address/NewAddress', JSON.stringify(payload));
-            if(response.status === 200){
-                toast.success('Setup successfully!');                
-                this.$router.push({ name: 'Addresses' });
-              }
+      if(this.city !== '' && this.postCode !== '' && this.state !== '' && this.line1 !== '' )
+      {
+        const payload = {
+            Line1 : this.line1,
+            Line2 : this.line2,
+            City : this.city.toUpperCase(),
+            State : this.state.toUpperCase(),
+            PostalCode : this.postCode,
+            Country : 'MALAYSIA'
+        };
+        try{
+          const response = await api.post('Address/NewAddress', JSON.stringify(payload));
+          if(response.status === 200){
+              toast.success('Setup successfully!');                
+              this.$router.push({ name: 'Addresses' });
+          }
+        }
+        catch (error) {
+          toast.error(error.response.data.message)
         }        
-      }
-      catch (error) {
-          console.error('API Error:', error);
-      }
+      }            
     },
     backToAddress() {
        this.$router.go(-1);    

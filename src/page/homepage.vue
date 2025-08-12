@@ -190,7 +190,7 @@
 <script>
 import "./index.css";
 import api from '../services/callingapi'
-
+import { toast } from 'vue3-toastify';
 export default{
   data(){
     return{
@@ -205,9 +205,9 @@ export default{
   },
   methods:{    
     async getDetail(){
-      try{
-        const userId = sessionStorage.getItem('IdUser');
+       const userId = sessionStorage.getItem('IdUser');
         //const userId = '48d8ebe7-0d83-49db-8e09-e6aee39e2094';
+      try{
         const response = await api.post('Home/MemberHome', JSON.stringify(userId));
         if(response.status === 200){
           this.member = response.data;
@@ -219,7 +219,7 @@ export default{
         }
       }
       catch (error) {
-          console.error('API Error:', error);
+        toast.error(error.response.data.message)
       }
     },
     goToAboutUsPage() {

@@ -102,6 +102,7 @@
 <script>
 import "./index.css";
 import api from '../services/callingapi'
+import { toast } from 'vue3-toastify';
 export default{
   data(){
     return{
@@ -120,14 +121,6 @@ export default{
   mounted() {
     this.startCountdown();
   },
-  // async mounted(){
-  //   try {
-  //     const result = await api('System/MemberLogin'); // 👈 Just pass the path
-  //     this.data = result;
-  //   } catch (error) {
-  //     console.error('Fetch error:', error.message);
-  //   }
-  // },
   methods:{
     handleInput(index) {
       const refs = ['firstRef', 'secondRef', 'thirdRef', 'fourRef'];
@@ -146,50 +139,49 @@ export default{
       }
     },
     async goToSubmit() {
-       try{
-          if(this.first === '')
-          {
-            this.firstError = true;
-          } 
-          
-          if(this.second === '')
-          {
-            this.secondError = true;
+      if(this.first === '')
+      {
+        this.firstError = true;
+      } 
+      
+      if(this.second === '')
+      {
+        this.secondError = true;
+      }
+
+      if(this.third === '')
+      {
+        this.thirdError = true;
+      }
+
+      if(this.four === '')
+      {
+        this.fourError = true;
+      }
+
+      if(this.first !== '' && this.second !== '' && this.third !== '' && this.four !== '')
+      {
+        const userPhoneNo = sessionStorage.getItem('phoneNoUser');
+        const payload = {
+          PhoneNo: userPhoneNo,
+          Code: this.first + this.second + this.third + this.four
+        };
+        try{
+          const response = await api.post('Member/MemberVerification', JSON.stringify(payload));
+          if(response.data.data !== null){
+            sessionStorage.setItem('IdUser', response.data.data.id);
+            sessionStorage.removeItem('phoneNoUser');
+
+            this.$router.push({ name: 'Home' });
           }
-
-          if(this.third === '')
-          {
-            this.thirdError = true;
-          }
-
-          if(this.four === '')
-          {
-            this.fourError = true;
-          }
-
-          if(this.first !== '' && this.second !== '' && this.third !== '' && this.four !== '')
-          {
-            const userPhoneNo = sessionStorage.getItem('phoneNoUser');
-            const payload = {
-              PhoneNo: userPhoneNo,
-              Code: this.first + this.second + this.third + this.four
-            };
-            const response = await api.post('Member/MemberVerification', JSON.stringify(payload));
-            
-            if(response.data.data !== null){
-              sessionStorage.setItem('IdUser', response.data.data.id);
-              sessionStorage.removeItem('phoneNoUser');
-
-              this.$router.push({ name: 'Home' });
-            }
-            else{
-              this.$router.push({ name: 'SignUp' });
-            }
+          else{
+            this.$router.push({ name: 'SignUp' });
           }
         }
         catch (error) {
-          console.error('API Error:', error);
-        }    
+          toast.error(error.response.data.message)
+        }        
+      }               
     },
     startCountdown() {
       this.countdown = 60;

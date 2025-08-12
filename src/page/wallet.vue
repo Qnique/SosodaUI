@@ -6,7 +6,7 @@
       class="flex w-[55px] h-[21px] justify-between items-center relative z-[37] mt-[50px] mr-0 mb-0 ml-[30px]"
     >
       <div @click="backToHome"
-        class="cursor-pointer w-[10px] h-[20px] shrink-0 bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/ZKXnq2y6F6.png)] bg-cover bg-no-repeat relative overflow-hidden z-[37]"
+        class="cursor-pointer w-[10px] h-[20px] shrink-0 bg-[url('../public/back_arrow.png')] bg-cover bg-no-repeat relative overflow-hidden z-[37]"
       ></div>
       <span @click="backToHome"
         class="cursor-pointer h-[21px] shrink-0 font-['Poppins'] text-[14px] font-medium leading-[21px] text-[#000] relative text-left whitespace-nowrap z-[36]"
@@ -17,17 +17,17 @@
       class="w-[342px] h-[151.388px] relative z-[38] mt-[5.612px] mr-0 mb-0 ml-[30px]"
     >
       <div
-        class="w-[125px] h-[139.051px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/Odyxm3HiNV.png)] bg-cover bg-no-repeat absolute top-0 left-[217px] z-[38]"
+        class="w-[125px] h-[139.051px] absolute top-0 left-[217px] z-[38]"
       >
         <div
-          class="w-[125px] h-[138px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/TAzVe3KffJ.png)] bg-cover bg-no-repeat relative z-[39] mt-[1.388px] mr-0 mb-0 ml-0"
+          class="w-[125px] h-[138px] bg-[url('../public/wallet.png')] bg-cover bg-no-repeat relative z-[39] mt-[1.388px] mr-0 mb-0 ml-0"
         ></div>
       </div>
       <div
-        class="w-[342px] h-[132px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/Z8yMXpKA7r.png)] bg-cover bg-no-repeat rounded-[10px] absolute top-[19.388px] left-0 z-[4]"
+        class="w-[342px] h-[132px] bg-[url('../public/wallet-background.png')] bg-cover bg-no-repeat rounded-[10px] absolute top-[19.388px] left-0 z-[4]"
       >
         <div
-          class="w-[342px] h-[132px] text-[0px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/Vja4OaKeXb.png)] bg-cover bg-no-repeat rounded-[10px] absolute top-0 left-0 z-[5]"
+          class="w-[342px] h-[132px] text-[0px] bg-[url('../public/wallet-background.png')] bg-cover bg-no-repeat rounded-[10px] absolute top-0 left-0 z-[5]"
         >
           <span
             class="block h-[20px] font-['Poppins'] text-[14px] font-normal leading-[20px] text-[#fff] tracking-[0.1px] relative text-left uppercase whitespace-nowrap z-[6] mt-[36px] mr-0 mb-0 ml-[20px]"
@@ -46,53 +46,42 @@
         class="flex h-[30px] justify-start items-center font-['Poppins'] text-[20px] font-semibold leading-[29.986px] text-[#000] absolute top-0 left-[calc(50%-171px)] text-left whitespace-nowrap z-[3]"
         >Transaction History</span
       >
-      <div
-        class="flex w-[125px] h-[20px] gap-px items-center flex-nowrap absolute top-[8px] left-[217px] z-[24]"
-      >
-        <span
-          class="h-[20px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[20px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-[25]"
-          >1 Jul - 12 July 2025</span
-        >
-        <div
-          class="w-[15px] h-[15px] shrink-0 bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/wDciHWqCYb.png)] bg-cover bg-no-repeat relative overflow-hidden z-[26]"
-        ></div>
-      </div>
     </div>
     <div
       class="flex w-[342px] h-[23px] justify-between items-center relative z-[33] mt-[15px] mr-0 mb-0 ml-[30px]"
     >
-      <div
-        class="flex w-[78px] h-[23px] pt-0 pr-[16px] pb-0 pl-[16px] gap-[10px] justify-center items-center shrink-0 flex-nowrap bg-[#5ba6e0] rounded-[20px] relative shadow-[1px_2px_7px_0_rgba(0,0,0,0.1)] z-[33]"
+      <button
+        class="flex w-[78px] h-[23px] pt-0 pr-[16px] pb-0 pl-[16px] gap-[10px] justify-center items-center shrink-0 flex-nowrap bg-[#f8f8f8] rounded-[20px] relative shadow-[1px_2px_7px_0_rgba(0,0,0,0.1)] z-[33]"
       >
         <span
-          class="h-[20px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-medium leading-[20px] text-[#fff] tracking-[0.1px] relative text-left whitespace-nowrap z-[34]"
+          class="h-[20px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-medium leading-[20px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-[34]"
           >All Types</span
         >
-      </div>
-      <div
+      </button>
+      <button
         class="flex w-[78px] h-[23px] pt-0 pr-[16px] pb-0 pl-[16px] gap-[10px] justify-center items-center shrink-0 flex-nowrap bg-[#f8f8f8] rounded-[20px] border-solid border border-[#f5f5f5] relative shadow-[1px_1.5px_7px_0_rgba(0,0,0,0.1)] z-[27]"
       >
         <span
           class="h-[20px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[20px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-[28]"
           >Top-up</span
         >
-      </div>
-      <div
+      </button>
+      <button
         class="flex w-[78px] h-[23px] pt-0 pr-[16px] pb-0 pl-[16px] gap-[10px] justify-center items-center shrink-0 flex-nowrap bg-[#f8f8f8] rounded-[20px] border-solid border border-[#f5f5f5] relative shadow-[1px_1.5px_7px_0_rgba(0,0,0,0.1)] z-[29]"
       >
         <span
           class="h-[20px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[20px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-30"
           >Buy</span
         >
-      </div>
-      <div
+      </button>
+      <button
         class="flex w-[78px] h-[23px] pt-0 pr-[16px] pb-0 pl-[16px] gap-[10px] justify-center items-center shrink-0 flex-nowrap bg-[#f8f8f8] rounded-[20px] border-solid border border-[#f5f5f5] relative shadow-[1px_1.5px_7px_0_rgba(0,0,0,0.1)] z-[31]"
       >
         <span
           class="h-[20px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[20px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-[32]"
           >Refund</span
         >
-      </div>
+      </button>
     </div>
     <div
       class="w-[342px] h-[65px] text-[0px] relative z-10 mt-[30px] mr-0 mb-0 ml-[30px]"
@@ -126,7 +115,7 @@
       </div>
     </div>
     <div
-      class="w-[342px] h-px bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-03/1gvMBdjvp0.png)] bg-cover bg-no-repeat relative z-[8] mt-[9.5px] mr-0 mb-0 ml-[30px]"
+      class="w-[342px] h-px bg-[url('../public/line.png')] bg-cover bg-no-repeat relative z-[8] mt-[9.5px] mr-0 mb-0 ml-[30px]"
     ></div>
     <div
       class="flex w-[342px] h-[50px] pt-[10px] pr-[48px] pb-[10px] pl-[48px] gap-[10px] justify-center items-center flex-nowrap bg-[#292929] rounded-[12px] relative mt-[288px] mr-0 mb-0 ml-[30px]"
@@ -139,13 +128,22 @@
   </div>
 </template>
 
-<script setup>
+<script>
 import "./index.css";
-import { useRouter } from 'vue-router';
+import api from '../services/callingapi'
+import { toast } from 'vue3-toastify'; 
 
-const router = useRouter();
+export default{
+  data(){
+    return{
+      wallet: null
+    }
+  },
+  methods:{
+    backToHome() {
+      this.$router.push({ name: 'Home' });
+    }
+  }
+}
 
-const backToHome = () => {
-  router.push({ name: 'Home' });
-};
 </script>

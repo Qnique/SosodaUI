@@ -140,9 +140,9 @@ export default{
   },
   methods:{    
     async getDetail(){
-      try{
-        const userId = sessionStorage.getItem('IdUser');
+       const userId = sessionStorage.getItem('IdUser');
         //const userId = '48d8ebe7-0d83-49db-8e09-e6aee39e2094';
+      try{
         const response = await api.post('Home/MemberHome', JSON.stringify(userId));
         if(response.status === 200){
           this.member = response.data;
@@ -152,32 +152,32 @@ export default{
         }
       }
       catch (error) {
-          console.error('API Error:', error);
+          toast.error(error.response.data.message)
       }
     },
     async saveToAccount() {
-      try{
-        if(this.email === ''){
-          this.emailError = true;
+      if(this.email === ''){
+        this.emailError = true;
+      }
+      if(this.mobileNumber === ''){
+        this.phoneError = true;
+      }  
+      if(this.email !== '' && this.mobileNumber !== ''){
+        const payload = {
+          MobileNumber: this.member.mobileNumber,
+          Email: this.member.email
         }
-        if(this.mobileNumber === ''){
-          this.phoneError = true;
-        }
-
-        if(this.email !== '' && this.mobileNumber !== ''){
-          const payload = {
-            MobileNumber: this.member.mobileNumber,
-            Email: this.member.email
-          }
+        try{
           const response = await api.post('Member/EditMemberDetail', JSON.stringify(payload));
           if(response.status === 200){
             toast.success('Saved successfully!');
           }
-        }        
-      }
-      catch (error) {
-          console.error('API Error:', error);
-      }      
+        }
+        catch (error) {
+          toast.error(error.response.data.message)
+        } 
+        
+      }               
     },
     backToAccount() {
       this.$router.push({ name: 'Accounts' });

@@ -59,7 +59,7 @@ export default{
         this.qrDataUrl = url;
       })
       .catch(err => {
-        console.error('QR generation failed:', err);
+        toast.error('QR generation failed:', err)
       });
   },
   methods:{    
@@ -72,7 +72,7 @@ export default{
         toast.success('Copied successfully!');
       })
       .catch(err => {
-        console.error('Clipboard copy failed:', err);
+        toast.error('Clipboard copy failed:', err);
       });
     }
   }

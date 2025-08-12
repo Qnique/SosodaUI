@@ -320,56 +320,54 @@ export default{
       this.isOn = !this.isOn;
     },
     async saveCard() {
-      try{
-          if(this.cvv === ''){
-                  this.cvvError = true;
-          }
-        
-          if(this.accountNumber === ''){
-                this.AccountError = true;
-          }
-
-          if(this.expiryDate === ''){
-                this.expiryError = true;
-          }
-          else{
-            if(!this.isValidExpiry)
-            {
-              this.expiryError = true;
-            }
-          }
-
-          if(this.holderName === ''){
-                this.NameError = true;
-          }
-
-          if(this.bankName === ''){
-                  this.BankError = true;
-          }
-
-          if(this.cvv !== '' && this.holderName !== '' && this.accountNumber !== '' && this.expiryDate !== '' && this.bankName  !== '' && this.isValidExpiry)
-          {
-            const payload = {
-              BankName: this.bankName.toUpperCase(),
-              CVV : this.cvv.toUpperCase(),
-              CardNumber : this.accountNumber,
-              CardHolderName : this.holderName.toUpperCase(),
-              ExpiryDT: this.expiryDate,
-              isDefault : (this.isOn) ? true: false
-            };
-
-
-            const response = await api.post('CreditCard/SetupNewCreditCard', JSON.stringify(payload));
-            if(response.status === 200){
-                toast.success('Setup successfully!');
-                
-                this.$router.push({ name: 'CardInfos' });
-              }
-          }          
+      if(this.cvv === ''){
+          this.cvvError = true;
       }
-      catch (error) {
-          console.error('API Error:', error);
-      }            
+    
+      if(this.accountNumber === ''){
+          this.AccountError = true;
+      }
+
+      if(this.expiryDate === ''){
+          this.expiryError = true;
+      }
+      else{
+        if(!this.isValidExpiry)
+        {
+          this.expiryError = true;
+        }
+      }
+
+      if(this.holderName === ''){
+            this.NameError = true;
+      }
+
+      if(this.bankName === ''){
+              this.BankError = true;
+      }
+
+      if(this.cvv !== '' && this.holderName !== '' && this.accountNumber !== '' && this.expiryDate !== '' && this.bankName  !== '' && this.isValidExpiry)
+      {
+        const payload = {
+          BankName: this.bankName.toUpperCase(),
+          CVV : this.cvv.toUpperCase(),
+          CardNumber : this.accountNumber,
+          CardHolderName : this.holderName.toUpperCase(),
+          ExpiryDT: this.expiryDate,
+          isDefault : (this.isOn) ? true: false
+        };
+        try{
+          const response = await api.post('CreditCard/SetupNewCreditCard', JSON.stringify(payload));
+          if(response.status === 200){
+              toast.success('Setup successfully!');
+              
+              this.$router.push({ name: 'CardInfos' });
+          }
+        }
+        catch (error) {
+          toast.error(error.response.data.message)
+        }        
+      }                         
     },
     backToCard() {
       this.$router.push({ name: 'CardInfos' });

@@ -16,10 +16,10 @@
         class="w-[12.5px] h-[25px] shrink-0 bg-[url('../public/white.png')] bg-cover bg-no-repeat relative overflow-hidden z-[3]"
       ></div>
     </div>
-    <div  @click="pickup"
+    <div @click="goToRefund('Pickup')"
       class="cursor-pointer w-[88.375px] h-[149.001px] bg-[url('../public/pickup.png')] bg-cover bg-no-repeat absolute top-[125px] left-[269.129px] z-[21]"
     ></div>
-    <div @click="pickup"
+    <div @click="goToRefund('Pickup')"
       class="cursor-pointer card flex w-[342px] h-[120px] flex-col gap-[5px] items-start flex-nowrap absolute top-[154.426px] left-[50px] z-[18]"
     >
       <span
@@ -30,10 +30,10 @@
         >Sit back. We’ll come to you.</span
       >
     </div>
-    <div  @click="dropoff"
+    <div  @click="goToRefund('DropOff')"
       class="cursor-pointer w-[179.521px] h-[146.49px] bg-[url('../public/dropoff.png')] bg-cover bg-no-repeat absolute top-[307.42px] left-[221.887px] z-[15]"
     ></div>
-    <div @click="dropoff"
+    <div @click="goToRefund('DropOff')"
       class="cursor-pointer card flex w-[342px] h-[120px] flex-col gap-[5px] items-start flex-nowrap absolute top-[324.426px] left-[50px] z-[12]"
     >
       <span
@@ -44,10 +44,10 @@
         >We deliver, you stay refreshed.</span
       >
     </div>
-    <div @click="returnspot"
+    <div @click="goToRefund('ReturnSpot')"
       class="cursor-pointer w-[187.286px] h-[150px] bg-[url('../public/spot.png')] bg-cover bg-no-repeat absolute top-[469.426px] left-[222.715px] z-[15]"
     ></div>
-    <div @click="returnspot"
+    <div @click="goToRefund('ReturnSpot')"
       class="cursor-pointer card flex w-[342px] h-[120px] flex-col gap-[5px] items-start flex-nowrap absolute top-[495.164px] left-[50px] z-[12]"
     >
       <span
@@ -80,13 +80,27 @@
 }
 </style>
 
-<script setup>
+<script>
 import "./index.css";
-import { useRouter } from 'vue-router';
+import api from '../services/callingapi' 
+import { toast } from 'vue3-toastify'; 
 
-const router = useRouter();
+export default{
+  data(){
+    return{
+    }
+  },
+  mounted(){
+  },
+  methods:{    
+    backToHome() {
+       this.$router.push({ name: 'Home' }); 
+    },  
+    goToRefund(refundmethod){
+      this.$router.push({ name: 'SetupRefund', params: { refundmethod } })
+    }  
+  }
+}
 
-const backToHome = () => {
-  router.push({ name: 'Home' });
-};
+
 </script>

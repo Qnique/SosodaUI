@@ -319,7 +319,7 @@ export default{
             
     }
     catch (error) {
-        console.error('API Error:', error);
+        toast.error(error.response.data.message);
     }    
   },
   methods:{    

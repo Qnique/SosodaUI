@@ -170,7 +170,6 @@
 import "./index.css";
 import api from '../services/callingapi' 
 import { toast } from 'vue3-toastify'; 
-import { useRoute } from 'vue-router'
 
 export default{
   data(){
@@ -189,8 +188,8 @@ export default{
     }
   },
   async mounted(){
-    try{
-        const id = this.$route.params.id;
+    const id = this.$route.params.id;
+    try{        
         const response = await api.post('Address/GetDetailById', JSON.stringify(id));
         if(response.status === 200){      
             if(response.data.recordStatus === 1){
@@ -201,64 +200,63 @@ export default{
                 this.city = response.data.city;
                 this.address = response.data;
             }            
-        }            
-            
+        }               
     }
     catch (error) {
-        console.error('API Error:', error);
+      toast.error(error.response.data.message)
     }    
   },
   methods:{ 
     async saveAddress(){
-      try{
-        if(this.city == ''){
-            this.cityError = true;
-        }
-        if(this.state == ''){
-            this.stateError = true;
-        }
-        if(this.line1 == ''){
-            this.lineError = true;
-        }
-        if(this.postCode == ''){
-            this.postCodeError = true;
-        }
+      if(this.city == ''){
+        this.cityError = true;
+      }
+      if(this.state == ''){
+        this.stateError = true;
+      }
+      if(this.line1 == ''){
+        this.lineError = true;
+      }
+      if(this.postCode == ''){
+        this.postCodeError = true;
+      }
 
-        if(this.city !== '' && this.postCode !== '' && this.state !== '' && this.line1 !== '' )
-        {
-            const payload = {
-                Id: this.address.id,
-                Line1 : this.line1,
-                Line2 : this.line2,
-                City : this.city.toUpperCase(),
-                State : this.state.toUpperCase(),
-                PostalCode : this.postCode,
-                Country : 'MALAYSIA'
-            };
-            const response = await api.post('Address/EditAddress', JSON.stringify(payload));
-            if(response.status === 200){
-                toast.success('Setup successfully!');                
-                this.$router.push({ name: 'Addresses' });
-            }
-        }        
-      }
-      catch (error) {
-          console.error('API Error:', error);
-      }
+      if(this.city !== '' && this.postCode !== '' && this.state !== '' && this.line1 !== '' )
+      {
+        const payload = {
+            Id: this.address.id,
+            Line1 : this.line1,
+            Line2 : this.line2,
+            City : this.city.toUpperCase(),
+            State : this.state.toUpperCase(),
+            PostalCode : this.postCode,
+            Country : 'MALAYSIA'
+        };
+        try{
+          const response = await api.post('Address/EditAddress', JSON.stringify(payload));
+          if(response.status === 200){
+              toast.success('Setup successfully!');                
+              this.$router.push({ name: 'Addresses' });
+          }
+        }
+        catch (error) {
+          toast.error(error.response.data.message)
+        }          
+      }        
     },
     backToAddress() {
        this.$router.go(-1);    
     },
     async deleteAddress(){
-        try{
-            const response = await api.post('Address/DeleteAddess', JSON.stringify(this.address.id));
-            if(response.status === 200){
-                toast.success('Deleted successfully!');                
-                this.$router.push({ name: 'Addresses' });
-            }
-        }
-        catch (error) {
-          console.error('API Error:', error);
+      try{
+          const response = await api.post('Address/DeleteAddess', JSON.stringify(this.address.id));
+          if(response.status === 200){
+              toast.success('Deleted successfully!');                
+              this.$router.push({ name: 'Addresses' });
+          }
+      }
+      catch (error) {
+        toast.error(error.response.data.message)
       }
     }    
   }

@@ -107,6 +107,7 @@
 <script>
 import "./index.css";
 import api from '../services/callingapi'
+import { toast } from 'vue3-toastify'; 
 
 export default{
   data(){
@@ -120,23 +121,22 @@ export default{
   methods:{
     async goToVerification() {
        if (this.phoneNo !== '') {
-        try{
           if(this.checked){
             // const payload = {
             //   phoneNo: this.phoneNo
             // }
             sessionStorage.setItem('phoneNoUser', this.phoneNo);
-
-            const response = await api.post('System/MemberLogin', JSON.stringify(this.phoneNo));
-            this.$router.push({ name: 'Verification' });
+            try{
+              const response = await api.post('System/MemberLogin', JSON.stringify(this.phoneNo));
+              this.$router.push({ name: 'Verification' });
+            }
+            catch (error) {
+              toast.error(error.response.data.message)
+            }             
           }
           else{
             this.showError = !this.checked;            
-          }                 
-        }
-        catch (error) {
-          console.error('API Error:', error);
-        }  
+          }                          
       }
       else {
         this.inputError = true;
