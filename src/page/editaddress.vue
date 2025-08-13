@@ -203,7 +203,7 @@ export default{
         }               
     }
     catch (error) {
-      toast.error(error.response.data.message)
+      toast.error(error.response.data)
     }    
   },
   methods:{ 
@@ -240,7 +240,7 @@ export default{
           }
         }
         catch (error) {
-          toast.error(error.response.data.message)
+          toast.error(error.response.data)
         }          
       }        
     },
@@ -256,7 +256,7 @@ export default{
           }
       }
       catch (error) {
-        toast.error(error.response.data.message)
+        toast.error(error.response)
       }
     }    
   }

@@ -5,7 +5,8 @@
     <div
       class="flex w-[342px] justify-between items-center flex-nowrap relative mt-[50px] mr-0 mb-0 ml-[30px]"
     >
-      <div @click="backToMethod()"
+      <div
+        @click="backToMethod()"
         class="w-[12.5px] h-[25px] shrink-0 bg-[url('../public/back_arrow.png')] bg-cover bg-no-repeat relative overflow-hidden z-[1]"
       ></div>
       <span
@@ -30,43 +31,42 @@
             >Swap with Cylinder Brand</span
           ><span
             class="flex w-[342px] h-[36px] justify-start items-start self-stretch shrink-0 font-['Poppins'] text-[12px] font-normal leading-[18px] text-[#a5a5a5] relative text-left z-[8]"
-            >Brand of the empty cylinder you are returning for this exchange.</span
+            >Brand of the empty cylinder you are returning for this
+            exchange.</span
           >
         </div>
         <div
-        class="flex w-[342px] h-[46px] justify-between items-center relative z-[14] mt-[10px] mr-0 mb-0 ml-[8px]"
+          class="flex w-[342px] h-[46px] justify-between items-center relative z-[14] mt-[10px] mr-0 mb-0 ml-[1px]"
         >
-            <div
+          <div
             @click="selectType('Sosoda')"
             class="flex w-[166px] pt-[11px] pr-[15px] pb-[11px] pl-[15px] justify-between items-center shrink-0 flex-nowrap rounded-[10px] border border-[#fdfdfd] shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] cursor-pointer"
             :class="selectedType === 'Sosoda' ? 'bg-[#2275b6]' : 'bg-[#fafafa]'"
-            >
-            
-                <div class="flex items-center gap-[10px]">                    
-                    <span
-                    class="font-['Poppins'] text-[14px] text-left whitespace-nowrap"
-                    :class="selectedType === 'Sosoda' ? 'text-white' : 'text-[#000]'"
-                    >
-                    Sosoda
-                    </span>
-                </div>
+          >
+            <div class="flex items-center gap-[10px]">
+              <span
+                class="font-['Poppins'] text-[14px] text-left whitespace-nowrap"
+                :class="selectedType === 'Sosoda' ? 'text-white' : 'text-[#000]'"
+              >
+                Sosoda
+              </span>
             </div>
+          </div>
 
-            <div
+          <div
             @click="selectType('NonSosoda')"
             class="flex w-[166px] pt-[11px] pr-[15px] pb-[11px] pl-[15px] justify-between items-center shrink-0 flex-nowrap rounded-[10px] border border-[#fdfdfd] shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] cursor-pointer"
             :class="selectedType === 'NonSosoda' ? 'bg-[#2275b6]' : 'bg-[#fafafa]'"
-            >    
-                <div class="flex items-center gap-[10px]">
-                    
-                    <span
-                    class="font-['Poppins'] text-[14px] text-left whitespace-nowrap"
-                    :class="selectedType === 'NonSosoda' ? 'text-white' : 'text-[#000]'"
-                    >
-                    Non-Sosoda
-                    </span>
-                </div>
+          >
+            <div class="flex items-center gap-[10px]">
+              <span
+                class="font-['Poppins'] text-[14px] text-left whitespace-nowrap"
+                :class="selectedType === 'NonSosoda' ? 'text-white' : 'text-[#000]'"
+              >
+                Non-Sosoda
+              </span>
             </div>
+          </div>
         </div>
       </div>
       <div
@@ -76,53 +76,56 @@
           class="flex flex-col gap-[3px] items-start self-stretch shrink-0 flex-nowrap relative z-[19]"
         >
           <div
-            class="flex gap-[7px] items-center self-stretch shrink-0 flex-nowrap relative z-20"
+            class="flex gap-[7px] items-center self-stretch shrink-0 flex-nowrap relative z-10"
           >
             <span
-              class="h-[24px] shrink-0 basis-auto font-['Poppins'] text-[16px] font-semibold leading-[24px] text-[#000] relative text-left whitespace-nowrap z-[21]"
+              class="h-[24px] shrink-0 basis-auto font-['Poppins'] text-[16px] font-semibold leading-[24px] text-[#000] relative text-left whitespace-nowrap z-[11]"
               >Swap Quantity</span
             >
             <div
-              class="w-[20px] h-[20px] shrink-0 relative overflow-hidden z-[22]"
+              class="w-[20px] h-[20px] shrink-0 relative overflow-hidden z-[12]"
             >
               <div
-                class="w-[15.417px] h-[15.417px] bg-[url('../public/info.png')] bg-[length:100%_100%] bg-no-repeat relative z-[23] mt-[2.292px] mr-0 mb-0 ml-[2.292px]"
+                @click="showSwapRule = !topUpShow"
+                class="cursor-pointer w-[15.417px] h-[15.417px] bg-[url('../public/info.png')] bg-[length:100%_100%] bg-no-repeat relative z-[13] mt-[2.292px] mr-0 mb-0 ml-[2.292px]"
               ></div>
             </div>
           </div>
           <span
-            class="h-[18px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-[#a5a5a5] relative text-left whitespace-nowrap z-[24]"
+            class="h-[18px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-[#a5a5a5] relative text-left whitespace-nowrap z-[14]"
             >Number of empty cylinders must match new ones.</span
           >
         </div>
         <div
-          class="flex flex-col gap-[10px] items-start self-stretch shrink-0 flex-nowrap relative z-[25]"
+          class="flex flex-col gap-[10px] items-start self-stretch shrink-0 flex-nowrap relative z-[15]"
         >
           <div
             class="flex pt-[15px] pr-[15px] pb-[15px] pl-[15px] gap-[134px] justify-center items-center self-stretch shrink-0 flex-nowrap bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[26]"
           >
-            <input v-model="qty" type="number" min="0"
-              class="h-[24px] text-center shrink-0 basis-auto font-['Poppins'] text-[20px] font-semibold leading-[14px] bg-[#fafafa] text-[#000] tracking-[0.1px] relative whitespace-nowrap z-[28]"
-              />
-            
+            <input
+              v-model="qty"
+              type="number"
+              min="0"
+              class="h-[24px] text-center shrink-0 basis-auto font-['Poppins'] text-[20px] font-semibold leading-[14px] bg-[#fafafa] text-[#000] tracking-[0.1px] relative whitespace-nowrap z-[18]"
+            />
           </div>
         </div>
       </div>
       <div
-        class="flex flex-col gap-[10px] items-start self-stretch shrink-0 flex-nowrap relative z-30"
+        class="flex flex-col gap-[10px] items-start self-stretch shrink-0 flex-nowrap relative z-10"
       >
         <div
-          class="flex flex-col gap-[10px] items-start self-stretch shrink-0 flex-nowrap relative z-[31]"
+          class="flex flex-col gap-[10px] items-start self-stretch shrink-0 flex-nowrap relative z-[11]"
         >
           <div
-            class="flex justify-between items-center self-stretch shrink-0 flex-nowrap relative z-[32]"
+            class="flex justify-between items-center self-stretch shrink-0 flex-nowrap relative z-[12]"
           >
             <span
-              class="h-[24px] shrink-0 basis-auto font-['Poppins'] text-[16px] font-semibold leading-[24px] text-[#000] relative text-left whitespace-nowrap z-[33]"
+              class="h-[24px] shrink-0 basis-auto font-['Poppins'] text-[16px] font-semibold leading-[24px] text-[#000] relative text-left whitespace-nowrap z-[13]"
               >Outlet</span
             >
             <div
-              class="flex w-[87px] gap-[5px] items-center shrink-0 flex-nowrap relative z-[34]"
+              class="flex w-[87px] gap-[5px] items-center shrink-0 flex-nowrap relative z-[14]"
             >
               <!-- <span
                 class="h-[20px] shrink-0 basis-auto font-['Poppins'] text-[10px] font-medium leading-[20px] text-[#2275b6] tracking-[0.1px] relative text-left whitespace-nowrap z-[35]"
@@ -132,24 +135,24 @@
           </div>
         </div>
         <div
-          class="flex gap-[10px] items-start self-stretch shrink-0 flex-nowrap relative z-[37]"
+          class="flex gap-[10px] items-start self-stretch shrink-0 flex-nowrap relative z-[17]"
         >
           <div
-            class="w-[93px] h-[65px] shrink-0 bg-[url('../public/outlet.png')] bg-cover bg-no-repeat rounded-[6px] relative z-[38]"
+            class="w-[93px] h-[65px] shrink-0 bg-[url('../public/outlet.png')] bg-cover bg-no-repeat rounded-[6px] relative z-[18]"
           ></div>
           <div
-            class="flex flex-col items-start grow shrink-0 basis-0 flex-nowrap relative z-[39]"
+            class="flex flex-col items-start grow shrink-0 basis-0 flex-nowrap relative z-[19]"
           >
             <div
-              class="flex justify-between items-start self-stretch shrink-0 flex-nowrap relative z-40"
+              class="flex justify-between items-start self-stretch shrink-0 flex-nowrap relative z-10"
             >
               <span
-                class="flex w-[114px] h-[20.649px] justify-start items-start shrink-0 basis-auto font-['Poppins'] text-[12px] font-semibold leading-[18px] text-[#000] relative text-left whitespace-nowrap z-[41]"
+                class="flex w-[114px] h-[20.649px] justify-start items-start shrink-0 basis-auto font-['Poppins'] text-[12px] font-semibold leading-[18px] text-[#000] relative text-left whitespace-nowrap z-[11]"
                 >Outlet</span
               >
             </div>
             <span
-              class="h-[17.207px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[10px] font-normal leading-[15px] text-[#000] relative text-left whitespace-nowrap z-[43]"
+              class="h-[17.207px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[10px] font-normal leading-[15px] text-[#000] relative text-left whitespace-nowrap z-[13]"
               >Address</span
             >
           </div>
@@ -157,145 +160,258 @@
       </div>
     </div>
     <div
-      class="flex w-[402px] h-[355.346px] pt-[35px] pr-[30px] pb-[35px] pl-[30px] flex-col gap-[10px] justify-center items-center flex-nowrap bg-[#fff] rounded-tl-[20px] rounded-tr-[20px] rounded-br-none rounded-bl-none relative shadow-[0_0_10px_0_rgba(0,0,0,0.1)] z-[56] mt-[24px] mr-0 mb-0 ml-0"
+      class="flex w-[402px] h-[355.346px] pt-[35px] pr-[30px] pb-[35px] pl-[30px] flex-col gap-[10px] justify-center items-center flex-nowrap bg-[#fff] rounded-tl-[20px] rounded-tr-[20px] rounded-br-none rounded-bl-none relative shadow-[0_0_10px_0_rgba(0,0,0,0.1)] z-[6] mt-[24px] mr-0 mb-0 ml-0"
     >
       <div
-        class="flex w-[342px] flex-col gap-[40px] items-start shrink-0 flex-nowrap relative z-[57]"
+        class="flex w-[342px] flex-col gap-[40px] items-start shrink-0 flex-nowrap relative z-[7]"
       >
         <div
-          class="flex flex-col gap-[15px] items-start self-stretch shrink-0 flex-nowrap relative z-[58]"
+          class="flex flex-col gap-[15px] items-start self-stretch shrink-0 flex-nowrap relative z-[8]"
         >
           <span
-            class="h-[21px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[16px] font-semibold leading-[21px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-[59]"
+            class="h-[21px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[16px] font-semibold leading-[21px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-[9]"
             >Summary</span
           >
           <div
-            class="flex flex-col gap-[15px] items-start self-stretch shrink-0 flex-nowrap relative z-[60]"
+            class="flex flex-col gap-[15px] items-start self-stretch shrink-0 flex-nowrap relative z-[10]"
           >
             <div
-              class="flex flex-col gap-[10px] items-start self-stretch shrink-0 flex-nowrap relative z-[61]"
+              class="flex flex-col gap-[10px] items-start self-stretch shrink-0 flex-nowrap relative z-[11]"
             >
               <div
-                class="flex w-[318px] gap-[40px] items-center shrink-0 flex-nowrap relative z-[62]"
+                class="flex w-[318px] gap-[40px] items-center shrink-0 flex-nowrap relative z-[12]"
               >
                 <div
-                  class="flex w-[132px] flex-col items-start shrink-0 flex-nowrap relative z-[63]"
+                  class="flex w-[132px] flex-col items-start shrink-0 flex-nowrap relative z-[13]"
                 >
                   <span
-                    class="h-[21px] shrink-0 basis-auto font-['Poppins'] text-[14px] font-bold leading-[21px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-[64]"
+                    class="h-[21px] shrink-0 basis-auto font-['Poppins'] text-[14px] font-bold leading-[21px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-[14]"
                     >New Cylinder</span
                   ><span
-                    class="h-[21px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[14px] font-normal leading-[21px] text-[#a5a5a5] tracking-[0.1px] relative text-left whitespace-nowrap z-[65]"
+                    class="h-[21px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[14px] font-normal leading-[21px] text-[#a5a5a5] tracking-[0.1px] relative text-left whitespace-nowrap z-[15]"
                     >RM 68 per each</span
                   >
                 </div>
                 <div
-                  class="flex w-[146px] flex-col items-start shrink-0 flex-nowrap relative z-[66]"
+                  class="flex w-[146px] flex-col items-start shrink-0 flex-nowrap relative z-[16]"
                 >
                   <span
-                    class="h-[21px] shrink-0 basis-auto font-['Poppins'] text-[14px] font-bold leading-[21px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-[67]"
+                    class="h-[21px] shrink-0 basis-auto font-['Poppins'] text-[14px] font-bold leading-[21px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-[17]"
                     >Empty Cylinder</span
                   ><span
-                    class="h-[21px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[14px] font-normal leading-[21px] text-[#a5a5a5] tracking-[0.1px] relative text-left whitespace-nowrap z-[68]"
+                    class="h-[21px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[14px] font-normal leading-[21px] text-[#a5a5a5] tracking-[0.1px] relative text-left whitespace-nowrap z-[18]"
                     >RM 40 per each</span
                   >
                 </div>
               </div>
               <div
-                class="h-px self-stretch shrink-0  bg-cover bg-no-repeat relative z-[69]"
+                class="h-px self-stretch shrink-0 bg-cover bg-no-repeat relative z-[19]"
               ></div>
             </div>
             <div
-              class="flex flex-col gap-[20px] items-start self-stretch shrink-0 flex-nowrap relative z-[70]"
+              class="flex flex-col gap-[20px] items-start self-stretch shrink-0 flex-nowrap relative z-[10]"
             >
               <div
-                class="flex flex-col gap-[8px] items-start self-stretch shrink-0 flex-nowrap relative z-[71]"
+                class="flex flex-col gap-[8px] items-start self-stretch shrink-0 flex-nowrap relative z-[11]"
               >
                 <div
-                  class="flex h-[21px] justify-between items-center self-stretch shrink-0 flex-nowrap relative z-[72]"
+                  class="flex h-[21px] justify-between items-center self-stretch shrink-0 flex-nowrap relative z-[12]"
                 >
                   <span
-                    class="h-[21px] shrink-0 basis-auto font-['Poppins'] text-[14px] font-normal leading-[21px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-[73]"
+                    class="h-[21px] shrink-0 basis-auto font-['Poppins'] text-[14px] font-normal leading-[21px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-[13]"
                     >Purchase Amount</span
                   ><span
-                    class="h-[21px] shrink-0 basis-auto font-['Poppins'] text-[14px] font-normal leading-[21px] text-[#a5a5a5] tracking-[0.1px] relative text-left whitespace-nowrap z-[74]"
+                    class="h-[21px] shrink-0 basis-auto font-['Poppins'] text-[14px] font-normal leading-[21px] text-[#a5a5a5] tracking-[0.1px] relative text-left whitespace-nowrap z-[14]"
                     >RM 272.00</span
                   >
                 </div>
                 <div
-                  class="flex h-[21px] justify-between items-center self-stretch shrink-0 flex-nowrap relative z-[75]"
+                  class="flex h-[21px] justify-between items-center self-stretch shrink-0 flex-nowrap relative z-[15]"
                 >
                   <div
-                    class="flex w-[138px] gap-[10px] items-center shrink-0 flex-nowrap relative z-[76]"
+                    class="flex w-[138px] gap-[10px] items-center shrink-0 flex-nowrap relative z-[16]"
                   >
                     <span
-                      class="h-[21px] shrink-0 basis-auto font-['Poppins'] text-[14px] font-normal leading-[21px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-[77]"
+                      class="h-[21px] shrink-0 basis-auto font-['Poppins'] text-[14px] font-normal leading-[21px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-[17]"
                       >Refund Amount</span
                     >
                     <div
-                      class="w-[18px] h-[18px] shrink-0 relative overflow-hidden z-[78]"
+                      class="w-[18px] h-[18px] shrink-0 relative overflow-hidden z-[18]"
                     >
-                      <div @click="showRefundInfo"
-                        class="cursor-pointer w-[13.875px] h-[13.875px] bg-[url('../public/info.png')] bg-[length:100%_100%] bg-no-repeat relative z-[79] mt-[2.063px] mr-0 mb-0 ml-[2.063px]"
+                      <div
+                        @click="showRefundInfo"
+                        class="cursor-pointer w-[13.875px] h-[13.875px] bg-[url('../public/info.png')] bg-[length:100%_100%] bg-no-repeat relative z-[19] mt-[2.063px] mr-0 mb-0 ml-[2.063px]"
                       ></div>
                     </div>
                   </div>
                   <span
-                    class="h-[21px] shrink-0 basis-auto font-['Poppins'] text-[14px] font-normal leading-[21px] text-[#a5a5a5] tracking-[0.1px] relative text-left whitespace-nowrap z-[80]"
+                    class="h-[21px] shrink-0 basis-auto font-['Poppins'] text-[14px] font-normal leading-[21px] text-[#a5a5a5] tracking-[0.1px] relative text-left whitespace-nowrap z-[10]"
                     >- RM 160.00</span
                   >
                 </div>
               </div>
               <div
-                class="flex h-[21px] justify-between items-center self-stretch shrink-0 flex-nowrap relative z-[81]"
+                class="flex h-[21px] justify-between items-center self-stretch shrink-0 flex-nowrap relative z-[11]"
               >
                 <span
-                  class="h-[21px] shrink-0 basis-auto font-['Poppins'] text-[22px] font-bold leading-[21px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-[82]"
+                  class="h-[21px] shrink-0 basis-auto font-['Poppins'] text-[22px] font-bold leading-[21px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-[12]"
                   >Grant Total</span
                 ><span
-                  class="h-[21px] shrink-0 basis-auto font-['Poppins'] text-[22px] font-bold leading-[21px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-[83]"
+                  class="h-[21px] shrink-0 basis-auto font-['Poppins'] text-[22px] font-bold leading-[21px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-[13]"
                   >RM 112.00</span
                 >
               </div>
             </div>
           </div>
         </div>
-        <div
-          class="flex h-[50px] pt-[10px] pr-[48px] pb-[10px] pl-[48px] gap-[10px] justify-center items-center self-stretch shrink-0 flex-nowrap bg-[#292929] rounded-[12px] relative z-[84]"
+        <button
+          class="flex h-[50px] pt-[10px] pr-[48px] pb-[10px] pl-[48px] gap-[10px] justify-center items-center self-stretch shrink-0 flex-nowrap bg-[#292929] rounded-[12px] relative z-[1]"
         >
           <span
-            class="h-[24px] shrink-0 basis-auto font-['Poppins'] text-[16px] font-semibold leading-[24px] text-[#fff] relative text-left whitespace-nowrap z-[85]"
+            class="h-[24px] shrink-0 basis-auto font-['Poppins'] text-[16px] font-semibold leading-[24px] text-[#fff] relative text-left whitespace-nowrap z-[1]"
             >Next</span
           >
-        </div>
+        </button>
       </div>
     </div>
     <div
-      class="w-[129.938px] h-[91.858px] bg-[url('../public/exchange.png')] bg-cover bg-no-repeat absolute top-[89.993px] left-[40px] z-[46]"
+      class="w-[129.938px] h-[91.858px] bg-[url('../public/exchange.png')] bg-cover bg-no-repeat absolute top-[89.993px] left-[40px] z-[6]"
     >
       <div
-        class="w-[129.938px] h-[91.858px] bg-[url('../public/exchange.png')] bg-cover bg-no-repeat absolute top-0 left-0 z-[52]"
+        class="w-[129.938px] h-[91.858px] bg-[url('../public/exchange.png')] bg-cover bg-no-repeat absolute top-0 left-0 z-[2]"
       ></div>
     </div>
     <div
-      class="w-[342px] h-[77px] bg-[url('../public/blackbox.png')] bg-cover bg-no-repeat rounded-[10px] absolute top-[106.992px] left-[30px] z-[45]"
+      class="w-[342px] h-[77px] bg-[url('../public/blackbox.png')] bg-cover bg-no-repeat rounded-[10px] absolute top-[106.992px] left-[30px] z-[5]"
     >
       <div
-        class="w-[342px] h-[77px] bg-[url('../public/blackbox.png')] bg-cover bg-no-repeat rounded-[10px] absolute top-0 left-0 z-[51]"
+        class="w-[342px] h-[77px] bg-[url('../public/blackbox.png')] bg-cover bg-no-repeat rounded-[10px] absolute top-0 left-0 z-[1]"
       >
         <div
-          class="flex w-[135px] h-[43px] flex-col gap-[3px] items-start flex-nowrap absolute top-[17px] left-[162px] z-[47]"
+          class="flex w-[135px] h-[43px] flex-col gap-[3px] items-start flex-nowrap absolute top-[17px] left-[162px] z-[7]"
         >
           <span
-            class="h-[20px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[18px] font-bold leading-[20px] text-[#fff] tracking-[0.1px] relative text-left whitespace-nowrap z-[48]"
+            class="h-[20px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[18px] font-bold leading-[20px] text-[#fff] tracking-[0.1px] relative text-left whitespace-nowrap z-[8]"
             >Refill + Swap</span
           ><span
-            class="h-[20px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[14px] font-bold leading-[20px] tracking-[0.1px] relative text-left whitespace-nowrap z-[49]"
-            >Refill on the spot</span
+            class="h-[20px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[14px] font-bold leading-[20px] tracking-[0.1px] relative text-left whitespace-nowrap z-[9] text-[#60DCD6]"
+            >{{ this.subtitle }}</span
           >
         </div>
       </div>
     </div>
+    <transition name="fade">
+      <div
+        v-if="showSwapRule"
+        class="overlay"
+        @click="showSwapRule = false"
+      ></div>
+    </transition>
+    <transition name="slide-up">
+      <div
+        v-if="showSwapRule"
+        class="modal flex w-[342px] h-[490px] flex-col gap-[30px] items-start flex-nowrap absolute top-[424px] left-[30px] z-[85]"
+      >
+        <span
+          class="h-[20px] shrink-0 basis-auto font-['Poppins'] text-[16px] font-medium leading-[20px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-[83] mt-[20px] ml-[25px] mr-[20px]"
+          >Swap Quantity</span
+        >
+        <div
+          class="flex flex-col gap-[10px] items-start self-stretch shrink-0 flex-nowrap relative z-[86] ml-[25px] mr-[20px]"
+        >
+          <span
+            class="h-[20px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[16px] font-medium leading-[20px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-[87]"
+            >Buy Only</span
+          >
+          <div v-for="(item, index) in buys"
+              :key="index"
+            class="flex flex-col gap-[10px] items-start self-stretch shrink-0 flex-nowrap relative z-[88]"
+          >
+            <div
+              class="flex justify-between items-center self-stretch shrink-0 flex-nowrap relative z-[89]"
+            >
+              <span
+                class="h-[20px] shrink-0 basis-auto font-['Poppins'] text-[14px] font-normal leading-[20px] text-[#292929] tracking-[0.1px] relative text-left whitespace-nowrap z-[90]"
+                >{{ item.minQty }} Cylinder</span
+              ><span
+                class="h-[20px] shrink-0 basis-auto font-['Poppins'] text-[14px] font-normal leading-[20px] text-[#292929] tracking-[0.1px] relative text-left whitespace-nowrap z-[91]"
+                >RM{{ item.creditAmount }} per each</span
+              >
+            </div>
+          </div>
+        </div>
+        <div
+          class="flex flex-col gap-[10px] items-start self-stretch shrink-0 flex-nowrap relative z-[98] ml-[25px] mr-[20px]"
+        >
+          <span
+            class="h-[20px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[16px] font-medium leading-[20px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-[99]"
+            >Return Only</span
+          >
+          <div v-for="(item, index) in returns"
+              :key="index"
+            class="flex flex-col gap-[10px] items-start self-stretch shrink-0 flex-nowrap relative z-[100]"
+          >
+            <div
+              class="flex justify-between items-center self-stretch shrink-0 flex-nowrap relative z-[101]"
+            >
+              <span
+                class="h-[20px] shrink-0 basis-auto font-['Poppins'] text-[14px] font-normal leading-[20px] text-[#292929] tracking-[0.1px] relative text-left whitespace-nowrap z-[102]"
+                >{{ item.minQty }} Cylinder</span
+              ><span
+                class="h-[20px] shrink-0 basis-auto font-['Poppins'] text-[14px] font-normal leading-[20px] text-[#292929] tracking-[0.1px] relative text-left whitespace-nowrap z-[103]"
+                >RM{{ item.creditAmount }} per each</span
+              >
+            </div>
+          </div>
+        </div>
+        <div 
+          class="flex flex-col gap-[10px] items-start self-stretch shrink-0 flex-nowrap relative z-[110] ml-[25px] mr-[20px]"
+        >
+          <span
+            class="h-[20px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[16px] font-medium leading-[20px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-[111]"
+            >Refill & Swap</span
+          >
+          <div v-for="(item, index) in refills"
+              :key="index"
+            class="flex flex-col gap-[10px] items-start self-stretch shrink-0 flex-nowrap relative z-[112]"
+          >
+            <div
+              class="flex justify-between items-center self-stretch shrink-0 flex-nowrap relative z-[113]"
+            >
+              <span
+                class="h-[20px] shrink-0 basis-auto font-['Poppins'] text-[14px] font-normal leading-[20px] text-[#292929] tracking-[0.1px] relative text-left whitespace-nowrap z-[114]"
+                >{{ item.minQty }} Cylinder</span
+              ><span
+                class="h-[20px] shrink-0 basis-auto font-['Poppins'] text-[14px] font-normal leading-[20px] text-[#292929] tracking-[0.1px] relative text-left whitespace-nowrap z-[115]"
+                >RM{{ item.creditAmount }} per each</span
+              >
+            </div>
+            <div
+              class="flex justify-between items-center self-stretch shrink-0 flex-nowrap relative z-[116]"
+            >
+              <span
+                class="h-[20px] shrink-0 basis-auto font-['Poppins'] text-[14px] font-normal leading-[20px] text-[#292929] tracking-[0.1px] relative text-left whitespace-nowrap z-[117]"
+                >2 Cylinders</span
+              ><span
+                class="h-[20px] shrink-0 basis-auto font-['Poppins'] text-[14px] font-normal leading-[20px] text-[#292929] tracking-[0.1px] relative text-left whitespace-nowrap z-[118]"
+                >RM35 per each</span
+              >
+            </div>
+            <div
+              class="flex justify-between items-center self-stretch shrink-0 flex-nowrap relative z-[119]"
+            >
+              <span
+                class="h-[20px] shrink-0 basis-auto font-['Poppins'] text-[14px] font-normal leading-[20px] text-[#292929] tracking-[0.1px] relative text-left whitespace-nowrap z-[120]"
+                >4 Cylinders</span
+              ><span
+                class="flex w-[122px] h-[20px] justify-end items-center shrink-0 basis-auto font-['Poppins'] text-[14px] font-normal leading-[20px] text-[#292929] tracking-[0.1px] relative text-right whitespace-nowrap z-[121]"
+                >RM28 per each</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -309,18 +425,29 @@ export default{
   data(){
     return{
       selectedType: 'Sosoda',
-      qty: 0
+      qty: 0,
+      refill_method: '',
+      subtitle: '',
+      showSwapRule: false,
+      buys: [],
+      returns: [],
+      refils: [],
+      rules: []
     }
   },
   async mounted(){
-    try{
-        //const id = this.$route.params.id;
-        
-            
+    this.refill_method = this.$route.params.refillmethod;  
+    if(this.refill_method === 'Exchange'){
+      this.subtitle = 'Refill on the spot';
     }
-    catch (error) {
-        toast.error(error.response.data.message);
-    }    
+    else if(this.refill_method === 'Pickup'){
+      this.subtitle = 'Pick-Up Service';
+    }
+    else{
+      this.subtitle = 'Drop-Off'
+    }
+
+    this.getRules();
   },
   methods:{    
     backToMethod() {
@@ -329,7 +456,76 @@ export default{
     selectType(type) {
       this.selectedType = type;
     },
+    async getRules(){
+      try{
+        const response = await api.get('CreditRule/GetRules');
+        if(response.status === 200){
+          this.rules = response.data;
+          if(this.rules != null){
+            this.buys = this.rules.filter(t => t.transactionType === 'Purchase');
+            this.refils = this.rules.filter(t => t.transactionType === 'Refill');
+            this.returns = this.rules.filter(t => t.transactionType === 'Refund');
+          }
+        }
+      }
+      catch (error) {
+        toast.error(error.response.data)
+      }
+    }
   }
 }
 
 </script>
+
+<style scoped>
+/* Fade transition for overlay */
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.4s ease;
+}
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+}
+.fade-enter-to, .fade-leave-from {
+  opacity: 1;
+}
+
+/* Slide-up transition for modal */
+.slide-up-enter-active, .slide-up-leave-active {
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+.slide-up-enter-from, .slide-up-leave-to {
+  transform: translateY(100%);
+  opacity: 0;
+}
+.slide-up-enter-to, .slide-up-leave-from {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Fullscreen dark overlay */
+.overlay {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 10;
+  display: flex;
+  justify-content: bottom;
+  align-items: flex-end;
+}
+
+/* Modal styling */
+.modal {
+  position: fixed;
+  width: 402px;
+  height: 500px;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  border-radius: 10px;
+  z-index: 20;
+}
+</style>

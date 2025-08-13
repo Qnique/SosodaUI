@@ -122,16 +122,13 @@ export default{
     async goToVerification() {
        if (this.phoneNo !== '') {
           if(this.checked){
-            // const payload = {
-            //   phoneNo: this.phoneNo
-            // }
             sessionStorage.setItem('phoneNoUser', this.phoneNo);
             try{
               const response = await api.post('System/MemberLogin', JSON.stringify(this.phoneNo));
               this.$router.push({ name: 'Verification' });
             }
             catch (error) {
-              toast.error(error.response.data.message)
+              toast.error(error.response.data)
             }             
           }
           else{

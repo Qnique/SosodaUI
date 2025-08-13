@@ -142,17 +142,19 @@ export default{
     async getDetail(){
        const userId = sessionStorage.getItem('IdUser');
         //const userId = '48d8ebe7-0d83-49db-8e09-e6aee39e2094';
-      try{
-        const response = await api.post('Home/MemberHome', JSON.stringify(userId));
-        if(response.status === 200){
-          this.member = response.data;
-          this.stampCount = (response.data.stamp === null) ? 0 : response.data.stamp.point;
-          this.voucherCount = (response.data.vouchers === null) ? 0 : response.data.vouchers.length;
-          this.walletBalance = response.data.wallet.balance.toFixed(2);
+        if(userId !== null){
+          try{
+            const response = await api.post('Home/MemberHome', JSON.stringify(userId));
+            if(response.status === 200){
+              this.member = response.data;
+              this.stampCount = (response.data.stamp === null) ? 0 : response.data.stamp.point;
+              this.voucherCount = (response.data.vouchers === null) ? 0 : response.data.vouchers.length;
+              this.walletBalance = response.data.wallet.balance.toFixed(2);
+            }
         }
-      }
-      catch (error) {
-          toast.error(error.response.data.message)
+        catch (error) {
+            toast.error(error.response.data)
+        }
       }
     },
     async saveToAccount() {
@@ -174,7 +176,7 @@ export default{
           }
         }
         catch (error) {
-          toast.error(error.response.data.message)
+          toast.error(error.response.data)
         } 
         
       }               

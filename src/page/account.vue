@@ -210,7 +210,7 @@
           <div
             class="flex flex-col gap-[8px] items-start self-stretch shrink-0 flex-nowrap relative z-[67]"
           >
-            <div
+            <!-- <div
               class="cursor-pointer flex pt-0 pr-[20px] pb-0 pl-[20px] flex-col gap-[11px] items-center self-stretch shrink-0 flex-nowrap relative z-[68]"
             >
               <div
@@ -238,7 +238,7 @@
               <div
                 class="w-[331.5px] h-px shrink-0 bg-[url('../public/account-line.png')] bg-cover bg-no-repeat relative z-[77]"
               ></div>
-            </div>
+            </div> -->
             <div @click="goToTerms"
               class="cursor-pointer flex pt-0 pr-[20px] pb-0 pl-[20px] flex-col gap-[11px] items-center self-stretch shrink-0 flex-nowrap relative z-[78]"
             >
@@ -269,7 +269,7 @@
                 class="w-[331.5px] h-px shrink-0 bg-[url('../public/account-line.png')] bg-cover bg-no-repeat relative z-[87]"
               ></div>
             </div>
-            <div
+            <!-- <div
               class="cursor-pointer flex pt-0 pr-[20px] pb-0 pl-[20px] flex-col gap-[11px] items-center self-stretch shrink-0 flex-nowrap relative z-[88]"
             >
               <div
@@ -297,7 +297,7 @@
               <div
                 class="w-[331.5px] h-px shrink-0 bg-[url('../public/account-line.png')] bg-cover bg-no-repeat relative z-[97]"
               ></div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -394,18 +394,20 @@ export default{
     async getDetail(){
       const userId = sessionStorage.getItem('IdUser');
       //const userId = '48d8ebe7-0d83-49db-8e09-e6aee39e2094';
-      try{        
-        const response = await api.post('Home/MemberHome', JSON.stringify(userId));
-        if(response.status === 200){
-          this.member = response.data;
-          this.stampCount = (response.data.stamp === null) ? 0 : response.data.stamp.point;
-          this.voucherCount = (response.data.vouchers === null) ? 0 : response.data.vouchers.length;
-          this.walletBalance = response.data.wallet.balance.toFixed(2);
+      if(userId !== null){
+        try{        
+          const response = await api.post('Home/MemberHome', JSON.stringify(userId));
+          if(response.status === 200){
+            this.member = response.data;
+            this.stampCount = (response.data.stamp === null) ? 0 : response.data.stamp.point;
+            this.voucherCount = (response.data.vouchers === null) ? 0 : response.data.vouchers.length;
+            this.walletBalance = response.data.wallet.balance.toFixed(2);
+          }
         }
-      }
-      catch (error) {
-        toast.error(error.response.data.message)
-      }
+        catch (error) {
+          toast.error(error.response.data)
+        }
+      }      
     },
     goToCardPage() {
       this.$router.push({ name: 'CardInfos' });
@@ -441,7 +443,7 @@ export default{
         }
       }
       catch (error) {
-        toast.error(error.response.data.message)
+        toast.error(error.response.data)
       }      
     },
     backToHome() {

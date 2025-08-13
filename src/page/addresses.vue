@@ -108,15 +108,17 @@ export default{
     async getAddresses(){
       const userId = sessionStorage.getItem('IdUser');
       //const userId = '48d8ebe7-0d83-49db-8e09-e6aee39e2094';
-      try{        
-        const response = await api.post('Address/GetAddressesByMemberId', JSON.stringify(userId));
-        if(response.status === 200){
-          this.address = response.data;
+      if(userId !== null){
+        try{        
+          const response = await api.post('Address/GetAddressesByMemberId', JSON.stringify(userId));
+          if(response.status === 200){
+            this.address = response.data;
+          }
         }
-      }
-      catch (error) {
-        toast.error(error.response.data.message)
-      }
+        catch (error) {
+          toast.error(error.response.data)
+        }
+      }      
     },
     backToAccount() {
        this.$router.push({ name: 'Accounts' }); 
