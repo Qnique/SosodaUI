@@ -7,7 +7,7 @@
     >
       <div
         @click="backToMethod()"
-        class="w-[12.5px] h-[25px] shrink-0 bg-[url('../public/back_arrow.png')] bg-cover bg-no-repeat relative overflow-hidden z-[1]"
+        class="cursor-pointer w-[12.5px] h-[25px] shrink-0 bg-[url('../public/back_arrow.png')] bg-cover bg-no-repeat relative overflow-hidden z-[1]"
       ></div>
       <span
         class="h-[14px] shrink-0 font-['Poppins'] text-[20px] font-semibold leading-[14px] text-[#000] relative text-left uppercase whitespace-nowrap z-[2]"
@@ -86,7 +86,7 @@
               class="w-[20px] h-[20px] shrink-0 relative overflow-hidden z-[12]"
             >
               <div
-                @click="showSwapRule = !topUpShow"
+                @click="showSwapRule = !showSwapRule"
                 class="cursor-pointer w-[15.417px] h-[15.417px] bg-[url('../public/info.png')] bg-[length:100%_100%] bg-no-repeat relative z-[13] mt-[2.292px] mr-0 mb-0 ml-[2.292px]"
               ></div>
             </div>
@@ -103,7 +103,7 @@
             class="flex pt-[15px] pr-[15px] pb-[15px] pl-[15px] gap-[134px] justify-center items-center self-stretch shrink-0 flex-nowrap bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[26]"
           >
             <input
-              v-model="qty"
+              v-model="qty" @input="handlePrice"
               type="number"
               min="0"
               class="h-[24px] text-center shrink-0 basis-auto font-['Poppins'] text-[20px] font-semibold leading-[14px] bg-[#fafafa] text-[#000] tracking-[0.1px] relative whitespace-nowrap z-[18]"
@@ -189,7 +189,7 @@
                     >New Cylinder</span
                   ><span
                     class="h-[21px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[14px] font-normal leading-[21px] text-[#a5a5a5] tracking-[0.1px] relative text-left whitespace-nowrap z-[15]"
-                    >RM 68 per each</span
+                    >RM {{ this.buyPrice }} per each</span
                   >
                 </div>
                 <div
@@ -200,7 +200,7 @@
                     >Empty Cylinder</span
                   ><span
                     class="h-[21px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[14px] font-normal leading-[21px] text-[#a5a5a5] tracking-[0.1px] relative text-left whitespace-nowrap z-[18]"
-                    >RM 40 per each</span
+                    >RM {{ this.returnPrice }} per each</span
                   >
                 </div>
               </div>
@@ -222,7 +222,7 @@
                     >Purchase Amount</span
                   ><span
                     class="h-[21px] shrink-0 basis-auto font-['Poppins'] text-[14px] font-normal leading-[21px] text-[#a5a5a5] tracking-[0.1px] relative text-left whitespace-nowrap z-[14]"
-                    >RM 272.00</span
+                    >RM {{ this.purchaseAmount.toFixed(2) }}</span
                   >
                 </div>
                 <div
@@ -239,14 +239,14 @@
                       class="w-[18px] h-[18px] shrink-0 relative overflow-hidden z-[18]"
                     >
                       <div
-                        @click="showRefundInfo"
+                        @click="showRefundInfo = !showRefundInfo"
                         class="cursor-pointer w-[13.875px] h-[13.875px] bg-[url('../public/info.png')] bg-[length:100%_100%] bg-no-repeat relative z-[19] mt-[2.063px] mr-0 mb-0 ml-[2.063px]"
                       ></div>
                     </div>
                   </div>
                   <span
                     class="h-[21px] shrink-0 basis-auto font-['Poppins'] text-[14px] font-normal leading-[21px] text-[#a5a5a5] tracking-[0.1px] relative text-left whitespace-nowrap z-[10]"
-                    >- RM 160.00</span
+                    >- RM {{ this.refundAmount.toFixed(2) }}</span
                   >
                 </div>
               </div>
@@ -258,7 +258,7 @@
                   >Grant Total</span
                 ><span
                   class="h-[21px] shrink-0 basis-auto font-['Poppins'] text-[22px] font-bold leading-[21px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-[13]"
-                  >RM 112.00</span
+                  >RM {{ this.grandTotal.toFixed(2) }}</span
                 >
               </div>
             </div>
@@ -386,32 +386,80 @@
                 >RM{{ item.creditAmount }} per each</span
               >
             </div>
-            <div
-              class="flex justify-between items-center self-stretch shrink-0 flex-nowrap relative z-[116]"
-            >
-              <span
-                class="h-[20px] shrink-0 basis-auto font-['Poppins'] text-[14px] font-normal leading-[20px] text-[#292929] tracking-[0.1px] relative text-left whitespace-nowrap z-[117]"
-                >2 Cylinders</span
-              ><span
-                class="h-[20px] shrink-0 basis-auto font-['Poppins'] text-[14px] font-normal leading-[20px] text-[#292929] tracking-[0.1px] relative text-left whitespace-nowrap z-[118]"
-                >RM35 per each</span
-              >
-            </div>
-            <div
-              class="flex justify-between items-center self-stretch shrink-0 flex-nowrap relative z-[119]"
-            >
-              <span
-                class="h-[20px] shrink-0 basis-auto font-['Poppins'] text-[14px] font-normal leading-[20px] text-[#292929] tracking-[0.1px] relative text-left whitespace-nowrap z-[120]"
-                >4 Cylinders</span
-              ><span
-                class="flex w-[122px] h-[20px] justify-end items-center shrink-0 basis-auto font-['Poppins'] text-[14px] font-normal leading-[20px] text-[#292929] tracking-[0.1px] relative text-right whitespace-nowrap z-[121]"
-                >RM28 per each</span
-              >
-            </div>
           </div>
         </div>
       </div>
     </transition>
+
+    <transition name="fade">
+      <div
+        v-if="showRefundInfo"
+        class="overlay"
+        @click="showRefundInfo = false"
+      ></div>
+    </transition>
+    <transition name="slide-up">
+    <div
+      v-if="showRefundInfo"        
+      class="modal1 fixed bottom-4 left-1/2 transform -translate-x-1/2 w-[342px] h-[490px] flex-col gap-[30px] z-[85]"
+    >
+      <div
+      class="w-[402px] h-[238px] absolute bottom-0 left-1/2 translate-x-[-50%] translate-y-0 z-[81]"
+      >
+        <div
+          class="w-[214.503px] h-[63px] relative z-[86] mt-[72px] mr-0 mb-0 ml-[93.75px]"
+        >
+         
+          <div class="h-[63px] absolute top-0 left-0 right-0 z-[93]">
+
+            <div
+              class="flex w-[51.14px] h-[63px] flex-col gap-[5px] items-center flex-nowrap absolute top-0 left-[163.363px] z-[93]"
+            >
+              <div
+                class="w-[40px] h-[40px] shrink-0 bg-[url('../public/donerefund.png')] bg-cover bg-no-repeat relative z-[94]"
+              ></div>
+              <span
+                class="h-[18px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-semibold leading-[18px] text-[#000] relative text-left whitespace-nowrap z-[95]"
+                >Verified</span
+              >
+            </div>
+            <div
+              class="flex w-[30px] h-[30px] flex-col gap-[10px] items-center flex-nowrap absolute left-0 z-[89]"
+            >
+              <div
+                class="w-[50px] h-[50px] shrink-0 bg-[url('../public/circle.png')] bg-cover bg-no-repeat relative z-[90]"
+              ></div>
+            </div>
+            <div
+              class="flex w-[31px] h-[30px] flex-col gap-[10px] items-center flex-nowrap absolute left-1/2 translate-x-[-73.83%] translate-y-0 z-[91]"
+            >
+              <div
+                class="w-[50px] h-[50px] shrink-0 bg-[url('../public/circle.png')] bg-cover bg-no-repeat relative z-[92]"
+              ></div>
+            </div>
+            <div
+              class="w-[55px] h-[2px] bg-[url('../public/refundline.png')] bg-cover bg-no-repeat absolute top-[20px] left-[30px] z-[87]"
+            ></div>
+            <div
+              class="w-[55px] h-[2px] bg-[url('../public/refundline.png')] bg-cover bg-no-repeat relative z-[88] top-[20px] mr-0 mb-0 ml-[113.934px]"
+            ></div>
+          </div>
+        </div>
+        <span
+          class="flex w-[342px] h-[40px] justify-start items-center font-['Poppins'] text-[14px] font-normal leading-[20px] text-[#292929] tracking-[0.1px] relative text-left z-[83] mt-[23px] mr-0 mb-0 ml-[30px]"
+          >You’ll receive refund credit in your wallet after your return is
+          verified.</span
+        >
+        <div
+          class="w-[402px] h-[238px] bg-[#fff] rounded-tl-[15px] rounded-tr-[15px] rounded-br-none rounded-bl-none absolute top-0 left-1/2 translate-x-[-50%] translate-y-0 z-[82]"
+        ></div>
+        <span
+          class="flex h-[20px] justify-start items-center font-['Poppins'] text-[16px] font-medium leading-[20px] text-[#000] tracking-[0.1px] absolute top-[30px] left-[30px] text-left whitespace-nowrap z-[84]"
+          >Refund Amount</span
+        >
+      </div>
+    </div>
+  </transition>
   </div>
 </template>
 
@@ -426,13 +474,19 @@ export default{
     return{
       selectedType: 'Sosoda',
       qty: 0,
+      buyPrice: 0,
+      returnPrice: 0,
       refill_method: '',
       subtitle: '',
       showSwapRule: false,
+      showRefundInfo: false,
       buys: [],
       returns: [],
-      refils: [],
-      rules: []
+      refills: [],
+      rules: [],
+      purchaseAmount: 0,
+      refundAmount: 0,
+      grandTotal: 0
     }
   },
   async mounted(){
@@ -449,7 +503,46 @@ export default{
 
     this.getRules();
   },
-  methods:{    
+  methods:{
+    async handlePrice(){
+      if(this.qty !== 0 && this.qty !== ''){
+        try{
+          const ruleload = {
+            Qty: this.qty,
+            Brand: '1',
+            transactionType: 'Purchase'
+          };
+          const response = await api.post('CreditRule/GetAmountByQuantity', JSON.stringify(ruleload));
+          if(response.status === 200){
+              this.buyPrice = response.data;
+              this.purchaseAmount = this.qty * response.data;
+          }
+        }
+        catch (error) {
+          toast.error(error.response.data)
+        }
+
+        try{
+          const returnload = {
+            Qty: this.qty,
+            Brand: '1',
+            transactionType: 'Refund'
+          };
+          const response = await api.post('CreditRule/GetAmountByQuantity', JSON.stringify(returnload));
+          if(response.status === 200){
+              this.returnPrice = response.data;
+              this.refundAmount = this.qty * response.data;
+          }
+        }
+        catch (error) {
+          toast.error(error.response.data)
+        }
+
+        if(this.purchaseAmount !== 0){
+          this.grandTotal = this.purchaseAmount - this.refundAmount;
+        }
+      }
+    },   
     backToMethod() {
        this.$router.push({ name: 'Methods' });    
     },    
@@ -462,8 +555,8 @@ export default{
         if(response.status === 200){
           this.rules = response.data;
           if(this.rules != null){
-            this.buys = this.rules.filter(t => t.transactionType === 'Purchase');
-            this.refils = this.rules.filter(t => t.transactionType === 'Refill');
+            this.buys = response.data.filter(t => t.transactionType === 'Purchase');
+            this.refills = this.rules.filter(t => t.transactionType === 'Refill');
             this.returns = this.rules.filter(t => t.transactionType === 'Refund');
           }
         }
@@ -521,6 +614,18 @@ export default{
   position: fixed;
   width: 402px;
   height: 500px;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  border-radius: 10px;
+  z-index: 20;
+}
+
+.modal1 {
+  position: fixed;
+  width: 402px;
+  height: 100px;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
