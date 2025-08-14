@@ -59,7 +59,7 @@
             </div> -->
             <span
               class="flex w-[200.035px] h-[26px] justify-start items-center self-stretch shrink-0 font-['Poppins'] text-[9px] font-normal leading-[13.494px] text-[#a5a5a5] relative text-left z-[12]"
-              >{{ item.line1 }} {{ item.line2 }}, <br />{{ item.postalCode }}, {{ item.city }}, {{ item.state }}, {{ item.country }}</span
+              >{{ item.line1 }} {{ item.line2 }} <br />{{ item.postalCode }} {{ item.city }} {{ item.state }} {{ item.country }}</span
             >
           </div>
           <div

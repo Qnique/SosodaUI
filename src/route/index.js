@@ -22,8 +22,14 @@ const EditAddress = () => import('../page/editaddress.vue')
 const MenuPage = () => import('../page/menu.vue')
 const RefillSetup = () => import('../page/setup-refill.vue')
 const RefundSetup = () => import('../page/setup-refund.vue')
+const CheckoutPage = () => import('../page/checkout.vue')
 
 const routes = [
+  {
+    path: '/checkout',
+    name: 'Checkout',
+    component: CheckoutPage,
+  },
   {
     path: '/setup-refund/:refundmethod',
     name: 'SetupRefund',

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="main-container w-[402px] h-[946px] bg-[#fff] relative overflow-hidden mx-auto my-0"
+    class="refill main-container w-[402px] h-[946px] bg-[#fff] relative overflow-hidden mx-auto my-0"
   >
     <div
       class="flex w-[342px] justify-between items-center flex-nowrap relative mt-[50px] mr-0 mb-0 ml-[30px]"
@@ -111,7 +111,7 @@
           </div>
         </div>
       </div>
-      <div
+      <div v-if="refill_method === 'Exchange'"              
         class="flex flex-col gap-[10px] items-start self-stretch shrink-0 flex-nowrap relative z-10"
       >
         <div
@@ -148,12 +148,63 @@
             >
               <span
                 class="flex w-[114px] h-[20.649px] justify-start items-start shrink-0 basis-auto font-['Poppins'] text-[12px] font-semibold leading-[18px] text-[#000] relative text-left whitespace-nowrap z-[11]"
-                >Outlet</span
+                >{{ this.branch?.name }}</span
               >
             </div>
             <span
-              class="h-[17.207px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[10px] font-normal leading-[15px] text-[#000] relative text-left whitespace-nowrap z-[13]"
-              >Address</span
+              class="h-[17.207px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[10px] font-normal leading-[15px] text-[#000] relative text-left break-words z-[13]"
+              >{{ this.branch?.address }}</span
+            >
+          </div>
+        </div>
+      </div>
+      <div v-if="refill_method === 'Pickup'"              
+        class="flex flex-col gap-[10px] items-start self-stretch shrink-0 flex-nowrap relative z-10"
+      >
+        <div
+          class="flex flex-col gap-[10px] items-start self-stretch shrink-0 flex-nowrap relative z-[11]"
+        >
+          <div
+            class="flex justify-between items-center self-stretch shrink-0 flex-nowrap relative z-[12]"
+          >
+            <span
+              class="h-[24px] shrink-0 basis-auto font-['Poppins'] text-[16px] font-semibold leading-[24px] text-[#000] relative text-left whitespace-nowrap z-[13]"
+              >Your Address</span
+            >
+            <div
+              class="flex w-[87px] gap-[5px] items-center shrink-0 flex-nowrap relative z-[14]"
+            >
+              <!-- <span
+                class="h-[20px] shrink-0 basis-auto font-['Poppins'] text-[10px] font-medium leading-[20px] text-[#2275b6] tracking-[0.1px] relative text-left whitespace-nowrap z-[35]"
+                >Change Outlet</span
+              >               -->
+            </div>
+          </div>
+        </div>
+        <div
+          class="flex gap-[10px] items-start self-stretch shrink-0 flex-nowrap rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[17]"
+        >
+          <!-- <div
+            class="w-[93px] h-[65px] shrink-0 bg-[url('../public/outlet.png')] bg-cover bg-no-repeat rounded-[6px] relative z-[18]"
+          ></div> -->
+          <div
+            class="flex flex-col items-start grow shrink-0 basis-0 flex-nowrap relative z-[19]"
+          >
+            <div
+              class="flex justify-between items-start self-stretch shrink-0 flex-nowrap relative z-10"
+            >
+              <span
+                class="flex w-[114px] h-[30.649px] justify-start items-start shrink-0 basis-auto font-['Poppins'] text-[12px] font-semibold leading-[18px] text-[#000] relative text-left whitespace-nowrap z-[11] ml-[10px] mt-[10px]"
+                >{{ this.member?.name }} <span class="flex w-[114px] h-[30.649px] justify-start items-start shrink-0 basis-auto font-['Poppins'] text-[10px] font-semibold leading-[18px] text-[#a5a5a5] relative text-left whitespace-nowrap z-[11] ml-[10px]">
+                {{ this.member?.mobileNumber }}
+              </span></span> 
+              <span @click="showAddress = !showAddress"
+                class="cursor-pointer bg-[url('../public/edit.png')] bg-cover bg-no-repeat flex w-[15px] h-[15px] justify-start items-start shrink-0 basis-auto font-['Poppins'] relative z-[11] m-[10px]"
+              ></span>
+            </div>
+            <span
+              class="h-[40.207px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[10px] font-normal leading-[15px] text-[#000] relative text-left break-words z-[13] mb-[5px] ml-[10px]"
+              >{{ this.memberAddress?.line1 }} {{ this.memberAddress?.line2 }} <br />{{ this.memberAddress?.postalCode }} {{ this.memberAddress?.city }} {{ this.memberAddress?.state }} {{ this.memberAddress?.country }}</span
             >
           </div>
         </div>
@@ -310,7 +361,7 @@
     <transition name="slide-up">
       <div
         v-if="showSwapRule"
-        class="modal flex w-[342px] h-[490px] flex-col gap-[30px] items-start flex-nowrap absolute top-[424px] left-[30px] z-[85]"
+        class="modal flex w-[342px] h-[490px] flex-col gap-[30px] items-start flex-nowrap absolute top-[430px] left-[30px] z-[85]"
       >
         <span
           class="h-[20px] shrink-0 basis-auto font-['Poppins'] text-[16px] font-medium leading-[20px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-[83] mt-[20px] ml-[25px] mr-[20px]"
@@ -399,67 +450,137 @@
       ></div>
     </transition>
     <transition name="slide-up">
-    <div
-      v-if="showRefundInfo"        
-      class="modal1 fixed bottom-4 left-1/2 transform -translate-x-1/2 w-[342px] h-[490px] flex-col gap-[30px] z-[85]"
-    >
       <div
-      class="w-[402px] h-[238px] absolute bottom-0 left-1/2 translate-x-[-50%] translate-y-0 z-[81]"
+        v-if="showRefundInfo"        
+        class="modal1 fixed bottom-4 left-1/2 transform -translate-x-1/2 w-[342px] h-[490px] flex-col gap-[10px] absolute top-[830px] left-[30px] z-[85]"
       >
         <div
-          class="w-[214.503px] h-[63px] relative z-[86] mt-[72px] mr-0 mb-0 ml-[93.75px]"
+        class="w-[402px] h-[238px] absolute bottom-0 left-1/2 translate-x-[-50%] translate-y-0 z-[81]"
         >
-         
-          <div class="h-[63px] absolute top-0 left-0 right-0 z-[93]">
+          <div
+            class="w-[214.503px] h-[63px] relative z-[86] mt-[72px] mr-0 mb-0 ml-[93.75px]"
+          >
+          
+            <div class="h-[63px] absolute top-0 left-0 right-0 z-[93]">
 
-            <div
-              class="flex w-[51.14px] h-[63px] flex-col gap-[5px] items-center flex-nowrap absolute top-0 left-[163.363px] z-[93]"
-            >
               <div
-                class="w-[40px] h-[40px] shrink-0 bg-[url('../public/donerefund.png')] bg-cover bg-no-repeat relative z-[94]"
-              ></div>
-              <span
-                class="h-[18px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-semibold leading-[18px] text-[#000] relative text-left whitespace-nowrap z-[95]"
-                >Verified</span
+                class="flex w-[51.14px] h-[63px] flex-col gap-[5px] items-center flex-nowrap absolute top-0 left-[163.363px] z-[93]"
               >
-            </div>
-            <div
-              class="flex w-[30px] h-[30px] flex-col gap-[10px] items-center flex-nowrap absolute left-0 z-[89]"
-            >
+                <div
+                  class="w-[40px] h-[40px] shrink-0 bg-[url('../public/donerefund.png')] bg-cover bg-no-repeat relative z-[94]"
+                ></div>
+                <span
+                  class="h-[18px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-semibold leading-[18px] text-[#000] relative text-left whitespace-nowrap z-[95]"
+                  >Verified</span
+                >
+              </div>
               <div
-                class="w-[50px] h-[50px] shrink-0 bg-[url('../public/circle.png')] bg-cover bg-no-repeat relative z-[90]"
+                class="flex w-[30px] h-[30px] flex-col gap-[10px] items-center flex-nowrap absolute left-0 z-[89]"
+              >
+                <div
+                  class="w-[50px] h-[50px] shrink-0 bg-[url('../public/circle.png')] bg-cover bg-no-repeat relative z-[90]"
+                ></div>
+              </div>
+              <div
+                class="flex w-[31px] h-[30px] flex-col gap-[10px] items-center flex-nowrap absolute left-1/2 translate-x-[-73.83%] translate-y-0 z-[91]"
+              >
+                <div
+                  class="w-[50px] h-[50px] shrink-0 bg-[url('../public/circle.png')] bg-cover bg-no-repeat relative z-[92]"
+                ></div>
+              </div>
+              <div
+                class="w-[55px] h-[2px] bg-[url('../public/refundline.png')] bg-cover bg-no-repeat absolute top-[20px] left-[30px] z-[87]"
+              ></div>
+              <div
+                class="w-[55px] h-[2px] bg-[url('../public/refundline.png')] bg-cover bg-no-repeat relative z-[88] top-[20px] mr-0 mb-0 ml-[113.934px]"
               ></div>
             </div>
+          </div>
+          <span
+            class="flex w-[342px] h-[40px] justify-start items-center font-['Poppins'] text-[14px] font-normal leading-[20px] text-[#292929] tracking-[0.1px] relative text-left z-[83] mt-[23px] mr-0 mb-0 ml-[30px]"
+            >You’ll receive refund credit in your wallet after your return is
+            verified.</span
+          >
+          <div
+            class="w-[402px] h-[238px] bg-[#fff] rounded-tl-[15px] rounded-tr-[15px] rounded-br-none rounded-bl-none absolute top-0 left-1/2 translate-x-[-50%] translate-y-0 z-[82]"
+          ></div>
+          <span
+            class="flex h-[20px] justify-start items-center font-['Poppins'] text-[16px] font-medium leading-[20px] text-[#000] tracking-[0.1px] absolute top-[30px] left-[30px] text-left whitespace-nowrap z-[84]"
+            >Refund Amount</span
+          >
+        </div>
+      </div>
+    </transition>
+
+
+    <transition name="fade">
+      <div
+        v-if="showAddress"
+        class="overlay"
+        @click="showAddress = false"
+      ></div>
+    </transition>
+    <transition name="slide-up">
+      <div
+        v-if="showAddress"
+        class="modal overflow-y-auto flex w-[342px] h-[490px] flex-col gap-[20px] items-start flex-nowrap absolute top-[430px] left-[30px] z-[85]"
+      >
+        <span
+          class="h-[20px] shrink-0 basis-auto font-['Poppins'] text-[16px] font-medium leading-[20px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-[83] mt-[20px] ml-[25px] mr-[20px]"
+          >Your Addresses</span
+        >
+        <div v-for="(item, index) in addresses" @click="selectedAddress(item.id)"
+          :key="index"
+          class="cursor-pointer flex w-[342px] h-[80px] pt-[10px] pr-[10px] pb-[10px] pl-[10px] flex-col gap-[10px] items-start flex-nowrap bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] mr-0 mb-0 ml-[25px]"
+        >
+          <div
+            class="flex w-[322.035px] flex-col gap-[9px] justify-end items-start shrink-0 flex-nowrap relative z-[1]"
+          >
             <div
-              class="flex w-[31px] h-[30px] flex-col gap-[10px] items-center flex-nowrap absolute left-1/2 translate-x-[-73.83%] translate-y-0 z-[91]"
+              class="flex justify-between items-center self-stretch shrink-0 flex-nowrap relative z-[2]"
             >
-              <div
-                class="w-[50px] h-[50px] shrink-0 bg-[url('../public/circle.png')] bg-cover bg-no-repeat relative z-[92]"
-              ></div>
+              <span
+                class="h-[15px] shrink-0 basis-auto font-['Poppins'] text-[10px] font-medium leading-[15px] text-[#2275b6] relative text-left whitespace-nowrap z-[3]"
+                >Home</span
+              >
+              <!-- <div
+                class="w-[100px] h-[18px] shrink-0 text-[0px] rounded-[28px] relative z-[4]"
+              >
+                <span
+                  class="block h-[15px] font-['Poppins'] text-[10px] font-medium leading-[14.993px] text-[#fff] relative text-left whitespace-nowrap z-[6] mt-[1.5px] mr-0 mb-0 ml-[9.5px]"
+                  >Default Address</span
+                >
+                <div
+                  class="w-[100px] h-[18px] bg-[#2275b6] rounded-[28px] absolute top-0 left-0 z-[5]"
+                ></div>
+              </div> -->
             </div>
             <div
-              class="w-[55px] h-[2px] bg-[url('../public/refundline.png')] bg-cover bg-no-repeat absolute top-[20px] left-[30px] z-[87]"
-            ></div>
-            <div
-              class="w-[55px] h-[2px] bg-[url('../public/refundline.png')] bg-cover bg-no-repeat relative z-[88] top-[20px] mr-0 mb-0 ml-[113.934px]"
-            ></div>
+              class="flex w-[322.035px] gap-[72px] items-end shrink-0 flex-nowrap relative z-[7]"
+            >
+              <div
+                class="flex w-[200.035px] flex-col gap-[3px] items-start self-stretch shrink-0 flex-nowrap relative z-[8]"
+              >
+                <!-- <div class="w-[141px] h-[21px] shrink-0 relative z-[9]">
+                  <span
+                    class="flex h-[21px] justify-start items-center font-['Poppins'] text-[14px] font-medium leading-[20.991px] text-[#000] absolute top-0 left-[calc(50%-70.5px)] text-left whitespace-nowrap z-10"
+                    >User123</span
+                  ><span
+                    class="flex h-[16px] justify-start items-center font-['Poppins'] text-[11px] font-normal leading-[16px] text-[#bfbfbf] absolute top-[2px] left-[calc(50%-14.5px)] text-left whitespace-nowrap z-[11]"
+                    >+6012-3456789</span
+                  >
+                </div> -->
+                <span
+                  class="flex w-[200.035px] h-[26px] justify-start items-center self-stretch shrink-0 font-['Poppins'] text-[9px] font-normal leading-[13.494px] text-[#a5a5a5] relative text-left z-[12]"
+                  >{{ item.line1 }} {{ item.line2 }} <br />{{ item.postalCode }} {{ item.city }} {{ item.state }} {{ item.country }}</span
+                >
+              </div>
+            </div>
+            
           </div>
         </div>
-        <span
-          class="flex w-[342px] h-[40px] justify-start items-center font-['Poppins'] text-[14px] font-normal leading-[20px] text-[#292929] tracking-[0.1px] relative text-left z-[83] mt-[23px] mr-0 mb-0 ml-[30px]"
-          >You’ll receive refund credit in your wallet after your return is
-          verified.</span
-        >
-        <div
-          class="w-[402px] h-[238px] bg-[#fff] rounded-tl-[15px] rounded-tr-[15px] rounded-br-none rounded-bl-none absolute top-0 left-1/2 translate-x-[-50%] translate-y-0 z-[82]"
-        ></div>
-        <span
-          class="flex h-[20px] justify-start items-center font-['Poppins'] text-[16px] font-medium leading-[20px] text-[#000] tracking-[0.1px] absolute top-[30px] left-[30px] text-left whitespace-nowrap z-[84]"
-          >Refund Amount</span
-        >
       </div>
-    </div>
-  </transition>
+    </transition>
   </div>
 </template>
 
@@ -486,16 +607,23 @@ export default{
       rules: [],
       purchaseAmount: 0,
       refundAmount: 0,
-      grandTotal: 0
+      grandTotal: 0,
+      branch: null,
+      memberAddress: null,
+      addresses: [],
+      member: null,
+      showAddress: false
     }
   },
   async mounted(){
     this.refill_method = this.$route.params.refillmethod;  
     if(this.refill_method === 'Exchange'){
       this.subtitle = 'Refill on the spot';
+      this.getBranch();
     }
     else if(this.refill_method === 'Pickup'){
       this.subtitle = 'Pick-Up Service';
+      this.getAddress();
     }
     else{
       this.subtitle = 'Drop-Off'
@@ -504,6 +632,42 @@ export default{
     this.getRules();
   },
   methods:{
+    selectedAddress(id){
+      this.memberAddress = this.addresses.find(x => x.id === id);
+      this.showAddress = false;
+    } ,
+    async getAddress(){
+      //const userId = sessionStorage.getItem('IdUser');
+      const userId = 'e45a07c5-c475-4fb3-9b96-66fa3c3bff23';
+      if(userId !== null){
+        try{
+          const response = await api.post('Member/GetMemberById', JSON.stringify(userId));
+          if(response.status === 200){
+            if(response.data !== null){
+              this.addresses = response.data.addressList;
+              this.memberAddress = response.data.addressList?.[0] || null;
+              this.member = response.data;
+            }            
+          }
+        }
+        catch (error) {
+          toast.error(error.response.data.message)
+        }
+      }  
+    },
+    async getBranch(){
+      try{
+        const response = await api.get('Branch/GetBranches');
+        if(response.status === 200){
+            if(response.data !== null){
+              this.branch = response.data?.[0] || null;
+            }
+        }
+      }
+      catch (error) {
+        toast.error(error.response.data)
+      }
+    },
     async handlePrice(){
       if(this.qty !== 0 && this.qty !== ''){
         try{
@@ -607,6 +771,7 @@ export default{
   display: flex;
   justify-content: bottom;
   align-items: flex-end;
+  border-radius: 10px;
 }
 
 /* Modal styling */
@@ -632,5 +797,9 @@ export default{
   background: white;
   border-radius: 10px;
   z-index: 20;
+}
+
+.refill{
+  overflow-y: auto;
 }
 </style>
