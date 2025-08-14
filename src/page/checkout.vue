@@ -1,13 +1,19 @@
 <template>
   <div
-    class="main-container w-[402px] h-[874px] bg-[#fff] relative overflow-hidden mx-auto my-0"
+    class="checkout main-container w-[402px] h-[874px] bg-[#fff] relative overflow-hidden mx-auto my-0"
   >
     <div
-      class="flex w-[342px] justify-between items-center flex-nowrap relative z-[3] mt-[50px] mr-0 mb-0"
+      class="flex w-[342px]  items-center flex-nowrap relative z-[3] mt-[50px] mr-0 mb-0"
     >
       <div @click="backToPrevious()"
         class="cursor-pointer w-[12.5px] h-[25px] shrink-0 bg-[url('../public/back_arrow.png')] bg-cover bg-no-repeat relative overflow-hidden z-[4]"
       ></div>
+      
+    </div>
+    <div class="flex justify-center">
+      <span class="font-['Poppins'] text-[20px] font-bold leading-[20px] text-[#000] tracking-[0.1px] text-center">
+        CHECKOUT
+      </span>
     </div>
     <div
       class="flex w-[342px] flex-col gap-[10px] items-start flex-nowrap relative z-[7] mt-[24px] mr-0 mb-0 ml-[30px]"
@@ -21,29 +27,34 @@
         ><span
           class="font-['Poppins'] text-[14px] font-medium leading-[20px] text-[#000] tracking-[0.1px] relative text-left"
         >
-          (Refill on the spot)</span
+          ({{ refillMethodLabel }})</span
         >
       </div>
+      <span
+        class="h-[15px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[14px] font-semibold leading-[21px] text-[#000] relative text-left whitespace-nowrap z-[13]"
+        >{{ title }}</span>
       <div
-        class="flex gap-[8px] items-start self-stretch shrink-0 flex-nowrap relative z-[9]"
+        class="flex gap-[10px] items-start self-stretch shrink-0 flex-nowrap rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[17]"
       >
-        <div
-          class="w-[39px] h-[39px] shrink-0 bg-[url('../public/store.png')] bg-cover bg-no-repeat relative z-10"
+        <div v-if = "this.payload?.MethodUse === 'Exchange'"
+          class="w-[40px] h-[40px] shrink-0 bg-[url('../public/store.png')] bg-cover bg-no-repeat rounded-[6px] relative z-[18] mt-[5px]"
         ></div>
         <div
-          class="flex justify-between items-center grow shrink-0 basis-0 flex-nowrap relative z-[11]"
+          class="flex flex-col items-start grow shrink-0 basis-0 flex-nowrap relative z-[19]"
         >
-          <div
-            class="flex w-[53px] flex-col items-start shrink-0 flex-nowrap relative z-[12]"
+          <div v-if = "this.payload?.MethodUse === 'Pickup'"
+              class="flex justify-between items-start self-stretch shrink-0 flex-nowrap relative z-10"
           >
             <span
-              class="h-[21px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[14px] font-semibold leading-[21px] text-[#000] relative text-left whitespace-nowrap z-[13]"
-              >Outlet 1</span
-            ><span
-              class="h-[18px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-[#a5a5a5] relative text-left whitespace-nowrap z-[14]"
-              >Address</span
-            >
+              class="flex w-[114px] h-[30.649px] justify-start items-start shrink-0 basis-auto font-['Poppins'] text-[12px] font-semibold leading-[18px] text-[#000] relative text-left whitespace-nowrap z-[11] ml-[10px] mt-[10px]"
+              >{{ this.payload?.Member.name }} <span class="flex w-[114px] h-[30.649px] justify-start items-start shrink-0 basis-auto font-['Poppins'] text-[10px] font-semibold leading-[18px] text-[#a5a5a5] relative text-left whitespace-nowrap z-[11] ml-[10px]">
+              {{ this.payload?.Member.mobileNumber }}
+            </span></span> 
           </div>
+          <span
+            class="h-[40.207px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[10px] font-normal leading-[15px] text-[#000] relative text-left break-words z-[13] mt-[10px] mb-[5px] ml-[10px]"
+            >{{ showAddress }} </span
+          >
         </div>
       </div>
     </div>
@@ -65,13 +76,18 @@
             <div
               class="flex w-[117px] flex-col items-start shrink-0 flex-nowrap relative z-20"
             >
-              <span
+              <span v-if = "this.payload?.Brand === 1"
                 class="h-[24px] shrink-0 basis-auto font-['Poppins'] text-[16px] font-semibold leading-[24px] text-[#000] relative text-left whitespace-nowrap z-[21]"
-                >SOSODA Cylinder</span
-              ><span
+                >SOSODA Cylinder
+              </span>
+              <span v-if = "this.payload?.Brand === 2"
+                class="h-[24px] shrink-0 basis-auto font-['Poppins'] text-[16px] font-semibold leading-[24px] text-[#000] relative text-left whitespace-nowrap z-[21]"
+                >NON SOSODA Cylinder
+              </span>
+              <span
                 class="h-[18px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[12px] font-medium leading-[18px] text-[#000] relative text-left whitespace-nowrap z-[22]"
-                >RM 68.00</span
-              >
+                >RM {{ this.payload?.BuyPrice.toFixed(2) }}
+              </span>
             </div>
             <div
               class="flex w-[87px] flex-col items-start shrink-0 flex-nowrap relative z-[23]"
@@ -168,10 +184,10 @@
       </div>
     </div>
     <div
-      class="w-[94px] h-[80px] bg-[url('../public/getmoney.png')] bg-cover bg-no-repeat absolute top-[519px] left-[45px] z-[48]"
+      class="w-[94px] h-[80px] bg-[url('../public/getmoney.png')] bg-cover bg-no-repeat absolute top-[565px] left-[60px] z-[48]"
     ></div>
     <div
-      class="w-[342px] h-[110px] bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] absolute top-[528px] left-[30px] shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[47]"
+      class="w-[342px] h-[110px] bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] absolute top-[568px] left-[30px] shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[47]"
     >
       <div
         class="flex w-[196px] flex-col gap-[8px] items-start flex-nowrap relative z-[49] mt-[15px] mr-0 mb-0 ml-[131px]"
@@ -216,7 +232,7 @@
       </div>
     </div>
     <div
-      class="w-[402px] h-[295px] bg-[#fff] rounded-tl-[20px] rounded-tr-[20px] rounded-br-none rounded-bl-none absolute bottom-0 right-0 shadow-[0_0_10px_0_rgba(0,0,0,0.1)]"
+      class="w-[402px] h-[295px] bg-[#fff] rounded-tl-[20px] rounded-tr-[20px] top-[630px] rounded-br-none rounded-bl-none absolute bottom-0 right-0 shadow-[0_0_10px_0_rgba(0,0,0,0.1)]"
     >
       <div
         class="flex w-[342px] flex-col gap-[20px] items-start flex-nowrap relative z-[57] mt-[83px] mr-0 mb-0 ml-[30px]"
@@ -280,11 +296,54 @@
 import "./index.css";
 import api from '../services/callingapi'
 import { toast } from 'vue3-toastify';
+import { usePayloadStore } from '../stores/payloadStore';
 
 export default{
   data(){
     return{
-
+    }
+  },
+  computed: {
+    payload() {
+      const store = usePayloadStore();
+      return store.data;
+    },
+    refillMethodLabel() {
+      switch (this.payload?.MethodUse) {
+        case 'Exchange':
+          return 'Refill on the spot';
+        case 'Pickup':
+          return 'Pick Up';
+        case 'DropOff':
+          return 'Drop-Off';
+        default:
+          return '';
+      }
+    },
+    title() {
+      switch (this.payload?.MethodUse) {
+        case 'Exchange':
+          return 'Outlet - ' + this.payload?.Branch.name;
+        case 'Pickup':
+          return 'Your Address';
+        case 'DropOff':
+          return 'Drop-Off Point';
+        default:
+          return '';
+      }
+    },
+    showAddress(){
+      switch (this.payload?.MethodUse) {
+        case 'Exchange':
+          return this.payload?.Branch.address;
+        case 'Pickup':
+          return (this.payload?.Address.line1 + ' ' + this.payload?.Address.line2 + ' '  + this.payload?.Address.postalCode + ' '  + this.payload?.Address.city + ' '  
+          + this.payload?.Address.state + ' '  + this.payload?.Address.country);
+        case 'DropOff':
+          return this.payload?.DropOffPoint;
+        default:
+          return '';
+      }
     }
   },
   mounted(){
@@ -297,3 +356,9 @@ export default{
   }
 }
 </script>
+
+<style scoped>
+.checkout{
+  overflow-y: auto;
+}
+</style>

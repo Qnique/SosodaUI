@@ -315,7 +315,7 @@
             </div>
           </div>
         </div>
-        <button
+        <button @click="gotoCheckout()"
           class="flex h-[50px] pt-[10px] pr-[48px] pb-[10px] pl-[48px] gap-[10px] justify-center items-center self-stretch shrink-0 flex-nowrap bg-[#292929] rounded-[12px] relative z-[1]"
         >
           <span
@@ -589,6 +589,7 @@ import "./index.css";
 import api from '../services/callingapi' 
 import { toast } from 'vue3-toastify'; 
 import { useRoute } from 'vue-router'
+import { usePayloadStore } from '../stores/payloadStore';
 
 export default{
   data(){
@@ -610,9 +611,11 @@ export default{
       grandTotal: 0,
       branch: null,
       memberAddress: null,
+      dropOffPoint: '',
       addresses: [],
       member: null,
-      showAddress: false
+      showAddress: false,
+      dropOffPointId: ''
     }
   },
   async mounted(){
@@ -632,6 +635,29 @@ export default{
     this.getRules();
   },
   methods:{
+    gotoCheckout(){
+      if(this.qty !== 0 && this.qty !== ''){
+        const store = usePayloadStore();
+        var payload ={
+          Qty : this.qty,
+          Brand : (this.selectedType === 'Sosoda') ? 1 : 2,
+          Address : this.memberAddress,
+          BuyPrice : this.buyPrice,
+          ReturnPrice : this.returnPrice,
+          PurchaseAmount : this.purchaseAmount,
+          RefundAmount : this.refundAmount,
+          TotalAmount : this.grandTotal,
+          MethodUse : this.refill_method,
+          DropOffPoint : this.dropOffPoint,
+          DropOffPointId : this.dropOffPointId,
+          Branch : this.branch,
+          Member: this.member
+        }
+
+        store.setPayload(payload);
+        this.$router.push({ name: 'Checkout' });
+      }
+    },
     selectedAddress(id){
       this.memberAddress = this.addresses.find(x => x.id === id);
       this.showAddress = false;
