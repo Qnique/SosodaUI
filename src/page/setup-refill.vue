@@ -623,15 +623,17 @@ export default{
     if(this.refill_method === 'Exchange'){
       this.subtitle = 'Refill on the spot';
       this.getBranch();
+      this.getAddress();
     }
     else if(this.refill_method === 'Pickup'){
-      this.subtitle = 'Pick-Up Service';
-      this.getAddress();
+      this.subtitle = 'Pick-Up Service';    
+      this.getAddress();  
     }
     else{
       this.subtitle = 'Drop-Off'
     }
 
+    
     this.getRules();
   },
   methods:{
@@ -663,8 +665,8 @@ export default{
       this.showAddress = false;
     } ,
     async getAddress(){
-      //const userId = sessionStorage.getItem('IdUser');
-      const userId = 'e45a07c5-c475-4fb3-9b96-66fa3c3bff23';
+      const userId = sessionStorage.getItem('IdUser');
+      //const userId = 'e45a07c5-c475-4fb3-9b96-66fa3c3bff23';
       if(userId !== null){
         try{
           const response = await api.post('Member/GetMemberById', JSON.stringify(userId));

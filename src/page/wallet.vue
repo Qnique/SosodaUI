@@ -1,20 +1,20 @@
 <template>
   <div 
-    class="main-container w-[420px] h-[874px] bg-[#fff] relative mx-auto my-0"
+    class="wallet main-container w-[420px] h-[874px] bg-[#fff] relative mx-auto my-0"
   >
     <div
       class="flex w-[55px] h-[21px] justify-between items-center relative z-[37] mt-[50px] mr-0 mb-0 ml-[30px]"
     >
       <div @click="backToHome"
-        class="cursor-pointer w-[10px] h-[20px] shrink-0 bg-[url('../public/back_arrow.png')] bg-cover bg-no-repeat relative overflow-hidden z-[10]"
+        class="cursor-pointer w-[10px] h-[20px] shrink-0 bg-[url('../public/back_arrow.png')] bg-cover bg-no-repeat relative overflow-hidden z-[10] mt-[15px]"
       ></div>
       <span @click="backToHome"
-        class="cursor-pointer h-[21px] shrink-0 font-['Poppins'] text-[14px] font-medium leading-[21px] text-[#000] relative text-left whitespace-nowrap z-[10]"
+        class="cursor-pointer h-[21px] shrink-0 font-['Poppins'] text-[14px] font-medium leading-[21px] text-[#000] relative text-left whitespace-nowrap z-[10] mt-[15px]"
         >Back</span
       >
     </div>
     <div
-      class="w-[342px] h-[151.388px] relative z-[38] mt-[5.612px] mr-0 mb-0 ml-[30px] z-[10]"
+      class="w-[342px] h-[151.388px] relative z-[38] mt-[5.612px] mr-0 mb-0 ml-[30px] z-[5]"
     >
       <div
         class="w-[125px] h-[139.051px] absolute top-0 left-[217px] z-[10]"
@@ -48,19 +48,19 @@
       >
     </div>
     <div
-      class="flex w-[342px] h-[23px] justify-between items-center relative z-[33] mt-[15px] mr-0 mb-0 ml-[30px] z-[10]"
+      class="flex w-[342px] h-[23px] justify-between items-center relative z-[33] mt-[15px] mr-0 mb-0 ml-[30px] z-[5]"
     >
       <button @click="goToSpecificTransaction('All')" :class="activeType === 'All' ? 'bg-[#2275b6]' : 'bg-[#f8f8f8]'"
-        class="flex w-[78px] h-[23px] pt-0 pr-[16px] pb-0 pl-[16px] gap-[10px] justify-center items-center shrink-0 flex-nowrap rounded-[20px] border-solid border border-[#f5f5f5] relative shadow-[1px_1.5px_7px_0_rgba(0,0,0,0.1)] z-[27]"
+        class="flex w-[78px] h-[23px] pt-0 pr-[16px] pb-0 pl-[16px] gap-[10px] justify-center items-center shrink-0 flex-nowrap rounded-[20px] border-solid border border-[#f5f5f5] relative shadow-[1px_1.5px_7px_0_rgba(0,0,0,0.1)] z-[7]"
       >
         <span :class="activeType === 'All' ? 'text-[#fff]' : 'text-[#000]'"
-          class="h-[20px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[20px] tracking-[0.1px] relative text-left whitespace-nowrap z-[28]"
+          class="h-[20px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[20px] tracking-[0.1px] relative text-left whitespace-nowrap z-[8]"
           >All</span
         >
       </button>
     </div>
     <div
-      class="flex w-[342px] h-[23px] justify-between items-center relative z-[33] mt-[15px] mr-0 mb-0 ml-[30px] z-[10]"
+      class="flex w-[342px] h-[23px] justify-between items-center relative z-[33] mt-[15px] mr-0 mb-0 ml-[30px] z-[5]"
     >
       <button @click="goToSpecificTransaction('TopUp')" :class="activeType === 'TopUp' ? 'bg-[#2275b6]' : 'bg-[#f8f8f8]'"
         class="flex w-[78px] h-[23px] pt-0 pr-[16px] pb-0 pl-[16px] gap-[10px] justify-center items-center shrink-0 flex-nowrap rounded-[20px] border-solid border border-[#f5f5f5] relative shadow-[1px_1.5px_7px_0_rgba(0,0,0,0.1)] z-[27]"
@@ -143,7 +143,7 @@
       <div v-if="topUpShow" class="overlay" @click="topUpShow = false"></div>
     </transition>
     <transition name="slide-up">
-        <div v-if="topUpShow" class="modal w-[402px] h-[531px] absolute top-[343px] left-0 z-[39]">
+        <div v-if="topUpShow" class="modal w-[402px] h-[401px] absolute top-[343px] left-0 z-[39]">
           <div
             class="w-[342px] h-[83px] relative z-[42] mt-[80px] mr-0 mb-0 ml-[30px]"
           >
@@ -238,6 +238,7 @@ import "./index.css";
 import api from '../services/callingapi'
 import { toast } from 'vue3-toastify'; 
 import dayjs from 'dayjs';
+import { usePayloadStore } from '../stores/payloadStore';
 
 export default{
   data(){
@@ -273,8 +274,8 @@ export default{
         toast.error("Amount cannnot be zero or empty!")
       }
       else{
-        //const userId = sessionStorage.getItem('IdUser');
-        const userId = '48d8ebe7-0d83-49db-8e09-e6aee39e2094';
+        const userId = sessionStorage.getItem('IdUser');
+        //const userId = '48d8ebe7-0d83-49db-8e09-e6aee39e2094';
         if(this.activeMethod === 'Bank'){
           this.paymentMethod = 1
         }
@@ -295,9 +296,22 @@ export default{
         try{
           const response = await api.post('TopUp/RequestTopUp', JSON.stringify(payload));
             if(response.status === 200){
-            this.topUpShow = false;
-            toast.success("Top-up successfully!");
-            this.getWalletDetail();
+              if(response.data.data.recordStatus === 1){
+                this.topUpShow = false;
+                toast.success("Top-up successfully!");
+                const store = usePayloadStore();
+                var transactload ={
+                  code: response.data.data.code,
+                  invoiceNo: response.data.data.invoiceNo,
+                  dt: response.data.data.createdDt,
+                  name: '',
+                  address: '',
+                  transactionType: 'TopUp',
+                  amount: response.data.data.amount,
+                }
+                store.setPayload(transactload);
+                this.$router.push({ name: 'TransactionDetail' });
+              }                     
           }
         }
         catch (error) {
@@ -395,6 +409,7 @@ export default{
   border-radius: 10px;
   z-index: 20;
 }
+
 </style>
 
 

@@ -65,7 +65,7 @@
         class="flex h-[100px] pt-[10px] pr-[10px] pb-[10px] pl-[10px] flex-col gap-[10px] items-start self-stretch shrink-0 flex-nowrap bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[16]"
       >
         <div
-          class="flex w-[322px] gap-[10px] items-center shrink-0 flex-nowrap relative z-[17]"
+          class="flex w-[302px] gap-[10px] items-center shrink-0 flex-nowrap relative z-[17]"
         >
           <div
             class="w-[80px] h-[80px] shrink-0 bg-[url('../public/sosoda.png')] bg-cover bg-no-repeat rounded-[10px] relative z-[18]"
@@ -94,13 +94,13 @@
             >
               <span
                 class="h-[15px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[10px] font-normal leading-[15px] text-[#a5a5a5] relative text-left whitespace-nowrap z-[24]"
-                >Qty: 4</span
+                >Qty: {{ this.payload?.Qty }}</span
               >
             </div>
           </div>
         </div>
       </div>
-      <div
+      <div v-if = "voucherCount > 0"
         class=" cursor-pointer h-[46px] self-stretch shrink-0 bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[25]"
       >
         <div class="w-[138px] h-[24px] absolute top-[10px] left-[14px] z-[26]">
@@ -160,7 +160,7 @@
               </div>
               <span
                 class="h-[20px] shrink-0 basis-auto font-['Poppins'] text-[14px] font-semibold leading-[20px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-40"
-                >RM 20.00</span
+                >RM {{ this.payload?.Member.wallet.balance.toFixed(2) }}</span
               >
             </div>
             <div
@@ -184,10 +184,10 @@
       </div>
     </div>
     <div
-      class="w-[94px] h-[80px] bg-[url('../public/getmoney.png')] bg-cover bg-no-repeat absolute top-[565px] left-[60px] z-[48]"
+      class="w-[94px] h-[80px] bg-[url('../public/getmoney.png')] bg-cover bg-no-repeat absolute top-[605px] left-[60px] z-[48]"
     ></div>
     <div
-      class="w-[342px] h-[110px] bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] absolute top-[568px] left-[30px] shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[47]"
+      class="w-[342px] h-[110px] bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] absolute top-[608px] left-[30px] shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[47]"
     >
       <div
         class="flex w-[196px] flex-col gap-[8px] items-start flex-nowrap relative z-[49] mt-[15px] mr-0 mb-0 ml-[131px]"
@@ -200,7 +200,7 @@
             >Total Refund</span
           ><span
             class="h-[20px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[18px] font-bold leading-[20px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-[52]"
-            >RM 160.00</span
+            >RM {{ this.payload?.RefundAmount.toFixed(2) }}</span
           >
         </div>
         <div
@@ -211,7 +211,7 @@
             >Return Sosoda Cylinder</span
           ><span
             class="h-[12px] shrink-0 basis-auto font-['Poppins'] text-[8px] font-normal leading-[12px] text-[#292929] tracking-[0.1px] relative text-left whitespace-nowrap z-[55]"
-            >RM 40.00 x 4</span
+            >RM {{ this.payload?.ReturnPrice.toFixed(2) }} x {{ this.payload?.Qty }}</span
           >
         </div>
       </div>
@@ -232,7 +232,7 @@
       </div>
     </div>
     <div
-      class="w-[402px] h-[295px] bg-[#fff] rounded-tl-[20px] rounded-tr-[20px] top-[630px] rounded-br-none rounded-bl-none absolute bottom-0 right-0 shadow-[0_0_10px_0_rgba(0,0,0,0.1)]"
+      class="w-[402px] h-[295px] bg-[#fff] rounded-tl-[20px] rounded-tr-[20px] top-[660px] rounded-br-none rounded-bl-none absolute bottom-0 right-0 shadow-[0_0_10px_0_rgba(0,0,0,0.1)]"
     >
       <div
         class="flex w-[342px] flex-col gap-[20px] items-start flex-nowrap relative z-[57] mt-[83px] mr-0 mb-0 ml-[30px]"
@@ -248,7 +248,7 @@
               >Subtotal</span
             ><span
               class="h-[21px] shrink-0 basis-auto font-['Poppins'] text-[14px] font-normal leading-[21px] text-[#a5a5a5] tracking-[0.1px] relative text-left whitespace-nowrap z-[61]"
-              >RM 272.00</span
+              >RM {{ this.payload?.PurchaseAmount.toFixed(2) }}</span
             >
           </div>
           <div
@@ -264,7 +264,7 @@
             </div>
             <span
               class="h-[21px] shrink-0 basis-auto font-['Poppins'] text-[14px] font-normal leading-[21px] text-[#a5a5a5] tracking-[0.1px] relative text-left whitespace-nowrap z-[65]"
-              >- RM 0.00</span
+              >RM 0.00</span
             >
           </div>
         </div>
@@ -276,7 +276,7 @@
             >Total</span
           ><span
             class="h-[21px] shrink-0 basis-auto font-['Poppins'] text-[22px] font-bold leading-[21px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-[68]"
-            >RM 272.00</span
+            >RM {{ this.payload?.PurchaseAmount.toFixed(2) }}</span
           >
         </div>
       </div>
@@ -344,7 +344,7 @@ export default{
         default:
           return '';
       }
-    }
+    },
   },
   mounted(){
 
@@ -352,6 +352,9 @@ export default{
   methods:{  
     backToPrevious(){
         this.$router.go(-1);  
+    },
+    voucherCount(){
+        return (this.payload?.Member.vouchers !== null) ? this.payload?.Member.vouchers.length : 0;
     }
   }
 }

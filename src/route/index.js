@@ -23,8 +23,14 @@ const MenuPage = () => import('../page/menu.vue')
 const RefillSetup = () => import('../page/setup-refill.vue')
 const RefundSetup = () => import('../page/setup-refund.vue')
 const CheckoutPage = () => import('../page/checkout.vue')
+const TransactionDetails = () => import('../page/transactiondetails.vue')
 
 const routes = [
+  {
+    path: '/transactiondetails',
+    name: 'TransactionDetail',
+    component: TransactionDetails,
+  },
   {
     path: '/checkout',
     name: 'Checkout',
