@@ -230,7 +230,8 @@ export default{
             City : this.city.toUpperCase(),
             State : this.state.toUpperCase(),
             PostalCode : this.postCode,
-            Country : 'MALAYSIA'
+            Country : 'MALAYSIA',
+            RequestUpdateId: sessionStorage.getItem('IdUser')
         };
         try{
           const response = await api.post('Address/EditAddress', JSON.stringify(payload));
@@ -248,8 +249,12 @@ export default{
        this.$router.go(-1);    
     },
     async deleteAddress(){
+      const addressload = {
+        Id: this.address.id,
+        MemberId: this.address.memberId
+      }
       try{
-          const response = await api.post('Address/DeleteAddess', JSON.stringify(this.address.id));
+          const response = await api.post('Address/DeleteAddess', JSON.stringify(addressload));
           if(response.status === 200){
               toast.success('Deleted successfully!');                
               this.$router.push({ name: 'Addresses' });

@@ -84,6 +84,7 @@
 import "./index.css";
 import api from '../services/callingapi' 
 import { toast } from 'vue3-toastify'; 
+import { usePayloadStore } from '../stores/payloadStore';
 
 export default{
   data(){
@@ -97,7 +98,12 @@ export default{
        this.$router.push({ name: 'Home' }); 
     },  
     goToRefill(refillmethod){
-      this.$router.push({ name: 'SetupRefill', params: { refillmethod } })
+      const store = usePayloadStore();
+      var methodload = {
+        RefillMethod : refillmethod
+      }
+      store.setPayload(methodload);
+      this.$router.push({ name: 'SetupRefill' });
     }  
   }
 }

@@ -132,7 +132,7 @@
       >
         <span
           class="h-[24px] shrink-0 basis-auto font-['Poppins'] text-[16px] font-semibold leading-[24px] text-[#fff] relative text-left whitespace-nowrap z-[39]"
-          >Back</span
+          >HOME</span
         >
       </button>
     </div>
@@ -183,7 +183,7 @@ export default{
   },
   methods:{  
     backToPrevious(){
-        this.$router.go(-1);  
+        this.$router.push({ name: 'Home' });
     },
     formatDate(dateStr) {
         if (!dateStr) return '';

@@ -211,7 +211,7 @@
       </div>
     </div>
     <div
-      class="flex w-[402px] h-[355.346px] pt-[35px] pr-[30px] pb-[35px] pl-[30px] flex-col gap-[10px] justify-center items-center flex-nowrap bg-[#fff] rounded-tl-[20px] rounded-tr-[20px] rounded-br-none rounded-bl-none relative shadow-[0_0_10px_0_rgba(0,0,0,0.1)] z-[6] mt-[24px] mr-0 mb-0 ml-0"
+      class="flex w-[402px] h-[355.346px] pt-[10px] pr-[30px] pb-[35px] pl-[30px] flex-col gap-[10px] justify-center items-center flex-nowrap bg-[#fff] rounded-tl-[20px] rounded-tr-[20px] rounded-br-none rounded-bl-none relative shadow-[0_0_10px_0_rgba(0,0,0,0.1)] z-[6] mt-[24px] mr-0 mb-0 ml-0"
     >
       <div
         class="flex w-[342px] flex-col gap-[40px] items-start shrink-0 flex-nowrap relative z-[7]"
@@ -230,7 +230,7 @@
               class="flex flex-col gap-[10px] items-start self-stretch shrink-0 flex-nowrap relative z-[11]"
             >
               <div
-                class="flex w-[318px] gap-[40px] items-center shrink-0 flex-nowrap relative z-[12]"
+                class="flex w-[318px] gap-[50px] items-center shrink-0 flex-nowrap relative z-[12]"
               >
                 <div
                   class="flex w-[132px] flex-col items-start shrink-0 flex-nowrap relative z-[13]"
@@ -346,7 +346,7 @@
             >Refill + Swap</span
           ><span
             class="h-[20px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[14px] font-bold leading-[20px] tracking-[0.1px] relative text-left whitespace-nowrap z-[9] text-[#60DCD6]"
-            >{{ this.subtitle }}</span
+            >{{ SubtitleLabel }}</span
           >
         </div>
       </div>
@@ -523,7 +523,7 @@
     <transition name="slide-up">
       <div
         v-if="showAddress"
-        class="modal overflow-y-auto flex w-[342px] h-[490px] flex-col gap-[20px] items-start flex-nowrap absolute top-[430px] left-[30px] z-[85]"
+        class="modal overflow-y-auto flex w-[342px] h-[490px] flex-col gap-[20px] items-start flex-nowrap absolute top-[150px] left-[30px] z-[85]"
       >
         <span
           class="h-[20px] shrink-0 basis-auto font-['Poppins'] text-[16px] font-medium leading-[20px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-[83] mt-[20px] ml-[25px] mr-[20px]"
@@ -599,7 +599,6 @@ export default{
       buyPrice: 0,
       returnPrice: 0,
       refill_method: '',
-      subtitle: '',
       showSwapRule: false,
       showRefundInfo: false,
       buys: [],
@@ -618,22 +617,27 @@ export default{
       dropOffPointId: ''
     }
   },
-  async mounted(){
-    this.refill_method = this.$route.params.refillmethod;  
-    if(this.refill_method === 'Exchange'){
-      this.subtitle = 'Refill on the spot';
-      this.getBranch();
-      this.getAddress();
+  computed: {
+    methodload() {
+      const store = usePayloadStore();
+      return store.data;
+    },
+    SubtitleLabel() {
+      this.refill_method = this.methodload?.RefillMethod;
+      switch (this.methodload?.RefillMethod) {
+        case 'Exchange':  
+          this.getBranch();
+          this.getAddress();        
+          return 'Refill on the spot';
+        case 'Pickup':
+          this.getAddress();
+          return 'Pick-Up Service';
+        default:
+          return 'Drop-Off';
+      }
     }
-    else if(this.refill_method === 'Pickup'){
-      this.subtitle = 'Pick-Up Service';    
-      this.getAddress();  
-    }
-    else{
-      this.subtitle = 'Drop-Off'
-    }
-
-    
+  },
+  async mounted(){     
     this.getRules();
   },
   methods:{
@@ -653,7 +657,9 @@ export default{
           DropOffPoint : this.dropOffPoint,
           DropOffPointId : this.dropOffPointId,
           Branch : this.branch,
-          Member: this.member
+          Member: this.member,
+          Discount: 0,
+          VoucherId: ''
         }
 
         store.setPayload(payload);

@@ -69,7 +69,7 @@
             class="flex h-[42px] pt-[12px] pr-[15px] pb-[12px] pl-[15px] gap-[10px] items-center self-stretch shrink-0 flex-nowrap bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[19]"
           >
             <input  v-model="bankName"
-              class=" bg-[#fafafa] h-[18px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-[rgba(0,0,0,0.25)] relative text-left whitespace-nowrap z-20"
+              class=" bg-[#fafafa] h-[18px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-[#000] relative text-left whitespace-nowrap z-20"
               />
           </div>
         </div>
@@ -87,7 +87,7 @@
             class="flex h-[42px] pt-[12px] pr-[15px] pb-[12px] pl-[15px] gap-[10px] items-center self-stretch shrink-0 flex-nowrap bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[19]"
           >
             <input  v-model="accountNumber"
-              class=" bg-[#fafafa] h-[18px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-[rgba(0,0,0,0.25)] relative text-left whitespace-nowrap z-20"
+              class=" bg-[#fafafa] h-[18px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-[#000] relative text-left whitespace-nowrap z-20"
               />
           </div>
         </div>
@@ -108,7 +108,7 @@
               class="flex h-[42px] pt-[12px] pr-[15px] pb-[12px] pl-[15px] gap-[10px] items-center self-stretch shrink-0 flex-nowrap bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[24]"
             >
               <input  v-model="expiryDate" maxlength="5" @input="formatExpiry" placeholder="MM-YY"
-                class=" bg-[#fafafa] h-[18px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-[rgba(0,0,0,0.25)] relative text-left whitespace-nowrap z-[25]"
+                class=" bg-[#fafafa] h-[18px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-[#000] relative text-left whitespace-nowrap z-[25]"
                 />
             </div>
           </div>
@@ -126,7 +126,7 @@
               class="flex h-[42px] pt-[12px] pr-[15px] pb-[12px] pl-[15px] gap-[10px] items-center self-stretch shrink-0 flex-nowrap bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[28]"
             >
               <input  v-model="cvv" @input="formatCVV" maxlength="3"
-                class=" bg-[#fafafa] h-[18px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-[rgba(0,0,0,0.25)] relative text-left whitespace-nowrap z-[29]"
+                class=" bg-[#fafafa] h-[18px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-[#000] relative text-left whitespace-nowrap z-[29]"
                 />
             </div>
           </div>
@@ -145,7 +145,7 @@
             class="flex h-[42px] pt-[12px] pr-[15px] pb-[12px] pl-[15px] gap-[10px] items-center self-stretch shrink-0 flex-nowrap bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[32]"
           >
             <input  v-model="holderName"
-              class="bg-[#fafafa] h-[18px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-[rgba(0,0,0,0.25)] relative text-left whitespace-nowrap z-[33]"
+              class="bg-[#fafafa] h-[18px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-[#000] relative text-left whitespace-nowrap z-[33]"
               
             />
           </div>
@@ -349,6 +349,7 @@ export default{
       if(this.cvv !== '' && this.holderName !== '' && this.accountNumber !== '' && this.expiryDate !== '' && this.bankName  !== '' && this.isValidExpiry)
       {
         const payload = {
+          MemberId : sessionStorage.getItem('IdUser'),
           BankName: this.bankName.toUpperCase(),
           CVV : this.cvv.toUpperCase(),
           CardNumber : this.accountNumber,

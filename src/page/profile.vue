@@ -167,7 +167,8 @@ export default{
       if(this.email !== '' && this.mobileNumber !== ''){
         const payload = {
           MobileNumber: this.member.mobileNumber,
-          Email: this.member.email
+          Email: this.member.email,
+          RequestUpdateId: sessionStorage.getItem('IdUser')
         }
         try{
           const response = await api.post('Member/EditMemberDetail', JSON.stringify(payload));

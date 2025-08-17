@@ -97,7 +97,12 @@ export default{
        this.$router.push({ name: 'Home' }); 
     },  
     goToRefund(refundmethod){
-      this.$router.push({ name: 'SetupRefund', params: { refundmethod } })
+      const store = usePayloadStore();
+      var methodload = {
+        ReturnMethod : refundmethod
+      }
+      store.setPayload(methodload);
+      this.$router.push({ name: 'SetupRefund' });
     }  
   }
 }

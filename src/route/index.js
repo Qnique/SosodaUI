@@ -24,12 +24,13 @@ const RefillSetup = () => import('../page/setup-refill.vue')
 const RefundSetup = () => import('../page/setup-refund.vue')
 const CheckoutPage = () => import('../page/checkout.vue')
 const TransactionDetails = () => import('../page/transactiondetails.vue')
+const MyVouchersPage = () => import('../page/myvouchers.vue')
 
 const routes = [
   {
-    path: '/transactiondetails',
-    name: 'TransactionDetail',
-    component: TransactionDetails,
+    path: '/myvouchers',
+    name: 'MyVouchersList',
+    component: MyVouchersPage,
   },
   {
     path: '/checkout',
@@ -37,12 +38,12 @@ const routes = [
     component: CheckoutPage,
   },
   {
-    path: '/setup-refund/:refundmethod',
+    path: '/setup-refund',
     name: 'SetupRefund',
     component: RefundSetup,
   },
   {
-    path: '/setup-refill/:refillmethod',
+    path: '/setup-refill',
     name: 'SetupRefill',
     component: RefillSetup,
   },

@@ -117,7 +117,7 @@
           <div class="w-[342px] h-[20px] relative z-[14] mt-0 mr-0 mb-0 ml-0">
             <span
               class="flex h-[20px] justify-start items-center font-['Poppins'] text-[10px] font-normal leading-[20px] text-[#999999] tracking-[0.1px] absolute top-0 left-0 text-left whitespace-nowrap z-[15]"
-              >{{ formatDate(item.createDt) }}</span
+              >{{ formatDate(item.createdDt) }}</span
             ><span
               class="flex h-[20px] justify-start items-center font-['Poppins'] text-[12px] font-normal leading-[20px] text-[#000] tracking-[0.1px] absolute top-0 left-[230px] text-left whitespace-nowrap z-[16]"
               >Balance: RM {{ item.balance.toFixed(2) }}</span
@@ -143,7 +143,7 @@
       <div v-if="topUpShow" class="overlay" @click="topUpShow = false"></div>
     </transition>
     <transition name="slide-up">
-        <div v-if="topUpShow" class="modal w-[402px] h-[401px] absolute top-[343px] left-0 z-[39]">
+        <div v-if="topUpShow" class="modal w-[402px] h-[301px] absolute top-[143px] left-0 z-[39]">
           <div
             class="w-[342px] h-[83px] relative z-[42] mt-[80px] mr-0 mb-0 ml-[30px]"
           >
@@ -222,7 +222,7 @@
             >
           </button>
           <div
-            class="w-[402px] h-[531px] bg-[#fff] rounded-tl-[15px] rounded-tr-[15px] rounded-br-none rounded-bl-none absolute top-0 left-1/2 translate-x-[-50%] translate-y-0 z-40"
+            class="w-[402px] h-[431px] bg-[#fff] rounded-tl-[15px] rounded-tr-[15px] rounded-br-none rounded-bl-none absolute top-0 left-1/2 translate-x-[-50%] translate-y-0 z-40"
           ></div>
           <span
             class="flex h-[20px] justify-start items-center font-['Poppins'] text-[16px] font-medium leading-[20px] text-[#000] tracking-[0.1px] absolute top-[30px] left-[30px] text-left whitespace-nowrap z-[41]"
@@ -261,7 +261,7 @@ export default{
       this.amount = this.amount.replace(/[^0-9.]/g, ''); // Remove everything except digits and dots
     },
     backToHome() {
-      this.$router.push({ name: 'Home' });
+      this.$router.go(-1);   
     },
     formatDate(date) {
       return dayjs(date).format('YYYY-MM-DD HH:mm');
@@ -342,7 +342,6 @@ export default{
       //const userId = '48d8ebe7-0d83-49db-8e09-e6aee39e2094';
       try{
         const response = await api.post('Wallet/GetWalletById', JSON.stringify(userId));
-        console.log(response);
         if(response.status === 200){
           this.wallet = response.data;
           if(response.data.transactionLogs != null){

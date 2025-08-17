@@ -201,13 +201,15 @@ export default{
 
       if(this.city !== '' && this.postCode !== '' && this.state !== '' && this.line1 !== '' )
       {
+        const userId = sessionStorage.getItem('IdUser');
         const payload = {
-            Line1 : this.line1,
-            Line2 : this.line2,
-            City : this.city.toUpperCase(),
-            State : this.state.toUpperCase(),
-            PostalCode : this.postCode,
-            Country : 'MALAYSIA'
+          MemberId : sessionStorage.getItem('IdUser'),
+          Line1 : this.line1,
+          Line2 : this.line2,
+          City : this.city.toUpperCase(),
+          State : this.state.toUpperCase(),
+          PostalCode : this.postCode,
+          Country : 'MALAYSIA'
         };
         try{
           const response = await api.post('Address/NewAddress', JSON.stringify(payload));

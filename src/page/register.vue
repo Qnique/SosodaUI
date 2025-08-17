@@ -79,7 +79,7 @@
             <div
               class="flex h-[42px] pt-[12px] pr-[15px] pb-[12px] pl-[15px] gap-[10px] items-center self-stretch shrink-0 flex-nowrap bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[24]"
             >
-              <input placeholder="Enter Your Registered Business Name" v-model="SSM"
+              <input placeholder="Enter Your Registered Business Name (Optional)" v-model="SSM"
                 class="w-full h-[18px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] bg-[#fafafa] text-black relative text-left whitespace-nowrap z-[25]"
                 />
             </div>
@@ -94,7 +94,7 @@
             <div
               class="flex h-[42px] pt-[12px] pr-[15px] pb-[12px] pl-[15px] gap-[10px] items-center self-stretch shrink-0 flex-nowrap bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[24]"
             >
-              <input placeholder="Enter Your Brand Name" v-model="BrandName"
+              <input placeholder="Enter Your Brand Name (Optional)" v-model="BrandName"
                 class="w-full h-[18px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] bg-[#fafafa] text-black relative text-left whitespace-nowrap z-[25]"
                 />
             </div>
@@ -109,7 +109,7 @@
             <div
               class="flex h-[42px] pt-[12px] pr-[15px] pb-[12px] pl-[15px] gap-[10px] items-center self-stretch shrink-0 flex-nowrap bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[24]"
             >
-              <input placeholder="Enter Your Tax Identification Number" v-model="Tin"
+              <input placeholder="Enter Your Tax Identification Number (Optional)" v-model="Tin"
                 class="w-full h-[18px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] bg-[#fafafa] text-black relative text-left whitespace-nowrap z-[25]"
                 />
             </div>

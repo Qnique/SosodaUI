@@ -19,7 +19,7 @@
 			<div
 				class="flex w-[186px] flex-col gap-[29px] items-start flex-nowrap relative z-[1] mt-[51.5px] mr-0 mb-0 ml-[15px]">
 				<div
-					class="flex w-[177px] flex-col gap-[5px] items-start shrink-0 flex-nowrap relative z-[2]">
+					class="flex w-[177px] flex-col gap-[5px] items-start shrink-0 flex-nowrap relative z-[2] mt-[20px]">
 					<span
 						class="h-[21px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[14px] font-medium leading-[20.991px] text-[#fff] relative text-left whitespace-nowrap z-[3]">{{ bankName }}</span><span
 						class="h-[21px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[14px] font-normal leading-[20.991px] text-[#fff] tracking-[3px] relative text-left whitespace-nowrap z-[4]">{{ accountNumber }}</span>
@@ -68,12 +68,12 @@
 						class="h-[18px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[12px] font-semibold leading-[18px] text-[#000] relative text-left whitespace-nowrap z-[9]">Account
 						Number *</span>
 					<div :class="[
-                  AccountError ? 'border-red-500' : 'border border-[#fdfdfd]',
-                  'border'
-                ]"
+						AccountError ? 'border-red-500' : 'border border-[#fdfdfd]',
+						'border'
+						]"
 						class="flex h-[42px] pt-[12px] pr-[15px] pb-[12px] pl-[15px] gap-[10px] items-center self-stretch shrink-0 flex-nowrap bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-10">
 						<input v-model="accountNumber"
-							class="h-[38px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-[rgba(0,0,0,0.25)] relative text-left whitespace-nowrap z-[11] bg-[#fafafa]" />
+							class="h-[38px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-[#000] relative text-left whitespace-nowrap z-[11] bg-[#fafafa]" />
 					</div>
 					<span
 						class="h-[12px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[8px] font-normal leading-[12px] text-[#ff0000] relative text-left whitespace-nowrap z-[12]"></span>
@@ -84,12 +84,12 @@
 						class="h-[18px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[12px] font-semibold leading-[18px] text-[#000] relative text-left whitespace-nowrap z-[14]">Name
 						On Card *</span>
 					<div :class="[
-                  NameError ? 'border-red-500' : 'border border-[#fdfdfd]',
-                  'border'
-                ]"
+						NameError ? 'border-red-500' : 'border border-[#fdfdfd]',
+						'border'
+						]"
 						class="flex h-[42px] pt-[12px] pr-[15px] pb-[12px] pl-[15px] gap-[10px] items-center self-stretch shrink-0 flex-nowrap bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[15]">
 						<input v-model="holderName"
-							class="h-[38px] shrink-0 bg-[#fafafa] basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-[rgba(0,0,0,0.25)] relative text-left whitespace-nowrap z-[16]" />
+							class="h-[38px] shrink-0 bg-[#fafafa] basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-[#000] relative text-left whitespace-nowrap z-[16]" />
 					</div>
 				</div>
 				<div
@@ -98,12 +98,12 @@
 						class="h-[18px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[12px] font-semibold leading-[18px] text-[#000] relative text-left whitespace-nowrap z-[18]">Bank
 						Name *</span>
 					<div :class="[
-                  BankError ? 'border-red-500' : 'border border-[#fdfdfd]',
-                  'border'
-                ]"
+						BankError ? 'border-red-500' : 'border border-[#fdfdfd]',
+						'border'
+						]"
 						class="flex h-[42px] pt-[12px] pr-[15px] pb-[12px] pl-[15px] gap-[10px] items-center self-stretch shrink-0 flex-nowrap bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[15]">
 						<input v-model="bankName"
-							class="h-[38px] shrink-0 bg-[#fafafa] basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-[rgba(0,0,0,0.25)] relative text-left whitespace-nowrap z-[16]" />
+							class="h-[38px] shrink-0 bg-[#fafafa] basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-[#000] relative text-left whitespace-nowrap z-[16]" />
 					</div>
 				</div>
 			</div>
@@ -170,6 +170,7 @@ export default{
 		if(this.bankName !== '' && this.holderName !== '' && this.accountNumber !== '' )
 		{
 			const payload = {
+				MemberId: sessionStorage.getItem('IdUser'),
 				BankName : this.bankName.toUpperCase(),
 				AccountNumber : this.accountNumber,
 				AccountHolderName : this.holderName.toUpperCase(),

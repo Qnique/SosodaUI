@@ -42,7 +42,7 @@
                 ]" 
               class="flex w-[236px] h-[42px] pt-[12px] pr-[15px] pb-[12px] pl-[15px] gap-[10px] items-center shrink-0 flex-nowrap bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[11]"
             >
-              <input v-model="phoneNo"
+              <input v-model="phoneNo" @input="sanitizePhone"
                 class="phoneNo w-[210px] h-[18px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-black relative text-left whitespace-nowrap z-[12] bg-[#fafafa]"
               />
             </div>
@@ -111,7 +111,7 @@
     <transition name="slide-up">
       <div
         v-if="showTnc"
-        class="modal flex w-[342px] h-[690px] flex-col gap-[30px] items-start flex-nowrap absolute top-[230px] left-[30px] z-[85]"
+        class="modal flex w-[342px] flex-col gap-[30px] items-start flex-nowrap absolute top-[60px] left-[30px] z-[85] mb-[20px]"
       >
         <div class="w-full text-center">
           <span
@@ -296,6 +296,19 @@ export default{
     }
   },
   methods:{
+    sanitizePhone() {
+      // Remove non-digit characters
+      let digits = this.phoneNo.replace(/\D/g, '');
+
+      // Remove leading 0 or 60
+      if (digits.startsWith('0')) {
+        digits = digits.slice(1);
+      } else if (digits.startsWith('60')) {
+        digits = digits.slice(2);
+      }
+
+      this.phoneNo = digits;
+    },
     agreeTNC(){
       this.checked = true;
       this.showTnc = false;
@@ -303,7 +316,7 @@ export default{
     async goToVerification() {
        if (this.phoneNo !== '') {
           if(this.checked){
-            sessionStorage.setItem('phoneNoUser', this.phoneNo);
+            sessionStorage.setItem('phoneNoUser', '60' + this.phoneNo);
             try{
               const response = await api.post('System/MemberLogin', JSON.stringify(this.phoneNo));
               this.$router.push({ name: 'Verification' });

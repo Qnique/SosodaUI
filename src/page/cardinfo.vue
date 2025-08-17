@@ -115,8 +115,10 @@ export default{
   },
   methods:{    
     async getBank(){
+      const userId = sessionStorage.getItem('IdUser');
+      //const userId = '48d8ebe7-0d83-49db-8e09-e6aee39e2094';
       try{
-        const response = await api.get('BankAccount/GetBankAccountListByMemberId');
+        const response = await api.post('BankAccount/GetBankAccountListByMemberId', JSON.stringify(userId));
         if(response.status === 200){
           this.banks = response.data;
         }
@@ -126,8 +128,10 @@ export default{
       }
     },
     async getCard(){
+      const userId = sessionStorage.getItem('IdUser');
+      //const userId = '48d8ebe7-0d83-49db-8e09-e6aee39e2094';
       try{
-        const response = await api.get('CreditCard/GetCreditCardListByMemberId');
+        const response = await api.post('CreditCard/GetCreditCardListByMemberId', JSON.stringify(userId));
         if(response.status === 200){
           this.cards = response.data;
         }

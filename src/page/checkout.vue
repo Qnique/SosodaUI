@@ -6,7 +6,7 @@
       class="flex w-[342px]  items-center flex-nowrap relative z-[3] mt-[50px] mr-0 mb-0"
     >
       <div @click="backToPrevious()"
-        class="cursor-pointer w-[12.5px] h-[25px] shrink-0 bg-[url('../public/back_arrow.png')] bg-cover bg-no-repeat relative overflow-hidden z-[4]"
+        class="cursor-pointer w-[12.5px] h-[25px] shrink-0 bg-[url('../public/back_arrow.png')] bg-cover bg-no-repeat relative overflow-hidden z-[4] ml-[15px]"
       ></div>
       
     </div>
@@ -42,15 +42,6 @@
         <div
           class="flex flex-col items-start grow shrink-0 basis-0 flex-nowrap relative z-[19]"
         >
-          <div v-if = "this.payload?.MethodUse === 'Pickup'"
-              class="flex justify-between items-start self-stretch shrink-0 flex-nowrap relative z-10"
-          >
-            <span
-              class="flex w-[114px] h-[30.649px] justify-start items-start shrink-0 basis-auto font-['Poppins'] text-[12px] font-semibold leading-[18px] text-[#000] relative text-left whitespace-nowrap z-[11] ml-[10px] mt-[10px]"
-              >{{ this.payload?.Member.name }} <span class="flex w-[114px] h-[30.649px] justify-start items-start shrink-0 basis-auto font-['Poppins'] text-[10px] font-semibold leading-[18px] text-[#a5a5a5] relative text-left whitespace-nowrap z-[11] ml-[10px]">
-              {{ this.payload?.Member.mobileNumber }}
-            </span></span> 
-          </div>
           <span
             class="h-[40.207px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[10px] font-normal leading-[15px] text-[#000] relative text-left break-words z-[13] mt-[10px] mb-[5px] ml-[10px]"
             >{{ showAddress }} </span
@@ -59,33 +50,33 @@
       </div>
     </div>
     <div
-      class="flex w-[342px] flex-col gap-[20px] items-start flex-nowrap relative z-[15] mt-[12px] mr-0 mb-0 ml-[30px]"
+      class="flex w-[342px] flex-col gap-[20px] items-start flex-nowrap relative z-[5] mt-[12px] mr-0 mb-0 ml-[30px]"
     >
       <div
         class="flex h-[100px] pt-[10px] pr-[10px] pb-[10px] pl-[10px] flex-col gap-[10px] items-start self-stretch shrink-0 flex-nowrap bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[16]"
       >
         <div
-          class="flex w-[302px] gap-[10px] items-center shrink-0 flex-nowrap relative z-[17]"
+          class="flex w-[302px] gap-[10px] items-center shrink-0 flex-nowrap relative z-[5]"
         >
           <div
-            class="w-[80px] h-[80px] shrink-0 bg-[url('../public/sosoda.png')] bg-cover bg-no-repeat rounded-[10px] relative z-[18]"
+            class="w-[80px] h-[80px] shrink-0 bg-[url('../public/sosoda.png')] bg-cover bg-no-repeat rounded-[10px] relative z-[5]"
           ></div>
           <div
-            class="flex flex-col gap-[8px] items-start grow shrink-0 basis-0 flex-nowrap relative z-[19]"
+            class="flex flex-col gap-[8px] items-start grow shrink-0 basis-0 flex-nowrap relative z-[5]"
           >
             <div
-              class="flex w-[117px] flex-col items-start shrink-0 flex-nowrap relative z-20"
+              class="flex w-[117px] flex-col items-start shrink-0 flex-nowrap relative z-5"
             >
               <span v-if = "this.payload?.Brand === 1"
-                class="h-[24px] shrink-0 basis-auto font-['Poppins'] text-[16px] font-semibold leading-[24px] text-[#000] relative text-left whitespace-nowrap z-[21]"
+                class="h-[24px] shrink-0 basis-auto font-['Poppins'] text-[16px] font-semibold leading-[24px] text-[#000] relative text-left whitespace-nowrap z-[5]"
                 >SOSODA Cylinder
               </span>
               <span v-if = "this.payload?.Brand === 2"
-                class="h-[24px] shrink-0 basis-auto font-['Poppins'] text-[16px] font-semibold leading-[24px] text-[#000] relative text-left whitespace-nowrap z-[21]"
+                class="h-[24px] shrink-0 basis-auto font-['Poppins'] text-[16px] font-semibold leading-[24px] text-[#000] relative text-left whitespace-nowrap z-[5]"
                 >NON SOSODA Cylinder
               </span>
               <span
-                class="h-[18px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[12px] font-medium leading-[18px] text-[#000] relative text-left whitespace-nowrap z-[22]"
+                class="h-[18px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[12px] font-medium leading-[18px] text-[#000] relative text-left whitespace-nowrap z-[5]"
                 >RM {{ this.payload?.BuyPrice.toFixed(2) }}
               </span>
             </div>
@@ -93,14 +84,14 @@
               class="flex w-[87px] flex-col items-start shrink-0 flex-nowrap relative z-[23]"
             >
               <span
-                class="h-[15px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[10px] font-normal leading-[15px] text-[#a5a5a5] relative text-left whitespace-nowrap z-[24]"
+                class="h-[15px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[10px] font-normal leading-[15px] text-[#a5a5a5] relative text-left whitespace-nowrap z-[5]"
                 >Qty: {{ this.payload?.Qty }}</span
               >
             </div>
           </div>
         </div>
       </div>
-      <div v-if = "voucherCount > 0"
+      <div @click="goToVoucher" :class="[voucherCount === 0 ?  'cursor-default pointer-events-none' : 'cursor-pointer']"  
         class=" cursor-pointer h-[46px] self-stretch shrink-0 bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[25]"
       >
         <div class="w-[138px] h-[24px] absolute top-[10px] left-[14px] z-[26]">
@@ -120,7 +111,7 @@
             >You have </span
           ><span
             class="font-['Poppins'] text-[10px] font-medium leading-[20px] text-[#5ba6e0] tracking-[0.1px] relative text-left"
-            >5</span
+            >{{ voucherCount }}</span
           ><span
             class="font-['Poppins'] text-[10px] font-normal leading-[20px] text-[#a5a5a5] tracking-[0.1px] relative text-left"
           >
@@ -160,7 +151,7 @@
               </div>
               <span
                 class="h-[20px] shrink-0 basis-auto font-['Poppins'] text-[14px] font-semibold leading-[20px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-40"
-                >RM {{ this.payload?.Member.wallet.balance.toFixed(2) }}</span
+                >RM {{ walletBalance }}</span
               >
             </div>
             <div
@@ -170,7 +161,7 @@
                 class="h-[14px] shrink-0 basis-auto font-['Poppins'] text-[9px] font-normal leading-[13.5px] text-[#a5a5a5] relative text-left whitespace-nowrap z-[42]"
                 >Enjoy fast check out with Sosoda Wallet</span
               >
-              <button
+              <button @click="topUpShow = !topUpShow"
                 class="flex w-[73px] pt-[6px] pr-[22px] pb-[6px] pl-[22px] gap-[10px] justify-center items-center shrink-0 flex-nowrap bg-[#292929] rounded-[5px] relative z-[43]"
               >
                 <span
@@ -184,39 +175,39 @@
       </div>
     </div>
     <div
-      class="w-[94px] h-[80px] bg-[url('../public/getmoney.png')] bg-cover bg-no-repeat absolute top-[605px] left-[60px] z-[48]"
+      class="w-[94px] h-[80px] bg-[url('../public/getmoney.png')] bg-cover bg-no-repeat absolute top-[575px] left-[60px] z-[8]"
     ></div>
     <div
-      class="w-[342px] h-[110px] bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] absolute top-[608px] left-[30px] shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[47]"
+      class="w-[342px] h-[110px] bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] absolute top-[578px] left-[30px] shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[5]"
     >
       <div
         class="flex w-[196px] flex-col gap-[8px] items-start flex-nowrap relative z-[49] mt-[15px] mr-0 mb-0 ml-[131px]"
       >
         <div
-          class="flex w-[92px] flex-col items-start shrink-0 flex-nowrap relative z-50"
+          class="flex w-[92px] flex-col items-start shrink-0 flex-nowrap relative z-5"
         >
           <span
-            class="h-[15px] shrink-0 basis-auto font-['Poppins'] text-[10px] font-normal leading-[15px] text-[#a5a5a5] tracking-[0.1px] relative text-left whitespace-nowrap z-[51]"
+            class="h-[15px] shrink-0 basis-auto font-['Poppins'] text-[10px] font-normal leading-[15px] text-[#a5a5a5] tracking-[0.1px] relative text-left whitespace-nowrap z-[5]"
             >Total Refund</span
           ><span
-            class="h-[20px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[18px] font-bold leading-[20px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-[52]"
+            class="h-[20px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[18px] font-bold leading-[20px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-[5]"
             >RM {{ this.payload?.RefundAmount.toFixed(2) }}</span
           >
         </div>
         <div
-          class="flex justify-between items-start self-stretch shrink-0 flex-nowrap relative z-[53]"
+          class="flex justify-between items-start self-stretch shrink-0 flex-nowrap relative z-[5]"
         >
           <span
-            class="flex w-[117px] h-[12px] justify-start items-center shrink-0 basis-auto font-['Poppins'] text-[8px] font-normal leading-[12px] text-[#292929] tracking-[0.1px] relative text-left whitespace-nowrap z-[54]"
+            class="flex w-[117px] h-[12px] justify-start items-center shrink-0 basis-auto font-['Poppins'] text-[8px] font-normal leading-[12px] text-[#292929] tracking-[0.1px] relative text-left whitespace-nowrap z-[5]"
             >Return Sosoda Cylinder</span
           ><span
-            class="h-[12px] shrink-0 basis-auto font-['Poppins'] text-[8px] font-normal leading-[12px] text-[#292929] tracking-[0.1px] relative text-left whitespace-nowrap z-[55]"
+            class="h-[12px] shrink-0 basis-auto font-['Poppins'] text-[8px] font-normal leading-[12px] text-[#292929] tracking-[0.1px] relative text-left whitespace-nowrap z-[5]"
             >RM {{ this.payload?.ReturnPrice.toFixed(2) }} x {{ this.payload?.Qty }}</span
           >
         </div>
       </div>
       <div
-        class="w-[342px] h-[15px] font-['Poppins'] text-[10px] font-medium leading-[15px] relative text-center whitespace-nowrap z-[56] mt-[16px] mr-0 mb-0 ml-0"
+        class="w-[342px] h-[15px] font-['Poppins'] text-[10px] font-medium leading-[15px] relative text-center whitespace-nowrap z-[5] mt-[16px] mr-0 mb-0 ml-0"
       >
         <span
           class="font-['Poppins'] text-[10px] font-medium leading-[15px] relative text-center"
@@ -232,10 +223,10 @@
       </div>
     </div>
     <div
-      class="w-[402px] h-[295px] bg-[#fff] rounded-tl-[20px] rounded-tr-[20px] top-[660px] rounded-br-none rounded-bl-none absolute bottom-0 right-0 shadow-[0_0_10px_0_rgba(0,0,0,0.1)]"
+      class="w-[402px] h-[295px] bg-[#fff] rounded-tl-[20px] rounded-tr-[20px] top-[625px] rounded-br-none rounded-bl-none absolute bottom-0 right-0 shadow-[0_0_10px_0_rgba(0,0,0,0.1)]"
     >
       <div
-        class="flex w-[342px] flex-col gap-[20px] items-start flex-nowrap relative z-[57] mt-[83px] mr-0 mb-0 ml-[30px]"
+        class="flex w-[342px] flex-col gap-[20px] items-start flex-nowrap relative z-[5] mt-[83px] mr-0 mb-0 ml-[30px]"
       >
         <div
           class="flex flex-col gap-[8px] items-start self-stretch shrink-0 flex-nowrap relative z-[58]"
@@ -264,7 +255,7 @@
             </div>
             <span
               class="h-[21px] shrink-0 basis-auto font-['Poppins'] text-[14px] font-normal leading-[21px] text-[#a5a5a5] tracking-[0.1px] relative text-left whitespace-nowrap z-[65]"
-              >RM 0.00</span
+              >- RM {{ this.payload?.Discount.toFixed(2) }}</span
             >
           </div>
         </div>
@@ -276,11 +267,11 @@
             >Total</span
           ><span
             class="h-[21px] shrink-0 basis-auto font-['Poppins'] text-[22px] font-bold leading-[21px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-[68]"
-            >RM {{ this.payload?.PurchaseAmount.toFixed(2) }}</span
+            >RM {{ this.netTotal.toFixed(2) }}</span
           >
         </div>
       </div>
-      <button
+      <button @click="submitRefill()"
         class="flex w-[342px] h-[50px] pt-[10px] pr-[48px] pb-[10px] pl-[48px] gap-[10px] justify-center items-center flex-nowrap bg-[#292929] rounded-[12px] relative z-[1] mt-[31px] mr-0 mb-0 ml-[30px]"
       >
         <span
@@ -289,6 +280,98 @@
         >
       </button>
     </div>
+
+    <transition name="fade">
+      <div v-if="topUpShow" class="overlay" @click="topUpShow = false"></div>
+    </transition>
+    <transition name="slide-up">
+        <div v-if="topUpShow" class="modal w-[402px] h-[301px] absolute top-[143px] left-0 z-[39]">
+          <div
+            class="w-[342px] h-[83px] relative z-[42] mt-[80px] mr-0 mb-0 ml-[30px]"
+          >
+            <div
+              class="flex w-[342px] h-[60px] pt-[14px] pr-[20px] pb-[14px] pl-[20px] justify-between items-center flex-nowrap bg-[#292929] rounded-[10px] relative z-[44] mt-0 mr-0 mb-0 ml-0"
+            >
+              <span
+                class="h-[20px] shrink-0 basis-auto font-['Poppins'] text-[24px] font-semibold leading-[20px] text-[#5ba6e0] tracking-[0.1px] relative text-left whitespace-nowrap z-[45]"
+                >RM</span
+              ><input v-model="amount" @input="formatDigit"
+                class="flex w-[243px] h-[40px] justify-end items-center shrink-0 basis-auto font-['Poppins'] text-[20px] text-[#5ba6e0] bg-[#292929] font-normal leading-[20px] text-[rgba(255,255,255,0.5)] tracking-[0.1px] relative text-right whitespace-nowrap z-[46]"
+                />
+            </div>
+            <span
+              class="flex w-[322px] h-[20px] justify-end items-center font-['Poppins'] text-[12px] font-normal leading-[20px] text-[#999999] tracking-[0.1px] relative text-right whitespace-nowrap z-[43] mt-[3px] mr-0 mb-0 ml-[20px]"
+              >Top-up Range: RM 1 - RM 30,000</span
+            >
+          </div>
+          <span
+            class="block h-[20px] font-['Poppins'] text-[16px] font-medium leading-[20px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-[47] mt-[20px] mr-0 mb-0 ml-[30px]"
+            >Payment Methods</span
+          >
+          <div @click="selectedMethod('Bank')"
+            class="cursor-pointer flex w-[342px] pt-[11px] pr-[15px] pb-[11px] pl-[15px] justify-between items-center flex-nowrap bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[48] mt-[15px] mr-0 mb-0 ml-[30px]"
+          >
+            <div class="w-[138px] h-[24px] shrink-0 relative z-[49]">
+              <span
+                class="flex h-[20px] justify-start items-center font-['Poppins'] text-[14px] font-normal leading-[20px] text-[#000] tracking-[0.1px] absolute top-[2px] left-[45px] text-left whitespace-nowrap z-[51]"
+                >Online Bank</span
+              >
+              <div
+                class="w-[35px] h-[11.702px] absolute top-[6.149px] left-0 z-50"
+              ></div>
+            </div>
+            <div class="w-[18px] h-[18px] shrink-0 relative z-[52]">
+              <div :class="activeMethod === 'Bank' ? 'bg-[#2275b6]' : 'border-solid border-[1.5px] border-[#2275b6]'"
+                class="w-[18px] h-[18px]  rounded-[30px] absolute top-0 left-0 z-[53]"
+              ></div>
+            </div>
+          </div>
+          <!-- <div @click="selectedMethod('eWallet')"
+            class="cursor-pointer flex w-[342px] pt-[11px] pr-[15px] pb-[11px] pl-[15px] justify-between items-center flex-nowrap bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[55] mt-[10px] mr-0 mb-0 ml-[30px]"
+          >
+            <div class="w-[138px] h-[24px] shrink-0 relative z-[56]">
+              <span
+                class="flex h-[20px] justify-start items-center font-['Poppins'] text-[14px] font-normal leading-[20px] text-[#000] tracking-[0.1px] absolute top-[2px] left-[45px] text-left whitespace-nowrap z-[59]"
+                >E-Wallet</span
+              >
+              <div
+                class="w-[20.129px] h-[16px] absolute top-[4px] left-[7.455px] z-[58]"
+              ></div>
+            </div>
+            <div :class="activeMethod === 'eWallet' ? 'bg-[#2275b6]' : 'border-solid border-[1.5px] border-[#2275b6]'"
+              class="w-[18px] h-[18px] shrink-0 rounded-[30px] relative z-[60]"
+            ></div>
+          </div> -->
+          <!-- <div
+            class="flex w-[342px] pt-[11px] pr-[15px] pb-[11px] pl-[15px] justify-between items-center flex-nowrap bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[61] mt-[10px] mr-0 mb-0 ml-[30px]"
+          >
+            <div class="w-[138px] h-[24px] shrink-0 relative z-[62]">
+              <span
+                class="flex h-[20px] justify-start items-center font-['Poppins'] text-[14px] font-normal leading-[20px] text-[#000] tracking-[0.1px] absolute top-[2px] left-[45px] text-left whitespace-nowrap z-[64]"
+                >Credit / Debit Card</span
+              >
+            </div>
+            <div
+              class="w-[18px] h-[18px] shrink-0 rounded-[30px] border-solid border-[1.5px] border-[#2275b6] relative z-[65]"
+            ></div>
+          </div> -->
+          <button @click="submitTopUp"
+            class="flex w-[342px] h-[50px] pt-[10px] pr-[48px] pb-[10px] pl-[48px] gap-[10px] justify-center items-center flex-nowrap bg-[#292929] rounded-[12px] relative z-[66] mt-[65px] mr-0 mb-0 ml-[30px]"
+          >
+            <span
+              class="h-[24px] shrink-0 basis-auto font-['Poppins'] text-[16px] font-semibold leading-[24px] text-[#fff] relative text-left whitespace-nowrap z-[67]"
+              >Confirm</span
+            >
+          </button>
+          <div
+            class="w-[402px] h-[431px] bg-[#fff] rounded-tl-[15px] rounded-tr-[15px] rounded-br-none rounded-bl-none absolute top-0 left-1/2 translate-x-[-50%] translate-y-0 z-40"
+          ></div>
+          <span
+            class="flex h-[20px] justify-start items-center font-['Poppins'] text-[16px] font-medium leading-[20px] text-[#000] tracking-[0.1px] absolute top-[30px] left-[30px] text-left whitespace-nowrap z-[41]"
+            >Top Up Wallet</span
+          >
+        </div>      
+    </transition>
   </div>
 </template>
 
@@ -301,6 +384,12 @@ import { usePayloadStore } from '../stores/payloadStore';
 export default{
   data(){
     return{
+      netTotal: 0,
+      countVoucher: 0,
+      topUpShow: false,
+      amount: '',
+      activeMethod: 'Bank',
+      paymentMethod: 0
     }
   },
   computed: {
@@ -345,17 +434,134 @@ export default{
           return '';
       }
     },
+    voucherCount(){
+      const member = this.payload?.Member;
+      const vouchers = member?.vouchers;
+
+      return Array.isArray(vouchers) ? vouchers.length : 0;
+    },
+    walletBalance(){
+      const wallet = this.payload?.Member?.wallet;
+      if (wallet && typeof wallet.balance === 'number') {
+        return wallet.balance.toFixed(2);
+      }
+      return '0.00';
+    }
   },
   mounted(){
-
+    this.netTotal = this.payload?.PurchaseAmount - this.payload?.Discount
   },
   methods:{  
-    backToPrevious(){
-        this.$router.go(-1);  
+    goToVoucher(){
+      const store = usePayloadStore();
+        var voucherload ={
+          Qty : this.payload?.Qty,
+          Brand : this.payload?.Brand,
+          Address : this.payload?.Address,
+          BuyPrice : this.payload?.BuyPrice,
+          ReturnPrice : this.payload?.ReturnPrice,
+          PurchaseAmount : this.payload?.PurchaseAmount,
+          RefundAmount : this.payload?.RefundAmount,
+          TotalAmount : this.payload?.TotalAmount,
+          MethodUse : this.payload?.MethodUse,
+          DropOffPoint : this.payload?.DropOffPoint,
+          DropOffPointId : this.payload?.DropOffPointId,
+          Branch : this.payload?.Branch,
+          Member: this.payload?.Member,
+          Discount: 0,
+          VoucherId: ''
+        }
+
+        store.setPayload(voucherload);
+        this.$router.push({ name: 'MyVouchersList' });
     },
-    voucherCount(){
-        return (this.payload?.Member.vouchers !== null) ? this.payload?.Member.vouchers.length : 0;
-    }
+    async submitRefill(){
+      if(this.netTotal > this.payload?.Member.wallet.balance){
+        toast.error("Insufficient balance in your wallet.Please top-up your wallet.")
+      }
+      else{
+        const refillload = {
+          MemberId: sessionStorage.getItem('IdUser'),
+          OutletId: this.payload?.Branch.id,
+          VoucherId: this.payload?.VoucherId,
+          DropOffPoint: this.payload?.DropOffPoint,
+          DropOffPointId: this.payload?.DropOffPointId,
+          PickUpFromId: (this.payload?.MethodUse === 'Pickup') ? this.payload?.Address.id : '',
+          BottleQty: this.payload?.Qty,
+          TotalAmount: this.netTotal,
+          Discount: this.payload?.Discount,
+          SubTotal: this.payload?.PurchaseAmount,
+          Mode: this.payload?.MethodUse
+        }
+        try{
+          const response = await api.post('Refill/RequestRefill', JSON.stringify(refillload));
+          if(response.status === 200){
+
+          }
+        }
+        catch (error) {
+          toast.error(error.response.data)
+        }
+      }
+    },
+    backToPrevious(){
+      const store = usePayloadStore();
+      var methodload = {
+        RefillMethod : this.payload?.MethodUse
+      }
+      store.setPayload(methodload);
+      this.$router.push({ name: 'SetupRefill' }); 
+    },
+    async submitTopUp(){
+      if(this.amount === '0' || this.amount === 0 || this.amount === ''){
+        toast.error("Amount cannnot be zero or empty!")
+      }
+      else{
+        const userId = sessionStorage.getItem('IdUser');
+        //const userId = '48d8ebe7-0d83-49db-8e09-e6aee39e2094';
+        if(this.activeMethod === 'Bank'){
+          this.paymentMethod = 1
+        }
+
+        if(this.activeMethod === 'eWallet'){
+          this.paymentMethod = 4
+        }
+
+        if(this.activeMethod === 'CreditCard'){
+          this.paymentMethod = 3
+        }
+        const payload = {
+          MemberId : userId,
+          PaymentMethod : this.paymentMethod,
+          Amount : Number(this.amount)
+        };
+
+        try{
+          const response = await api.post('TopUp/RequestTopUp', JSON.stringify(payload));
+            if(response.status === 200){
+              if(response.data.data.recordStatus === 1){
+                this.topUpShow = false;
+                toast.success("Top-up successfully!");
+                const store = usePayloadStore();
+                var transactload ={
+                  code: response.data.data.code,
+                  invoiceNo: response.data.data.invoiceNo,
+                  dt: response.data.data.createdDt,
+                  name: '',
+                  address: '',
+                  transactionType: 'TopUp',
+                  amount: response.data.data.amount,
+                }
+                store.setPayload(transactload);
+                this.$router.push({ name: 'TransactionDetail' });
+              }                     
+          }
+        }
+        catch (error) {
+          toast.error(error.response.data)
+        }
+      }
+    },
   }
 }
 </script>
@@ -364,4 +570,53 @@ export default{
 .checkout{
   overflow-y: auto;
 }
+/* Fade transition for overlay */
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.4s ease;
+}
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+}
+.fade-enter-to, .fade-leave-from {
+  opacity: 1;
+}
+
+/* Slide-up transition for modal */
+.slide-up-enter-active, .slide-up-leave-active {
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+.slide-up-enter-from, .slide-up-leave-to {
+  transform: translateY(100%);
+  opacity: 0;
+}
+.slide-up-enter-to, .slide-up-leave-from {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Fullscreen dark overlay */
+.overlay {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+/* Modal styling */
+.modal {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  border-radius: 10px;
+  z-index: 20;
+}
+
 </style>
