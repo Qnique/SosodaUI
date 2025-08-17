@@ -40,7 +40,7 @@
       </div>
     </div>
     <div
-      class="w-[342px] h-[30px] relative z-[24] mt-[20px] mr-0 mb-0 ml-[30px] z-[10]"
+      class="w-[342px] h-[30px] relative z-[24] mt-[20px] mr-0 mb-0 ml-[30px] z-[5]"
     >
       <span
         class="flex h-[30px] justify-start items-center font-['Poppins'] text-[20px] font-semibold leading-[29.986px] text-[#000] absolute top-0 left-[calc(50%-171px)] text-left whitespace-nowrap z-[3]"
@@ -143,12 +143,12 @@
       <div v-if="topUpShow" class="overlay" @click="topUpShow = false"></div>
     </transition>
     <transition name="slide-up">
-        <div v-if="topUpShow" class="modal w-[402px] h-[301px] absolute top-[143px] left-0 z-[39]">
+        <div v-if="topUpShow" class="modal w-[382px] h-[301px] absolute top-[143px] left-0 z-[39]">
           <div
-            class="w-[342px] h-[83px] relative z-[42] mt-[80px] mr-0 mb-0 ml-[30px]"
+            class="w-[300px] h-[83px] relative z-[42] mt-[80px] mr-0 mb-0 ml-[30px]"
           >
             <div
-              class="flex w-[342px] h-[60px] pt-[14px] pr-[20px] pb-[14px] pl-[20px] justify-between items-center flex-nowrap bg-[#292929] rounded-[10px] relative z-[44] mt-0 mr-0 mb-0 ml-0"
+              class="flex w-[330px] h-[60px] pt-[14px] pr-[20px] pb-[14px] pl-[20px] justify-between items-center flex-nowrap bg-[#292929] rounded-[10px] relative z-[44] mt-0 mr-0 mb-0 ml-0"
             >
               <span
                 class="h-[20px] shrink-0 basis-auto font-['Poppins'] text-[24px] font-semibold leading-[20px] text-[#5ba6e0] tracking-[0.1px] relative text-left whitespace-nowrap z-[45]"
@@ -158,7 +158,7 @@
                 />
             </div>
             <span
-              class="flex w-[322px] h-[20px] justify-end items-center font-['Poppins'] text-[12px] font-normal leading-[20px] text-[#999999] tracking-[0.1px] relative text-right whitespace-nowrap z-[43] mt-[3px] mr-0 mb-0 ml-[20px]"
+              class="flex w-[302px] h-[20px] justify-end items-center font-['Poppins'] text-[12px] font-normal leading-[20px] text-[#999999] tracking-[0.1px] relative text-right whitespace-nowrap z-[43] mt-[3px] mr-0 mb-0 ml-[20px]"
               >Top-up Range: RM 1 - RM 30,000</span
             >
           </div>
@@ -167,7 +167,7 @@
             >Payment Methods</span
           >
           <div @click="selectedMethod('Bank')"
-            class="cursor-pointer flex w-[342px] pt-[11px] pr-[15px] pb-[11px] pl-[15px] justify-between items-center flex-nowrap bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[48] mt-[15px] mr-0 mb-0 ml-[30px]"
+            class="cursor-pointer flex w-[322px] pt-[11px] pr-[15px] pb-[11px] pl-[15px] justify-between items-center flex-nowrap bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[48] mt-[15px] mr-0 mb-0 ml-[30px]"
           >
             <div class="w-[138px] h-[24px] shrink-0 relative z-[49]">
               <span
@@ -214,7 +214,7 @@
             ></div>
           </div> -->
           <button @click="submitTopUp"
-            class="flex w-[342px] h-[50px] pt-[10px] pr-[48px] pb-[10px] pl-[48px] gap-[10px] justify-center items-center flex-nowrap bg-[#292929] rounded-[12px] relative z-[66] mt-[65px] mr-0 mb-0 ml-[30px]"
+            class="flex w-[332px] h-[50px] pt-[10px] pr-[48px] pb-[10px] pl-[48px] gap-[10px] justify-center items-center flex-nowrap bg-[#292929] rounded-[12px] relative z-[66] mt-[65px] mr-0 mb-0 ml-[30px]"
           >
             <span
               class="h-[24px] shrink-0 basis-auto font-['Poppins'] text-[16px] font-semibold leading-[24px] text-[#fff] relative text-left whitespace-nowrap z-[67]"
@@ -222,7 +222,7 @@
             >
           </button>
           <div
-            class="w-[402px] h-[431px] bg-[#fff] rounded-tl-[15px] rounded-tr-[15px] rounded-br-none rounded-bl-none absolute top-0 left-1/2 translate-x-[-50%] translate-y-0 z-40"
+            class="w-[382px] h-[411px] bg-[#fff] rounded-tl-[15px] rounded-tr-[15px] absolute top-0 left-1/2 translate-x-[-50%] translate-y-0 z-40 rounded-[10px]"
           ></div>
           <span
             class="flex h-[20px] justify-start items-center font-['Poppins'] text-[16px] font-medium leading-[20px] text-[#000] tracking-[0.1px] absolute top-[30px] left-[30px] text-left whitespace-nowrap z-[41]"
@@ -299,6 +299,7 @@ export default{
               if(response.data.data.recordStatus === 1){
                 this.topUpShow = false;
                 toast.success("Top-up successfully!");
+                console.log(response)
                 const store = usePayloadStore();
                 var transactload ={
                   code: response.data.data.code,
@@ -315,7 +316,13 @@ export default{
           }
         }
         catch (error) {
-          toast.error(error.response.data)
+          const message =
+            error?.response?.data?.message || // server-defined error
+            error?.response?.data ||          // raw response body
+            error?.message ||                 // JS error message
+            'Something went wrong';           // fallback
+
+          toast.error(message); 
         }
       }
     },
@@ -351,7 +358,13 @@ export default{
         }
       }
       catch (error) {
-        toast.error(error.response.data)
+          const message =
+            error?.response?.data?.message || // server-defined error
+            error?.response?.data ||          // raw response body
+            error?.message ||                 // JS error message
+            'Something went wrong';           // fallback
+
+          toast.error(message); 
       }
     }
   }

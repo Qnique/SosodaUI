@@ -685,7 +685,13 @@ export default{
           }
         }
         catch (error) {
-          toast.error(error.response.data.message)
+          const message =
+            error?.response?.data?.message || // server-defined error
+            error?.response?.data ||          // raw response body
+            error?.message ||                 // JS error message
+            'Something went wrong';           // fallback
+
+          toast.error(message); 
         }
       }  
     },
@@ -699,7 +705,13 @@ export default{
         }
       }
       catch (error) {
-        toast.error(error.response.data)
+          const message =
+            error?.response?.data?.message || // server-defined error
+            error?.response?.data ||          // raw response body
+            error?.message ||                 // JS error message
+            'Something went wrong';           // fallback
+
+          toast.error(message); 
       }
     },
     async handlePrice(){
@@ -717,7 +729,13 @@ export default{
           }
         }
         catch (error) {
-          toast.error(error.response.data)
+          const message =
+            error?.response?.data?.message || // server-defined error
+            error?.response?.data ||          // raw response body
+            error?.message ||                 // JS error message
+            'Something went wrong';           // fallback
+
+          toast.error(message); 
         }
 
         try{
@@ -733,7 +751,13 @@ export default{
           }
         }
         catch (error) {
-          toast.error(error.response.data)
+          const message =
+            error?.response?.data?.message || // server-defined error
+            error?.response?.data ||          // raw response body
+            error?.message ||                 // JS error message
+            'Something went wrong';           // fallback
+
+          toast.error(message); 
         }
 
         if(this.purchaseAmount !== 0){
@@ -760,7 +784,13 @@ export default{
         }
       }
       catch (error) {
-        toast.error(error.response.data)
+        const message =
+          error?.response?.data?.message || // server-defined error
+          error?.response?.data ||          // raw response body
+          error?.message ||                 // JS error message
+          'Something went wrong';           // fallback
+
+        toast.error(message); 
       }
     }
   }

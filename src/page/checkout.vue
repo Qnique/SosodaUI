@@ -77,7 +77,7 @@
               </span>
               <span
                 class="h-[18px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[12px] font-medium leading-[18px] text-[#000] relative text-left whitespace-nowrap z-[5]"
-                >RM {{ this.payload?.BuyPrice.toFixed(2) }}
+                >RM {{ this.payload?.BuyPrice?.toFixed ? this.payload?.BuyPrice.toFixed(2) : '0.00' }}
               </span>
             </div>
             <div
@@ -191,7 +191,7 @@
             >Total Refund</span
           ><span
             class="h-[20px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[18px] font-bold leading-[20px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-[5]"
-            >RM {{ this.payload?.RefundAmount.toFixed(2) }}</span
+            >RM {{  this.payload?.RefundAmount?.toFixed ? this.payload?.RefundAmount.toFixed(2) : '0.00' }}</span
           >
         </div>
         <div
@@ -202,7 +202,7 @@
             >Return Sosoda Cylinder</span
           ><span
             class="h-[12px] shrink-0 basis-auto font-['Poppins'] text-[8px] font-normal leading-[12px] text-[#292929] tracking-[0.1px] relative text-left whitespace-nowrap z-[5]"
-            >RM {{ this.payload?.ReturnPrice.toFixed(2) }} x {{ this.payload?.Qty }}</span
+            >RM {{  this.payload?.ReturnPrice?.toFixed ? this.payload?.ReturnPrice.toFixed(2) : '0.00' }} x {{ this.payload?.Qty }}</span
           >
         </div>
       </div>
@@ -239,7 +239,7 @@
               >Subtotal</span
             ><span
               class="h-[21px] shrink-0 basis-auto font-['Poppins'] text-[14px] font-normal leading-[21px] text-[#a5a5a5] tracking-[0.1px] relative text-left whitespace-nowrap z-[61]"
-              >RM {{ this.payload?.PurchaseAmount.toFixed(2) }}</span
+              >RM {{ this.payload?.PurchaseAmount?.toFixed ? this.payload?.PurchaseAmount.toFixed(2) : '0.00' }}</span
             >
           </div>
           <div
@@ -255,7 +255,7 @@
             </div>
             <span
               class="h-[21px] shrink-0 basis-auto font-['Poppins'] text-[14px] font-normal leading-[21px] text-[#a5a5a5] tracking-[0.1px] relative text-left whitespace-nowrap z-[65]"
-              >- RM {{ this.payload?.Discount.toFixed(2) }}</span
+              >- RM {{  this.payload?.Discount?.toFixed ? this.payload?.Discount.toFixed(2) : '0.00' }}</span
             >
           </div>
         </div>
@@ -267,11 +267,11 @@
             >Total</span
           ><span
             class="h-[21px] shrink-0 basis-auto font-['Poppins'] text-[22px] font-bold leading-[21px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-[68]"
-            >RM {{ this.netTotal.toFixed(2) }}</span
+            >RM {{  this.payload?.netTotal?.toFixed ? this.payload?.netTotal.toFixed(2) : '0.00' }}</span
           >
         </div>
       </div>
-      <button @click="submitRefill()"
+      <button @click="acknowledgementShow = !acknowledgementShow"
         class="flex w-[342px] h-[50px] pt-[10px] pr-[48px] pb-[10px] pl-[48px] gap-[10px] justify-center items-center flex-nowrap bg-[#292929] rounded-[12px] relative z-[1] mt-[31px] mr-0 mb-0 ml-[30px]"
       >
         <span
@@ -285,12 +285,12 @@
       <div v-if="topUpShow" class="overlay" @click="topUpShow = false"></div>
     </transition>
     <transition name="slide-up">
-        <div v-if="topUpShow" class="modal w-[402px] h-[301px] absolute top-[143px] left-0 z-[39]">
+        <div v-if="topUpShow" class="modal w-[382px] h-[301px] absolute top-[143px] left-0 z-[39]">
           <div
-            class="w-[342px] h-[83px] relative z-[42] mt-[80px] mr-0 mb-0 ml-[30px]"
+            class="w-[330px] h-[83px] relative z-[42] mt-[80px] mr-0 mb-0 ml-[30px]"
           >
             <div
-              class="flex w-[342px] h-[60px] pt-[14px] pr-[20px] pb-[14px] pl-[20px] justify-between items-center flex-nowrap bg-[#292929] rounded-[10px] relative z-[44] mt-0 mr-0 mb-0 ml-0"
+              class="flex w-[330px] h-[60px] pt-[14px] pr-[20px] pb-[14px] pl-[20px] justify-between items-center flex-nowrap bg-[#292929] rounded-[10px] relative z-[44] mt-0 mr-0 mb-0 ml-0"
             >
               <span
                 class="h-[20px] shrink-0 basis-auto font-['Poppins'] text-[24px] font-semibold leading-[20px] text-[#5ba6e0] tracking-[0.1px] relative text-left whitespace-nowrap z-[45]"
@@ -300,7 +300,7 @@
                 />
             </div>
             <span
-              class="flex w-[322px] h-[20px] justify-end items-center font-['Poppins'] text-[12px] font-normal leading-[20px] text-[#999999] tracking-[0.1px] relative text-right whitespace-nowrap z-[43] mt-[3px] mr-0 mb-0 ml-[20px]"
+              class="flex w-[302px] h-[20px] justify-end items-center font-['Poppins'] text-[12px] font-normal leading-[20px] text-[#999999] tracking-[0.1px] relative text-right whitespace-nowrap z-[43] mt-[3px] mr-0 mb-0 ml-[20px]"
               >Top-up Range: RM 1 - RM 30,000</span
             >
           </div>
@@ -309,7 +309,7 @@
             >Payment Methods</span
           >
           <div @click="selectedMethod('Bank')"
-            class="cursor-pointer flex w-[342px] pt-[11px] pr-[15px] pb-[11px] pl-[15px] justify-between items-center flex-nowrap bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[48] mt-[15px] mr-0 mb-0 ml-[30px]"
+            class="cursor-pointer flex w-[322px] pt-[11px] pr-[15px] pb-[11px] pl-[15px] justify-between items-center flex-nowrap bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[48] mt-[15px] mr-0 mb-0 ml-[30px]"
           >
             <div class="w-[138px] h-[24px] shrink-0 relative z-[49]">
               <span
@@ -356,7 +356,7 @@
             ></div>
           </div> -->
           <button @click="submitTopUp"
-            class="flex w-[342px] h-[50px] pt-[10px] pr-[48px] pb-[10px] pl-[48px] gap-[10px] justify-center items-center flex-nowrap bg-[#292929] rounded-[12px] relative z-[66] mt-[65px] mr-0 mb-0 ml-[30px]"
+            class="flex w-[332px] h-[50px] pt-[10px] pr-[48px] pb-[10px] pl-[48px] gap-[10px] justify-center items-center flex-nowrap bg-[#292929] rounded-[12px] relative z-[66] mt-[65px] mr-0 mb-0 ml-[30px]"
           >
             <span
               class="h-[24px] shrink-0 basis-auto font-['Poppins'] text-[16px] font-semibold leading-[24px] text-[#fff] relative text-left whitespace-nowrap z-[67]"
@@ -364,12 +364,95 @@
             >
           </button>
           <div
-            class="w-[402px] h-[431px] bg-[#fff] rounded-tl-[15px] rounded-tr-[15px] rounded-br-none rounded-bl-none absolute top-0 left-1/2 translate-x-[-50%] translate-y-0 z-40"
+            class="w-[382px] h-[411px] bg-[#fff] rounded-tl-[15px] rounded-tr-[15px] rounded-[10px] absolute top-0 left-1/2 translate-x-[-50%] translate-y-0 z-40"
           ></div>
           <span
             class="flex h-[20px] justify-start items-center font-['Poppins'] text-[16px] font-medium leading-[20px] text-[#000] tracking-[0.1px] absolute top-[30px] left-[30px] text-left whitespace-nowrap z-[41]"
             >Top Up Wallet</span
           >
+        </div>      
+    </transition>
+
+    <transition name="fade">
+      <div v-if="acknowledgementShow" class="overlay" @click="acknowledgementShow = false"></div>
+    </transition>
+    <transition name="slide-up">
+        <div v-if="acknowledgementShow" class="modal w-[372px] h-[301px] absolute top-[143px] left-0 z-[39]">
+          <div
+            class="w-[330px] h-[83px] relative z-[42] mt-[15px] mr-0 mb-0 ml-[30px]"
+          >
+            <div
+              class="flex flex-col gap-[30px] items-start self-stretch shrink-0 flex-nowrap relative z-[73]"
+            >
+              <div
+                class="flex flex-col gap-[30px] items-start self-stretch shrink-0 flex-nowrap relative z-[74]"
+              >
+                <div
+                  class="flex justify-between items-center self-stretch shrink-0 flex-nowrap relative z-[75]"
+                >
+                  <div class="w-[20.516px] h-[20.516px] shrink-0 relative z-[76]">
+
+                  </div>
+                  <span
+                    class="flex w-[155px] h-[24px] justify-center items-center shrink-0 basis-auto font-['Poppins'] text-[16px] font-semibold leading-[24px] text-[#000] relative text-center whitespace-nowrap z-[78]"
+                    >Acknowledgement</span
+                  >
+                  <div class="w-[20.516px] h-[20.516px] shrink-0 relative z-[79]">
+
+                  </div>
+                </div>
+                <div
+                  class="flex gap-[15px] items-start self-stretch shrink-0 flex-nowrap relative z-[81]"
+                >
+                  <span
+                    class="flex w-[294px] h-[84px] justify-start items-center grow shrink-0 basis-0 font-['Poppins'] text-[14px] font-normal leading-[20.991px] text-[#000] relative text-left z-[82]"
+                    >I acknowledge that the purchase price per cylinder is RM{{ this.payload?.BuyPrice }}. Total
+                    refund of RM{{ this.payload?.RefundAmount }} will be credited to my sosoda wallet upon return and
+                    receipt of the empty cylinder</span
+                  >
+                </div>
+                <div
+                  class="flex gap-[10px] justify-center items-end self-stretch shrink-0 flex-nowrap relative z-[83]"
+                >
+                  <div
+                    class="flex w-[20px] pt-[2px] pr-0 pb-0 pl-0 gap-[10px] items-center shrink-0 flex-nowrap relative z-[84]"
+                  >
+                    <div @click="checked = !checked"
+                      class="cursor-pointer w-[20px] h-[20px] shrink-0 rounded-[5px] border-solid border relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[85] flex items-center justify-center"
+                      :class="[
+                          checked ? 'bg-blue-500 border-blue-500' : '',
+                          showError ? 'border-red-500' : 'border-[#dbdbdb]',
+                          'border'
+                        ]"
+                    >
+                      <svg
+                        v-if="checked"
+                        class="w-[12px] h-[12px] text-white"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        stroke-width="3"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                  </div>
+                  <span
+                    class="h-[21px] grow shrink-0 basis-auto font-['Poppins'] text-[14px] font-normal leading-[21px] text-[#000] relative text-left whitespace-nowrap z-[86]"
+                    >Yes, I understand and acknowledge</span
+                  >
+                </div>
+              </div>
+              <button @click="submitRefill()"
+                class="flex h-[40px] pt-[10px] pr-[48px] pb-[10px] pl-[48px] gap-[10px] justify-center items-center self-stretch shrink-0 flex-nowrap bg-[#292929] rounded-[8px] relative z-[87]"
+              >
+                <span
+                  class="h-[24px] shrink-0 basis-auto font-['Poppins'] text-[16px] font-semibold leading-[24px] text-[#fff] relative text-left whitespace-nowrap z-[88]"
+                  >Continue</span
+                >
+              </button>
+            </div>
+          </div>          
         </div>      
     </transition>
   </div>
@@ -380,6 +463,7 @@ import "./index.css";
 import api from '../services/callingapi'
 import { toast } from 'vue3-toastify';
 import { usePayloadStore } from '../stores/payloadStore';
+import dayjs from 'dayjs';
 
 export default{
   data(){
@@ -389,7 +473,10 @@ export default{
       topUpShow: false,
       amount: '',
       activeMethod: 'Bank',
-      paymentMethod: 0
+      paymentMethod: 0,
+      acknowledgementShow: false,
+      checked: false,
+      showError: false,
     }
   },
   computed: {
@@ -480,28 +567,54 @@ export default{
         toast.error("Insufficient balance in your wallet.Please top-up your wallet.")
       }
       else{
-        const refillload = {
-          MemberId: sessionStorage.getItem('IdUser'),
-          OutletId: this.payload?.Branch.id,
-          VoucherId: this.payload?.VoucherId,
-          DropOffPoint: this.payload?.DropOffPoint,
-          DropOffPointId: this.payload?.DropOffPointId,
-          PickUpFromId: (this.payload?.MethodUse === 'Pickup') ? this.payload?.Address.id : '',
-          BottleQty: this.payload?.Qty,
-          TotalAmount: this.netTotal,
-          Discount: this.payload?.Discount,
-          SubTotal: this.payload?.PurchaseAmount,
-          Mode: this.payload?.MethodUse
-        }
-        try{
-          const response = await api.post('Refill/RequestRefill', JSON.stringify(refillload));
-          if(response.status === 200){
+        if(this.checked){
+          const refillload = {
+            MemberId: sessionStorage.getItem('IdUser'),
+            OutletId: this.payload?.Branch.id,
+            VoucherId: this.payload?.VoucherId,
+            DropOffPoint: this.payload?.DropOffPoint,
+            DropOffPointId: this.payload?.DropOffPointId,
+            PickUpFromId: (this.payload?.MethodUse === 'Pickup') ? this.payload?.Address.id : '',
+            BottleQty: this.payload?.Qty,
+            TotalAmount: this.netTotal,
+            Discount: this.payload?.Discount,
+            SubTotal: this.payload?.PurchaseAmount,
+            Mode: this.payload?.MethodUse,
+            BottleBrand: this.payload?.Brand,
+          }
+          try{
+            const response = await api.post('Refill/RequestRefill', JSON.stringify(refillload));
+            if(response.status === 200){
+              const store = usePayloadStore();
+              var order_confirmed_load = {
+                Code: response.data.data.code,
+                PaymentMethod: 'Sosoda Wallet',
+                DateRefill: response.data.data.dt,
+                Quantity: response.data.data.bottleQty,
+                TotalAmount: response.data.data.totalAmount,
+                Process: response.data.data.process,
+                Branch: this.payload?.Branch,
+                MemberAddress: this.payload?.Address,
+                RefundAmount: this.payload?.RefundAmount,
+                MethodUse: response.data.data.mode,
+              }
+              store.setPayload(order_confirmed_load);
+              this.$router.push({ name: 'OrderConfirmed' });
+            }
+          }
+          catch (error) {
+            const message =
+              error?.response?.data?.message || // server-defined error
+              error?.response?.data ||          // raw response body
+              error?.message ||                 // JS error message
+              'Something went wrong';           // fallback
 
+            toast.error(message); 
           }
         }
-        catch (error) {
-          toast.error(error.response.data)
-        }
+        else{
+          this.showError = !this.checked;
+        }        
       }
     },
     backToPrevious(){
@@ -558,7 +671,13 @@ export default{
           }
         }
         catch (error) {
-          toast.error(error.response.data)
+          const message =
+            error?.response?.data?.message || // server-defined error
+            error?.response?.data ||          // raw response body
+            error?.message ||                 // JS error message
+            'Something went wrong';           // fallback
+
+          toast.error(message); 
         }
       }
     },

@@ -25,8 +25,19 @@ const RefundSetup = () => import('../page/setup-refund.vue')
 const CheckoutPage = () => import('../page/checkout.vue')
 const TransactionDetails = () => import('../page/transactiondetails.vue')
 const MyVouchersPage = () => import('../page/myvouchers.vue')
+const ConfirmationPage = () => import('../page/confirmation.vue')
 
 const routes = [
+  {
+    path: '/confirmation',
+    name: 'OrderConfirmed',
+    component: ConfirmationPage,
+  },
+  {
+    path: '/transactiondetails',
+    name: 'TransactionDetail',
+    component: TransactionDetails,
+  },
   {
     path: '/myvouchers',
     name: 'MyVouchersList',

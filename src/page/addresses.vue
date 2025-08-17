@@ -116,7 +116,13 @@ export default{
           }
         }
         catch (error) {
-          toast.error(error.response.data)
+          const message =
+            error?.response?.data?.message || // server-defined error
+            error?.response?.data ||          // raw response body
+            error?.message ||                 // JS error message
+            'Something went wrong';           // fallback
+
+          toast.error(message); 
         }
       }      
     },
