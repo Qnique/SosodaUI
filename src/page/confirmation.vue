@@ -199,7 +199,7 @@
               >
             </div>
           </div>
-          <div v-if = "this.payload?.MethodUse === 'Pickup'"
+          <div v-if = "this.payload?.MethodUse === 'Pickup' && "
             class="flex w-[342px] flex-col gap-[10px] items-start flex-nowrap relative z-[58] mt-[5px] mr-0 mb-0"
           >
             <div
@@ -209,7 +209,7 @@
                 class="flex w-[273px] gap-[9px] items-center shrink-0 flex-nowrap relative z-[60]"
               >
                 <div
-                  class="w-[45px] h-[45px] shrink-0 bg-cover bg-no-repeat rounded-[5px] relative z-[61]"
+                  class="w-[40px] h-[40px] shrink-0 bg-cover bg-no-repeat rounded-[5px] relative z-[61]"
                   :style="{ backgroundImage: this.logo ? `url(${this.logo})` : '' }"
                 ></div>
                 <div
@@ -303,6 +303,7 @@ export default{
   computed:{
     payload() {
       const store = usePayloadStore();
+      
       return store.data;
     },
     titleConfirm() {
@@ -333,7 +334,8 @@ export default{
     },
   },
   mounted(){
-    this.getLogo()
+    this.getLogo();
+    //this.getOrderStatus();
   },
   methods:{
     backToHome() {
@@ -346,8 +348,8 @@ export default{
       try{
         const response = await api.post('Order/GetOrderByReference', JSON.stringify(this.payload?.RefillId));
         if(response.status === 200){
-          this.logo = this.response.data.courierLogo;
-          this.pickupDT = this.response.data.pickupDate;
+          this.logo = response.data.courierLogo;
+          this.pickupDT = response.data.pickupDate;
         }
       }
       catch (error) {
@@ -359,6 +361,9 @@ export default{
 
         toast.error(message); 
       }
+    },
+    async getOrderStatus(){
+
     }
   }
 }
