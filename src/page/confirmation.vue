@@ -1,6 +1,6 @@
 <template>
   <div
-    class="main-container w-[402px] h-[985px] bg-[#fff] relative overflow-hidden mx-auto my-0"
+    class="confirm main-container w-[402px] h-[985px] bg-[#fff] relative overflow-hidden mx-auto my-0"
   >
     <div
       class="flex w-[342px] flex-col gap-[20px] items-start flex-nowrap relative z-[5] mt-[40px] mr-0 mb-0 ml-[30px]"
@@ -134,7 +134,7 @@
           class="flex w-[342.004px] flex-col gap-[10px] items-start shrink-0 flex-nowrap relative z-[41]"
         >
           <span
-            class="flex w-[342.004px] h-[30px] justify-start items-start shrink-0 basis-auto font-['Poppins'] text-[20px] font-bold leading-[30px] relative text-left whitespace-nowrap z-[42]"
+            class="flex w-[342.004px] h-[30px] justify-start items-start shrink-0 basis-auto font-['Poppins'] text-[20px] font-bold leading-[30px] relative text-left whitespace-nowrap z-[42] text-[#60DCD6]"
             >Your Next Steps
           </span>
           <div
@@ -151,78 +151,139 @@
           <div
             class="flex w-[342.004px] flex-col gap-[10px] items-start shrink-0 flex-nowrap relative z-[46]"
           >
-            <span
+            <span v-if = "this.payload?.MethodUse === 'Exchange'"
               class="flex w-[342.004px] h-[42px] justify-start items-start self-stretch shrink-0 font-['Poppins'] text-[14px] font-normal leading-[21px] text-[#000] relative text-left z-[47]"
               >Please bring the empty cylinders to outlet to proceed with the
-              refill.</span
-            ><br></br><span
+              refill.</span>
+              <div v-if = "this.payload?.MethodUse === 'Pickup'"
+                class="flex flex-col gap-[5px] items-start self-stretch shrink-0 flex-nowrap relative z-[46]"
+              >
+                <span
+                  class="h-[21px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[14px] font-normal leading-[21px] text-[#000] relative text-left whitespace-nowrap z-[47] mb-[5px]"
+                  >1. Print the AWB</span
+                >
+                <div
+                  class="flex pt-0 pr-0 pb-0 pl-[22px] flex-col gap-[10px] items-start self-stretch shrink-0 flex-nowrap relative z-[48] mr-[5px]"
+                >
+                  <div
+                    class="flex h-[59px] pt-[11px] pr-[15px] pb-[11px] pl-[30px] justify-between items-center self-stretch shrink-0 flex-nowrap bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[49]"
+                  >
+                    <span
+                      class="h-[20px] shrink-0 basis-auto font-['Poppins'] text-[14px] font-bold leading-[20px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-50"
+                      >AWB</span
+                    >
+                    <button
+                      class="flex w-[107px] pt-[8px] pr-[28px] pb-[8px] pl-[28px] gap-[10px] justify-center items-center shrink-0 flex-nowrap bg-[#292929] rounded-[8px] relative z-[51]"
+                    >
+                      <span
+                        class="h-[18px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-semibold leading-[18px] text-[#fff] relative text-left whitespace-nowrap z-[52]"
+                        >Print</span
+                      >
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <span v-if = "this.payload?.MethodUse === 'Pickup'"
+                class="flex w-[342.004px] h-[63px] justify-start items-start self-stretch shrink-0 font-['Poppins'] text-[14px] font-normal leading-[21px] text-[#000] relative text-left overflow-hidden z-[53]"
+                >2. Attach the AWB securely to the parcel.<br />3. Ensure all cylinders
+                are packed properly.<br />4. Ready for collection.</span
+              >
+              <br></br>
+              <span
               class="flex w-[342.004px] h-[18px] justify-start items-start shrink-0 basis-auto font-['Poppins'] text-[12px] font-bold leading-[18px] text-[#000] relative text-left whitespace-nowrap z-[48]"
               >Important:</span
+              ><span
+                class="flex w-[342.004px] h-[54px] justify-start items-start shrink-0 font-['Poppins'] text-[12px] font-normal leading-[18px] text-[#000] relative text-left z-[49]"
+                >Cylinders must be returned in good physical condition. Must not
+                be dented, corroded, leaking, tampered with, or expired.</span
+              >
+            </div>
+          </div>
+          <div v-if = "this.payload?.MethodUse === 'Pickup'"
+            class="flex w-[342px] flex-col gap-[10px] items-start flex-nowrap relative z-[58] mt-[5px] mr-0 mb-0"
+          >
+            <div
+              class="flex h-[59px] pt-[11px] pr-[15px] pb-[11px] pl-[15px] gap-[156px] items-center self-stretch shrink-0 flex-nowrap bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[59]"
+            >
+              <div
+                class="flex w-[273px] gap-[9px] items-center shrink-0 flex-nowrap relative z-[60]"
+              >
+                <div
+                  class="w-[45px] h-[45px] shrink-0 bg-cover bg-no-repeat rounded-[5px] relative z-[61]"
+                  :style="{ backgroundImage: this.logo ? `url(${this.logo})` : '' }"
+                ></div>
+                <div
+                  class="flex w-[219px] flex-col items-start shrink-0 flex-nowrap relative z-[62]"
+                >
+                  <span
+                    class="h-[21px] shrink-0 basis-auto font-['Poppins'] text-[14px] font-semibold leading-[21px] text-[#000] relative text-left whitespace-nowrap z-[63]"
+                    >Pickup Date: {{ this.pickupDT }}</span
+                  ><span
+                    class="h-[18px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-[#a5a5a5] relative text-left whitespace-nowrap z-[64]"
+                    >Please ready the cylinder on the day</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <span v-if = "this.payload?.MethodUse === 'Exchange'"
+          class="h-[15px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[14px] font-semibold leading-[21px] text-[#000] relative text-left whitespace-nowrap z-[13]"
+          >{{ titleConfirm }}</span>
+          <div v-if = "this.payload?.MethodUse === 'Exchange'"
+            class="flex gap-[10px] items-start self-stretch shrink-0 flex-nowrap rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[17]"
+          >
+            <div
+              class="w-[39px] h-[39px] shrink-0 bg-[url('../public/store.png')] bg-cover bg-no-repeat relative z-[51] m-[8px]"
+            ></div>
+            <div
+            class="flex flex-col items-start grow shrink-0 basis-0 flex-nowrap relative z-[19]"
+              >
+              <span
+                  class="h-[40.207px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[10px] font-normal leading-[15px] text-[#000] relative text-left break-words z-[13] mt-[10px] mb-[5px] ml-[10px]"
+                  >{{ showAddressConfirm }} </span
+              >
+              </div>
+          </div>
+        </div>
+        <div
+          class="flex flex-col gap-[20px] items-start self-stretch shrink-0 flex-nowrap relative z-[57] mt-[20px]"
+        >
+          <div
+            class="w-[342.004px] self-stretch shrink-0 font-['Poppins'] text-[10px] font-normal leading-[15px] relative text-left whitespace-nowrap z-[58]"
+          >
+            <span
+              class="font-['Poppins'] text-[10px] font-normal leading-[15px] text-[#000] relative text-left"
+              >*</span
             ><span
-              class="flex w-[342.004px] h-[54px] justify-start items-start shrink-0 font-['Poppins'] text-[12px] font-normal leading-[18px] text-[#000] relative text-left z-[49]"
-              >Cylinders must be returned in good physical condition. Must not
-              be dented, corroded, leaking, tampered with, or expired.</span
+              class="font-['Poppins'] text-[10px] font-normal leading-[15px] text-[#000] relative text-left"
+              >You’ll receive </span
+            ><span
+              class="font-['Poppins'] text-[10px] font-bold leading-[15px] text-[#000] relative text-left"
+              >RM{{ this.payload?.RefundAmount }}</span
+            ><span
+              class="font-['Poppins'] text-[10px] font-normal leading-[15px] text-[#000] relative text-left"
+            >
+              credit in your wallet after your return is verified.</span
             >
           </div>
         </div>
-        <span
-        class="h-[15px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[14px] font-semibold leading-[21px] text-[#000] relative text-left whitespace-nowrap z-[13]"
-        >{{ title }}</span>
-        <div
-          class="flex gap-[10px] items-start self-stretch shrink-0 flex-nowrap rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[17]"
-        >
-          <div v-if = "this.payload?.MethodUse === 'Exchange'"
-            class="w-[39px] h-[39px] shrink-0 bg-[url('../public/store.png')] bg-cover bg-no-repeat relative z-[51] m-[8px]"
-          ></div>
-          <div
-          class="flex flex-col items-start grow shrink-0 basis-0 flex-nowrap relative z-[19]"
-            >
-            <span
-                class="h-[40.207px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[10px] font-normal leading-[15px] text-[#000] relative text-left break-words z-[13] mt-[10px] mb-[5px] ml-[10px]"
-                >{{ showAddress }} </span
-            >
-            </div>
-        </div>
       </div>
       <div
-        class="flex flex-col gap-[20px] items-start self-stretch shrink-0 flex-nowrap relative z-[57] mt-[20px]"
+        class="flex w-[341px] pt-0 pr-[10px] pb-0 pl-0 gap-[21px] items-center flex-nowrap relative mt-[30px] mr-0 mb-0 ml-[30px]"
       >
-        <div
-          class="w-[342.004px] self-stretch shrink-0 font-['Poppins'] text-[10px] font-normal leading-[15px] relative text-left whitespace-nowrap z-[58]"
+        <button @click="backToHome"
+          class="flex h-[50px] pt-[10px] pr-[48px] pb-[10px] pl-[48px] gap-[10px] justify-center items-center grow shrink-0 basis-0 flex-nowrap bg-[#292929] rounded-[12px] relative z-[1]"
         >
           <span
-            class="font-['Poppins'] text-[10px] font-normal leading-[15px] text-[#000] relative text-left"
-            >*</span
-          ><span
-            class="font-['Poppins'] text-[10px] font-normal leading-[15px] text-[#000] relative text-left"
-            >You’ll receive </span
-          ><span
-            class="font-['Poppins'] text-[10px] font-bold leading-[15px] text-[#000] relative text-left"
-            >RM{{ this.payload?.RefundAmount }}</span
-          ><span
-            class="font-['Poppins'] text-[10px] font-normal leading-[15px] text-[#000] relative text-left"
+            class="h-[24px] shrink-0 basis-auto font-['Poppins'] text-[16px] font-semibold leading-[24px] text-[#fff] relative text-left whitespace-nowrap z-[2]"
+            >Back To Home</span
           >
-            credit in your wallet after your return is verified.</span
-          >
-        </div>
+        </button>
+        <!-- <div
+          class="w-[36px] h-[36px] shrink-0 bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-17/7epWxxtaao.png)] bg-cover bg-no-repeat relative z-[3]"
+        ></div> -->
       </div>
     </div>
-    <div
-      class="flex w-[341px] pt-0 pr-[10px] pb-0 pl-0 gap-[21px] items-center flex-nowrap relative mt-[30px] mr-0 mb-0 ml-[30px]"
-    >
-      <button @click="backToHome"
-        class="flex h-[50px] pt-[10px] pr-[48px] pb-[10px] pl-[48px] gap-[10px] justify-center items-center grow shrink-0 basis-0 flex-nowrap bg-[#292929] rounded-[12px] relative z-[1]"
-      >
-        <span
-          class="h-[24px] shrink-0 basis-auto font-['Poppins'] text-[16px] font-semibold leading-[24px] text-[#fff] relative text-left whitespace-nowrap z-[2]"
-          >Back To Home</span
-        >
-      </button>
-      <!-- <div
-        class="w-[36px] h-[36px] shrink-0 bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-17/7epWxxtaao.png)] bg-cover bg-no-repeat relative z-[3]"
-      ></div> -->
-    </div>
-  </div>
 </template>
 
 <script>
@@ -235,7 +296,8 @@ import { usePayloadStore } from '../stores/payloadStore';
 export default{
   data(){
     return{
-
+      logo:'',
+      pickupDT: ''
     }
   },
   computed:{
@@ -243,7 +305,7 @@ export default{
       const store = usePayloadStore();
       return store.data;
     },
-    title() {
+    titleConfirm() {
       switch (this.payload?.MethodUse) {
         case 'Exchange':
           return 'Outlet - ' + this.payload?.Branch.name;
@@ -255,7 +317,7 @@ export default{
           return '';
       }
     },
-    showAddress(){
+    showAddressConfirm(){
       switch (this.payload?.MethodUse) {
         case 'Exchange':
           return this.payload?.Branch.address;
@@ -271,7 +333,7 @@ export default{
     },
   },
   mounted(){
-
+    this.getLogo()
   },
   methods:{
     backToHome() {
@@ -280,7 +342,31 @@ export default{
     formatDate(date) {
       return dayjs(date).format('DD MMM YYYY');
     },
+    async getLogo(){
+      try{
+        const response = await api.post('Order/GetOrderByReference', JSON.stringify(this.payload?.RefillId));
+        if(response.status === 200){
+          this.logo = this.response.data.courierLogo;
+          this.pickupDT = this.response.data.pickupDate;
+        }
+      }
+      catch (error) {
+        const message =
+          error?.response?.data?.message || // server-defined error
+          error?.response?.data ||          // raw response body
+          error?.message ||                 // JS error message
+          'Something went wrong';           // fallback
+
+        toast.error(message); 
+      }
+    }
   }
 }
 
 </script>
+
+<style scoped>
+.confirm{
+  overflow-y: auto;
+}
+</style>

@@ -24,20 +24,19 @@
                   firstError ? 'border-red-500' : 'border border-[#fdfdfd]',
                   'border'
                 ]"
-        type="text"
+        type="number"
         maxlength="1"
-        class="flex w-[48px] h-[44.8px] pt-[12px] pr-[15px] pb-[12px] pl-[15px] gap-[10px] justify-center items-center shrink-0 flex-nowrap bg-[#fafafa] rounded-[10px] border border-[#fdfdfd] shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[6] text-center font-['Poppins'] text-[16px] text-[#000] leading-[24px]"
+        class="no-spinner flex w-[48px] h-[44.8px] pt-[12px] pr-[15px] pb-[12px] pl-[15px] gap-[10px] justify-center items-center shrink-0 flex-nowrap bg-[#fafafa] rounded-[10px] border border-[#fdfdfd] shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[6] text-center font-['Poppins'] text-[16px] text-[#000] leading-[24px]"
         />
 
-        <input id="second-code" v-model="second" @input="handleInput(1)"
+        <input id="second-code" v-model="second" @input="handleInput(1)" type="number"
         @keydown.backspace="handleBackspace(1)" ref="secondRef"
         :class="[
                   secondError ? 'border-red-500' : 'border border-[#fdfdfd]',
                   'border'
                 ]"
-        type="text"
         maxlength="1"
-        class="flex w-[48px] h-[44.8px] pt-[12px] pr-[15px] pb-[12px] pl-[15px] gap-[10px] justify-center items-center shrink-0 flex-nowrap bg-[#fafafa] rounded-[10px] border border-[#fdfdfd] shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[6] text-center font-['Poppins'] text-[16px] text-[#000] leading-[24px]"
+        class="no-spinner flex w-[48px] h-[44.8px] pt-[12px] pr-[15px] pb-[12px] pl-[15px] gap-[10px] justify-center items-center shrink-0 flex-nowrap bg-[#fafafa] rounded-[10px] border border-[#fdfdfd] shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[6] text-center font-['Poppins'] text-[16px] text-[#000] leading-[24px]"
         />
 
         <input id="third-code" v-model="third" @input="handleInput(2)"
@@ -46,9 +45,9 @@
                   thirdError ? 'border-red-500' : 'border border-[#fdfdfd]',
                   'border'
                 ]"
-        type="text"
+        type="number"
         maxlength="1"
-        class="flex w-[48px] h-[44.8px] pt-[12px] pr-[15px] pb-[12px] pl-[15px] gap-[10px] justify-center items-center shrink-0 flex-nowrap bg-[#fafafa] rounded-[10px] border border-[#fdfdfd] shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[6] text-center font-['Poppins'] text-[16px] text-[#000] leading-[24px]"
+        class="no-spinner flex w-[48px] h-[44.8px] pt-[12px] pr-[15px] pb-[12px] pl-[15px] gap-[10px] justify-center items-center shrink-0 flex-nowrap bg-[#fafafa] rounded-[10px] border border-[#fdfdfd] shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[6] text-center font-['Poppins'] text-[16px] text-[#000] leading-[24px]"
         />
 
         <input id="four-code" v-model="four" @input="handleInput(3)"
@@ -57,9 +56,9 @@
                   fourError ? 'border-red-500' : 'border border-[#fdfdfd]',
                   'border'
                 ]"
-        type="text"
+        type="number"
         maxlength="1"
-        class="flex w-[48px] h-[44.8px] pt-[12px] pr-[15px] pb-[12px] pl-[15px] gap-[10px] justify-center items-center shrink-0 flex-nowrap bg-[#fafafa] rounded-[10px] border border-[#fdfdfd] shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[6] text-center font-['Poppins'] text-[16px] text-[#000] leading-[24px]"
+        class="no-spinner flex w-[48px] h-[44.8px] pt-[12px] pr-[15px] pb-[12px] pl-[15px] gap-[10px] justify-center items-center shrink-0 flex-nowrap bg-[#fafafa] rounded-[10px] border border-[#fdfdfd] shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[6] text-center font-['Poppins'] text-[16px] text-[#000] leading-[24px]"
         /> 
                   
         </div>
@@ -164,7 +163,7 @@ export default{
         const userPhoneNo = sessionStorage.getItem('phoneNoUser');
         const payload = {
           PhoneNo: userPhoneNo,
-          Code: this.first + this.second + this.third + this.four
+          Code: this.first.toString() + this.second.toString() + this.third.toString() + this.four.toString()
         };
         try{
           const response = await api.post('Member/MemberVerification', JSON.stringify(payload));
@@ -218,3 +217,17 @@ export default{
   }
 }
 </script>
+<style>
+/* Chrome, Safari, Edge, Opera */
+.no-spinner::-webkit-outer-spin-button,
+.no-spinner::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.no-spinner[type="number"] {
+  -moz-appearance: textfield;
+}
+
+</style>

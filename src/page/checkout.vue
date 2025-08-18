@@ -267,7 +267,7 @@
             >Total</span
           ><span
             class="h-[21px] shrink-0 basis-auto font-['Poppins'] text-[22px] font-bold leading-[21px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-[68]"
-            >RM {{  this.payload?.netTotal?.toFixed ? this.payload?.netTotal.toFixed(2) : '0.00' }}</span
+            >RM {{  this.netTotal?.toFixed ? this.netTotal.toFixed(2) : '0.00' }}</span
           >
         </div>
       </div>
@@ -511,10 +511,10 @@ export default{
     showAddress(){
       switch (this.payload?.MethodUse) {
         case 'Exchange':
-          return this.payload?.Branch.address;
+          return this.payload?.Branch?.address;
         case 'Pickup':
-          return (this.payload?.Address.line1 + ' ' + this.payload?.Address.line2 + ' '  + this.payload?.Address.postalCode + ' '  + this.payload?.Address.city + ' '  
-          + this.payload?.Address.state + ' '  + this.payload?.Address.country);
+          return (this.payload?.Address?.line1 + ' ' + this.payload?.Address?.line2 + ' '  + this.payload?.Address?.postalCode + ' '  + this.payload?.Address?.city + ' '  
+          + this.payload?.Address?.state + ' '  + this.payload?.Address?.country);
         case 'DropOff':
           return this.payload?.DropOffPoint;
         default:
@@ -570,7 +570,7 @@ export default{
         if(this.checked){
           const refillload = {
             MemberId: sessionStorage.getItem('IdUser'),
-            OutletId: this.payload?.Branch.id,
+            OutletId: this.payload?.Branch?.id,
             VoucherId: this.payload?.VoucherId,
             DropOffPoint: this.payload?.DropOffPoint,
             DropOffPointId: this.payload?.DropOffPointId,
@@ -597,6 +597,7 @@ export default{
                 MemberAddress: this.payload?.Address,
                 RefundAmount: this.payload?.RefundAmount,
                 MethodUse: response.data.data.mode,
+                RefillId: response.data.data.id
               }
               store.setPayload(order_confirmed_load);
               this.$router.push({ name: 'OrderConfirmed' });

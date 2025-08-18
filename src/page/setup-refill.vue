@@ -106,7 +106,7 @@
               v-model="qty" @input="handlePrice"
               type="number"
               min="0"
-              class="h-[24px] text-center shrink-0 basis-auto font-['Poppins'] text-[20px] font-semibold leading-[14px] bg-[#fafafa] text-[#000] tracking-[0.1px] relative whitespace-nowrap z-[18]"
+              class="no-spinner h-[24px] text-center shrink-0 basis-auto font-['Poppins'] text-[20px] font-semibold leading-[14px] bg-[#fafafa] text-[#000] tracking-[0.1px] relative whitespace-nowrap z-[18]"
             />
           </div>
         </div>
@@ -625,12 +625,9 @@ export default{
     SubtitleLabel() {
       this.refill_method = this.methodload?.RefillMethod;
       switch (this.methodload?.RefillMethod) {
-        case 'Exchange':  
-          this.getBranch();
-          this.getAddress();        
+        case 'Exchange':       
           return 'Refill on the spot';
         case 'Pickup':
-          this.getAddress();
           return 'Pick-Up Service';
         default:
           return 'Drop-Off';
@@ -639,6 +636,8 @@ export default{
   },
   async mounted(){     
     this.getRules();
+    this.getBranch();
+    this.getAddress();   
   },
   methods:{
     gotoCheckout(){
@@ -661,7 +660,6 @@ export default{
           Discount: 0,
           VoucherId: ''
         }
-
         store.setPayload(payload);
         this.$router.push({ name: 'Checkout' });
       }
@@ -865,5 +863,17 @@ export default{
 
 .refill{
   overflow-y: auto;
+}
+
+/* Chrome, Safari, Edge, Opera */
+.no-spinner::-webkit-outer-spin-button,
+.no-spinner::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.no-spinner[type="number"] {
+  -moz-appearance: textfield;
 }
 </style>
