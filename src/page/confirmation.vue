@@ -199,7 +199,7 @@
               >
             </div>
           </div>
-          <div v-if = "this.payload?.MethodUse === 'Pickup' && "
+          <div v-if = "this.payload?.MethodUse === 'Pickup'"
             class="flex w-[342px] flex-col gap-[10px] items-start flex-nowrap relative z-[58] mt-[5px] mr-0 mb-0"
           >
             <div
