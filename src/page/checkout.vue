@@ -482,6 +482,7 @@ export default{
   computed: {
     payload() {
       const store = usePayloadStore();
+      console.log(store.data)
       return store.data;
     },
     refillMethodLabel() {

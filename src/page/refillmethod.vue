@@ -100,10 +100,20 @@ export default{
     goToRefill(refillmethod){
       const store = usePayloadStore();
       var methodload = {
-        RefillMethod : refillmethod
+        RefillMethod : refillmethod,
+        PointId:'',
+        PointName:'',
+        PointAddress: ''
       }
       store.setPayload(methodload);
-      this.$router.push({ name: 'SetupRefill' });
+      if(refillmethod === 'DropOff')
+      {
+        this.$router.push({ name: 'DropOffPoint' });
+      }
+      else{
+        this.$router.push({ name: 'SetupRefill' });
+      }
+      
     }  
   }
 }

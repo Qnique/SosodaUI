@@ -1,6 +1,6 @@
 <template>
   <div
-    class="main-container w-[402px] h-[874px] bg-[#fff] relative overflow-hidden mx-auto my-0"
+    class="dropoff main-container w-[402px] h-[874px] bg-[#fff] relative mx-auto my-0"
   >
     <div
       class="flex w-[342px] justify-between items-center flex-nowrap relative z-[1] mt-[50px] mr-0 mb-0 ml-[30px]"
@@ -28,7 +28,7 @@
         class="flex flex-wrap gap-[10px] items-center self-stretch shrink-0 flex-nowrap relative z-[8]"
       >
         <div class="grid grid-cols-2 gap-[10px]">
-            <div v-for="(item, index) in points" :key="index"
+            <div v-for="(item, index) in points" :key="index" @click="collectPoint(item.id, item.pointName, item.address1, item.address2, item.address3, item.address4, item.postCode, item.city)"
             class="cursor-pointer flex flex-col gap-[10px] items-start shrink-0 flex-nowrap w-[170px] pt-[12px] pr-[12px] pb-[16px] pl-[12px] bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[9]"
             >
                 <div
@@ -38,27 +38,23 @@
                     class="flex flex-col gap-[6px] items-start self-stretch shrink-0 flex-nowrap relative z-[11]"
                     >
                     <div
-                        class="h-[64.126px] self-stretch shrink-0 rounded-[6px] relative z-[12]"
+                        class="h-[64.126px] self-stretch shrink-0 rounded-[6px] bg-cover bg-no-repeat relative z-[12]" :style="{ backgroundImage: this.logo ? `url(${this.logo})` : ''}"
                     ></div>
                     <div
-                        class="flex gap-[26px] items-start self-stretch shrink-0 flex-wrap relative z-[13]"
+                        class="grid grid-cols-1 gap-[6px] items-start self-stretch shrink-0 flex-wrap relative z-[13]"
                     >
                         <span
                         class="h-[18px] basis-auto font-['Poppins'] text-[12px] font-semibold leading-[18px] text-[#000] relative text-left whitespace-nowrap z-[14]"
                         >{{ item.pointName }}</span
                         ><span
-                        class="flex w-[42.805px] h-[17.207px] justify-start items-start basis-auto font-['Poppins'] text-[10px] font-normal leading-[15px] text-[#000] relative text-left whitespace-nowrap z-[16]"
+                        class="flex w-[142.805px] h-[17.207px] justify-start items-start basis-auto font-['Poppins'] text-[10px] font-normal leading-[15px] text-[#000] relative text-left z-[16]"
                         >{{ item.address1 }} {{ item.address2 }} {{ item.address3 }} {{ item.address4 }}
-                        {{ item.city }} {{ item.postCode }} {{ item.city }}</span
+                        {{ item.postCode }} {{ item.city }}</span
                         >
                     </div>
                     </div>
                     <div
                     class="flex h-[30px] pt-[10px] pr-[48px] pb-[10px] pl-[48px] gap-[5px] justify-center items-center self-stretch shrink-0 flex-nowrap bg-[rgba(255,255,255,0.2)] rounded-[8px] relative z-[17]"
-                    >
-                    <span
-                        class="h-[18px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-semibold leading-[18px] relative text-left whitespace-nowrap z-[18]"
-                        >Choose This Outlet</span
                     >
                     </div>
                 </div>
@@ -77,6 +73,7 @@ import api from '../services/callingapi'
 import { toast } from 'vue3-toastify';
 import { usePayloadStore } from '../stores/payloadStore';
 import dayjs from 'dayjs';
+import Refillmethod from "./refillmethod.vue";
 
 export default{
   data(){
@@ -84,6 +81,12 @@ export default{
         points: [],
         logo: ''
     }
+  },
+  computed: {
+    methodload() {
+      const store = usePayloadStore();
+      return store.data;
+    },
   },
   mounted(){
     this.getCourierServicePoint()
@@ -93,13 +96,13 @@ export default{
         this.$router.push({ name: 'Methods' });  
     },
     async getCourierServicePoint(){
-        //const userId = sessionStorage.getItem('IdUser');
-        const userId = '48d8ebe7-0d83-49db-8e09-e6aee39e2094';
+        const userId = sessionStorage.getItem('IdUser');
+        //const userId = '48d8ebe7-0d83-49db-8e09-e6aee39e2094';
         try{
             const response = await api.post('Refill/GetDropOffPoint', JSON.stringify(userId));
             if(response.status === 200){
-                this.point = response.locationPoints;
-                this.logo = response.logo;
+              this.points = response.data.locationPoints;
+              this.logo = response.data.logo;
             }
         }
         catch (error) {
@@ -111,7 +114,24 @@ export default{
 
             toast.error(message); 
         }
+    },
+    collectPoint(id, pointName, address1, address2, address3, address4, postcode, city){
+      const store = usePayloadStore();
+      var methodload = {
+        RefillMethod : this.methodload.RefillMethod,
+        PointId: id,
+        PointName: pointName,
+        PointAddress: address1 + '' + address2 + '' + address3 + '' + address4 + '' + postcode + '' + city
+      }
+      store.setPayload(methodload);
+      this.$router.push({ name: 'SetupRefill' });
     }
   }
 }
 </script>
+
+<style scoped>
+.dropoff{
+  overflow-y: auto;
+}
+</style>

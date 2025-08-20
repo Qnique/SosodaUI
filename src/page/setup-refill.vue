@@ -111,6 +111,53 @@
           </div>
         </div>
       </div>
+      <div v-if="refill_method === 'DropOff'"              
+        class="flex flex-col gap-[10px] items-start self-stretch shrink-0 flex-nowrap relative z-10"
+      >
+        <div
+          class="flex flex-col gap-[10px] items-start self-stretch shrink-0 flex-nowrap relative z-[11]"
+        >
+          <div
+            class="flex justify-between items-center self-stretch shrink-0 flex-nowrap relative z-[12]"
+          >
+            <span
+              class="h-[24px] shrink-0 basis-auto font-['Poppins'] text-[16px] font-semibold leading-[24px] text-[#000] relative text-left whitespace-nowrap z-[13]"
+              >Drop-off Point</span
+            >
+            <div
+              class="flex w-[87px] gap-[5px] items-center shrink-0 flex-nowrap relative z-[14]"
+            >
+              <!-- <span
+                class="h-[20px] shrink-0 basis-auto font-['Poppins'] text-[10px] font-medium leading-[20px] text-[#2275b6] tracking-[0.1px] relative text-left whitespace-nowrap z-[35]"
+                >Change Outlet</span
+              >               -->
+            </div>
+          </div>
+        </div>
+        <div
+          class="flex gap-[10px] items-start self-stretch shrink-0 flex-nowrap relative z-[17]"
+        >
+          <div
+            class="w-[93px] h-[65px] shrink-0 bg-[url('../public/outlet.png')] bg-cover bg-no-repeat rounded-[6px] relative z-[18]"
+          ></div>
+          <div
+            class="flex flex-col items-start grow shrink-0 basis-0 flex-nowrap relative z-[19]"
+          >
+            <div
+              class="flex justify-between items-start self-stretch shrink-0 flex-nowrap relative z-10"
+            >
+              <span
+                class="flex w-[114px] h-[20.649px] justify-start items-start shrink-0 basis-auto font-['Poppins'] text-[12px] font-semibold leading-[18px] text-[#000] relative text-left whitespace-nowrap z-[11]"
+                >{{ this.methodload?.PointName }}</span
+              >
+            </div>
+            <span
+              class="h-[17.207px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[10px] font-normal leading-[15px] text-[#000] relative text-left break-words z-[13]"
+              >{{ this.methodload?.PointAddress }}</span
+            >
+          </div>
+        </div>
+      </div>
       <div v-if="refill_method === 'Exchange'"              
         class="flex flex-col gap-[10px] items-start self-stretch shrink-0 flex-nowrap relative z-10"
       >
@@ -620,6 +667,7 @@ export default{
   computed: {
     methodload() {
       const store = usePayloadStore();
+      
       return store.data;
     },
     SubtitleLabel() {
@@ -653,8 +701,8 @@ export default{
           RefundAmount : this.refundAmount,
           TotalAmount : this.grandTotal,
           MethodUse : this.refill_method,
-          DropOffPoint : this.dropOffPoint,
-          DropOffPointId : this.dropOffPointId,
+          DropOffPoint : this.methodload?.PointAddress,
+          DropOffPointId : this.methodload?.PointId,
           Branch : this.branch,
           Member: this.member,
           Discount: 0,
