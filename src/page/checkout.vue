@@ -533,6 +533,27 @@ export default{
         return wallet.balance.toFixed(2);
       }
       return '0.00';
+    },
+    async checkBranch(){
+      if(this.payload.Branch === null){
+        try{
+          const response = await api.get('Branch/GetDefaultBranch');
+          if(response.status === 200){
+              if(response.data !== null){
+                this.payload.Branch = response.data;
+              }
+          }
+        }
+        catch (error) {
+            const message =
+              error?.response?.data?.message || // server-defined error
+              error?.response?.data ||          // raw response body
+              error?.message ||                 // JS error message
+              'Something went wrong';           // fallback
+
+            toast.error(message); 
+        }
+      }
     }
   },
   mounted(){
@@ -570,7 +591,7 @@ export default{
         if(this.checked){
           const refillload = {
             MemberId: sessionStorage.getItem('IdUser'),
-            OutletId: this.payload?.Branch?.id,
+            OutletId: this.payload?.Branch.id,
             VoucherId: this.payload?.VoucherId,
             DropOffPoint: this.payload?.DropOffPoint,
             DropOffPointId: this.payload?.DropOffPointId,

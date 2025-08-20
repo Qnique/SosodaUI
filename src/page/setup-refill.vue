@@ -635,9 +635,9 @@ export default{
     }
   },
   async mounted(){     
-    this.getRules();
-    this.getBranch();
-    this.getAddress();   
+    await this.getRules();
+    await this.getBranch();
+    await this.getAddress();   
   },
   methods:{
     gotoCheckout(){
@@ -659,7 +659,7 @@ export default{
           Member: this.member,
           Discount: 0,
           VoucherId: ''
-        }
+        }        
         store.setPayload(payload);
         this.$router.push({ name: 'Checkout' });
       }
@@ -695,10 +695,10 @@ export default{
     },
     async getBranch(){
       try{
-        const response = await api.get('Branch/GetBranches');
+        const response = await api.post('Branch/GetDefaultBranch');
         if(response.status === 200){
             if(response.data !== null){
-              this.branch = response.data?.[0] || null;
+              this.branch = response.data;
             }
         }
       }

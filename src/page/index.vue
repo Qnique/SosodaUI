@@ -295,6 +295,9 @@ export default{
       showTnc: false,
     }
   },
+  mounted() {
+    sessionStorage.clear();
+  },
   methods:{
     sanitizePhone() {
       // Remove non-digit characters

@@ -26,8 +26,14 @@ const CheckoutPage = () => import('../page/checkout.vue')
 const TransactionDetails = () => import('../page/transactiondetails.vue')
 const MyVouchersPage = () => import('../page/myvouchers.vue')
 const ConfirmationPage = () => import('../page/confirmation.vue')
+const DropOffPointPage = () => import('../page/dropoffpoint.vue')
 
 const routes = [
+  {
+    path: '/dropoff',
+    name: 'DropOffPoint',
+    component: DropOffPointPage,
+  },
   {
     path: '/confirmation',
     name: 'OrderConfirmed',

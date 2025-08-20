@@ -299,7 +299,6 @@ export default{
               if(response.data.data.recordStatus === 1){
                 this.topUpShow = false;
                 toast.success("Top-up successfully!");
-                console.log(response)
                 const store = usePayloadStore();
                 var transactload ={
                   code: response.data.data.code,

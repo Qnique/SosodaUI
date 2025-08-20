@@ -39,7 +39,7 @@
             ></div>
             <span
               class="flex w-[86px] h-[18px] justify-center items-start shrink-0 basis-auto font-['Poppins'] text-[12px] font-semibold leading-[18px] text-[#000] relative text-center whitespace-nowrap z-[16]"
-              >Ready to Refill</span
+              >{{ this.orderStatus }}</span
             >
           </div>
           <div
@@ -172,7 +172,11 @@
                       class="h-[20px] shrink-0 basis-auto font-['Poppins'] text-[14px] font-bold leading-[20px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-50"
                       >AWB</span
                     >
-                    <button
+                    <button :disabled="orderStatus === 'PendingPayment'"
+                    :class="[
+                            'flex w-[107px] pt-[8px] pr-[28px] pb-[8px] pl-[28px] gap-[10px] justify-center items-center shrink-0 flex-nowrap bg-[#292929] rounded-[8px] relative z-[51]',
+                            orderStatus === 'PendingPayment' ? 'cursor-not-allowed opacity-60' : 'cursor-pointer'
+                          ]"
                       class="flex w-[107px] pt-[8px] pr-[28px] pb-[8px] pl-[28px] gap-[10px] justify-center items-center shrink-0 flex-nowrap bg-[#292929] rounded-[8px] relative z-[51]"
                     >
                       <span
@@ -199,7 +203,7 @@
               >
             </div>
           </div>
-          <div v-if = "this.payload?.MethodUse === 'Pickup'"
+          <div v-if = "this.payload?.MethodUse === 'Pickup' && orderStatus !== 'PendingPayment'"
             class="flex w-[342px] flex-col gap-[10px] items-start flex-nowrap relative z-[58] mt-[5px] mr-0 mb-0"
           >
             <div
@@ -216,10 +220,10 @@
                   class="flex w-[219px] flex-col items-start shrink-0 flex-nowrap relative z-[62]"
                 >
                   <span
-                    class="h-[21px] shrink-0 basis-auto font-['Poppins'] text-[14px] font-semibold leading-[21px] text-[#000] relative text-left whitespace-nowrap z-[63]"
-                    >Pickup Date: {{ this.pickupDT }}</span
-                  ><span
-                    class="h-[18px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-normal leading-[18px] text-[#a5a5a5] relative text-left whitespace-nowrap z-[64]"
+                    class="h-[21px] shrink-0 basis-auto font-['Poppins'] text-[12px] font-semibold leading-[21px] text-[#000] relative text-left break-words z-[63]"
+                    >{{ (orderStatus === 'PendingPayment') ? '' : 'Pickup Date:' + pickupDT }}</span
+                  ><br></br><span
+                    class="h-[18px] shrink-0 basis-auto font-['Poppins'] text-[10px] font-normal leading-[18px] text-[#a5a5a5] relative text-left whitespace-nowrap z-[64]"
                     >Please ready the cylinder on the day</span
                   >
                 </div>
@@ -297,7 +301,8 @@ export default{
   data(){
     return{
       logo:'',
-      pickupDT: ''
+      pickupDT: '',
+      orderStatus: ''
     }
   },
   computed:{
@@ -350,6 +355,7 @@ export default{
         if(response.status === 200){
           this.logo = response.data.courierLogo;
           this.pickupDT = response.data.pickupDate;
+          this.orderStatus = response.data.orderStatus
         }
       }
       catch (error) {
@@ -362,9 +368,9 @@ export default{
         toast.error(message); 
       }
     },
-    async getOrderStatus(){
+    // async getOrderStatus(){
 
-    }
+    // }
   }
 }
 
