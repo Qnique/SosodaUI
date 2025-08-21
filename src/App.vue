@@ -6,4 +6,7 @@
 
 <script setup>
 import Page from './page/index.vue';
+import { useInactivityTimer } from '../src/services/useInactivityTimer'
+
+useInactivityTimer();
 </script>

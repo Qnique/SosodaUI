@@ -155,7 +155,7 @@
               class="flex w-[342.004px] h-[42px] justify-start items-start self-stretch shrink-0 font-['Poppins'] text-[14px] font-normal leading-[21px] text-[#000] relative text-left z-[47]"
               >Please bring the empty cylinders to outlet to proceed with the
               refill.</span>
-              <div v-if = "this.payload?.MethodUse === 'Pickup'"
+              <div v-if = "this.payload?.MethodUse !== 'Exchange'"
                 class="flex flex-col gap-[5px] items-start self-stretch shrink-0 flex-nowrap relative z-[46]"
               >
                 <span
@@ -187,10 +187,10 @@
                   </div>
                 </div>
               </div>
-              <span v-if = "this.payload?.MethodUse === 'Pickup'"
-                class="flex w-[342.004px] h-[63px] justify-start items-start self-stretch shrink-0 font-['Poppins'] text-[14px] font-normal leading-[21px] text-[#000] relative text-left overflow-hidden z-[53]"
+              <span v-if = "this.payload?.MethodUse !== 'Exchange'"
+                class="flex w-[342.004px] h-[63px] justify-start items-start self-stretch shrink-0 font-['Poppins'] text-[14px] font-normal leading-[21px] text-[#000] relative text-left z-[53]"
                 >2. Attach the AWB securely to the parcel.<br />3. Ensure all cylinders
-                are packed properly.<br />4. Ready for collection.</span
+                are packed properly.<br />{{ condition }}</span
               >
               <br></br>
               <span
@@ -230,10 +230,10 @@
               </div>
             </div>
           </div>
-          <span v-if = "this.payload?.MethodUse === 'Exchange'"
+          <span v-if = "this.payload?.MethodUse !== 'Pickup'"
           class="h-[15px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[14px] font-semibold leading-[21px] text-[#000] relative text-left whitespace-nowrap z-[13]"
           >{{ titleConfirm }}</span>
-          <div v-if = "this.payload?.MethodUse === 'Exchange'"
+          <div v-if = "this.payload?.MethodUse !== 'Pickup'"
             class="flex gap-[10px] items-start self-stretch shrink-0 flex-nowrap rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[17]"
           >
             <div
@@ -308,8 +308,19 @@ export default{
   computed:{
     payload() {
       const store = usePayloadStore();
-      
       return store.data;
+    },
+    condition(){
+      switch (this.payload?.MethodUse) {
+        case 'Exchange':
+          return '';
+        case 'Pickup':
+          return '4. Ready for collection.';
+        case 'DropOff':
+          return '4. Please bring the empty cylinders to the Drop-off point to drop them off.';
+        default:
+          return '';
+      }    
     },
     titleConfirm() {
       switch (this.payload?.MethodUse) {

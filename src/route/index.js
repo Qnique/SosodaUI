@@ -27,8 +27,26 @@ const TransactionDetails = () => import('../page/transactiondetails.vue')
 const MyVouchersPage = () => import('../page/myvouchers.vue')
 const ConfirmationPage = () => import('../page/confirmation.vue')
 const DropOffPointPage = () => import('../page/dropoffpoint.vue')
+const ProductDetailPage = () => import('../page/productdetail.vue')
+const OrderCheckoutPage = () => import('../page/ordercheckout.vue')
+const OrderVoucherPage = () => import('../page/ordervoucher.vue')
 
 const routes = [
+  {
+    path: '/ordervoucher',
+    name: 'OrderVoucher',
+    component: OrderVoucherPage,
+  },
+  {
+    path: '/ordercheckout',
+    name: 'OrderCheckout',
+    component: OrderCheckoutPage,
+  },
+  {
+    path: '/product/:id',
+    name: 'Product',
+    component: ProductDetailPage,
+  },
   {
     path: '/dropoff',
     name: 'DropOffPoint',

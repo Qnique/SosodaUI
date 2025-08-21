@@ -295,7 +295,7 @@
               <span
                 class="h-[20px] shrink-0 basis-auto font-['Poppins'] text-[24px] font-semibold leading-[20px] text-[#5ba6e0] tracking-[0.1px] relative text-left whitespace-nowrap z-[45]"
                 >RM</span
-              ><input v-model="amount" @input="formatDigit"
+              ><input v-model="amount" @input="formatDigit" 
                 class="flex w-[243px] h-[40px] justify-end items-center shrink-0 basis-auto font-['Poppins'] text-[20px] text-[#5ba6e0] bg-[#292929] font-normal leading-[20px] text-[rgba(255,255,255,0.5)] tracking-[0.1px] relative text-right whitespace-nowrap z-[46]"
                 />
             </div>
@@ -482,7 +482,7 @@ export default{
   computed: {
     payload() {
       const store = usePayloadStore();
-      console.log(store.data)
+
       return store.data;
     },
     refillMethodLabel() {
@@ -534,6 +534,9 @@ export default{
         return wallet.balance.toFixed(2);
       }
       return '0.00';
+    },
+    formatDigit() {
+      this.amount = this.amount.replace(/[^0-9.]/g, ''); // Remove everything except digits and dots
     },
     async checkBranch(){
       if(this.payload.Branch === null){
@@ -596,7 +599,7 @@ export default{
             VoucherId: this.payload?.VoucherId,
             DropOffPoint: this.payload?.DropOffPoint,
             DropOffPointId: this.payload?.DropOffPointId,
-            PickUpFromId: (this.payload?.MethodUse === 'Pickup') ? this.payload?.Address.id : '',
+            PickUpFromId: this.payload?.Address.id,
             BottleQty: this.payload?.Qty,
             TotalAmount: this.netTotal,
             Discount: this.payload?.Discount,
@@ -617,6 +620,7 @@ export default{
                 Process: response.data.data.process,
                 Branch: this.payload?.Branch,
                 MemberAddress: this.payload?.Address,
+                DropOffPoint: this.payload?.DropOffPoint,
                 RefundAmount: this.payload?.RefundAmount,
                 MethodUse: response.data.data.mode,
                 RefillId: response.data.data.id
@@ -649,7 +653,7 @@ export default{
       this.$router.push({ name: 'SetupRefill' }); 
     },
     async submitTopUp(){
-      if(this.amount === '0' || this.amount === 0 || this.amount === ''){
+      if(this.amount === '0'){
         toast.error("Amount cannnot be zero or empty!")
       }
       else{
@@ -669,7 +673,7 @@ export default{
         const payload = {
           MemberId : userId,
           PaymentMethod : this.paymentMethod,
-          Amount : Number(this.amount)
+          Amount : this.amount
         };
 
         try{

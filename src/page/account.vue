@@ -310,36 +310,36 @@
         >Logout</span
       >
     </button>
-    <div
+        <div
       class="w-[362px] h-[60px] bg-[#292929] rounded-[10px] relative shadow-[0_2px_8px_0_rgba(0,0,0,0.1)] z-[3] mt-[39.502px] mr-0 mb-0 ml-[20px]"
     >
       <div
         class="flex w-[301px] gap-[55px] items-center flex-nowrap relative z-[4] mt-[11px] mr-0 mb-0 ml-[30px]"
       >
-        <div class="cursor-pointer w-[31px] h-[37px] shrink-0 relative z-[5]" style="padding: 5px;" @click="backToHome">
+        <div class="cursor-pointer w-[31px] h-[37px] mt-[7px]  shrink-0 relative z-[5]" style="padding: 5px;" @click="backToHome">
           <div
-            class="w-[30px] h-[30px] bg-[url('../public/home.png')] bg-cover bg-no-repeat relative z-[6] mt-0 mr-0 mb-0 "
+            class="w-[24px] h-[24px] bg-[url('../public/home.png')] bg-cover bg-no-repeat relative z-[6] mt-0 mr-0 mb-0 "
           ></div>
           <span
             class="flex w-[31px] h-[8px] justify-center items-start font-['Poppins'] text-[12px] font-normal leading-[8px] text-[#fff] relative text-center whitespace-nowrap z-[7] mt-[5px] mr-0 mb-0 ml-0"
             >HOME</span
           >
         </div>
-        <div class="cursor-pointer w-[31px] h-[37px] shrink-0 relative z-[8]" style="padding: 5px;">
+        <div class="cursor-pointer w-[31px] h-[37px] mt-[7px] shrink-0 relative z-[8]" style="padding: 5px;" @click="goToMenu">
           <div
-            class="w-[30px] h-[30px] bg-[url('../public/menu.png')] bg-cover bg-no-repeat relative z-[9] "
+            class="w-[35px] h-[24px] bg-[url('../public/menu.png')] bg-cover bg-no-repeat relative z-[9] "
           ></div>
           <span
-            class="flex w-[31px] h-[8px] justify-center items-start font-['Poppins'] text-[11px] font-normal leading-[8px] text-[#fff] relative text-center whitespace-nowrap z-10 mt-[4px] mr-0 mb-0 ml-0"
+            class="flex w-[31px] h-[8px] justify-center items-start font-['Poppins'] text-[11px] font-normal leading-[8px] text-[#fff] relative text-center whitespace-nowrap z-10 mt-[5px] ml-[3px] mb-0 ml-0"
             >MENU</span
           >
         </div>
-        <div class="cursor-pointer w-[31px] h-[37px] shrink-0 relative z-[8]" style="padding: 5px;">
+        <div class="cursor-pointer w-[31px] h-[37px] mt-[1px] shrink-0 relative z-[8]" style="padding: 5px;">
           <div
-              class="w-[30px] h-[25px] bg-[url('../public/order.png')] bg-[length:100%_100%] bg-no-repeat relative z-[13] mt-[1.667px] mr-0 mb-0"
+              class="w-[24px] h-[24px] bg-[url('../public/order.png')] bg-[length:100%_100%] bg-no-repeat relative z-[13] mt-[1.667px] ml-[8px] mr-0 mb-0"
         ></div>
           <span
-            class="flex w-[31px] h-[8px] justify-center items-start font-['Poppins'] text-[11px] font-normal leading-[8px] text-[#fff] relative text-center whitespace-nowrap z-[13] mt-[7px] mr-0 mb-0 ml-0"
+            class="flex w-[31px] h-[8px] justify-center items-start font-['Poppins'] text-[11px] font-normal leading-[8px] text-[#fff] relative text-center whitespace-nowrap z-[13] mt-[5px] mr-0 mb-0 ml-[6px]"
             >ORDER</span
           >
         </div>
@@ -348,7 +348,7 @@
             class="w-[30px] h-[25px] bg-[url('../public/me.png')] bg-cover bg-no-repeat relative z-[16] mt-0 mr-0 mb-0"
           ></div>
           <span
-            class="flex w-[31px] h-[8px] justify-center items-start font-['Poppins'] text-[11px] font-normal leading-[8px] text-[#fff] relative text-center whitespace-nowrap z-[17] mt-[7px] mr-0 mb-0"
+            class="flex w-[31px] h-[8px] justify-center items-start font-['Poppins'] text-[11px] font-normal leading-[8px] text-[#fff] relative text-center whitespace-nowrap z-[17] mt-[5px] mr-0 mb-0"
             >ME</span
           >
         </div>
@@ -423,6 +423,9 @@ export default{
     },
     goToStampsPage() {
       //this.$router.push({ name: 'Stamps' });
+    },
+    goToMenu() {
+      this.$router.push({ name: 'Menu' });
     },
     goToVouchersPage() {
       //this.$router.push({ name: 'Vouchers' });

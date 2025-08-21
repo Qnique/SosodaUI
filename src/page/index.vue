@@ -253,7 +253,7 @@
                 >
             </div>
         </div>
-        <div class="grid grid-cols-2 gap-4 justify-center">
+        <div class="grid grid-cols-2 gap-4 justify-center ml-[15px]">
           <button @click="agreeTNC"
             class="flex w-[156px] h-[50px] px-[48px] justify-center items-center bg-[#292929] rounded-[10px] ml-[20px] mb-[15px]"
           >
@@ -284,6 +284,7 @@
 import "./index.css";
 import api from '../services/callingapi'
 import { toast } from 'vue3-toastify'; 
+import { usePayloadStore } from '../stores/payloadStore';
 
 export default{
   data(){
@@ -297,6 +298,7 @@ export default{
   },
   mounted() {
     sessionStorage.clear();
+    usePayloadStore().clearPayload();
   },
   methods:{
     sanitizePhone() {
