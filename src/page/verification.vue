@@ -18,18 +18,17 @@
         <div
           class="flex gap-[22px] items-center self-stretch shrink-0 flex-nowrap relative z-[5]"
         >
-        <input id="first-code" v-model="first" @input="handleInput(0)"
+        <input id="first-code" v-model="first" @input="handleInput(0)" inputmode="numeric" pattern="[0-9]*" type="text"
         @keydown.backspace="handleBackspace(0)" ref="firstRef"
         :class="[
                   firstError ? 'border-red-500' : 'border border-[#fdfdfd]',
                   'border'
                 ]"
-        type="number"
         maxlength="1"
         class="no-spinner flex w-[48px] h-[44.8px] pt-[12px] pr-[15px] pb-[12px] pl-[15px] gap-[10px] justify-center items-center shrink-0 flex-nowrap bg-[#fafafa] rounded-[10px] border border-[#fdfdfd] shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[6] text-center font-['Poppins'] text-[16px] text-[#000] leading-[24px]"
         />
 
-        <input id="second-code" v-model="second" @input="handleInput(1)" type="number"
+        <input id="second-code" v-model="second" @input="handleInput(1)" inputmode="numeric" pattern="[0-9]*" type="text"
         @keydown.backspace="handleBackspace(1)" ref="secondRef"
         :class="[
                   secondError ? 'border-red-500' : 'border border-[#fdfdfd]',
@@ -39,24 +38,22 @@
         class="no-spinner flex w-[48px] h-[44.8px] pt-[12px] pr-[15px] pb-[12px] pl-[15px] gap-[10px] justify-center items-center shrink-0 flex-nowrap bg-[#fafafa] rounded-[10px] border border-[#fdfdfd] shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[6] text-center font-['Poppins'] text-[16px] text-[#000] leading-[24px]"
         />
 
-        <input id="third-code" v-model="third" @input="handleInput(2)"
+        <input id="third-code" v-model="third" @input="handleInput(2)" inputmode="numeric" pattern="[0-9]*" type="text"
         @keydown.backspace="handleBackspace(2)" ref="thirdRef"
         :class="[
                   thirdError ? 'border-red-500' : 'border border-[#fdfdfd]',
                   'border'
                 ]"
-        type="number"
         maxlength="1"
         class="no-spinner flex w-[48px] h-[44.8px] pt-[12px] pr-[15px] pb-[12px] pl-[15px] gap-[10px] justify-center items-center shrink-0 flex-nowrap bg-[#fafafa] rounded-[10px] border border-[#fdfdfd] shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[6] text-center font-['Poppins'] text-[16px] text-[#000] leading-[24px]"
         />
 
-        <input id="four-code" v-model="four" @input="handleInput(3)"
+        <input id="four-code" v-model="four" @input="handleInput(3)" inputmode="numeric" pattern="[0-9]*" type="text"
         @keydown.backspace="handleBackspace(3)" ref="fourRef"
         :class="[
                   fourError ? 'border-red-500' : 'border border-[#fdfdfd]',
                   'border'
                 ]"
-        type="number"
         maxlength="1"
         class="no-spinner flex w-[48px] h-[44.8px] pt-[12px] pr-[15px] pb-[12px] pl-[15px] gap-[10px] justify-center items-center shrink-0 flex-nowrap bg-[#fafafa] rounded-[10px] border border-[#fdfdfd] shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[6] text-center font-['Poppins'] text-[16px] text-[#000] leading-[24px]"
         /> 

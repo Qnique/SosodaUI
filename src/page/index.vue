@@ -87,12 +87,15 @@
       <div
         class="flex flex-col gap-[10px] items-start self-stretch shrink-0 flex-nowrap relative z-[16]"
       >
-        <button @click="goToVerification"
+        <button @click="goToVerification" :disabled="loading"
           class="flex h-[50px] pt-[10px] pr-[48px] pb-[10px] pl-[48px] gap-[10px] justify-center items-center self-stretch shrink-0 flex-nowrap bg-[#292929] rounded-[12px] relative z-[17]">
           <span
             class="h-[24px] shrink-0 basis-auto font-['Poppins'] text-[16px] font-semibold leading-[24px] text-[#fff] relative text-left whitespace-nowrap z-[18]"
             >SEND OTP</span>
         </button>
+        <div v-if="loading" class="loading-overlay">
+          <div class="spinner"></div>
+        </div>
       </div>
     </div>
     <div
@@ -294,6 +297,7 @@ export default{
       showError: false,
       inputError: false,
       showTnc: false,
+      loading: false
     }
   },
   mounted() {
@@ -321,6 +325,7 @@ export default{
     async goToVerification() {
        if (this.phoneNo !== '') {
           if(this.checked){
+            this.loading = true;
             sessionStorage.setItem('phoneNoUser', '60' + this.phoneNo);
             try{
               const response = await api.post('System/MemberLogin', JSON.stringify(this.phoneNo));
@@ -334,6 +339,9 @@ export default{
                 'Something went wrong';           // fallback
 
               toast.error(message); 
+            }
+            finally {
+              this.loading = false;
             }             
           }
           else{
@@ -403,4 +411,6 @@ export default{
   border-radius: 10px;
   z-index: 30;
 }
+
+
 </style>

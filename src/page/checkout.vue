@@ -455,6 +455,9 @@
           </div>          
         </div>      
     </transition>
+    <div v-if="loading" class="loading-overlay">
+      <div class="spinner"></div>
+    </div> 
   </div>
 </template>
 
@@ -477,6 +480,7 @@ export default{
       acknowledgementShow: false,
       checked: false,
       showError: false,
+      loading: false,
     }
   },
   computed: {
@@ -593,6 +597,7 @@ export default{
       }
       else{
         if(this.checked){
+          this.loading = true;
           const refillload = {
             MemberId: sessionStorage.getItem('IdUser'),
             OutletId: this.payload?.Branch.id,
@@ -638,6 +643,9 @@ export default{
 
             toast.error(message); 
           }
+          finally {
+            this.loading = false;
+          } 
         }
         else{
           this.showError = !this.checked;
@@ -657,6 +665,7 @@ export default{
         toast.error("Amount cannnot be zero or empty!")
       }
       else{
+        this.loading = true;
         const userId = sessionStorage.getItem('IdUser');
         //const userId = '48d8ebe7-0d83-49db-8e09-e6aee39e2094';
         if(this.activeMethod === 'Bank'){
@@ -706,6 +715,9 @@ export default{
 
           toast.error(message); 
         }
+        finally {
+          this.loading = false;
+        } 
       }
     },
   }

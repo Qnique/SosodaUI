@@ -380,6 +380,9 @@
           >
         </div>      
     </transition>
+    <div v-if="loading" class="loading-overlay">
+      <div class="spinner"></div>
+    </div> 
 
   </div>
 </template>
@@ -390,6 +393,7 @@ import api from '../services/callingapi'
 import { toast } from 'vue3-toastify';
 import { getCart, removeFromCart, clearCart } from '../services/cartservice.js';
 import { usePayloadStore } from '../stores/payloadStore';
+import { loadConfigFromFile } from "vite";
 
 export default{
   data(){
@@ -408,7 +412,8 @@ export default{
       grandTotal: 0,
       totalWeight:0.0000,
       totalQty: 0,
-      discount: (sessionStorage.getItem('voucherAmount') !== null) ? Number(sessionStorage.getItem('voucherAmount')) : 0
+      discount: (sessionStorage.getItem('voucherAmount') !== null) ? Number(sessionStorage.getItem('voucherAmount')) : 0,
+      loading: false
     }
   },
   mounted(){
@@ -477,6 +482,7 @@ export default{
         toast.error("Amount cannnot be zero or empty!")
       }
       else{
+        this.loading = true;
         const userId = sessionStorage.getItem('IdUser');
         //const userId = '48d8ebe7-0d83-49db-8e09-e6aee39e2094';
         if(this.activeMethod === 'Bank'){
@@ -526,6 +532,9 @@ export default{
 
           toast.error(message); 
         }
+        finally {
+          this.loading = false;
+        } 
       }
     },
     async submitOrder(){
@@ -534,6 +543,7 @@ export default{
                 toast.error("Insufficient balance in your wallet.Please top-up your wallet.");
             }
             else{
+              this.loading = true;
                 const order = {
                     MemberId: sessionStorage.getItem('IdUser'),
                     AddressId: this.memberAddress.id,
@@ -575,6 +585,9 @@ export default{
 
                     toast.error(message); 
                 }
+                finally {
+                  this.loading = false;
+                } 
             }
         }
         else{

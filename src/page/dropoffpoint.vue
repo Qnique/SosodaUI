@@ -29,8 +29,8 @@
       >
         <div class="grid grid-cols-2 gap-[10px]">
             <div v-for="(item, index) in points" :key="index" @click="collectPoint(item.id, item.pointName, item.address1, item.address2, item.address3, item.address4, item.postCode, item.city)"
-            class="cursor-pointer flex flex-col gap-[10px] items-start shrink-0 flex-nowrap w-[170px] pt-[12px] pr-[12px] pb-[16px] pl-[12px] bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[9]"
-            >
+              class="cursor-pointer flex flex-col gap-[10px] items-start shrink-0 flex-nowrap w-[170px] pt-[12px] pr-[12px] pb-[16px] pl-[12px] bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[9]"
+              >
                 <div
                     class="flex w-[146px] flex-col gap-[13px] items-start shrink-0 flex-nowrap relative z-10"
                 >
@@ -58,10 +58,11 @@
                     >
                     </div>
                 </div>
-            </div>              
-        </div>
-        
-
+            </div>   
+            <div v-if="loading" class="loading-overlay">
+              <div class="spinner"></div>
+            </div>           
+        </div>      
       </div>
     </div>
   </div>
@@ -79,7 +80,8 @@ export default{
   data(){
     return{
         points: [],
-        logo: ''
+        logo: '',
+        loading: false
     }
   },
   computed: {
@@ -97,6 +99,7 @@ export default{
     },
     async getCourierServicePoint(){
         const userId = sessionStorage.getItem('IdUser');
+        this.loading = true;
         //const userId = '48d8ebe7-0d83-49db-8e09-e6aee39e2094';
         try{
             const response = await api.post('Refill/GetDropOffPoint', JSON.stringify(userId));
@@ -114,6 +117,9 @@ export default{
 
             toast.error(message); 
         }
+        finally {
+          this.loading = false;
+        } 
     },
     collectPoint(id, pointName, address1, address2, address3, address4, postcode, city){
       const store = usePayloadStore();

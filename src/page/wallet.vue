@@ -230,6 +230,9 @@
           >
         </div>      
     </transition>
+    <div v-if="loading" class="loading-overlay">
+      <div class="spinner"></div>
+    </div> 
   </div>
 </template>
 
@@ -250,7 +253,8 @@ export default{
       topUpShow: false,
       amount: '',
       activeMethod: 'Bank',
-      paymentMethod: 0
+      paymentMethod: 0, 
+      loading: false
     }
   },
   mounted(){
@@ -294,6 +298,7 @@ export default{
         };
 
         try{
+          this.loading = true;
           const response = await api.post('TopUp/RequestTopUp', JSON.stringify(payload));
             if(response.status === 200){
               if(response.data.data.recordStatus === 1){
@@ -323,6 +328,9 @@ export default{
 
           toast.error(message); 
         }
+        finally {
+          this.loading = false;
+        } 
       }
     },
     goToSpecificTransaction(type){

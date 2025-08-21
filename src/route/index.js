@@ -30,8 +30,14 @@ const DropOffPointPage = () => import('../page/dropoffpoint.vue')
 const ProductDetailPage = () => import('../page/productdetail.vue')
 const OrderCheckoutPage = () => import('../page/ordercheckout.vue')
 const OrderVoucherPage = () => import('../page/ordervoucher.vue')
+const TransactionHistoriesPage = () => import('../page/transactionhistories.vue')
 
 const routes = [
+  {
+    path: '/transactionhistories',
+    name: 'TransactionHistories',
+    component: TransactionHistoriesPage,
+  },
   {
     path: '/ordervoucher',
     name: 'OrderVoucher',
