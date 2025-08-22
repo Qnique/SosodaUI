@@ -137,7 +137,5 @@ export default{
 </script>
 
 <style scoped>
-.dropoff{
-  overflow-y: auto;
-}
+
 </style>

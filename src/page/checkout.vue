@@ -1,6 +1,6 @@
 <template>
   <div
-    class="checkout main-container w-[402px] h-[874px] bg-[#fff] relative overflow-hidden mx-auto my-0"
+    class="checkout main-container w-[402px] h-[874px] bg-[#fff] relative mx-auto my-0"
   >
     <div
       class="flex w-[342px]  items-center flex-nowrap relative z-[3] mt-[50px] mr-0 mb-0"
@@ -406,8 +406,8 @@
                 >
                   <span
                     class="flex w-[294px] h-[84px] justify-start items-center grow shrink-0 basis-0 font-['Poppins'] text-[14px] font-normal leading-[20.991px] text-[#000] relative text-left z-[82]"
-                    >I acknowledge that the purchase price per cylinder is RM{{ this.payload?.BuyPrice }}. Total
-                    refund of RM{{ this.payload?.RefundAmount }} will be credited to my sosoda wallet upon return and
+                    >I acknowledge that the purchase price per cylinder is RM{{ this.payload?.BuyPrice }}. A
+                    refund of RM{{ this.payload?.ReturnPrice }} per cylinder will be credited to my sosoda wallet upon return and
                     receipt of the empty cylinder</span
                   >
                 </div>
@@ -725,9 +725,6 @@ export default{
 </script>
 
 <style scoped>
-.checkout{
-  overflow-y: auto;
-}
 /* Fade transition for overlay */
 .fade-enter-active, .fade-leave-active {
   transition: opacity 0.4s ease;

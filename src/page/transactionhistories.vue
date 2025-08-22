@@ -22,67 +22,51 @@
       <div
         class="flex w-[340px] gap-[8px] items-center shrink-0 flex-nowrap relative z-[5]"
       >
-        <div
-          class="flex w-[166px] pt-[14px] pr-[51px] pb-[14px] pl-[51px] gap-[10px] justify-center items-center shrink-0 flex-nowrap bg-[#a5a5a5] rounded-[10px] relative z-[6]"
+        <button @click="goToPurchaseOrder('Product')" :class="activeType === 'Product' ? 'bg-[#292929]' : 'bg-[#a5a5a5]'"
+          class="flex w-[166px] pt-[14px] pr-[51px] pb-[14px] pl-[51px] gap-[10px] justify-center items-center shrink-0 flex-nowrap  rounded-[10px] relative z-[6]"
         >
           <span
             class="h-[24px] shrink-0 basis-auto font-['Poppins'] text-[16px] font-semibold leading-[24px] text-[#fff] relative text-left whitespace-nowrap z-[7]"
             >Product</span
           >
-        </div>
-        <div
-          class="flex w-[166px] pt-[14px] pr-[47px] pb-[14px] pl-[47px] gap-[10px] justify-center items-center shrink-0 flex-nowrap rounded-[10px] relative z-[8] bg-[#545454] rounded-[10px]"
+        </button>
+        <button @click="goToPurchaseOrder('Cylinder')" :class="activeType === 'Cylinder' ? 'bg-[#292929]' : 'bg-[#a5a5a5]'"
+          class="flex w-[166px] pt-[14px] pr-[47px] pb-[14px] pl-[47px] gap-[10px] justify-center items-center shrink-0 flex-nowrap rounded-[10px] relative z-[8] rounded-[10px]"
         >
           <span
             class="h-[24px] shrink-0 basis-auto font-['Poppins'] text-[16px] font-semibold leading-[24px] text-[#fff] relative text-left whitespace-nowrap z-[9]"
             >Cylinder</span
           >
-        </div>
+        </button>
       </div>
       <div
         class="flex flex-col gap-[24px] items-start self-stretch shrink-0 flex-nowrap relative z-10"
       >
-        <!-- <div
+        <div v-if="activeType === 'Cylinder'" 
           class="flex gap-[10px] items-center self-stretch shrink-0 flex-nowrap relative overflow-hidden z-[11]"
         >
-          <div
-            class="flex w-[134px] pt-[8px] pr-[24px] pb-[8px] pl-[24px] gap-[10px] justify-center items-center shrink-0 flex-nowrap rounded-[8px] relative z-[12]"
+          <button @click="goToRefillRefundOrder('Refill')" :class="subActiveType === 'Refill' ? 'bg-[#2275B6]' : 'bg-[#fff]'"
+            class="flex w-[134px] pt-[8px] pr-[24px] pb-[8px] pl-[24px] gap-[10px] justify-center items-center shrink-0 flex-nowrap rounded-[8px] relative z-[12] border border-[#2275B6]"
           >
-            <span
-              class="flex w-[86px] h-[18px] justify-center items-start shrink-0 basis-auto font-['Poppins'] text-[12px] font-semibold leading-[18px] text-[#fff] relative text-center whitespace-nowrap z-[13]"
-              >Ready to Refill</span
+            <span :class="subActiveType === 'Refill' ? 'text-[#fff]' : 'text-[#2275B6]'"
+              class="flex w-[86px] h-[18px] justify-center items-start shrink-0 basis-auto font-['Poppins'] text-[12px] font-medium leading-[18px] relative text-center whitespace-nowrap z-[13]"
+              >Refill</span
             >
-          </div>
-          <div
-            class="flex w-[147px] pt-[8px] pr-[24px] pb-[8px] pl-[24px] gap-[10px] justify-center items-center shrink-0 flex-nowrap rounded-[8px] relative z-[14]"
+          </button>
+          <button @click="goToRefillRefundOrder('Refund')" :class="subActiveType === 'Refund' ? 'bg-[#2275B6]' : 'bg-[#fff]'"
+            class="flex w-[147px] pt-[8px] pr-[24px] pb-[8px] pl-[24px] gap-[10px] justify-center items-center shrink-0 flex-nowrap rounded-[8px] relative z-[14] border border-[#2275B6]"
           >
-            <span
+            <span :class="subActiveType === 'Refund' ? 'text-[#fff]' : 'text-[#2275B6]'"
               class="flex w-[99px] h-[18px] justify-center items-start shrink-0 basis-auto font-['Poppins'] text-[12px] font-medium leading-[18px] relative text-center whitespace-nowrap z-[15]"
-              >Ready to Collect</span
+              >Return</span
             >
-          </div>
-          <div
-            class="flex w-[117px] pt-[8px] pr-[24px] pb-[8px] pl-[24px] gap-[10px] justify-center items-center shrink-0 flex-nowrap rounded-[8px] relative z-[16]"
-          >
-            <span
-              class="flex w-[69px] h-[18px] justify-center items-start shrink-0 basis-auto font-['Poppins'] text-[12px] font-medium leading-[18px] relative text-center whitespace-nowrap z-[17]"
-              >Completed</span
-            >
-          </div>
-          <div
-            class="flex w-[107px] pt-[8px] pr-[24px] pb-[8px] pl-[24px] gap-[10px] justify-center items-center shrink-0 flex-nowrap rounded-[8px] relative z-[18]"
-          >
-            <span
-              class="flex w-[59px] h-[18px] justify-center items-start shrink-0 basis-auto font-['Poppins'] text-[12px] font-medium leading-[18px] relative text-center whitespace-nowrap z-[19]"
-              >Canceled</span
-            >
-          </div>
-        </div> -->
+          </button>
+        </div>
         <div
           class="flex w-[342px] flex-col gap-[20px] items-start shrink-0 flex-nowrap relative z-20"
         >
-          <div v-if="(item, index) in orders" :key="index"
-            class="flex w-[342px] pt-[15px] pr-[15px] pb-[15px] pl-[15px] gap-[10px] items-start shrink-0 flex-nowrap bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-50"
+          <div v-for="(item, index) in orders" :key="index" @click="goToTransactionDetail(item.id, item.transactionType)"
+            class="cursor-pointer flex w-[342px] pt-[15px] pr-[15px] pb-[15px] pl-[15px] gap-[10px] items-start shrink-0 flex-nowrap bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] relative shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-50"
           >
             <div
               class="flex flex-col gap-[10px] items-start grow shrink-0 basis-0 flex-nowrap relative z-[51]"
@@ -91,18 +75,21 @@
                 class="flex w-[195px] flex-col items-start shrink-0 flex-nowrap relative z-[52]"
               >
                 <span
-                  class="flex w-[195px] h-[21px] justify-end items-start shrink-0 basis-auto font-['Poppins'] text-[14px] font-bold leading-[21px] text-[#292929] relative text-right whitespace-nowrap z-[53]"
+                  class="flex w-[195px] h-[21px] items-start shrink-0 basis-auto font-['Poppins'] text-[14px] font-bold leading-[18px] text-[#292929] relative text-left whitespace-nowrap z-[53]"
                   >Order #{{ item.orderNo }}</span
                 ><span
-                  class="h-[18px] shrink-0 basis-auto font-['Poppins'] text-[12px] uppercase font-semibold leading-[18px] tracking-[0.1px] relative text-left whitespace-nowrap z-[54]"
+                  class="h-[18px] shrink-0 basis-auto font-['Poppins'] text-[12px] uppercase font-semibold text-[#60DCD6] leading-[18px] tracking-[0.1px] relative text-left whitespace-nowrap z-[54]"
                   >{{ item.remarks }}</span
                 >
               </div>
               <div
                 class="flex gap-[10px] items-start self-stretch shrink-0 flex-nowrap relative z-[55]"
               >
-                <div
+                <div v-if="activeType === 'Cylinder'"
                   class="w-[80px] h-[80px] shrink-0 bg-[url('../public/sosoda.png')] bg-cover bg-no-repeat rounded-[10px] relative z-[56]"
+                ></div>
+                <div v-if="activeType === 'Product'"
+                  class="w-[80px] h-[80px] shrink-0 bg-[url('../public/product.png')] bg-cover bg-no-repeat rounded-[10px] relative z-[56]"
                 ></div>
                 <div
                   class="flex flex-col gap-[5px] items-center grow shrink-0 basis-0 flex-nowrap relative z-[57]"
@@ -125,7 +112,7 @@
                         >
                           <span
                             class="flex w-[100px] h-[18px] justify-center items-start shrink-0 basis-auto font-['Poppins'] text-[12px] font-semibold leading-[18px] text-[#000] relative text-center whitespace-nowrap z-[66]"
-                            >{{ item.orderStatus }}</span
+                            >{{ splitCamelCase(item.orderStatus) }}</span
                           >
                         </div>
 
@@ -166,10 +153,19 @@ import { usePayloadStore } from '../stores/payloadStore';
 export default{
   data(){
     return{
-        orders: []       
+        orders: [],
+        certainOrders: [],
+        activeType: 'Product',
+        subActiveType: ''       
     }
   },
   computed:{
+    
+  },
+  mounted(){
+    this.getOrderHistories();
+  },
+  methods:{
     title(type){
         switch (type) {
             case 'Purchase':
@@ -181,14 +177,36 @@ export default{
             default:
                 return '';
         }
-    }
-  },
-  mounted(){
-    this.getOrderHistories();
-  },
-  methods:{
+    },
+    splitCamelCase(word) {
+      return word.replace(/([a-z])([A-Z])/g, '$1 $2');
+    },
     backToHome() {
       this.$router.go(-1);   
+    },
+    selectedMethod(method){
+      this.activeMethod = method;
+    },
+    goToPurchaseOrder(type){
+      this.activeType = type;
+      if(type === 'Product'){
+        this.orders = this.certainOrders.filter(t => t.transactionType === 'Purchase')
+      }
+      else if(type === 'Cylinder'){
+        this.orders = this.certainOrders.filter(t => t.transactionType !== 'Purchase')
+      }      
+      else{
+        this.orders = this.certainOrders
+      }
+    },
+    goToRefillRefundOrder(type){
+      this.subActiveType = type
+      if(type === 'Refill'){
+        this.orders = this.certainOrders.filter(t => t.transactionType === 'Refill')
+      }
+      else if(type === 'Refund'){
+        this.orders = this.certainOrders.filter(t => t.transactionType === 'Refund')
+      }
     },
     async getOrderHistories(){
         const userId = sessionStorage.getItem('IdUser');
@@ -197,7 +215,8 @@ export default{
         try{
             const response = await api.post('Order/GetOrdersByMemberId', JSON.stringify(userId))
                 if(response.status === 200){
-                    this.orders = response.data;
+                  this.orders = response.data.filter(t => t.transactionType === 'Purchase');
+                  this.certainOrders = response.data;
                 }
             }
             catch (error) {
@@ -210,6 +229,14 @@ export default{
                 toast.error(message); 
             }
        }
+    },
+    goToTransactionDetail(id, transactType){
+      if(transactType === 'Purchase'){
+        this.$router.push({ name: 'OrderDetail', params: { id } })
+      }
+      else{
+        this.$router.push({ name: 'RefillReturnDetail', params: { id } })
+      }
     }
   }
 }

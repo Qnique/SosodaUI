@@ -1,1 +1,0 @@
-function n(){const t=localStorage.getItem("cart");return t?JSON.parse(t):[]}function e(t){localStorage.setItem("cart",JSON.stringify(t))}function o(t){const r=n(),a=r.find(c=>c.Id===t.Id);a?a.Quantity=t.Quantity+a.Quantity:r.push(t),e(r)}function s(t){const a=n().filter(c=>c.Id!==t);e(a)}function i(){localStorage.removeItem("cart")}export{o as a,i as c,n as g,s as r};

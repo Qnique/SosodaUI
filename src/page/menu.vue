@@ -150,7 +150,7 @@
             >MENU</span
           >
         </div>
-        <div class="cursor-pointer w-[31px] h-[37px] mt-[1px] shrink-0 relative z-[8]" style="padding: 5px;">
+        <div class="cursor-pointer w-[31px] h-[37px] mt-[1px] shrink-0 relative z-[8]" style="padding: 5px;" @click="gotToHistories">
           <div
               class="w-[24px] h-[24px] bg-[url('../public/order.png')] bg-[length:100%_100%] bg-no-repeat relative z-[13] mt-[1.667px] ml-[8px] mr-0 mb-0"
         ></div>
@@ -266,7 +266,10 @@ export default{
       if(this.cartCount > 0){
         this.$router.push({ name: 'OrderCheckout' });
       }      
-    }
+    },
+    gotToHistories(){
+      this.$router.push({ name: 'TransactionHistories' });
+    },
   }
 }
 </script>

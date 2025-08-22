@@ -158,7 +158,7 @@
             >MENU</span
           >
         </div>
-        <div class="cursor-pointer w-[31px] h-[37px] mt-[1px] shrink-0 relative z-[8]" style="padding: 5px;">
+        <div class="cursor-pointer w-[31px] h-[37px] mt-[1px] shrink-0 relative z-[8]" style="padding: 5px;" @click="gotToHistories">
           <div
               class="w-[24px] h-[24px] bg-[url('../public/order.png')] bg-[length:100%_100%] bg-no-repeat relative z-[13] mt-[1.667px] ml-[8px] mr-0 mb-0"
         ></div>
@@ -206,7 +206,10 @@ export default{
     const store = usePayloadStore();
     store.clearPayload()
   },
-  methods:{    
+  methods:{  
+    gotToHistories(){
+      this.$router.push({ name: 'TransactionHistories' });
+    }, 
     async getDetail(){
         const userId = sessionStorage.getItem('IdUser');
         //const userId = '48d8ebe7-0d83-49db-8e09-e6aee39e2094';

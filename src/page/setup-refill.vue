@@ -909,9 +909,6 @@ export default{
   z-index: 20;
 }
 
-.refill{
-  overflow-y: auto;
-}
 
 /* Chrome, Safari, Edge, Opera */
 .no-spinner::-webkit-outer-spin-button,

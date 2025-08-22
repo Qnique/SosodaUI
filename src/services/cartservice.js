@@ -10,7 +10,7 @@ export function saveCart(cart) {
 
 export function addToCart(item) {
   const cart = getCart();
-  const existing = cart.find(i => i.Id === item.Id);
+  const existing = cart.find(i => i.ProductId === item.Id);
   if (existing) {
     existing.Quantity = item.Quantity + existing.Quantity;
   } else {
@@ -22,7 +22,7 @@ export function addToCart(item) {
 
 export function removeFromCart(itemId) {
   const cart = getCart();
-  const updatedCart = cart.filter(item => item.Id !== itemId);
+  const updatedCart = cart.filter(item => item.ProductId !== itemId);
   saveCart(updatedCart);
 }
 

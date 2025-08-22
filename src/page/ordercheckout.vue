@@ -50,7 +50,7 @@
                     >{{ item.Name }}</span
                   ><span
                     class="h-[18px] self-stretch shrink-0 basis-auto font-['Poppins'] text-[12px] font-medium leading-[18px] text-[#000] relative text-left whitespace-nowrap z-[15]"
-                    >RM{{ item.Price.toFixed(2) }}</span
+                    >RM{{ item.Amount?.toFixed ? item.Amount.toFixed(2) : '0.00' }}</span
                   >
                 </div>
                 <div
@@ -393,7 +393,6 @@ import api from '../services/callingapi'
 import { toast } from 'vue3-toastify';
 import { getCart, removeFromCart, clearCart } from '../services/cartservice.js';
 import { usePayloadStore } from '../stores/payloadStore';
-import { loadConfigFromFile } from "vite";
 
 export default{
   data(){
@@ -420,13 +419,13 @@ export default{
     this.cart = getCart();
     this.getMemberDetail();
     this.netTotal = this.cart.reduce((sum, item) => {
-      return sum + item.Price;
+      return sum + (item.Amount * item.Quantity);
     }, 0).toFixed(2);
     this.totalQty = this.cart.reduce((sum, item) => {
       return sum + item.Quantity;
     }, 0);
     this.totalWeight = this.cart.reduce((sum, item) => {
-      return sum + item.Weight;
+      return sum + (item.Weight * item.Quantity);
     }, 0).toFixed(4);
     this.grandTotal = this.netTotal - this.discount;
   },
@@ -551,7 +550,8 @@ export default{
                     TotalQuantity: this.totalQty,
                     PaymentMethod: 'Bank In',
                     VoucherId: (sessionStorage.getItem('voucherId') === null) ? '' : sessionStorage.getItem('voucherId'),
-                    TotalWeight: this.totalWeight
+                    TotalWeight: this.totalWeight,
+                    Items: this.cart
                 };
                 try{
                     const response = await api.post('Order/CreateOrder', JSON.stringify(order));
@@ -599,10 +599,6 @@ export default{
 </script>
 
 <style scoped>
-.checkout{
-  overflow-y: auto;
-  overflow-x: hidden;
-}
 
 /* Fade transition for overlay */
 .fade-enter-active, .fade-leave-active {

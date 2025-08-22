@@ -1,6 +1,6 @@
 <template>
   <div
-    class="confirm main-container w-[402px] h-[985px] bg-[#fff] relative overflow-hidden mx-auto my-0"
+    class="confirm main-container w-[402px] h-[985px] bg-[#fff] relative mx-auto my-0"
   >
     <div
       class="flex w-[342px] flex-col gap-[20px] items-start flex-nowrap relative z-[5] mt-[40px] mr-0 mb-0 ml-[30px]"
@@ -388,7 +388,5 @@ export default{
 </script>
 
 <style scoped>
-.confirm{
-  overflow-y: auto;
-}
+
 </style>

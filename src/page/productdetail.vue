@@ -283,22 +283,22 @@ export default{
     },
     addItem(id, name, qty, price, weight){
         var product = {
-            Id: id,
+            ProductId: id,
             Name: name,
             Quantity: qty,
-            Price: (price* qty),
-            Weight: (weight * qty)
+            Amount: price,
+            Weight: weight
         }
         addToCart(product);
         toast.success('You have added item into your cart'); 
     },
     goToOrderCheckout(id, name, qty, price, weight){
         var product = {
-            Id: id,
+            ProductId: id,
             Name: name,
             Quantity: qty,
-            Price: (price* qty),
-            Weight: (weight * qty)
+            Amount: price,
+            Weight: weight
         }
         addToCart(product);
         this.$router.push({ name: 'OrderCheckout' });
@@ -333,8 +333,4 @@ export default{
   border-color: #007bff;
 }
 
-.product{
-  overflow-y: auto;
-  overflow-x: hidden;
-}
 </style>

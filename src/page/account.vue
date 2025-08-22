@@ -1,6 +1,6 @@
 <template>
   <div
-    class="main-container w-[420px] h-[1091px] bg-[#fff] relative overflow-hidden mx-auto my-0"
+    class="main-container w-[420px] h-[991px] bg-[#fff] relative overflow-hidden mx-auto my-0"
   >
     <div
       class="flex w-[342px] flex-col gap-[30px] items-start flex-nowrap relative z-[5] mt-[107.5px] mr-0 mb-0 ml-[30px]"
@@ -310,49 +310,49 @@
         >Logout</span
       >
     </button>
-        <div
-      class="w-[362px] h-[60px] bg-[#292929] rounded-[10px] relative shadow-[0_2px_8px_0_rgba(0,0,0,0.1)] z-[3] mt-[39.502px] mr-0 mb-0 ml-[20px]"
-    >
       <div
-        class="flex w-[301px] gap-[55px] items-center flex-nowrap relative z-[4] mt-[11px] mr-0 mb-0 ml-[30px]"
+        class="w-[362px] h-[60px] bg-[#292929] rounded-[10px] relative shadow-[0_2px_8px_0_rgba(0,0,0,0.1)] z-[3] mt-[39.502px] mr-0 mb-0 ml-[20px]"
       >
-        <div class="cursor-pointer w-[31px] h-[37px] mt-[7px]  shrink-0 relative z-[5]" style="padding: 5px;" @click="backToHome">
-          <div
-            class="w-[24px] h-[24px] bg-[url('../public/home.png')] bg-cover bg-no-repeat relative z-[6] mt-0 mr-0 mb-0 "
+        <div
+          class="flex w-[301px] gap-[55px] items-center flex-nowrap relative z-[4] mt-[11px] mr-0 mb-0 ml-[30px]"
+        >
+          <div class="cursor-pointer w-[31px] h-[37px] mt-[7px]  shrink-0 relative z-[5]" style="padding: 5px;" @click="backToHome">
+            <div
+              class="w-[24px] h-[24px] bg-[url('../public/home.png')] bg-cover bg-no-repeat relative z-[6] mt-0 mr-0 mb-0 "
+            ></div>
+            <span
+              class="flex w-[31px] h-[8px] justify-center items-start font-['Poppins'] text-[12px] font-normal leading-[8px] text-[#fff] relative text-center whitespace-nowrap z-[7] mt-[5px] mr-0 mb-0 ml-0"
+              >HOME</span
+            >
+          </div>
+          <div class="cursor-pointer w-[31px] h-[37px] mt-[7px] shrink-0 relative z-[8]" style="padding: 5px;" @click="goToMenu">
+            <div
+              class="w-[35px] h-[24px] bg-[url('../public/menu.png')] bg-cover bg-no-repeat relative z-[9] "
+            ></div>
+            <span
+              class="flex w-[31px] h-[8px] justify-center items-start font-['Poppins'] text-[11px] font-normal leading-[8px] text-[#fff] relative text-center whitespace-nowrap z-10 mt-[5px] ml-[3px] mb-0 ml-0"
+              >MENU</span
+            >
+          </div>
+          <div class="cursor-pointer w-[31px] h-[37px] mt-[1px] shrink-0 relative z-[8]" style="padding: 5px;" @click="gotToHistories">
+            <div
+                class="w-[24px] h-[24px] bg-[url('../public/order.png')] bg-[length:100%_100%] bg-no-repeat relative z-[13] mt-[1.667px] ml-[8px] mr-0 mb-0"
           ></div>
-          <span
-            class="flex w-[31px] h-[8px] justify-center items-start font-['Poppins'] text-[12px] font-normal leading-[8px] text-[#fff] relative text-center whitespace-nowrap z-[7] mt-[5px] mr-0 mb-0 ml-0"
-            >HOME</span
-          >
+            <span
+              class="flex w-[31px] h-[8px] justify-center items-start font-['Poppins'] text-[11px] font-normal leading-[8px] text-[#fff] relative text-center whitespace-nowrap z-[13] mt-[5px] mr-0 mb-0 ml-[6px]"
+              >ORDER</span
+            >
+          </div>
+          <div class="cursor-pointer w-[31px] h-[37px] shrink-0 relative z-[15]" style="padding: 5px;">
+            <div
+              class="w-[30px] h-[25px] bg-[url('../public/me.png')] bg-cover bg-no-repeat relative z-[16] mt-0 mr-0 mb-0"
+            ></div>
+            <span
+              class="flex w-[31px] h-[8px] justify-center items-start font-['Poppins'] text-[11px] font-normal leading-[8px] text-[#fff] relative text-center whitespace-nowrap z-[17] mt-[5px] mr-0 mb-0"
+              >ME</span
+            >
+          </div>
         </div>
-        <div class="cursor-pointer w-[31px] h-[37px] mt-[7px] shrink-0 relative z-[8]" style="padding: 5px;" @click="goToMenu">
-          <div
-            class="w-[35px] h-[24px] bg-[url('../public/menu.png')] bg-cover bg-no-repeat relative z-[9] "
-          ></div>
-          <span
-            class="flex w-[31px] h-[8px] justify-center items-start font-['Poppins'] text-[11px] font-normal leading-[8px] text-[#fff] relative text-center whitespace-nowrap z-10 mt-[5px] ml-[3px] mb-0 ml-0"
-            >MENU</span
-          >
-        </div>
-        <div class="cursor-pointer w-[31px] h-[37px] mt-[1px] shrink-0 relative z-[8]" style="padding: 5px;">
-          <div
-              class="w-[24px] h-[24px] bg-[url('../public/order.png')] bg-[length:100%_100%] bg-no-repeat relative z-[13] mt-[1.667px] ml-[8px] mr-0 mb-0"
-        ></div>
-          <span
-            class="flex w-[31px] h-[8px] justify-center items-start font-['Poppins'] text-[11px] font-normal leading-[8px] text-[#fff] relative text-center whitespace-nowrap z-[13] mt-[5px] mr-0 mb-0 ml-[6px]"
-            >ORDER</span
-          >
-        </div>
-        <div class="cursor-pointer w-[31px] h-[37px] shrink-0 relative z-[15]" style="padding: 5px;">
-          <div
-            class="w-[30px] h-[25px] bg-[url('../public/me.png')] bg-cover bg-no-repeat relative z-[16] mt-0 mr-0 mb-0"
-          ></div>
-          <span
-            class="flex w-[31px] h-[8px] justify-center items-start font-['Poppins'] text-[11px] font-normal leading-[8px] text-[#fff] relative text-center whitespace-nowrap z-[17] mt-[5px] mr-0 mb-0"
-            >ME</span
-          >
-        </div>
-      </div>
     </div>
     <span
       class="flex h-[30px] justify-start items-center font-['Poppins'] text-[20px] font-semibold leading-[29.986px] text-[#292929] absolute top-[47.5px] left-[calc(50%-38.5px)] text-left uppercase whitespace-nowrap z-[3]"
@@ -362,7 +362,7 @@
       class="w-[12.5px] h-[25px] bg-[url('../public/back_arrow.png')] bg-cover bg-no-repeat absolute top-[50px] left-[30px] overflow-hidden z-[4]"
     ></div>
     <div @click="goToProfile"
-      class="cursor-pointer w-[5.47%] h-[22.25px] bg-[url('../public/edit.png')] bg-cover bg-no-repeat absolute top-1/2 left-[83.31%] translate-x-0 translate-y-[-2245.45%]"
+      class="cursor-pointer w-[5.47%] h-[22.25px] bg-[url('../public/edit.png')] bg-cover bg-no-repeat absolute top-[50px] left-[83.31%]"
     ></div>
   </div>
 </template>
@@ -414,6 +414,9 @@ export default{
           toast.error(message); 
         }
       }      
+    },
+    gotToHistories(){
+      this.$router.push({ name: 'TransactionHistories' });
     },
     goToCardPage() {
       this.$router.push({ name: 'CardInfos' });

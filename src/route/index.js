@@ -31,8 +31,20 @@ const ProductDetailPage = () => import('../page/productdetail.vue')
 const OrderCheckoutPage = () => import('../page/ordercheckout.vue')
 const OrderVoucherPage = () => import('../page/ordervoucher.vue')
 const TransactionHistoriesPage = () => import('../page/transactionhistories.vue')
+const OrderDetailPage = () => import('../page/orderdetail.vue')
+const RefillReturnDetailPage = () => import('../page/refill-return-detail.vue')
 
 const routes = [
+  {
+    path: '/refill-return-detail/:id',
+    name: 'RefillReturnDetail',
+    component: RefillReturnDetailPage,
+  },
+  {
+    path: '/orderdetail/:id',
+    name: 'OrderDetail',
+    component: OrderDetailPage,
+  },
   {
     path: '/transactionhistories',
     name: 'TransactionHistories',
