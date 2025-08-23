@@ -375,9 +375,6 @@
     <div
       class="w-[129.938px] h-[91.858px] bg-[url('../public/exchange.png')] bg-cover bg-no-repeat absolute top-[89.993px] left-[40px] z-[6]"
     >
-      <div
-        class="w-[129.938px] h-[91.858px] bg-[url('../public/exchange.png')] bg-cover bg-no-repeat absolute top-0 left-0 z-[2]"
-      ></div>
     </div>
     <div
       class="w-[342px] h-[77px] bg-[url('../public/blackbox.png')] bg-cover bg-no-repeat rounded-[10px] absolute top-[106.992px] left-[30px] z-[5]"
@@ -765,7 +762,7 @@ export default{
         try{
           const ruleload = {
             Qty: this.qty,
-            Brand: '1',
+            Brand: (this.selectedType === 'Sosoda') ? '1' : '2',
             transactionType: 'Purchase'
           };
           const response = await api.post('CreditRule/GetAmountByQuantity', JSON.stringify(ruleload));
@@ -787,7 +784,7 @@ export default{
         try{
           const returnload = {
             Qty: this.qty,
-            Brand: '1',
+            Brand: (this.selectedType === 'Sosoda') ? '1' : '2',
             transactionType: 'Refund'
           };
           const response = await api.post('CreditRule/GetAmountByQuantity', JSON.stringify(returnload));

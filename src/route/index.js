@@ -33,8 +33,14 @@ const OrderVoucherPage = () => import('../page/ordervoucher.vue')
 const TransactionHistoriesPage = () => import('../page/transactionhistories.vue')
 const OrderDetailPage = () => import('../page/orderdetail.vue')
 const RefillReturnDetailPage = () => import('../page/refill-return-detail.vue')
+const ReturnOrderConfirmedPage = () => import('../page/returnorderconfirm.vue')
 
 const routes = [
+  {
+    path: '/reeturnorderconfirm',
+    name: 'ReturnOrderConfirmed',
+    component: ReturnOrderConfirmedPage,
+  },
   {
     path: '/refill-return-detail/:id',
     name: 'RefillReturnDetail',

@@ -69,21 +69,10 @@
         >
           <span
             class="h-[21px] shrink-0 basis-auto font-['Poppins'] text-[14px] font-normal leading-[21px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-[25]"
-            >Reference No.</span
+            >Order ID</span
           ><span
             class="h-[21px] shrink-0 basis-auto font-['Poppins'] text-[14px] font-normal leading-[21px] text-[#a5a5a5] tracking-[0.1px] relative text-left whitespace-nowrap z-[26]"
             >{{ this.payload?.Code }}</span
-          >
-        </div>
-        <div
-          class="flex justify-between items-center self-stretch shrink-0 flex-nowrap relative z-[27]"
-        >
-          <span
-            class="h-[21px] shrink-0 basis-auto font-['Poppins'] text-[14px] font-normal leading-[21px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-[28]"
-            >Payment Method</span
-          ><span
-            class="h-[21px] shrink-0 basis-auto font-['Poppins'] text-[14px] font-normal leading-[21px] text-[#a5a5a5] tracking-[0.1px] relative text-left whitespace-nowrap z-[29]"
-            >Sosoda Wallet</span
           >
         </div>
         <div
@@ -94,7 +83,7 @@
             >Date</span
           ><span
             class="h-[21px] shrink-0 basis-auto font-['Poppins'] text-[14px] font-normal leading-[21px] text-[#a5a5a5] tracking-[0.1px] relative text-left whitespace-nowrap z-[32]"
-            >{{ formatDate(this.payload?.DateRefill) }}</span
+            >{{ formatDate(this.payload?.DateRefund) }}</span
           >
         </div>
         <div
@@ -113,7 +102,7 @@
         >
           <span
             class="h-[21px] shrink-0 basis-auto font-['Poppins'] text-[14px] font-bold leading-[21px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-[37]"
-            >Total</span
+            >Total Earn</span
           ><span
             class="h-[21px] shrink-0 basis-auto font-['Poppins'] text-[14px] font-bold leading-[21px] text-[#000] tracking-[0.1px] relative text-left whitespace-nowrap z-[38]"
             >RM {{ this.payload?.TotalAmount?.toFixed ? this.payload?.TotalAmount.toFixed(2) : '0.00' }}</span
@@ -151,11 +140,10 @@
           <div
             class="flex w-[342.004px] flex-col gap-[10px] items-start shrink-0 flex-nowrap relative z-[46]"
           >
-            <span v-if = "this.payload?.MethodUse === 'Exchange'"
+            <span v-if = "this.payload?.MethodUse === 'ReturnAtOutlet'"
               class="flex w-[342.004px] h-[42px] justify-start items-start self-stretch shrink-0 font-['Poppins'] text-[14px] font-normal leading-[21px] text-[#000] relative text-left z-[47]"
-              >Please bring the empty cylinders to outlet to proceed with the
-              refill.</span>
-              <div v-if = "this.payload?.MethodUse !== 'Exchange'"
+              >Please bring the empty cylinders to outlet.</span>
+              <div v-if = "this.payload?.MethodUse !== 'ReturnAtOutlet'"
                 class="flex flex-col gap-[5px] items-start self-stretch shrink-0 flex-nowrap relative z-[46]"
               >
                 <span
@@ -187,7 +175,7 @@
                   </div>
                 </div>
               </div>
-              <span v-if = "this.payload?.MethodUse !== 'Exchange'"
+              <span v-if = "this.payload?.MethodUse !== 'ReturnAtOutlet'"
                 class="flex w-[342.004px] h-[63px] justify-start items-start self-stretch shrink-0 font-['Poppins'] text-[14px] font-normal leading-[21px] text-[#000] relative text-left z-[53]"
                 >2. Attach the AWB securely to the parcel.<br />3. Ensure all cylinders
                 are packed properly.<br />{{ condition }}</span
@@ -263,7 +251,7 @@
               >You’ll receive </span
             ><span
               class="font-['Poppins'] text-[10px] font-bold leading-[15px] text-[#000] relative text-left"
-              >RM{{ this.payload?.RefundAmount }}</span
+              >RM{{ this.payload?.TotalAmount }}</span
             ><span
               class="font-['Poppins'] text-[10px] font-normal leading-[15px] text-[#000] relative text-left"
             >
@@ -308,11 +296,12 @@ export default{
   computed:{
     payload() {
       const store = usePayloadStore();
+
       return store.data;
     },
     condition(){
       switch (this.payload?.MethodUse) {
-        case 'Exchange':
+        case 'ReturnAtOutlet':
           return '';
         case 'Pickup':
           return '4. Ready for collection.';
@@ -324,7 +313,7 @@ export default{
     },
     titleConfirm() {
       switch (this.payload?.MethodUse) {
-        case 'Exchange':
+        case 'ReturnAtOutlet':
           return 'Outlet - ' + this.payload?.Branch.name;
         case 'Pickup':
           return '';
@@ -336,7 +325,7 @@ export default{
     },
     showAddressConfirm(){
       switch (this.payload?.MethodUse) {
-        case 'Exchange':
+        case 'ReturnAtOutlet':
           return this.payload?.Branch.address;
         case 'Pickup':
         //   return (this.payload?.Address.line1 + ' ' + this.payload?.Address.line2 + ' '  + this.payload?.Address.postalCode + ' '  + this.payload?.Address.city + ' '  
@@ -362,7 +351,7 @@ export default{
     },
     async getLogo(){
       try{
-        const response = await api.post('Order/GetOrderByReference', JSON.stringify(this.payload?.RefillId));
+        const response = await api.post('Order/GetOrderByReference', JSON.stringify(this.payload?.RefundId));
         if(response.status === 200){
           this.logo = response.data.courierLogo;
           this.pickupDT = response.data.pickupDate;

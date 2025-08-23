@@ -175,10 +175,10 @@
       </div>
     </div>
     <div
-      class="w-[94px] h-[80px] bg-[url('../public/getmoney.png')] bg-cover bg-no-repeat absolute top-[575px] left-[60px] z-[8]"
+      class="w-[94px] h-[80px] bg-[url('../public/getmoney.png')] bg-cover bg-no-repeat absolute mt-[20px] left-[60px] z-[8]"
     ></div>
     <div
-      class="w-[342px] h-[110px] bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] absolute top-[578px] left-[30px] shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[5]"
+      class="w-[342px] h-[110px] bg-[#fafafa] rounded-[10px] border-solid border border-[#fdfdfd] absolute mt-[20px] left-[30px] shadow-[0_2px_12px_0_rgba(0,0,0,0.1)] z-[5]"
     >
       <div
         class="flex w-[196px] flex-col gap-[8px] items-start flex-nowrap relative z-[49] mt-[15px] mr-0 mb-0 ml-[131px]"
@@ -223,7 +223,7 @@
       </div>
     </div>
     <div
-      class="w-[402px] h-[295px] bg-[#fff] rounded-tl-[20px] rounded-tr-[20px] top-[625px] rounded-br-none rounded-bl-none absolute bottom-0 right-0 shadow-[0_0_10px_0_rgba(0,0,0,0.1)]"
+      class="w-[402px] h-[295px] bg-[#fff] rounded-tl-[20px] rounded-tr-[20px] mt-[10px] rounded-br-none rounded-bl-none absolute bottom-0 right-0 shadow-[0_0_10px_0_rgba(0,0,0,0.1)]"
     >
       <div
         class="flex w-[342px] flex-col gap-[20px] items-start flex-nowrap relative z-[5] mt-[83px] mr-0 mb-0 ml-[30px]"

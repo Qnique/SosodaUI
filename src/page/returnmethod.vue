@@ -44,10 +44,10 @@
         >We deliver, you stay refreshed.</span
       >
     </div>
-    <div @click="goToRefund('ReturnSpot')"
+    <div @click="goToRefund('ReturnAtOutlet')"
       class="cursor-pointer w-[187.286px] h-[150px] bg-[url('../public/spot.png')] bg-cover bg-no-repeat absolute top-[469.426px] left-[222.715px] z-[15]"
     ></div>
-    <div @click="goToRefund('ReturnSpot')"
+    <div @click="goToRefund('ReturnAtOutlet')"
       class="cursor-pointer card flex w-[342px] h-[120px] flex-col gap-[5px] items-start flex-nowrap absolute top-[495.164px] left-[50px] z-[12]"
     >
       <span
@@ -84,6 +84,7 @@
 import "./index.css";
 import api from '../services/callingapi' 
 import { toast } from 'vue3-toastify'; 
+import { usePayloadStore } from '../stores/payloadStore';
 
 export default{
   data(){
@@ -99,10 +100,19 @@ export default{
     goToRefund(refundmethod){
       const store = usePayloadStore();
       var methodload = {
-        ReturnMethod : refundmethod
+        ReturnMethod : refundmethod,
+        PointId:'',
+        PointName:'',
+        PointAddress: ''
       }
       store.setPayload(methodload);
-      this.$router.push({ name: 'SetupRefund' });
+      if(refundmethod === 'DropOff')
+      {
+        this.$router.push({ name: 'DropOffPoint' });
+      }
+      else{
+        this.$router.push({ name: 'SetupRefund' });
+      }      
     }  
   }
 }
