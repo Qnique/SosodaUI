@@ -140,10 +140,22 @@
       <div
         class="flex w-[301px] gap-[55px] items-center flex-nowrap relative z-[4] mt-[11px] mr-0 mb-0 ml-[30px]"
       >
-        <div class="cursor-pointer w-[31px] h-[37px] mt-[7px]  shrink-0 relative z-[5]" style="padding: 5px;">
-          <div
-            class="w-[24px] h-[24px] bg-[url('../public/home.png')] bg-cover bg-no-repeat relative z-[6] mt-0 mr-0 mb-0 "
-          ></div>
+        <div class="cursor-pointer w-[31px] h-[37px] mt-[3px]  shrink-0 relative z-[5]" style="padding: 5px;">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="relative z-[6] mt-0 mr-0 mb-0 ml-[0.5px]"
+            >
+              <path d="M3 9L12 2l9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+              <path d="M9 22V12h6v10" />
+            </svg>
           <span
             class="flex w-[31px] h-[8px] justify-center items-start font-['Poppins'] text-[12px] font-normal leading-[8px] text-[#fff] relative text-center whitespace-nowrap z-[7] mt-[5px] mr-0 mb-0 ml-0"
             >HOME</span
